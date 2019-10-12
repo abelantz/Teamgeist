@@ -82,8 +82,7 @@
                 <div class="row">
                     <div class="col-md-3">
                         <div class="list-group">
-                            <a href="#" class="list-group-item list-group-item-action">Roles</a>
-                            <a href="#" class="list-group-item list-group-item-action">Permissions</a>
+                            <a href="{{ url('/roles') }}" class="list-group-item list-group-item-action">Roles</a>
                         </div>
                     </div>
 
