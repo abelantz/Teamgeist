@@ -5,8 +5,7 @@
 <div class="row">
     <div class="col">
         <modalform-component class="m-2 float-right" title="Add Role">
-            <input type="text">
-            <input type="button" value="123">
+            <permissions-component></permissions-component>
         </modalform-component>
     </div>
 </div>

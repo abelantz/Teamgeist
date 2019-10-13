@@ -22,6 +22,8 @@ window.BootstrapVue = require('bootstrap-vue');
 
 Vue.component('table-component', require('./components/TableComponent.vue').default);
 Vue.component('modalform-component', require('./components/ModalFormComponent.vue').default);
+Vue.component('permissions-component', require('./components/PermissionsComponent.vue').default);
+
 Vue.use(BootstrapVue)
 
 /**
