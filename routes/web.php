@@ -26,3 +26,7 @@ Route::post('login', 'Auth\LoginController@login')->name('login');
 Route::get('/roles', function() {
     return view('roles');
 });
+
+Route::get('/clubs', function() {
+    return view('clubs');
+});

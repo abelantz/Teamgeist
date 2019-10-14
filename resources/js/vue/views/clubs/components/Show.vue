@@ -1,18 +1,21 @@
 <template>
     <div>
-        <Table></Table>
+        <ModalComponent>
+
+        </ModalComponent>
     </div>
 </template>
 
 <script>
 
-    import Table from '../../../components/TableComponent.vue'
+    import ModalComponent from '../../../components/ModalComponent'
 
     export default {
         mounted() {
             console.log('Component mounted.')
         },
-        components:{Table}
+        components:{ModalComponent}
+
     }
 
 </script>
