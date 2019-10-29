@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Teamgeist</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -68,7 +68,11 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
+<<<<<<< HEAD
+                        <a href="{{ url('/home') }}">Home Abelant</a>
+=======
                         <a href="{{ url('/home') }}">Home blend</a>
+>>>>>>> 3c03698403a9774757150a940dfca10bf2169dbd
                     @else
                         <a href="{{ route('login') }}">Login</a>
 

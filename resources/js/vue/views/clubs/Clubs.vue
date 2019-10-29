@@ -1,7 +1,9 @@
 <template>
-
-    
-
+    <div>
+        <create ></create>
+        <br>
+        <index></index>
+    </div>
 </template>
 
 <script>
@@ -12,9 +14,11 @@ import edit from './components/Create';
 import show from './components/Show';
 
     export default {
-        data() {
 
+        mounted() {
+            console.log('Component mounted.')
         },
+        components:{create, index}
     }
 
 </script>

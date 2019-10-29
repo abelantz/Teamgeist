@@ -11,7 +11,7 @@
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                @include('layouts.includes.sidebar.includes.link', ['title' => 'Clubs', 'url' => '#'])
+                @include('layouts.includes.sidebar.includes.link', ['title' => 'Clubs', 'url' => 'clubs'])
                 @include('layouts.includes.sidebar.includes.link', ['title' => 'Teams', 'url' => '#'])
                 @include('layouts.includes.sidebar.includes.link', ['title' => 'Staff', 'url' => '#'])
                 <li class="nav-header"></li>
@@ -20,7 +20,7 @@
                 <li class="nav-header"></li>
                 @include('layouts.includes.sidebar.includes.link', ['title' => 'Live match', 'url' => '#'])
                 <li class="nav-header"></li>
-                @include('layouts.includes.sidebar.includes.link', ['title' => 'Roles', 'url' => '#'])
+                @include('layouts.includes.sidebar.includes.link', ['title' => 'Roles', 'url' => '/roles'])
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
