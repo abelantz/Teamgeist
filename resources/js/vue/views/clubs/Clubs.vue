@@ -11,6 +11,7 @@
 import index from './components/Index';
 import create from './components/Create';
 import edit from './components/Create';
+import show from './components/Show';
 
     export default {
 
