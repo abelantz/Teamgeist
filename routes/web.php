@@ -23,10 +23,9 @@ Route::get('/logout', function () {
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login')->name('login');
 
-Route::get('/roles', function() {
-    return view('roles');
-});
-
-Route::get('/clubs', function() {
-    return view('clubs');
-});
+Route::get('dashboard', 'HomeController@dashboard')->name('dashboard');
+Route::get('teams', 'HomeController@teams')->name('teams');
+Route::get('team/{team}', 'HomeController@team')->name('team');
+Route::get('invoices', 'HomeController@invoices')->name('invoices');
+Route::get('sponsors', 'HomeController@sponsors')->name('sponsors');
+Route::get('contracts', 'HomeController@contracts')->name('contracts');
