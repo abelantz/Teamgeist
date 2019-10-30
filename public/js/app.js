@@ -4339,10 +4339,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
@@ -5405,15 +5401,30 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      name: ''
+    };
+  },
   methods: {
+    createTeam: function createTeam() {
+      axios.post('/api/teams', {
+        name: this.name
+      }).then(function (response) {
+        console.log(response);
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
     showModal: function showModal() {
       false;
     }
-  },
-  mounted: function mounted() {
-    console.log('Component mounted.');
   },
   components: {
     ModalComponent: _components_ModalComponent_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
@@ -5481,17 +5492,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      teams: [{
-        id: '1',
-        name: 'Barcelona'
-      }, {
-        id: '2',
-        name: 'Liverpool'
-      }]
+      teams: []
     };
   },
-  mounted: function mounted() {
-    console.log('Component mounted.');
+  created: function created() {
+    this.getTeams();
+  },
+  methods: {
+    getTeams: function getTeams() {
+      var _this = this;
+
+      axios.get('/api/teams').then(function (response) {
+        _this.teams = response.data.data;
+      });
+    }
   }
 });
 
@@ -23714,42 +23728,13 @@ var render = function() {
         _c(
           "div",
           { staticClass: "modal-dialog", attrs: { role: "document" } },
-          [
-            _c(
-              "div",
-              { staticClass: "modal-content" },
-              [_vm._t("default"), _vm._v(" "), _vm._m(0)],
-              2
-            )
-          ]
+          [_c("div", { staticClass: "modal-content" }, [_vm._t("default")], 2)]
         )
       ]
     )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-footer" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-secondary",
-          attrs: { type: "button", "data-dismiss": "modal" }
-        },
-        [_vm._v("Close")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        { staticClass: "btn btn-primary", attrs: { type: "button" } },
-        [_vm._v("Save")]
-      )
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -25439,16 +25424,54 @@ var render = function() {
                     _c("label", [_vm._v("Team Name")]),
                     _vm._v(" "),
                     _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.name,
+                          expression: "name"
+                        }
+                      ],
                       staticClass: "form-control",
                       attrs: {
                         type: "text",
                         id: "name",
                         placeholder: "Team Name"
+                      },
+                      domProps: { value: _vm.name },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.name = $event.target.value
+                        }
                       }
                     })
                   ])
                 ])
               ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-footer" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-secondary",
+                  attrs: { type: "button", "data-dismiss": "modal" }
+                },
+                [_vm._v("Close")]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { type: "button" },
+                  on: { click: _vm.createTeam }
+                },
+                [_vm._v("Save")]
+              )
             ])
           ])
         : _vm._e()
@@ -25505,11 +25528,20 @@ var render = function() {
                     )
                   ]),
                   _vm._v(" "),
+                  _c("td", [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "btn btn-primary",
+                        attrs: { href: "/teams/" + team.id }
+                      },
+                      [_vm._v("View")]
+                    )
+                  ]),
+                  _vm._v(" "),
                   _vm._m(2, true),
                   _vm._v(" "),
-                  _vm._m(3, true),
-                  _vm._v(" "),
-                  _vm._m(4, true)
+                  _vm._m(3, true)
                 ])
               }),
               0
@@ -25567,15 +25599,6 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Name")])
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("a", { attrs: { href: "{}" } }),
-      _c("button", { staticClass: "btn btn-primary" }, [_vm._v("View")])
     ])
   },
   function() {
@@ -38865,8 +38888,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Applications/MAMP/htdocs/Teamgeist/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/Teamgeist/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\laragon\www\teamgeist\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\laragon\www\teamgeist\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
