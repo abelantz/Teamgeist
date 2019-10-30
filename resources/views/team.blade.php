@@ -2,5 +2,5 @@
 
 @section('content')
 
-
+<team-component></team-component>
 @stop

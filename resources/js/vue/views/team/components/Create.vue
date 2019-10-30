@@ -2,7 +2,7 @@
     <div>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
             @click="showModal = true">
-            New Team
+            New Member
         </button>
 
         <!-- Modal -->
@@ -10,21 +10,21 @@
              <div class="card-primary">
                 <div class="card-header">
                     <div class="card-title">
-                        Add Team
+                        Add Member
                     </div>
                 </div>
                 <form role="form">
                     <div class="card-body">
                         <div class="form-group">
-                            <label >Team Name</label>
-                            <input type="text" class="form-control" id="name" placeholder="Team Name" v-model="name">
+                            <label >Member Name</label>
+                            <input type="text" class="form-control" id="name" placeholder="Member Name" v-model="name">
                         </div>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" v-on:click="createTeam">Save</button>
+                <button type="button" class="btn btn-primary" v-on:click.prevent="createTeam">Add New</button>
             </div>
         </modal-component>
     </div>
@@ -57,7 +57,7 @@
                 false
             },
         },
-        
+
 
         components: {
             ModalComponent

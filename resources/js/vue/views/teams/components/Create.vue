@@ -16,16 +16,17 @@
                 <form role="form">
                     <div class="card-body">
                         <div class="form-group">
-                            <label >Team Name</label>
+                            <label>Team Name</label>
                             <input type="text" class="form-control" id="name" placeholder="Team Name" v-model="name">
                         </div>
                     </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button  type="button" class="btn btn-primary" @click.prevent="createTeam">Add Team</button>
+                    </div>
                 </form>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" v-on:click="createTeam">Save</button>
-            </div>
+
         </modal-component>
     </div>
 </template>
@@ -43,21 +44,24 @@
 
         methods: {
             createTeam() {
-                axios.post('/api/teams', {
+                axios.post('http://localhost:8888/teamgeist/public/api/teams', {
                     name: this.name,
                 })
                 .then(function (response) {
+
                     console.log(response);
+
                 })
                 .catch(function (error) {
                     console.log(error);
                 });
             },
+
             showModal() {
                 false
             },
         },
-        
+
 
         components: {
             ModalComponent

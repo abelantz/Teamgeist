@@ -1,5 +1,6 @@
 <template>
     <div>
+
         <create ></create>
         <br>
         <index></index>
