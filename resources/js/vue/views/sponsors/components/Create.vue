@@ -2,35 +2,37 @@
     <div>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
             @click="showModal = true">
-            New Club
+            Add Sponsor
         </button>
 
         <!-- Modal -->
         <modal-component v-if="showModal">
-            <div>
-
+            <div class="card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Add Sponsor</h3>
+                </div>
                 <!-- /.card-header -->
                 <!-- form start -->
                 <form role="form">
                     <div class="card-body">
                         <div class="form-group">
-                            <label >Club Name</label>
-                            <input type="text" class="form-control" id="name" placeholder="Club Name">
+                            <label >Sponsor Name</label>
+                            <input type="text" class="form-control" id="name" placeholder="Sponsor Name">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Email address</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                            <label >Type</label>
+                            <input type="text" class="form-control" id="name" placeholder="General">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1"
-                                placeholder="Password">
+                            <label>Date</label>
+                            <input type="text" class="form-control" id="name" placeholder="12.09.2019">
                         </div>
-
+                        <div class="form-group">
+                            <label>Amount</label>
+                            <input type="text" class="form-control" id="name" placeholder="CHF 1200">
+                        </div>
                     </div>
                     <!-- /.card-body -->
-
-
                 </form>
             </div>
         </modal-component>

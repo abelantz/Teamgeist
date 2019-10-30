@@ -2,5 +2,6 @@
 
 @section('content')
 
+<teams-component></teams-component>
 
 @stop

@@ -9,8 +9,6 @@
         mounted() {
             console.log('Component mounted.')
         },
-        components:{ModalComponent}
-
     }
 
 </script>

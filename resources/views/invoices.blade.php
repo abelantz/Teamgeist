@@ -2,5 +2,5 @@
 
 @section('content')
 
-
+<invoices-component></invoices-component>
 @stop
