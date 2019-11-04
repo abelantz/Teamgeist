@@ -31,6 +31,11 @@
                             <label>Amount</label>
                             <input type="text" class="form-control" id="name" placeholder="CHF 1200">
                         </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button  type="button" class="btn btn-primary" @click.prevent="createTeam">Add Sponsor</button>
+                        </div>
                     </div>
                     <!-- /.card-body -->
                 </form>

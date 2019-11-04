@@ -37,7 +37,9 @@
 
         data() {
             return {
-                name: '',
+               members:[
+                   {id:'1',name:'Filan Fisteku',type:'Player',date:'11/12/2018'}
+               ]
             }
         },
 
