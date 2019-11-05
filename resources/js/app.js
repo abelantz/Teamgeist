@@ -11,13 +11,8 @@ Vue.component('dashboard-component', require('./vue/components/Dashboard.vue').d
 import Vue from 'vue';
 
 let Fire = new Vue();
-
 window.Fire = Fire;
 
-
-import VueProgressBar from 'vue-progressbar';
-
-import moment from 'moment';
 import VueRouter from 'vue-router'
 import { Form, HasError, AlertError } from 'vform';
 
@@ -45,14 +40,16 @@ const router = new VueRouter({
     linkActiveClass: 'active'
 })
 
+import moment from 'moment';
 Vue.filter('upText', function(string){
     return string.charAt(0).toUpperCase() + string.slice(1);
 });
-
 Vue.filter('regDate', function(created){
     return moment(created).format('MMMM Do YYYY');
 });
 
+
+import VueProgressBar from 'vue-progressbar';
 Vue.use(VueProgressBar, {
     color: 'rgb(143, 255, 199)',
     failedColor: 'red',
@@ -69,10 +66,6 @@ const toast = swal.mixin({
     timer: 3000
 });
 window.toast = toast;
-
-
-
-
 
 
 const app = new Vue({

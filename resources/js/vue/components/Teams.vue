@@ -1,37 +1,6 @@
 <template>
-     <div class="row">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Teams</h3>
-                    <!-- <button class="btn btn-success" >Add Team</button> -->
-                </div>
-                <div class="card-body table-responsive p-0 ">
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Name</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr v-for="team in teams" v-bind:key="team.id">
-                                <td>
-                                    {{ team.id }}</td>
-                                <td>
-                                    {{ team.name }}
-                                </td>
-                                <td><a v-bind:href="'/teams/' + team.id" class="btn btn-primary">View</a></td>
-                                <td><button @click.prevent="editTeam(team)" class="btn btn-info">Edit</button></td>
-                                <td><button @click.prevent="deleteTeam(team.id)" class="btn btn-danger">Delete</button></td>
-                            </tr>
-
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
+    <div class="container">
+        <h1>Teams</h1>
     </div>
 </template>
 

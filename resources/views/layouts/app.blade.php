@@ -55,7 +55,7 @@
                         <li class="nav-header">Club User</li>
                         <li class="nav-item">
                             <router-link  to="/dashboard" class="nav-link">
-                                <i class="nav-icon far fa-circle nav-icon"></i>
+                                <i class="nav-icon fas fa-columns nav-icon green"></i>
                                 <p>
                                     Dashboard
                                 </p>
@@ -63,7 +63,7 @@
                         </li>
                         <li class="nav-item">
                             <router-link  to="/teams" class="nav-link">
-                                <i class="nav-icon far fa-circle nav-icon"></i>
+                                <i class="nav-icon fas fa-user-friends nav-icon green"></i>
                                 <p>
                                     Teams
                                 </p>
@@ -71,7 +71,7 @@
                         </li>
                         <li class="nav-item">
                             <router-link  to="/invoice" class="nav-link">
-                                <i class="nav-icon far fa-circle nav-icon"></i>
+                                <i class="nav-icon fas fa-file-alt nav-icon green "></i>
                                 <p>
                                     Invoice
                                 </p>
@@ -79,7 +79,7 @@
                         </li>
                         <li class="nav-item">
                             <router-link  to="/sponsoring" class="nav-link">
-                                <i class="nav-icon far fa-circle nav-icon"></i>
+                                <i class="nav-icon fab fa-hubspot nav-icon green"></i>
                                 <p>
                                     Sponsoring
                                 </p>
@@ -88,7 +88,7 @@
 
                         <li class="nav-item">
                             <router-link  to="/membership" class="nav-link">
-                                <i class="nav-icon far fa-circle nav-icon"></i>
+                                <i class="nav-icon fas fa-user-tie nav-icon green"></i>
                                 <p>
                                     Membership
                                 </p>
@@ -96,7 +96,7 @@
                         </li>
                         <li class="nav-item">
                             <router-link  to="/contracts" class="nav-link">
-                                <i class="nav-icon far fa-circle nav-icon"></i>
+                                <i class="nav-icon fas fa-file-contract nav-icon green"></i>
                                 <p>
                                     Contracts
                                 </p>
@@ -104,7 +104,7 @@
                         </li>
                         <li class="nav-item">
                             <router-link  to="/statistics" class="nav-link">
-                                <i class="nav-icon far fa-circle nav-icon"></i>
+                                <i class="nav-icon fas fa-chart-line nav-icon green"></i>
                                 <p>
                                     Statistics
                                 </p>
@@ -112,7 +112,7 @@
                         </li>
                         <li class="nav-item">
                             <router-link  to="/communications" class="nav-link">
-                                <i class="nav-icon far fa-circle nav-icon"></i>
+                                <i class="nav-icon fas fa-inbox nav-icon green"></i>
                                 <p>
                                     Communications
                                 </p>
@@ -120,7 +120,7 @@
                         </li>
                         <li class="nav-item">
                             <router-link  to="/users" class="nav-link">
-                                <i class="nav-icon far fa-circle nav-icon"></i>
+                                <i class="nav-icon fas fa-users nav-icon green"></i>
                                 <p>
                                     User Management
                                 </p>
