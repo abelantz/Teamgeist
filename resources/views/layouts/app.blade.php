@@ -54,79 +54,105 @@
                         data-accordion="false">
                         <li class="nav-header">Club User</li>
                         <li class="nav-item">
-                            <router-link  to="/dashboard" class="nav-link">
+                            <router-link to="/dashboard" class="nav-link">
                                 <i class="nav-icon fas fa-columns nav-icon green"></i>
                                 <p>
                                     Dashboard
                                 </p>
-                            </router-link >
+                            </router-link>
                         </li>
                         <li class="nav-item">
-                            <router-link  to="/teams" class="nav-link">
+                            <router-link to="/teams" class="nav-link">
                                 <i class="nav-icon fas fa-user-friends nav-icon green"></i>
                                 <p>
                                     Teams
                                 </p>
-                            </router-link >
+                            </router-link>
                         </li>
                         <li class="nav-item">
-                            <router-link  to="/invoice" class="nav-link">
+                            <router-link to="/invoice" class="nav-link">
                                 <i class="nav-icon fas fa-file-alt nav-icon green "></i>
                                 <p>
                                     Invoice
                                 </p>
-                            </router-link >
+                            </router-link>
                         </li>
                         <li class="nav-item">
-                            <router-link  to="/sponsoring" class="nav-link">
+                            <router-link to="/sponsoring" class="nav-link">
                                 <i class="nav-icon fab fa-hubspot nav-icon green"></i>
                                 <p>
                                     Sponsoring
                                 </p>
-                            </router-link >
+                            </router-link>
                         </li>
 
                         <li class="nav-item">
-                            <router-link  to="/membership" class="nav-link">
+                            <router-link to="/membership" class="nav-link">
                                 <i class="nav-icon fas fa-user-tie nav-icon green"></i>
                                 <p>
                                     Membership
                                 </p>
-                            </router-link >
+                            </router-link>
                         </li>
                         <li class="nav-item">
-                            <router-link  to="/contracts" class="nav-link">
+                            <router-link to="/contracts" class="nav-link">
                                 <i class="nav-icon fas fa-file-contract nav-icon green"></i>
                                 <p>
                                     Contracts
                                 </p>
-                            </router-link >
+                            </router-link>
                         </li>
                         <li class="nav-item">
-                            <router-link  to="/statistics" class="nav-link">
+                            <router-link to="/statistics" class="nav-link">
                                 <i class="nav-icon fas fa-chart-line nav-icon green"></i>
                                 <p>
                                     Statistics
                                 </p>
-                            </router-link >
+                            </router-link>
                         </li>
                         <li class="nav-item">
-                            <router-link  to="/communications" class="nav-link">
+                            <router-link to="/communications" class="nav-link">
                                 <i class="nav-icon fas fa-inbox nav-icon green"></i>
                                 <p>
                                     Communications
                                 </p>
-                            </router-link >
+                            </router-link>
                         </li>
-                        <li class="nav-item">
-                            <router-link  to="/users" class="nav-link">
+                        <li class="nav-item has-treeview menu-open">
+                            <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-users nav-icon green"></i>
                                 <p>
-                                    User Management
+                                   User Management
+                                    <i class="right fas fa-angle-left"></i>
                                 </p>
-                            </router-link >
+                            </a>
+                            <ul class="nav nav-treeview" style="display: block; margin-left:15px;">
+                                <li class="nav-item has-treeview menu-open">
+                                    <router-link to="/users" class="nav-link">
+                                        <i class="nav-icon fas fa-users nav-icon green"></i>
+                                        <p>
+                                        Users
+                                        </p>
+                                    </router-link>
+                                </li>
+                                <li class="nav-item has-treeview menu-open">
+                                    <router-link to="/roles" class="nav-link">
+                                        <i class="nav-icon fas fa-users nav-icon green"></i>
+                                        <p>
+                                        Roles
+                                        </p>
+                                    </router-link>
+                                </li>
+                                <li class="nav-item has-treeview menu-open">
+                                    <router-link to="/permissions" class="nav-link">
+                                        <i class="nav-icon fas fa-users nav-icon green"></i>
+                                        <p>
+                                        Permissions
+                                        </p>
+                                    </router-link>
+                                </li>
+                            </ul>
                         </li>
-
 
                         <li class="nav-header">Team User</li>
                         <li class="nav-item">

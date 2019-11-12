@@ -17,6 +17,7 @@ import VueRouter from 'vue-router'
 import { Form, HasError, AlertError } from 'vform';
 
 Vue.use(VueRouter)
+
 window.Form = Form;
 Vue.component(HasError.name, HasError)
 Vue.component(AlertError.name, AlertError)
@@ -31,6 +32,8 @@ let routes = [
     { path: '/communications', component: require('./vue/components/Communication.vue').default },
     { path: '/users', component: require('./vue/components/Users.vue').default },
     { path: '/statistics', component: require('./vue/components/Statistics.vue').default },
+    { path: '/roles', component: require('./vue/components/Roles.vue').default },
+    { path: '/permissions', component: require('./vue/components/Permissions.vue').default },
 
 ]
 

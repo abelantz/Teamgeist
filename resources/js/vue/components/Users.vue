@@ -91,9 +91,9 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
                             <button v-show="editMode" type="submit" class="btn btn-success">Update</button>
-                            <button v-show="!editMode" type="submit" class="btn btn-primary">Create</button>
+                            <button v-show="!editMode" type="submit" class="btn btn-success">Create</button>
 
                         </div>
                     </form>
@@ -175,7 +175,7 @@
             },
             loadUsers() {
                 axios.get('api/users')
-                    .then((response) => (this.users = response.data.data));
+                     .then((response) => (this.users = response.data.data));
             },
             createUser() {
                 this.$Progress.start();
