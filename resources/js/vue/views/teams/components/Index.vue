@@ -14,7 +14,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="team in teams" v-bind:key="team.id">
+                            <tr v-for="(team, index) in teams" v-bind:key="team.id">
                                 <td>
                                     {{ team.id }}</td>
                                 <td>
@@ -22,9 +22,8 @@
                                 </td>
                                 <td><a v-bind:href="'/teamgeist/public/teams/' + team.id" class="btn btn-primary">View</a></td>
                                 <td><button @click.prevent="editTeam(team)" class="btn btn-info">Edit</button></td>
-                                <td><button @click.prevent="deleteTeam(team.id)" class="btn btn-danger">Delete</button></td>
+                                <td><button @click="deleteTeam(team.id, index)" class="btn btn-danger">Delete</button></td>
                             </tr>
-
                         </tbody>
                     </table>
                 </div>
@@ -46,10 +45,14 @@
         },
         created() {
             this.getTeams();
+            this.$parent.$on('addToTable', this.addToTable)
         },
         methods: {
+            addToTable(team) {
+                this.teams.push(team)
+            },
             getTeams() {
-                axios.get('http://localhost:8888/teamgeist/public/api/teams')
+                axios.get('/api/teams')
                 .then((response) => {
                     this.teams = response.data.data
                 });
@@ -61,16 +64,16 @@
                 this.team.name = t.name
             },
             updateTeam(id){
-                 axios.put('/teamgeist/public/api/teams/' + id)
+                 axios.put('/api/teams/' + id)
                 .then((response) => {
                     this.teams = response.data.data
                     alert('Product Updated')
                 });
             },
-            deleteTeam(id){
-                axios.delete('/teamgeist/public/api/teams/' + id)
+            deleteTeam(id, index){
+                axios.delete('/api/teams/' + id)
                 .then((response) => {
-                    this.teams.splice(id, 1)
+                    this.teams.splice(index, 1)
                 });
             },
             showModal(){

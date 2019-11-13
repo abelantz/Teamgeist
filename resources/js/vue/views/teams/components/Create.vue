@@ -1,12 +1,11 @@
 <template>
     <div>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
-            @click="showModal = true">
+        <button type="button" class="btn btn-primary" v-on:click="toggleModal">
             New Team
         </button>
 
         <!-- Modal -->
-        <modal-component v-if="showModal">
+        <modal-component v-if="isVisible">
              <div class="card-primary">
                 <div class="card-header">
                     <div class="card-title">
@@ -21,8 +20,8 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button  type="button" class="btn btn-primary" @click.prevent="createTeam">Add Team</button>
+                        <button type="button" class="btn btn-secondary" v-on:click="toggleModal">Close</button>
+                        <button  type="button" class="btn btn-primary" v-on:click="createTeam">Add Team</button>
                     </div>
                 </form>
             </div>
@@ -39,27 +38,28 @@
         data() {
             return {
                 name: '',
+                isVisible: false,
             }
         },
 
         methods: {
             createTeam() {
-                axios.post('http://localhost:8888/teamgeist/public/api/teams', {
+                axios.post('/api/teams', {
                     name: this.name,
                 })
-                .then(function (response) {
-
-                    console.log(response);
-
+                .then((response) => {
+                    this.toggleModal()
+                    this.name = ''
+                    this.$emit('created', response.data.data);
                 })
                 .catch(function (error) {
-                    console.log(error);
+                    console.log(error)
                 });
             },
 
-            showModal() {
-                false
-            },
+            toggleModal() {
+                this.isVisible = !this.isVisible
+            }
         },
 
 

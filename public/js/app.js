@@ -5210,11 +5210,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      isVisible: false
+    };
+  },
   methods: {
-    showModal: function showModal() {
-      false;
+    toggleModal: function toggleModal() {
+      this.isVisible = !this.isVisible;
     }
   },
   mounted: function mounted() {
@@ -5555,6 +5563,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  methods: {
+    created: function created(team) {
+      this.$emit('addToTable', team);
+    }
+  },
   mounted: function mounted() {
     console.log('Component mounted.');
   },
@@ -5608,26 +5621,30 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      name: ''
+      name: '',
+      isVisible: false
     };
   },
   methods: {
     createTeam: function createTeam() {
-      axios.post('http://localhost:8888/teamgeist/public/api/teams', {
+      var _this = this;
+
+      axios.post('/api/teams', {
         name: this.name
       }).then(function (response) {
-        console.log(response);
-      })["catch"](function (error) {
-        console.log(error);
-      });
+        _this.toggleModal();
+
+        _this.name = '';
+
+        _this.$emit('created', response.data.data);
+      })["catch"](function (error) {});
     },
-    showModal: function showModal() {
-      false;
+    toggleModal: function toggleModal() {
+      this.isVisible = !this.isVisible;
     }
   },
   components: {
@@ -5681,7 +5698,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -5692,12 +5708,16 @@ __webpack_require__.r(__webpack_exports__);
   },
   created: function created() {
     this.getTeams();
+    this.$parent.$on('addToTable', this.addToTable);
   },
   methods: {
+    addToTable: function addToTable(team) {
+      this.teams.push(team);
+    },
     getTeams: function getTeams() {
       var _this = this;
 
-      axios.get('http://localhost:8888/teamgeist/public/api/teams').then(function (response) {
+      axios.get('/api/teams').then(function (response) {
         _this.teams = response.data.data;
       });
     },
@@ -5710,16 +5730,16 @@ __webpack_require__.r(__webpack_exports__);
     updateTeam: function updateTeam(id) {
       var _this2 = this;
 
-      axios.put('/teamgeist/public/api/teams/' + id).then(function (response) {
+      axios.put('/api/teams/' + id).then(function (response) {
         _this2.teams = response.data.data;
         alert('Product Updated');
       });
     },
-    deleteTeam: function deleteTeam(id) {
+    deleteTeam: function deleteTeam(id, index) {
       var _this3 = this;
 
-      axios["delete"]('/teamgeist/public/api/teams/' + id).then(function (response) {
-        _this3.teams.splice(id, 1);
+      axios["delete"]('/api/teams/' + id).then(function (response) {
+        _this3.teams.splice(index, 1);
       });
     },
     showModal: function showModal() {
@@ -23934,13 +23954,13 @@ var render = function() {
     _c(
       "div",
       {
-        staticClass: "modal fade",
+        staticClass: "modal d-block",
         attrs: {
           id: "exampleModal",
           tabindex: "-1",
           role: "dialog",
           "aria-labelledby": "exampleModalLabel",
-          "aria-hidden": "true"
+          "aria-hidden": "false"
         }
       },
       [
@@ -25339,21 +25359,13 @@ var render = function() {
         "button",
         {
           staticClass: "btn btn-primary",
-          attrs: {
-            type: "button",
-            "data-toggle": "modal",
-            "data-target": "#exampleModal"
-          },
-          on: {
-            click: function($event) {
-              _vm.showModal = true
-            }
-          }
+          attrs: { type: "button" },
+          on: { click: _vm.toggleModal }
         },
         [_vm._v("\n        Add Sponsor\n    ")]
       ),
       _vm._v(" "),
-      _vm.showModal
+      _vm.isVisible
         ? _c("modal-component", [
             _c("div", { staticClass: "card-primary" }, [
               _c("div", { staticClass: "card-header" }, [
@@ -25415,6 +25427,28 @@ var render = function() {
                   ])
                 ])
               ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-footer" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-secondary",
+                  attrs: { type: "button" },
+                  on: { click: _vm.toggleModal }
+                },
+                [_vm._v("Close")]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { type: "button" },
+                  on: { click: _vm.toggleModal }
+                },
+                [_vm._v("Add Sponsor")]
+              )
             ])
           ])
         : _vm._e()
@@ -25869,7 +25903,13 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    [_c("create"), _vm._v(" "), _c("br"), _vm._v(" "), _c("index")],
+    [
+      _c("create", { on: { created: _vm.created } }),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c("index")
+    ],
     1
   )
 }
@@ -25902,21 +25942,13 @@ var render = function() {
         "button",
         {
           staticClass: "btn btn-primary",
-          attrs: {
-            type: "button",
-            "data-toggle": "modal",
-            "data-target": "#exampleModal"
-          },
-          on: {
-            click: function($event) {
-              _vm.showModal = true
-            }
-          }
+          attrs: { type: "button" },
+          on: { click: _vm.toggleModal }
         },
         [_vm._v("\n        New Team\n    ")]
       ),
       _vm._v(" "),
-      _vm.showModal
+      _vm.isVisible
         ? _c("modal-component", [
             _c("div", { staticClass: "card-primary" }, [
               _c("div", { staticClass: "card-header" }, [
@@ -25963,7 +25995,8 @@ var render = function() {
                     "button",
                     {
                       staticClass: "btn btn-secondary",
-                      attrs: { type: "button", "data-dismiss": "modal" }
+                      attrs: { type: "button" },
+                      on: { click: _vm.toggleModal }
                     },
                     [_vm._v("Close")]
                   ),
@@ -25973,12 +26006,7 @@ var render = function() {
                     {
                       staticClass: "btn btn-primary",
                       attrs: { type: "button" },
-                      on: {
-                        click: function($event) {
-                          $event.preventDefault()
-                          return _vm.createTeam($event)
-                        }
-                      }
+                      on: { click: _vm.createTeam }
                     },
                     [_vm._v("Add Team")]
                   )
@@ -26024,7 +26052,7 @@ var render = function() {
             _vm._v(" "),
             _c(
               "tbody",
-              _vm._l(_vm.teams, function(team) {
+              _vm._l(_vm.teams, function(team, index) {
                 return _c("tr", { key: team.id }, [
                   _c("td", [
                     _vm._v(
@@ -26074,8 +26102,7 @@ var render = function() {
                         staticClass: "btn btn-danger",
                         on: {
                           click: function($event) {
-                            $event.preventDefault()
-                            return _vm.deleteTeam(team.id)
+                            return _vm.deleteTeam(team.id, index)
                           }
                         }
                       },
@@ -39661,8 +39688,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Applications/MAMP/htdocs/Teamgeist/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/Teamgeist/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\laragon\www\teamgeist\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\laragon\www\teamgeist\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -1,12 +1,11 @@
 <template>
     <div>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
-            @click="showModal = true">
+        <button type="button" class="btn btn-primary" v-on:click="toggleModal">
             Add Sponsor
         </button>
 
         <!-- Modal -->
-        <modal-component v-if="showModal">
+        <modal-component v-if="isVisible">
             <div class="card-primary">
                 <div class="card-header">
                     <h3 class="card-title">Add Sponsor</h3>
@@ -35,6 +34,10 @@
                     <!-- /.card-body -->
                 </form>
             </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" v-on:click="toggleModal">Close</button>
+                <button  type="button" class="btn btn-primary" v-on:click="toggleModal">Add Sponsor</button>
+            </div>
         </modal-component>
     </div>
 </template>
@@ -43,9 +46,14 @@
     import ModalComponent from '../../../components/ModalComponent.vue'
 
     export default {
+        data() {
+            return {
+                isVisible: false
+            }
+        },
         methods: {
-            showModal() {
-                false
+            toggleModal() {
+                this.isVisible = !this.isVisible
             },
         },
         mounted() {
