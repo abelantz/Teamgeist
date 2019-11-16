@@ -45,5 +45,7 @@ Route::group(['namespace' => 'API'], function () {
     // Route::apiResource('contracts', 'ContractController'); // Contract api routes
     Route::apiResource('invoices', 'InvoiceController'); // Invoice api routes
     Route::apiResource('sponsor', 'SponsorController'); //Sponsor api routes
+    Route::apiResource('categories', 'CategoryController');
+    Route::apiResource('subcategories', 'SubcategoryController');
     
 });

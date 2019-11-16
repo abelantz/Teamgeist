@@ -1,23 +1,17 @@
-//bootstrap
 require('bootstrap');
-
-//VueJS
+require('@fortawesome/fontawesome-free');
 window.Vue = require('vue');
-
-//Axios
 window.axios = require('axios');
-
-//PopperJS
 window.Popper = require('popper.js').default;
-
-//jQuery
 window.$ = window.jQuery = require('jquery');
-
-//admin-lte
+window.swal = require('sweetalert2');
+window.VueProgressBar = require('vue-progressbar');
+window.moment = require('moment');
+window.VueRouter = require('vue-router');
+window.Form = window.HasError = window.AlertError = require('vform');
+window.routes = require('./vue/routes').default;
 require('admin-lte');
 
-//Fontawesome
-require('@fortawesome/fontawesome-free');
 
 //Axios prefs
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
