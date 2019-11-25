@@ -42,7 +42,9 @@ return [
     */
 
     'permissions' => [
-        //
+        'create-team',
+        'delete-team',
+        'update-team'
     ],
     
 

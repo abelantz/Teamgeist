@@ -206,10 +206,9 @@
                                 <has-error :form="formTeam" field="name"></has-error>
                             </div>
                             <div class="form-group">
-                                <select  @change="onChange($event)" type="type" name="type" id="type" class="form-control"
-                                    >
+                                <select  @change="onChange($event)" type="type" name="type" id="type" class="form-control">
                                     <option disabled selected value="">Select Category</option>
-                                    <option  v-for="category in categories" v-bind:key="category.id"  v-bind:value="category.id">{{category.title}}</option>
+                                    <option  v-for="category in categories" v-bind:key="category.id" v-bind:value="category.id">{{category.title}}</option>
                                 </select>
                                
                             </div>
@@ -232,7 +231,7 @@
         </div>
     </div>
   </div>
-</div>
+
 </template>
 
 <script>
@@ -243,7 +242,6 @@
         data() {
             return {
                 editMode: false,
-              
                 categories:[],
                 subcategories:[],
                 subFilter:[],

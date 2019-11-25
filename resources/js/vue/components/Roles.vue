@@ -67,16 +67,12 @@
                             </div>
                             <div class="form-group">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox">
-                                    <label class="form-check-label">Permision 1</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" >
-                                    <label class="form-check-label">Permission 2</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" >
-                                    <label class="form-check-label">Permission 3</label>
+                                    <ul>
+                                        <li v-for="permission in permissions" v-bind:key="permission.id">
+                                            <input  class="form-check-input" type="checkbox" :value="permission.id" v-model="roleForm.permissions">
+                                            <label  class="form-check-label">{{permission.name}}</label>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -114,10 +110,15 @@
         methods: {
             addRoleModal(){
                 $('#addNew').modal('show');
+            },
+            loadPermissions(){
+                axios.get('api/permissions')
+                .then((response) => this.permissions = response.data.data)
             }
         },
         created() {
-            console.log('Component mounted.')
+            this.loadPermissions();
+            console.log('Created');
         },
     }
 

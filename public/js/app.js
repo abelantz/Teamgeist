@@ -4566,10 +4566,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -4589,10 +4585,18 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     addRoleModal: function addRoleModal() {
       $('#addNew').modal('show');
+    },
+    loadPermissions: function loadPermissions() {
+      var _this = this;
+
+      axios.get('api/permissions').then(function (response) {
+        return _this.permissions = response.data.data;
+      });
     }
   },
   created: function created() {
-    console.log('Component mounted.');
+    this.loadPermissions();
+    console.log('Created');
   }
 });
 
@@ -4657,7 +4661,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
 //
 //
 //
@@ -45256,10 +45259,84 @@ var render = function() {
                         1
                       ),
                       _vm._v(" "),
-                      _vm._m(2)
+                      _c("div", { staticClass: "form-group" }, [
+                        _c("div", { staticClass: "form-check" }, [
+                          _c(
+                            "ul",
+                            _vm._l(_vm.permissions, function(permission) {
+                              return _c("li", { key: permission.id }, [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.roleForm.permissions,
+                                      expression: "roleForm.permissions"
+                                    }
+                                  ],
+                                  staticClass: "form-check-input",
+                                  attrs: { type: "checkbox" },
+                                  domProps: {
+                                    value: permission.id,
+                                    checked: Array.isArray(
+                                      _vm.roleForm.permissions
+                                    )
+                                      ? _vm._i(
+                                          _vm.roleForm.permissions,
+                                          permission.id
+                                        ) > -1
+                                      : _vm.roleForm.permissions
+                                  },
+                                  on: {
+                                    change: function($event) {
+                                      var $$a = _vm.roleForm.permissions,
+                                        $$el = $event.target,
+                                        $$c = $$el.checked ? true : false
+                                      if (Array.isArray($$a)) {
+                                        var $$v = permission.id,
+                                          $$i = _vm._i($$a, $$v)
+                                        if ($$el.checked) {
+                                          $$i < 0 &&
+                                            _vm.$set(
+                                              _vm.roleForm,
+                                              "permissions",
+                                              $$a.concat([$$v])
+                                            )
+                                        } else {
+                                          $$i > -1 &&
+                                            _vm.$set(
+                                              _vm.roleForm,
+                                              "permissions",
+                                              $$a
+                                                .slice(0, $$i)
+                                                .concat($$a.slice($$i + 1))
+                                            )
+                                        }
+                                      } else {
+                                        _vm.$set(
+                                          _vm.roleForm,
+                                          "permissions",
+                                          $$c
+                                        )
+                                      }
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c(
+                                  "label",
+                                  { staticClass: "form-check-label" },
+                                  [_vm._v(_vm._s(permission.name))]
+                                )
+                              ])
+                            }),
+                            0
+                          )
+                        ])
+                      ])
                     ]),
                     _vm._v(" "),
-                    _vm._m(3)
+                    _vm._m(2)
                   ]
                 )
               ])
@@ -45344,45 +45421,6 @@ var staticRenderFns = [
         },
         [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
       )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("div", { staticClass: "form-check" }, [
-        _c("input", {
-          staticClass: "form-check-input",
-          attrs: { type: "checkbox" }
-        }),
-        _vm._v(" "),
-        _c("label", { staticClass: "form-check-label" }, [
-          _vm._v("Permision 1")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-check" }, [
-        _c("input", {
-          staticClass: "form-check-input",
-          attrs: { type: "checkbox" }
-        }),
-        _vm._v(" "),
-        _c("label", { staticClass: "form-check-label" }, [
-          _vm._v("Permission 2")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-check" }, [
-        _c("input", {
-          staticClass: "form-check-input",
-          attrs: { type: "checkbox" }
-        }),
-        _vm._v(" "),
-        _c("label", { staticClass: "form-check-label" }, [
-          _vm._v("Permission 3")
-        ])
-      ])
     ])
   },
   function() {
@@ -45535,7 +45573,7 @@ var render = function() {
                   [
                     _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
                       _vm._v(
-                        "\n                      " +
+                        "\n                    " +
                           _vm._s(subcategory.title) +
                           " "
                       ),
@@ -45572,7 +45610,7 @@ var render = function() {
                   [
                     _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
                       _vm._v(
-                        "\n                      " +
+                        "\n                    " +
                           _vm._s(subcategory.title) +
                           " "
                       ),
@@ -45606,7 +45644,7 @@ var render = function() {
                   [
                     _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
                       _vm._v(
-                        "\n                      " +
+                        "\n                    " +
                           _vm._s(subcategory.title) +
                           " "
                       ),
@@ -46243,7 +46281,7 @@ var staticRenderFns = [
         _c("i", { staticClass: "fas fa-edit" })
       ]),
       _vm._v(
-        "\n                                        /\n                                        "
+        "\n                                      /\n                                      "
       ),
       _c("a", { attrs: { href: "#" } }, [
         _c("i", { staticClass: "fas fa-trash red" })
