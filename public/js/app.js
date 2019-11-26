@@ -4699,6 +4699,117 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['teamId'],
   data: function data() {
@@ -45627,11 +45738,217 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("h1", [_vm._v("\n       " + _vm._s(_vm.team.name) + "\n    ")])
-  ])
+  return _vm._m(0)
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("section", { staticClass: "content" }, [
+        _c("div", { staticClass: "container-fluid" }, [
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-md-3" }, [
+              _c("div", { staticClass: "card card-primary card-outline" }, [
+                _c("div", { staticClass: "card-body box-profile" }, [
+                  _c("h3", { staticClass: "profile-username text-center" }, [
+                    _vm._v("FC Barca")
+                  ]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "text-muted text-center" }, [
+                    _vm._v("Category / Subcategory")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "ul",
+                    { staticClass: "list-group list-group-unbordered mb-3" },
+                    [
+                      _c("li", { staticClass: "list-group-item" }, [
+                        _c("b", [_vm._v("Players")]),
+                        _vm._v(" "),
+                        _c("a", { staticClass: "float-right" }, [_vm._v("45")])
+                      ]),
+                      _vm._v(" "),
+                      _c("li", { staticClass: "list-group-item" }, [
+                        _c("b", [_vm._v("Coaches")]),
+                        _vm._v(" "),
+                        _c("a", { staticClass: "float-right" }, [_vm._v("2")])
+                      ]),
+                      _vm._v(" "),
+                      _c("li", { staticClass: "list-group-item" }, [
+                        _c("b", [_vm._v("Team members")]),
+                        _vm._v(" "),
+                        _c("a", { staticClass: "float-right" }, [_vm._v("47")])
+                      ])
+                    ]
+                  )
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-9" }, [
+              _c("div", { staticClass: "card" }, [
+                _c("div", { staticClass: "card-header p-2" }, [
+                  _c("ul", { staticClass: "nav nav-pills" }, [
+                    _c("li", { staticClass: "nav-item" }, [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "nav-link active",
+                          attrs: { href: "#activity", "data-toggle": "tab" }
+                        },
+                        [_vm._v("Members")]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("li", { staticClass: "nav-item" }, [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "nav-link",
+                          attrs: { href: "#settings", "data-toggle": "tab" }
+                        },
+                        [_vm._v("Add Member")]
+                      )
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-body" }, [
+                  _c("div", { staticClass: "tab-content" }, [
+                    _c("div", {
+                      staticClass: "tab-pane active",
+                      attrs: { id: "activity" }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "tab-pane", attrs: { id: "settings" } },
+                      [
+                        _c("form", { staticClass: "form-horizontal" }, [
+                          _c("div", { staticClass: "form-group row" }, [
+                            _c(
+                              "label",
+                              {
+                                staticClass: "col-sm-2 col-form-label",
+                                attrs: { for: "inputName" }
+                              },
+                              [_vm._v("Name")]
+                            ),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "col-sm-10" }, [
+                              _c("input", {
+                                staticClass: "form-control",
+                                attrs: {
+                                  type: "email",
+                                  id: "inputName",
+                                  placeholder: "Name"
+                                }
+                              })
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "form-group row" }, [
+                            _c(
+                              "label",
+                              {
+                                staticClass: "col-sm-2 col-form-label",
+                                attrs: { for: "inputEmail" }
+                              },
+                              [_vm._v("Email")]
+                            ),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "col-sm-10" }, [
+                              _c("input", {
+                                staticClass: "form-control",
+                                attrs: {
+                                  type: "email",
+                                  id: "inputEmail",
+                                  placeholder: "Email"
+                                }
+                              })
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "form-group row" }, [
+                            _c(
+                              "label",
+                              {
+                                staticClass: "col-sm-2 col-form-label",
+                                attrs: { for: "password" }
+                              },
+                              [_vm._v("Password")]
+                            ),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "col-sm-10" }, [
+                              _c("input", {
+                                staticClass: "form-control",
+                                attrs: {
+                                  type: "password",
+                                  id: "password",
+                                  placeholder: "Password"
+                                }
+                              })
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "form-group row" }, [
+                            _c(
+                              "label",
+                              {
+                                staticClass: "col-sm-2 col-form-label",
+                                attrs: { for: "inputEmail" }
+                              },
+                              [_vm._v("Type")]
+                            ),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "col-sm-10" }, [
+                              _c("select", { staticClass: "form-control" }, [
+                                _c(
+                                  "option",
+                                  { attrs: { selected: "", disabled: "" } },
+                                  [_vm._v("Select Type")]
+                                ),
+                                _vm._v(" "),
+                                _c("option", [_vm._v("Coach")]),
+                                _vm._v(" "),
+                                _c("option", [_vm._v("Player")]),
+                                _vm._v(" "),
+                                _c("option", [_vm._v("Team Member")])
+                              ])
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "form-group row" }, [
+                            _c(
+                              "div",
+                              { staticClass: "offset-sm-2 col-sm-10" },
+                              [
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass: "btn btn-success",
+                                    attrs: { type: "submit" }
+                                  },
+                                  [_vm._v("Submit")]
+                                )
+                              ]
+                            )
+                          ])
+                        ])
+                      ]
+                    )
+                  ])
+                ])
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
