@@ -52,7 +52,7 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
-                        <li class="nav-header">Club User</li>
+                        <!-- <li class="nav-header">Club User</li> -->
                         <li class="nav-item">
                             <router-link to="/dashboard" class="nav-link">
                                 <i class="nav-icon fas fa-columns nav-icon green"></i>
@@ -69,6 +69,7 @@
                                 </p>
                             </router-link>
                         </li>
+                        
                         <li class="nav-item">
                             <router-link to="/invoice" class="nav-link">
                                 <i class="nav-icon fas fa-file-alt nav-icon green "></i>
@@ -118,59 +119,24 @@
                                 </p>
                             </router-link>
                         </li>
-                        <li class="nav-item has-treeview menu-open">
-                            <a href="#" class="nav-link">
+                        <li class="nav-item">
+                            <router-link to="/users" class="nav-link">
                                 <i class="nav-icon fas fa-users nav-icon green"></i>
                                 <p>
-                                   User Management
-                                    <i class="right fas fa-angle-left"></i>
+                                    Users
                                 </p>
-                            </a>
-                            <ul class="nav nav-treeview" style="display: block; margin-left:15px;">
-                                <li class="nav-item has-treeview menu-open">
-                                    <router-link to="/users" class="nav-link">
-                                        <i class="nav-icon fas fa-users nav-icon green"></i>
-                                        <p>
-                                        Users
-                                        </p>
-                                    </router-link>
-                                </li>
-                                <li class="nav-item has-treeview menu-open">
-                                    <router-link to="/roles" class="nav-link">
-                                        <i class="nav-icon fas fa-users nav-icon green"></i>
-                                        <p>
-                                        Roles
-                                        </p>
-                                    </router-link>
-                                </li>
-                                <li class="nav-item has-treeview menu-open">
-                                    <router-link to="/permissions" class="nav-link">
-                                        <i class="nav-icon fas fa-users nav-icon green"></i>
-                                        <p>
-                                        Permissions
-                                        </p>
-                                    </router-link>
-                                </li>
-                            </ul>
+                            </router-link>
                         </li>
 
-                        <li class="nav-header">Team User</li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon far fa-circle nav-icon"></i>
-                                <p>
-                                    Teams
-                                </p>
-                            </a>
+                            <router-link to="/roles" class="nav-link">
+                                <i class="nav-icon fas fa-users nav-icon green"></i>
+                                    <p>
+                                        Roles
+                                    </p>
+                            </router-link>
                         </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon far fa-circle nav-icon"></i>
-                                <p>
-                                    Coaches
-                                </p>
-                            </a>
-                        </li>
+
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon far fa-circle nav-icon"></i>
@@ -187,14 +153,7 @@
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon far fa-circle nav-icon"></i>
-                                <p>
-                                    Players
-                                </p>
-                            </a>
-                        </li>
+                        
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon far fa-circle nav-icon"></i>
@@ -202,7 +161,7 @@
                                     Tasks
                                 </p>
                             </a>
-                        </li>
+                        </li> 
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->

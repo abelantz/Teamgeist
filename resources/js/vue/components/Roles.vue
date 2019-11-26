@@ -31,6 +31,7 @@
                                     <td>Ablenat</td>
                                     <td>21</td>
                                     <td><span class="tag tag-success">Active</span></td>
+                                    
                                     <td>9 September 2011</td>
                                     <td>
                                         <a href="#" > <i class="fas fa-edit"></i></a>
@@ -58,19 +59,21 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form @submit.prevent="">
+                    <form @submit.prevent="createRole()">
                         <div class="modal-body">
                             <div class="form-group">
-                                <input v-model="roleForm.title" type="text" name="title" class="form-control"
-                                    placeholder="Title" :class="{ 'is-invalid': roleForm.errors.has('title') }">
-                                <has-error :form="roleForm" field="title"></has-error>
+                                <input v-model="roleForm.name" type="text" name="name" class="form-control"
+                                    placeholder="Name" :class="{ 'is-invalid': roleForm.errors.has('name') }">
+                                <has-error :form="roleForm" field="name"></has-error>
                             </div>
                             <div class="form-group">
                                 <div class="form-check">
                                     <ul>
                                         <li v-for="permission in permissions" v-bind:key="permission.id">
-                                            <input  class="form-check-input" type="checkbox" :value="permission.id" v-model="roleForm.permissions">
+                                            <input  class="form-check-input" type="checkbox" :value="permission.id" v-model="roleForm.permissions"
+                                            :class="{ 'is-invalid': roleForm.errors.has('checkbox') }">
                                             <label  class="form-check-label">{{permission.name}}</label>
+                                            <has-error :form="roleForm" field="checkbox"></has-error>
                                         </li>
                                     </ul>
                                 </div>
@@ -94,17 +97,13 @@
     export default {
         data(){
             return{
+                roles:[],
                 permissions:[],
                 roleForm: new Form({
                     id:'',
-                    title:'',
+                    name:'',
                     permissions:[],
                 }),
-                roles:[{
-                    id:'1',
-                    title:'Role1',
-                    permissions:'this this'
-                }]
             }
         },
         methods: {
@@ -114,11 +113,35 @@
             loadPermissions(){
                 axios.get('api/permissions')
                 .then((response) => this.permissions = response.data.data)
-            }
+            },
+            loadRoles(){
+                axios.get('api/roles')
+                    .then((response) => this.roles = response.data.data)
+            },
+            createRole(){
+                this.$Progress.start();
+                this.roleForm.post('api/roles')
+                    .then(() => {
+                        Fire.$emit('AfterCreate');
+                        $('#addNew').modal('hide');
+                        toast.fire({
+                            type: 'success',
+                            title: 'Category created succesfully'
+                        });
+                        this.$Progress.finish();
+                    })
+                    .catch(() => {
+                        this.$Progress.fail();
+                    })
+            },
         },
         created() {
             this.loadPermissions();
-            console.log('Created');
+            this.loadRoles();
+             Fire.$on('AfterCreate', () => {
+                this.loadPermissions();
+                this.loadRoles();
+            });
         },
     }
 

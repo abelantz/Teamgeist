@@ -102,6 +102,7 @@
                                     <th>Name</th>
                                     <th>Size</th>
                                     <th>Category</th>
+                                    <th>SubCategory</th>
                                     <th>Registered At</th>
                                     <th>Modify</th>
                                 </tr>
@@ -109,10 +110,13 @@
                             <tbody>
                                 <tr v-for="team in teams" v-bind:key="team.id">
                                     <td>{{team.id}}</td>
-                                    <td>{{team.name}}</td>
+                                    <td>
+                                      <router-link :to="'/team/' + team.id ">{{team.name}}</router-link>
+                                    </td>
                                     <td>21</td>
-                                    <td><span class="tag tag-success">Active</span></td>
-                                    <td>9 September 2011</td>
+                                    <td><span class="tag tag-success">{{categories.name}}</span></td>
+                                    <td>{{team.subcategory_id}}</td>
+                                    <td>{{team.createdAt}}</td>
                                     <td>
                                         <a href="#" > <i class="fas fa-edit"></i></a>
                                         /
@@ -171,7 +175,7 @@
                                     <option disabled value="">Select Category</option>
                                     <option  v-for="category in categories" v-bind:key="category.id"  v-bind:value="category.id">{{category.title}}</option>
                                 </select>
-                                <has-error :form="formSub" field="title"></has-error>
+                                <has-error :form="formSub" field=""></has-error>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -191,7 +195,6 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                      
                         <h5  class="modal-title" id="teamModal">Create Team</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
@@ -348,11 +351,16 @@
                         this.$Progress.fail();
            })
         },
+          loadTeams(){
+            axios.get('api/teams')
+              .then((response) => this.teams = response.data.data)
+          }
         },
         
         created() {
             this.loadCategories();
             this.loadSubcategories();
+            this.loadTeams();
             Fire.$on('AfterCreate', () => {
                 this.loadCategories();
                 this.loadSubcategories();

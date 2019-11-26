@@ -4566,20 +4566,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      roles: [],
       permissions: [],
       roleForm: new Form({
         id: '',
-        title: '',
+        name: '',
         permissions: []
-      }),
-      roles: [{
-        id: '1',
-        title: 'Role1',
-        permissions: 'this this'
-      }]
+      })
     };
   },
   methods: {
@@ -4592,11 +4591,42 @@ __webpack_require__.r(__webpack_exports__);
       axios.get('api/permissions').then(function (response) {
         return _this.permissions = response.data.data;
       });
+    },
+    loadRoles: function loadRoles() {
+      var _this2 = this;
+
+      axios.get('api/roles').then(function (response) {
+        return _this2.roles = response.data.data;
+      });
+    },
+    createRole: function createRole() {
+      var _this3 = this;
+
+      this.$Progress.start();
+      this.roleForm.post('api/roles').then(function () {
+        Fire.$emit('AfterCreate');
+        $('#addNew').modal('hide');
+        toast.fire({
+          type: 'success',
+          title: 'Category created succesfully'
+        });
+
+        _this3.$Progress.finish();
+      })["catch"](function () {
+        _this3.$Progress.fail();
+      });
     }
   },
   created: function created() {
+    var _this4 = this;
+
     this.loadPermissions();
-    console.log('Created');
+    this.loadRoles();
+    Fire.$on('AfterCreate', function () {
+      _this4.loadPermissions();
+
+      _this4.loadRoles();
+    });
   }
 });
 
@@ -4652,6 +4682,46 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/vue/components/Team.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/vue/components/Team.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['teamId'],
+  data: function data() {
+    return {
+      team: []
+    };
+  },
+  mounted: function mounted() {
+    this.loadTeam();
+  },
+  methods: {
+    loadTeam: function loadTeam() {
+      var _this = this;
+
+      axios.get('/api/team/' + this.teamId).then(function (response) {
+        return _this.team = response.data.data;
+      });
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/vue/components/Teams.vue?vue&type=script&lang=js&":
 /*!********************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/vue/components/Teams.vue?vue&type=script&lang=js& ***!
@@ -4661,6 +4731,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
 //
 //
 //
@@ -5010,17 +5083,25 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function () {
         _this5.$Progress.fail();
       });
+    },
+    loadTeams: function loadTeams() {
+      var _this6 = this;
+
+      axios.get('api/teams').then(function (response) {
+        return _this6.teams = response.data.data;
+      });
     }
   },
   created: function created() {
-    var _this6 = this;
+    var _this7 = this;
 
     this.loadCategories();
     this.loadSubcategories();
+    this.loadTeams();
     Fire.$on('AfterCreate', function () {
-      _this6.loadCategories();
+      _this7.loadCategories();
 
-      _this6.loadSubcategories();
+      _this7.loadSubcategories();
     });
   }
 });
@@ -45210,6 +45291,7 @@ var render = function() {
                     on: {
                       submit: function($event) {
                         $event.preventDefault()
+                        return _vm.createRole()
                       }
                     }
                   },
@@ -45224,20 +45306,20 @@ var render = function() {
                               {
                                 name: "model",
                                 rawName: "v-model",
-                                value: _vm.roleForm.title,
-                                expression: "roleForm.title"
+                                value: _vm.roleForm.name,
+                                expression: "roleForm.name"
                               }
                             ],
                             staticClass: "form-control",
                             class: {
-                              "is-invalid": _vm.roleForm.errors.has("title")
+                              "is-invalid": _vm.roleForm.errors.has("name")
                             },
                             attrs: {
                               type: "text",
-                              name: "title",
-                              placeholder: "Title"
+                              name: "name",
+                              placeholder: "Name"
                             },
-                            domProps: { value: _vm.roleForm.title },
+                            domProps: { value: _vm.roleForm.name },
                             on: {
                               input: function($event) {
                                 if ($event.target.composing) {
@@ -45245,7 +45327,7 @@ var render = function() {
                                 }
                                 _vm.$set(
                                   _vm.roleForm,
-                                  "title",
+                                  "name",
                                   $event.target.value
                                 )
                               }
@@ -45253,7 +45335,7 @@ var render = function() {
                           }),
                           _vm._v(" "),
                           _c("has-error", {
-                            attrs: { form: _vm.roleForm, field: "title" }
+                            attrs: { form: _vm.roleForm, field: "name" }
                           })
                         ],
                         1
@@ -45264,71 +45346,88 @@ var render = function() {
                           _c(
                             "ul",
                             _vm._l(_vm.permissions, function(permission) {
-                              return _c("li", { key: permission.id }, [
-                                _c("input", {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value: _vm.roleForm.permissions,
-                                      expression: "roleForm.permissions"
-                                    }
-                                  ],
-                                  staticClass: "form-check-input",
-                                  attrs: { type: "checkbox" },
-                                  domProps: {
-                                    value: permission.id,
-                                    checked: Array.isArray(
-                                      _vm.roleForm.permissions
-                                    )
-                                      ? _vm._i(
-                                          _vm.roleForm.permissions,
-                                          permission.id
-                                        ) > -1
-                                      : _vm.roleForm.permissions
-                                  },
-                                  on: {
-                                    change: function($event) {
-                                      var $$a = _vm.roleForm.permissions,
-                                        $$el = $event.target,
-                                        $$c = $$el.checked ? true : false
-                                      if (Array.isArray($$a)) {
-                                        var $$v = permission.id,
-                                          $$i = _vm._i($$a, $$v)
-                                        if ($$el.checked) {
-                                          $$i < 0 &&
-                                            _vm.$set(
-                                              _vm.roleForm,
-                                              "permissions",
-                                              $$a.concat([$$v])
-                                            )
+                              return _c(
+                                "li",
+                                { key: permission.id },
+                                [
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.roleForm.permissions,
+                                        expression: "roleForm.permissions"
+                                      }
+                                    ],
+                                    staticClass: "form-check-input",
+                                    class: {
+                                      "is-invalid": _vm.roleForm.errors.has(
+                                        "checkbox"
+                                      )
+                                    },
+                                    attrs: { type: "checkbox" },
+                                    domProps: {
+                                      value: permission.id,
+                                      checked: Array.isArray(
+                                        _vm.roleForm.permissions
+                                      )
+                                        ? _vm._i(
+                                            _vm.roleForm.permissions,
+                                            permission.id
+                                          ) > -1
+                                        : _vm.roleForm.permissions
+                                    },
+                                    on: {
+                                      change: function($event) {
+                                        var $$a = _vm.roleForm.permissions,
+                                          $$el = $event.target,
+                                          $$c = $$el.checked ? true : false
+                                        if (Array.isArray($$a)) {
+                                          var $$v = permission.id,
+                                            $$i = _vm._i($$a, $$v)
+                                          if ($$el.checked) {
+                                            $$i < 0 &&
+                                              _vm.$set(
+                                                _vm.roleForm,
+                                                "permissions",
+                                                $$a.concat([$$v])
+                                              )
+                                          } else {
+                                            $$i > -1 &&
+                                              _vm.$set(
+                                                _vm.roleForm,
+                                                "permissions",
+                                                $$a
+                                                  .slice(0, $$i)
+                                                  .concat($$a.slice($$i + 1))
+                                              )
+                                          }
                                         } else {
-                                          $$i > -1 &&
-                                            _vm.$set(
-                                              _vm.roleForm,
-                                              "permissions",
-                                              $$a
-                                                .slice(0, $$i)
-                                                .concat($$a.slice($$i + 1))
-                                            )
+                                          _vm.$set(
+                                            _vm.roleForm,
+                                            "permissions",
+                                            $$c
+                                          )
                                         }
-                                      } else {
-                                        _vm.$set(
-                                          _vm.roleForm,
-                                          "permissions",
-                                          $$c
-                                        )
                                       }
                                     }
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c(
-                                  "label",
-                                  { staticClass: "form-check-label" },
-                                  [_vm._v(_vm._s(permission.name))]
-                                )
-                              ])
+                                  }),
+                                  _vm._v(" "),
+                                  _c(
+                                    "label",
+                                    { staticClass: "form-check-label" },
+                                    [_vm._v(_vm._s(permission.name))]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("has-error", {
+                                    attrs: {
+                                      form: _vm.roleForm,
+                                      field: "checkbox"
+                                    }
+                                  })
+                                ],
+                                1
+                              )
                             }),
                             0
                           )
@@ -45513,6 +45612,32 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/vue/components/Team.vue?vue&type=template&id=6e4d2bbf&":
+/*!***********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/vue/components/Team.vue?vue&type=template&id=6e4d2bbf& ***!
+  \***********************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("h1", [_vm._v("\n       " + _vm._s(_vm.team.name) + "\n    ")])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/vue/components/Teams.vue?vue&type=template&id=5f03ed44&":
 /*!************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/vue/components/Teams.vue?vue&type=template&id=5f03ed44& ***!
@@ -45691,15 +45816,31 @@ var render = function() {
                   return _c("tr", { key: team.id }, [
                     _c("td", [_vm._v(_vm._s(team.id))]),
                     _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(team.name))]),
+                    _c(
+                      "td",
+                      [
+                        _c(
+                          "router-link",
+                          { attrs: { to: "/team/" + team.id } },
+                          [_vm._v(_vm._s(team.name))]
+                        )
+                      ],
+                      1
+                    ),
                     _vm._v(" "),
                     _c("td", [_vm._v("21")]),
                     _vm._v(" "),
-                    _vm._m(1, true),
+                    _c("td", [
+                      _c("span", { staticClass: "tag tag-success" }, [
+                        _vm._v(_vm._s(_vm.categories.name))
+                      ])
+                    ]),
                     _vm._v(" "),
-                    _c("td", [_vm._v("9 September 2011")]),
+                    _c("td", [_vm._v(_vm._s(team.subcategory_id))]),
                     _vm._v(" "),
-                    _vm._m(2, true)
+                    _c("td", [_vm._v(_vm._s(team.createdAt))]),
+                    _vm._v(" "),
+                    _vm._m(1, true)
                   ])
                 }),
                 0
@@ -45765,7 +45906,7 @@ var render = function() {
                     [_vm._v("Create Category")]
                   ),
                   _vm._v(" "),
-                  _vm._m(3)
+                  _vm._m(2)
                 ]),
                 _vm._v(" "),
                 !_vm.editMode
@@ -45993,7 +46134,7 @@ var render = function() {
                               ),
                               _vm._v(" "),
                               _c("has-error", {
-                                attrs: { form: _vm.formSub, field: "title" }
+                                attrs: { form: _vm.formSub, field: "" }
                               })
                             ],
                             1
@@ -46057,7 +46198,7 @@ var render = function() {
             },
             [
               _c("div", { staticClass: "modal-content" }, [
-                _vm._m(4),
+                _vm._m(3),
                 _vm._v(" "),
                 _c(
                   "form",
@@ -46232,7 +46373,7 @@ var render = function() {
                       )
                     ]),
                     _vm._v(" "),
-                    _vm._m(5)
+                    _vm._m(4)
                   ]
                 )
               ])
@@ -46258,18 +46399,12 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Category")]),
         _vm._v(" "),
+        _c("th", [_vm._v("SubCategory")]),
+        _vm._v(" "),
         _c("th", [_vm._v("Registered At")]),
         _vm._v(" "),
         _c("th", [_vm._v("Modify")])
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("span", { staticClass: "tag tag-success" }, [_vm._v("Active")])
     ])
   },
   function() {
@@ -61916,6 +62051,10 @@ var routes = [{
 }, {
   path: '/permissions',
   component: __webpack_require__(/*! ./vue/components/Permissions.vue */ "./resources/js/vue/components/Permissions.vue")["default"]
+}, {
+  path: '/team/:teamId',
+  component: __webpack_require__(/*! ./vue/components/Team.vue */ "./resources/js/vue/components/Team.vue")["default"],
+  props: true
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   routes: routes,
@@ -62603,6 +62742,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Statistics_vue_vue_type_template_id_8cebaff6___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Statistics_vue_vue_type_template_id_8cebaff6___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/vue/components/Team.vue":
+/*!**********************************************!*\
+  !*** ./resources/js/vue/components/Team.vue ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Team_vue_vue_type_template_id_6e4d2bbf___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Team.vue?vue&type=template&id=6e4d2bbf& */ "./resources/js/vue/components/Team.vue?vue&type=template&id=6e4d2bbf&");
+/* harmony import */ var _Team_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Team.vue?vue&type=script&lang=js& */ "./resources/js/vue/components/Team.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Team_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Team_vue_vue_type_template_id_6e4d2bbf___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Team_vue_vue_type_template_id_6e4d2bbf___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/vue/components/Team.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/vue/components/Team.vue?vue&type=script&lang=js&":
+/*!***********************************************************************!*\
+  !*** ./resources/js/vue/components/Team.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Team_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Team.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/vue/components/Team.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Team_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/vue/components/Team.vue?vue&type=template&id=6e4d2bbf&":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/vue/components/Team.vue?vue&type=template&id=6e4d2bbf& ***!
+  \*****************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Team_vue_vue_type_template_id_6e4d2bbf___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Team.vue?vue&type=template&id=6e4d2bbf& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/vue/components/Team.vue?vue&type=template&id=6e4d2bbf&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Team_vue_vue_type_template_id_6e4d2bbf___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Team_vue_vue_type_template_id_6e4d2bbf___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
