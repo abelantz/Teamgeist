@@ -70,7 +70,7 @@
                                 <div class="form-check">
                                     <ul>
                                         <li v-for="permission in permissions" v-bind:key="permission.id">
-                                            <input  class="form-check-input" type="checkbox" :value="permission.id" v-model="roleForm.permissions"
+                                            <input  class="form-check-input" type="checkbox" :value="permission.name" v-model="roleForm.permissions"
                                             :class="{ 'is-invalid': roleForm.errors.has('checkbox') }">
                                             <label  class="form-check-label">{{permission.name}}</label>
                                             <has-error :form="roleForm" field="checkbox"></has-error>
@@ -100,9 +100,8 @@
                 roles:[],
                 permissions:[],
                 roleForm: new Form({
-                    id:'',
                     name:'',
-                    permissions:[],
+                    permissions: [],
                 }),
             }
         },

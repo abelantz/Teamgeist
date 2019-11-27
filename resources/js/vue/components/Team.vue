@@ -71,7 +71,7 @@
                           <input type="email" class="form-control" id="inputName" placeholder="Name">
                         </div>
                       </div>
-                      <div class="form-group row">
+                      <!-- <div class="form-group row">
                         <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
                         <div class="col-sm-10">
                           <input type="email" class="form-control" id="inputEmail" placeholder="Email">
@@ -82,7 +82,7 @@
                         <div class="col-sm-10">
                           <input type="password" class="form-control" id="password" placeholder="Password">
                         </div>
-                      </div>
+                      </div> -->
                      <div class="form-group row">
                         <label for="inputEmail" class="col-sm-2 col-form-label">Type</label>
                         <div class="col-sm-10">
@@ -124,19 +124,26 @@
     props: ['teamId'],
     data() {
         return {
-            team: [],
+            team: null,
+            teamForm: new Form({
+                    name:'',
+                    type: '',
+                    team: this.teamId,
+                }),
         }
     },
 
-    mounted() {
-        this.loadTeam();
-    },
+    
 
     methods: {
         loadTeam() {
-            axios.get('/api/team/' + this.teamId)
-                 .then(response => this.team = response.data.data);
+            axios.get('/api/teams/' + this.teamId)
+                 .then((response) => this.team = response.data.data);
         },
+    },
+
+    created() {
+        this.loadTeam();
     },
     }
 

@@ -4575,7 +4575,6 @@ __webpack_require__.r(__webpack_exports__);
       roles: [],
       permissions: [],
       roleForm: new Form({
-        id: '',
         name: '',
         permissions: []
       })
@@ -4814,20 +4813,25 @@ __webpack_require__.r(__webpack_exports__);
   props: ['teamId'],
   data: function data() {
     return {
-      team: []
+      team: null,
+      teamForm: new Form({
+        name: '',
+        type: '',
+        team: this.teamId
+      })
     };
-  },
-  mounted: function mounted() {
-    this.loadTeam();
   },
   methods: {
     loadTeam: function loadTeam() {
       var _this = this;
 
-      axios.get('/api/team/' + this.teamId).then(function (response) {
+      axios.get('/api/teams/' + this.teamId).then(function (response) {
         return _this.team = response.data.data;
       });
     }
+  },
+  created: function created() {
+    this.loadTeam();
   }
 });
 
@@ -45478,13 +45482,13 @@ var render = function() {
                                     },
                                     attrs: { type: "checkbox" },
                                     domProps: {
-                                      value: permission.id,
+                                      value: permission.name,
                                       checked: Array.isArray(
                                         _vm.roleForm.permissions
                                       )
                                         ? _vm._i(
                                             _vm.roleForm.permissions,
-                                            permission.id
+                                            permission.name
                                           ) > -1
                                         : _vm.roleForm.permissions
                                     },
@@ -45494,7 +45498,7 @@ var render = function() {
                                           $$el = $event.target,
                                           $$c = $$el.checked ? true : false
                                         if (Array.isArray($$a)) {
-                                          var $$v = permission.id,
+                                          var $$v = permission.name,
                                             $$i = _vm._i($$a, $$v)
                                           if ($$el.checked) {
                                             $$i < 0 &&
@@ -45844,50 +45848,6 @@ var staticRenderFns = [
                                   type: "email",
                                   id: "inputName",
                                   placeholder: "Name"
-                                }
-                              })
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "form-group row" }, [
-                            _c(
-                              "label",
-                              {
-                                staticClass: "col-sm-2 col-form-label",
-                                attrs: { for: "inputEmail" }
-                              },
-                              [_vm._v("Email")]
-                            ),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "col-sm-10" }, [
-                              _c("input", {
-                                staticClass: "form-control",
-                                attrs: {
-                                  type: "email",
-                                  id: "inputEmail",
-                                  placeholder: "Email"
-                                }
-                              })
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "form-group row" }, [
-                            _c(
-                              "label",
-                              {
-                                staticClass: "col-sm-2 col-form-label",
-                                attrs: { for: "password" }
-                              },
-                              [_vm._v("Password")]
-                            ),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "col-sm-10" }, [
-                              _c("input", {
-                                staticClass: "form-control",
-                                attrs: {
-                                  type: "password",
-                                  id: "password",
-                                  placeholder: "Password"
                                 }
                               })
                             ])
