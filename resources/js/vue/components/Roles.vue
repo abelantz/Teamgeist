@@ -2,11 +2,10 @@
     <div>
         
         <div class="row mt-2">
-            <div class="col-12">
-                <div class="card">
+            <div class="col-6">
+                <div class="card card-success card-outline">
                     <div class="card-header ">
                         <h3 class="card-title">Roles</h3>
-
                         <div class="card-tools">
                             <button class="btn btn-success bg-success" @click="addRoleModal"> Add New <i
                                     class="fas fa-user-plus "></i></button>
@@ -19,27 +18,21 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Name</th>
-                                    <th>Size</th>
-                                    <th>Category</th>
-                                    <th>Registered At</th>
+                                    <th>Permissions</th>
                                     <th>Modify</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr >
-                                    <td>1</td>
-                                    <td>Ablenat</td>
-                                    <td>21</td>
-                                    <td><span class="tag tag-success">Active</span></td>
-                                    
-                                    <td>9 September 2011</td>
+                                <tr v-for="role in roles" v-bind:key="role.id">
+                                    <td>{{role.id}}</td>
+                                    <td>{{role.name}}</td>
+                                    <td>Permission for</td>
                                     <td>
                                         <a href="#" > <i class="fas fa-edit"></i></a>
                                         /
                                         <a href="#" > <i class="fas fa-trash red"></i></a>
                                     </td>
                                 </tr>
-
                             </tbody>
                         </table>
                     </div>

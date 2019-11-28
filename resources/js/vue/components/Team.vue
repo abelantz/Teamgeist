@@ -1,150 +1,186 @@
 <template>
     <div>
         <section class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-3">
-
-            <!-- Profile Image -->
-            <div class="card card-primary card-outline">
-              <div class="card-body box-profile">
-                
-
-                <h3 class="profile-username text-center">FC Barca</h3>
-
-                <p class="text-muted text-center">Category / Subcategory</p>
-
-                <ul class="list-group list-group-unbordered mb-3">
-                  <li class="list-group-item">
-                    <b>Players</b> <a class="float-right">45</a>
-                  </li>
-                  <li class="list-group-item">
-                    <b>Coaches</b> <a class="float-right">2</a>
-                  </li>
-                  <li class="list-group-item">
-                    <b>Team members</b> <a class="float-right">47</a>
-                  </li>
-                </ul>
-
-              </div>
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-
-            <!-- About Me Box -->
-            
-            <!-- /.card -->
-          </div>
-          <!-- /.col -->
-          <div class="col-md-9">
-            <div class="card">
-              <div class="card-header p-2">
-                <ul class="nav nav-pills">
-                  <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Members</a></li>
-                  <!-- <li class="nav-item"><a class="nav-link active" href="#timeline" data-toggle="tab">Timeline</a></li> -->
-                  <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Add Member</a></li>
-                </ul>
-              </div><!-- /.card-header -->
-              <div class="card-body">
-                <div class="tab-content">
-                  <div class="tab-pane active" id="activity">
-                    <!-- Post -->
-                    
-                    <!-- /.post -->
-
-                    <!-- Post -->
-                    
-                    <!-- /.post -->
-
-                    <!-- Post -->
-                    
-                    <!-- /.post -->
-                  </div>
-                  <!-- /.tab-pane -->
-                 
-                  <!-- /.tab-pane -->
-                  <div class="tab-pane" id="settings">
-                    <form class="form-horizontal">
-                      <div class="form-group row">
-                        <label for="inputName" class="col-sm-2 col-form-label">Name</label>
-                        <div class="col-sm-10">
-                          <input type="email" class="form-control" id="inputName" placeholder="Name">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="card card-primary card-outline">
+                            <div class="card-body box-profile">
+                                <h3 v-for="t in team" v-bind:key="t.id" class="profile-username text-center">{{t.name}}</h3>
+                                <p class="text-muted text-center">Category / Subcategory</p>
+                                <ul class="list-group list-group-unbordered mb-3">
+                                    <li class="list-group-item">
+                                        <b>Players</b> <a class="float-right">45</a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Coaches</b> <a class="float-right">2</a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Team members</b> <a class="float-right">47</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- /.card-body -->
                         </div>
-                      </div>
-                      <!-- <div class="form-group row">
-                        <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
-                        <div class="col-sm-10">
-                          <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                        <!-- /.card -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-9">
+                        <div  class="card card-primary card-outline">
+                            <div class="card-header ">
+                                <h3 class="card-title">Members</h3>
+                                <div class="card-tools">
+                                    <button class="btn btn-info bg-info" @click="memberModal">Add New<i
+                                            class="fas fa-user-plus "></i></button>
+                                </div>
+                            </div>
+                            <!-- /.card-header -->
+                            <div  class="card-body table-responsive p-0">
+                                <table  class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Name</th>
+                                            <th>Type</th>
+                                            <th>Registered At</th>
+                                            <th>Modify</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody >
+                                        <tr  v-for="member in members" v-bind:key="member.id" >
+                                          
+                                            <td >{{member.id}} </td>
+                                            <td>{{member.name}}</td>
+                                            <td>{{member.type}}</td>
+                                            <td>{{member.createdAt}}</td>
+                                            <td>
+                                                <a href="#"> <i class="fas fa-edit"></i></a>
+                                                /
+                                                <a href="#"> <i class="fas fa-trash red"></i></a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.card-body -->
                         </div>
-                      </div>
-                      <div class="form-group row">
-                        <label for="password" class="col-sm-2 col-form-label">Password</label>
-                        <div class="col-sm-10">
-                          <input type="password" class="form-control" id="password" placeholder="Password">
+                        <!-- /.card -->
+                    </div>
+                    <!-- Modal  -->
+                    <!-- Team Modal -->
+                    <div class="modal fade" id="addNew" tabindex="-1" role="dialog" aria-labelledby="addNew"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="addNew">Add Team Member</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+
+                                <form @submit.prevent="createTeamMember()">
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <input v-model="teamForm.name" type="text" name="name" class="form-control"
+                                                placeholder="Name"
+                                                :class="{ 'is-invalid': teamForm.errors.has('name') }">
+                                            <has-error :form="teamForm" field="name"></has-error>
+                                        </div>
+                                        <div class="form-group">
+                                            <select v-model="teamForm.type" @change="onChangeTeam($event)" type="type"
+                                                name="type" id="type" class="form-control"
+                                                :class="{ 'is-invalid': teamForm.errors.has('type') }">
+                                                <option disabled selected value="">Select Type</option>
+                                                <option v-for="role in roles" v-bind:key="role.id"
+                                                    v-bind:value="role.name">{{role.name}}</option>
+                                            </select>
+                                            <has-error :form="teamForm" field="title"></has-error>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Create</button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
-                      </div> -->
-                     <div class="form-group row">
-                        <label for="inputEmail" class="col-sm-2 col-form-label">Type</label>
-                        <div class="col-sm-10">
-                          <select class="form-control">
-                          <option selected disabled>Select Type</option>    
-                          <option>Coach</option>
-                          <option>Player</option>
-                          <option>Team Member</option>
-                        </select>
-                        </div>
-                      </div>
-                      
-                      <div class="form-group row">
-                        <div class="offset-sm-2 col-sm-10">
-                          <button type="submit" class="btn btn-success">Submit</button>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                  <!-- /.tab-pane -->
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
                 </div>
-                <!-- /.tab-content -->
-              </div><!-- /.card-body -->
-            </div>
-            <!-- /.nav-tabs-custom -->
-          </div>
-          <!-- /.col -->
-        </div>
-        <!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </section>
+            </div><!-- /.container-fluid -->
+        </section>
     </div>
 </template>
 
 <script>
-
-
     export default {
-    props: ['teamId'],
-    data() {
-        return {
-            team: null,
-            teamForm: new Form({
-                    name:'',
+        props: ['teamId'],
+        data() {
+            return {
+                members: null,
+                roles: [],
+                team: null,
+                teamForm: new Form({
+                    name: '',
                     type: '',
                     team: this.teamId,
                 }),
-        }
-    },
-
-    
-
-    methods: {
-        loadTeam() {
-            axios.get('/api/teams/' + this.teamId)
-                 .then((response) => this.team = response.data.data);
+            }
         },
-    },
+        methods: {
+            memberModal() {
+                $('#addNew').modal('show');
+            },
+            loadTeam() {
+                axios.get('api/teams/' + this.teamId)
+                    .then((response) => this.team = response.data.data);
+            },
+            loadRoles() {
+                axios.get('../api/roles')
+                    .then((response) => this.roles = response.data.data);
+            },
+            onChangeTeam() {
+                console.log(event.target.value);
+            },
+            createTeamMember() {
+                this.$Progress.start();
+                this.teamForm.post('../api/members')
+                    .then(() => {
+                        Fire.$emit('AfterCreate');
+                        $('#addNew').modal('hide');
+                        toast.fire({
+                            type: 'success',
+                            title: 'Team Member created succesfully'
+                        });
+                        this.$Progress.finish();
+                    })
+                    .catch(() => {
+                        this.$Progress.fail();
+                    })
+            },
+            loadMembersById()  {
+              axios.get('../api/members',{
+                  params:{
+                    team: this.teamId
+                  }
+              })
+              .then((response) => this.members = response.data.data)
+            }
+        },
 
-    created() {
-        this.loadTeam();
-    },
+        created() {
+            
+            this.loadTeam();
+            this.loadRoles();
+            this.loadMembersById();
+            Fire.$on('AfterCreate', () => {
+                this.loadTeam();
+                this.loadRoles();
+                this.loadMembersById();
+            });
+        },
     }
 
 </script>

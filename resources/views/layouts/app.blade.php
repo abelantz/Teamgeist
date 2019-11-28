@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Amigol') }}</title>
+    <title>Amigol</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -42,7 +42,7 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="#" class="brand-link">
-                <span class="brand-text font-weight-light">{{ config('app.name', 'Amigol') }}</span>
+                <span class="brand-text font-weight-light">Amigol</span>
             </a>
 
             <!-- Sidebar -->
@@ -61,15 +61,38 @@
                                 </p>
                             </router-link>
                         </li>
-                        <li class="nav-item">
-                            <router-link to="/teams" class="nav-link">
+                        <li class="nav-item has-treeview menu-open">
+                            <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-user-friends nav-icon green"></i>
                                 <p>
                                     Teams
+                                    <i class="right fas fa-angle-left"></i>
                                 </p>
-                            </router-link>
+                            </a>
+                            <ul class="nav nav-treeview" style="display: block;">
+                                <li class="nav-item">
+                                    <router-link to="/teams" class="nav-link">
+                                        <i class="nav-icon far fa-circle nav-icon green"></i>
+                                        <p>
+                                            Teams
+                                        </p>
+                                    </router-link>
+                                </li>
+
+                                <li class="nav-item">
+                                    <router-link to="/category" class="nav-link">
+                                        <i class="far fa-circle nav-icon green"></i>
+                                        <p>Category</p>
+                                    </router-link>
+                                </li>
+                                <li class="nav-item">
+                                    <router-link to="" class="nav-link">
+                                        <i class="far fa-circle nav-icon green"></i>
+                                        <p>Team Members</p>
+                                    </router-link>
+                                </li>
+                            </ul>
                         </li>
-                        
                         <li class="nav-item">
                             <router-link to="/invoice" class="nav-link">
                                 <i class="nav-icon fas fa-file-alt nav-icon green "></i>
@@ -86,7 +109,6 @@
                                 </p>
                             </router-link>
                         </li>
-
                         <li class="nav-item">
                             <router-link to="/membership" class="nav-link">
                                 <i class="nav-icon fas fa-user-tie nav-icon green"></i>
@@ -119,27 +141,37 @@
                                 </p>
                             </router-link>
                         </li>
-                        <li class="nav-item">
-                            <router-link to="/users" class="nav-link">
-                                <i class="nav-icon fas fa-users nav-icon green"></i>
+
+                        <li class="nav-item has-treeview menu-open">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-user-friends nav-icon green"></i>
                                 <p>
-                                    Users
+                                    User Management
+                                    <i class="right fas fa-angle-left"></i>
                                 </p>
-                            </router-link>
+                            </a>
+                            <ul class="nav nav-treeview" style="display: block;">
+                                <li class="nav-item">
+                                    <router-link to="/users" class="nav-link">
+                                        <i class="nav-icon far fa-dot-circle nav-icon green"></i>
+                                        <p>
+                                            Users
+                                        </p>
+                                    </router-link>
+                                </li>
+                                <li class="nav-item">
+                                    <router-link to="/roles" class="nav-link">
+                                        <i class="nav-icon far fa-dot-circle nav-icon green"></i>
+                                        <p>
+                                            Roles
+                                        </p>
+                                    </router-link>
+                                </li>
+                            </ul>
                         </li>
-
-                        <li class="nav-item">
-                            <router-link to="/roles" class="nav-link">
-                                <i class="nav-icon fas fa-users nav-icon green"></i>
-                                    <p>
-                                        Roles
-                                    </p>
-                            </router-link>
-                        </li>
-
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-                                <i class="nav-icon far fa-circle nav-icon"></i>
+                                <i class="nav-icon far fa-circle nav-icon green"></i>
                                 <p>
                                     Trainings
                                 </p>
@@ -147,21 +179,20 @@
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-                                <i class="nav-icon far fa-circle nav-icon"></i>
+                                <i class="nav-icon far fa-circle nav-icon green"></i>
                                 <p>
                                     Matchdays
                                 </p>
                             </a>
                         </li>
-                        
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-                                <i class="nav-icon far fa-circle nav-icon"></i>
+                                <i class="nav-icon far fa-circle nav-icon green"></i>
                                 <p>
                                     Tasks
                                 </p>
                             </a>
-                        </li> 
+                        </li>
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->

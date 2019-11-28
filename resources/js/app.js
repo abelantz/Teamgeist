@@ -36,6 +36,7 @@ let routes = [
     { path: '/statistics', component: require('./vue/components/Statistics.vue').default },
     { path: '/roles', component: require('./vue/components/Roles.vue').default },
     { path: '/permissions', component: require('./vue/components/Permissions.vue').default },
+    { path: '/category', component: require('./vue/components/Category.vue').default },
     { path: '/team/:teamId', component: require('./vue/components/Team.vue').default,props: true},
 
 ]
@@ -43,7 +44,7 @@ let routes = [
 const router = new VueRouter({
     routes,
     mode: 'history',
-    linkActiveClass: 'active'
+    // linkActiveClass: 'active'
 })
 
 import moment from 'moment';
