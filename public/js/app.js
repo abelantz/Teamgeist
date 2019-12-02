@@ -5119,13 +5119,14 @@ __webpack_require__.r(__webpack_exports__);
   props: ['teamId'],
   data: function data() {
     return {
-      members: null,
+      members: [],
+      membersId: [],
       roles: [],
       team: null,
       teamForm: new Form({
         name: '',
         type: '',
-        team: this.teamId
+        team_id: this.teamId
       })
     };
   },
@@ -5167,30 +5168,36 @@ __webpack_require__.r(__webpack_exports__);
         _this3.$Progress.fail();
       });
     },
-    loadMembersById: function loadMembersById() {
+    loadMembers: function loadMembers() {
       var _this4 = this;
 
-      axios.get('../api/members', {
-        params: {
-          team: this.teamId
-        }
-      }).then(function (response) {
-        return _this4.members = response.data.data;
+      axios.get('../api/members').then(function (response) {
+        _this4.members = response.data.data;
+      });
+    },
+    loadMembersById: function loadMembersById() {
+      var _this5 = this;
+
+      this.membersId = this.members.filter(function (member) {
+        return member.team_id == _this5.teamId;
       });
     }
   },
   created: function created() {
-    var _this5 = this;
+    var _this6 = this;
 
     this.loadTeam();
     this.loadRoles();
+    this.loadMembers();
     this.loadMembersById();
     Fire.$on('AfterCreate', function () {
-      _this5.loadTeam();
+      _this6.loadTeam();
 
-      _this5.loadRoles();
+      _this6.loadRoles();
 
-      _this5.loadMembersById();
+      _this6.loadMembers();
+
+      _this6.loadMembersById();
     });
   }
 });
@@ -46610,18 +46617,22 @@ var render = function() {
                   _vm._v(" "),
                   _c(
                     "tbody",
-                    _vm._l(_vm.members, function(member) {
-                      return _c("tr", { key: member.id }, [
-                        _c("td", [_vm._v(_vm._s(member.id) + " ")]),
-                        _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(member.name))]),
-                        _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(member.type))]),
-                        _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(member.createdAt))]),
-                        _vm._v(" "),
-                        _vm._m(2, true)
-                      ])
+                    _vm._l(_vm.membersId, function(member) {
+                      return _c(
+                        "tr",
+                        { key: member.id, attrs: { value: member.id } },
+                        [
+                          _c("td", [_vm._v(_vm._s(member.id))]),
+                          _vm._v(" "),
+                          _c("td", [_vm._v(_vm._s(member.name))]),
+                          _vm._v(" "),
+                          _c("td", [_vm._v(_vm._s(member.type))]),
+                          _vm._v(" "),
+                          _c("td", [_vm._v(_vm._s(member.createdAt))]),
+                          _vm._v(" "),
+                          _vm._m(2, true)
+                        ]
+                      )
                     }),
                     0
                   )
@@ -46791,7 +46802,7 @@ var render = function() {
                               ),
                               _vm._v(" "),
                               _c("has-error", {
-                                attrs: { form: _vm.teamForm, field: "title" }
+                                attrs: { form: _vm.teamForm, field: "type" }
                               })
                             ],
                             1

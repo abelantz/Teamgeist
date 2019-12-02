@@ -39,7 +39,7 @@
                                 <table  class="table table-hover">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
+                                            <th >ID</th>
                                             <th>Name</th>
                                             <th>Type</th>
                                             <th>Registered At</th>
@@ -47,9 +47,9 @@
                                         </tr>
                                     </thead>
                                     <tbody >
-                                        <tr  v-for="member in members" v-bind:key="member.id" >
+                                        <tr  v-for="member in membersId " v-bind:key="member.id" :value="member.id"  >
                                           
-                                            <td >{{member.id}} </td>
+                                            <td  >{{member.id}}</td>
                                             <td>{{member.name}}</td>
                                             <td>{{member.type}}</td>
                                             <td>{{member.createdAt}}</td>
@@ -95,7 +95,7 @@
                                                 <option v-for="role in roles" v-bind:key="role.id"
                                                     v-bind:value="role.name">{{role.name}}</option>
                                             </select>
-                                            <has-error :form="teamForm" field="title"></has-error>
+                                            <has-error :form="teamForm" field="type"></has-error>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
@@ -119,13 +119,14 @@
         props: ['teamId'],
         data() {
             return {
-                members: null,
+                members: [],
+                membersId: [],
                 roles: [],
                 team: null,
                 teamForm: new Form({
                     name: '',
                     type: '',
-                    team: this.teamId,
+                    team_id: this.teamId,
                 }),
             }
         },
@@ -160,27 +161,38 @@
                         this.$Progress.fail();
                     })
             },
-            loadMembersById()  {
-              axios.get('../api/members',{
-                  params:{
-                    team: this.teamId
-                  }
-              })
-              .then((response) => this.members = response.data.data)
-            }
+          
+            loadMembers()  {
+                axios.get('../api/members')
+                .then((response) => {
+                  this.members = response.data.data
+                })
+            },
+            loadMembersById(){
+                this.membersId = this.members.filter((member) => {
+                    return member.team_id == this.teamId;
+              });  
+              
+            },
+            
+            
         },
+      
 
         created() {
-            
             this.loadTeam();
             this.loadRoles();
+            this.loadMembers();
             this.loadMembersById();
+            
             Fire.$on('AfterCreate', () => {
                 this.loadTeam();
                 this.loadRoles();
+                this.loadMembers();
                 this.loadMembersById();
             });
         },
+        
     }
 
 </script>
