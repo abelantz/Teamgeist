@@ -86,7 +86,7 @@
                                     </router-link>
                                 </li>
                                 <li class="nav-item">
-                                    <router-link to="" class="nav-link">
+                                    <router-link to="/members" class="nav-link">
                                         <i class="far fa-circle nav-icon green"></i>
                                         <p>Team Members</p>
                                     </router-link>

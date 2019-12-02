@@ -1,13 +1,14 @@
 <template>
-    <div class="container">
+    <div>
+        <h1>Team Members</h1>
         <div class="row">
             <div class="col-12">
-                <div class="card card-danger card-outline">
+                <div class="card card-info card-outline">
                     <div class="card-header">
-                        <h3 class="card-title">Users</h3>
+                        <h3 class="card-title">Team Members</h3>
 
                         <div class="card-tools">
-                            <button class="btn btn-danger bg-danger" @click="newModal"> Add New <i
+                            <button class="btn btn-info bg-info" @click="newModal"> Add New <i
                                     class="fas fa-user-plus "></i></button>
                         </div>
                     </div>
@@ -18,43 +19,41 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Name</th>
-                                    <th>Email</th>
+                                    <th>Team</th>
                                     <th>Type</th>
                                     <th>Registered At</th>
                                     <th>Modify</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr v-for="user in users" v-bind:key="user.id">
-                                    <td>{{user.id}}</td>
-                                    <td>{{user.name | upText }}</td>
-                                    <td>{{user.email}}</td>
-                                    <td><span class="tag tag-success">Technical Leader</span></td>
-                                    <td>{{user.created_at | regDate}}</td>
+                                <tr v-for="member in members" v-bind:key="member.id">
+                                    <td>{{member.id}}</td>
+                                    <td>{{member.name | upText }}</td>
+                                    <td>{{member.team_id}}</td>
+                                    <td><span class="tag tag-success">{{member.type}}</span></td>
+                                    <td>{{member.created_at | regDate}}</td>
                                     <td>
-                                        <a href="#" @click="editModal(user)"> <i class="fas fa-edit"></i></a>
+                                        <a href="#" @click="editModal(member)"> <i class="fas fa-edit"></i></a>
                                         /
-                                        <a href="#" @click="deleteUser(user.id)"> <i class="fas fa-trash red"></i></a>
+                                        <a href="#" @click="deleteUser(member.id)"> <i class="fas fa-trash red"></i></a>
                                     </td>
                                 </tr>
 
                             </tbody>
                         </table>
                     </div>
-                    <!-- /.card-body -->
                 </div>
-                <!-- /.card -->
             </div>
         </div>
 
+        <!-- Modal  -->
 
-        <!-- Modal -->
         <div class="modal fade" id="addNew" tabindex="-1" role="dialog" aria-labelledby="addNew" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 v-show="editMode" class="modal-title" id="addNew">Update User</h5>
-                        <h5 v-show="!editMode" class="modal-title" id="addNew">Create User</h5>
+                        <h5 v-show="editMode" class="modal-title" id="addNew">Update Member</h5>
+                        <h5 v-show="!editMode" class="modal-title" id="addNew">Create Member</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -62,32 +61,29 @@
                     <form @submit.prevent="editMode ? updateUser() : createUser ()">
                         <div class="modal-body">
                             <div class="form-group">
-                                <input v-model="form.name" type="text" name="name" class="form-control"
-                                    placeholder="Name" :class="{ 'is-invalid': form.errors.has('name') }">
-                                <has-error :form="form" field="name"></has-error>
+                                <input v-model="membersForm.name" type="text" name="name" class="form-control"
+                                    placeholder="Name" :class="{ 'is-invalid': membersForm.errors.has('name') }">
+                                <has-error :form="membersForm" field="name"></has-error>
                             </div>
                             <div class="form-group">
-                                <input v-model="form.email" type="email" name="email" class="form-control"
-                                    placeholder="Email" :class="{ 'is-invalid': form.errors.has('email') }">
-                                <has-error :form="form" field="name"></has-error>
-                            </div>
-                            <div class="form-group">
-                                <input v-model="form.password" type="password" name="password" id="password"
-                                    class="form-control" placeholder="Password"
-                                    :class="{ 'is-invalid': form.errors.has('password') }">
-                                <has-error :form="form" field="name"></has-error>
-                            </div>
-                            <div class="form-group">
-                                <select type="type" name="type" id="type" class="form-control" placeholder="Password"
-                                    :class="{ 'is-invalid': form.errors.has('type') }">
-                                    <option value="">Select User Role</option>
-                                    <option value="">Club</option>
-                                    <option value="">Team</option>
-                                    <option value="">Coach</option>
-                                    <option value="">Player</option>
-                                    <option value="">Facility</option>
+                                <select v-model="membersForm.team_id" @change="onChangeTeam($event)" type="type" name="type"
+                                    id="type" class="form-control"
+                                    :class="{ 'is-invalid': membersForm.errors.has('type') }">
+                                    <option disabled selected value="">Select Type</option>
+                                    <option v-for="team in teams" v-bind:key="team.id" v-bind:value="team.id">
+                                        {{team.name}}</option>
                                 </select>
-                                <has-error :form="form" field="name"></has-error>
+                                <has-error :form="membersForm" field="type"></has-error>
+                            </div>
+                            <div class="form-group">
+                                <select v-model="membersForm.type" @change="onChange($event)" type="type" name="type"
+                                    id="type" class="form-control"
+                                    :class="{ 'is-invalid': membersForm.errors.has('type') }">
+                                    <option disabled selected value="">Select Type</option>
+                                    <option v-for="role in roles" v-bind:key="role.id" v-bind:value="role.name">
+                                        {{role.name}}</option>
+                                </select>
+                                <has-error :form="membersForm" field="type"></has-error>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -108,12 +104,14 @@
         data() {
             return {
                 editMode: false,
-                users: [],
-                form: new Form({
+                members: [],
+                teams:[],
+                roles:[],
+                membersForm: new Form({
                     id: '',
                     name: '',
-                    email: '',
-                    password: '',
+                    type: '',
+                    team_id: '',
                     // type:''
                 })
             }
@@ -121,7 +119,7 @@
         methods: {
             updateUser(id) {
                 this.$Progress.start();
-                this.form.put('api/users/' + this.form.id)
+                this.membersForm.put('api/members/' + this.membersForm.id)
                     .then(() => {
                         swal.fire(
                             'Updated!',
@@ -138,13 +136,13 @@
             },
             editModal(user) {
                 this.editMode = true;
-                this.form.reset();
+                this.membersForm.reset();
                 $('#addNew').modal('show');
-                this.form.fill(user);
+                this.membersForm.fill(user);
             },
             newModal() {
                 this.editMode = false;
-                this.form.reset();
+                this.membersForm.reset();
                 $('#addNew').modal('show');
             },
             deleteUser(id) {
@@ -160,7 +158,7 @@
 
                     //Send request to the server
                     if (result.value) {
-                        this.form.delete('api/users/' + id)
+                        this.membersForm.delete('api/members/' + id)
                             .then(() => {
                                 swal.fire(
                                     'Deleted!',
@@ -173,13 +171,27 @@
                     }
                 })
             },
-            loadUsers() {
-                axios.get('api/users')
-                     .then((response) => (this.users = response.data.data));
+            onChangeTeam(event){
+                console.log(event.target.value);
+            },
+            onChange(event){
+                console.log(event.target.value);
+            },
+            loadMembers() {
+                axios.get('api/members')
+                    .then((response) => (this.members = response.data.data));
+            },
+            loadRoles(){
+                axios.get('api/roles')
+                    .then((response) => (this.roles = response.data.data));
+            },
+            loadTeams(){
+                axios.get('api/teams')
+                    .then((response) => this.teams = response.data.data);
             },
             createUser() {
                 this.$Progress.start();
-                this.form.post('api/users')
+                this.membersForm.post('api/members')
                     .then(() => {
                         Fire.$emit('AfterCreate');
                         $('#addNew').modal('hide');
@@ -195,11 +207,16 @@
             },
 
         },
+       
 
         created() {
-            this.loadUsers();
+            this.loadMembers();
+            this.loadRoles();
+            this.loadTeams();
             Fire.$on('AfterCreate', () => {
-                this.loadUsers();
+                this.loadMembers();
+                this.loadRoles();
+                this.loadTeams();
             });
 
         }

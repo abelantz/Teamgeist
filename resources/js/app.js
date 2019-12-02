@@ -38,7 +38,7 @@ let routes = [
     { path: '/permissions', component: require('./vue/components/Permissions.vue').default },
     { path: '/category', component: require('./vue/components/Category.vue').default },
     { path: '/team/:teamId', component: require('./vue/components/Team.vue').default,props: true},
-
+    { path: '/members', component: require('./vue/components/TeamMembers.vue').default },
 ]
 
 const router = new VueRouter({

@@ -27,6 +27,7 @@ class TeamMemberController extends Controller
      */
     public function store(Request $request)
     {
+        
         $teamMember = TeamMember::create($request->all());
         return response()->json(['data' => $teamMember], 201);
     }

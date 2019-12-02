@@ -1,15 +1,16 @@
 <template>
     <div>
+        
         <h1>Teams</h1>
         <!-- Team List -->
         <div class="row mt-2">
             <div class="col-12">
-                <div class="card card-success card-outline">
+                <div class="card card-warning card-outline">
                     <div class="card-header ">
                         <h3 class="card-title">Teams</h3>
 
                         <div class="card-tools">
-                            <button class="btn btn-success bg-success" @click="addTeamModal"> Add New <i
+                            <button class="btn btn-warning bg-warning" @click="addTeamModal"> Add New <i
                                     class="fas fa-user-plus "></i></button>
                         </div>
                     </div>
@@ -20,7 +21,6 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Name</th>
-                                    <th>Size</th>
                                     <th>Category</th>
                                     <th>SubCategory</th>
                                     <th>Registered At</th>
@@ -33,14 +33,14 @@
                                     <td>
                                       <router-link :to="'/team/' + team.id ">{{team.name}}</router-link>
                                     </td>
-                                    <td>21</td>
-                                    <td><span class="tag tag-success">{{categories.name}}</span></td>
-                                    <td>{{team.subcategory_id}}</td>
-                                    <td>{{team.createdAt}}</td>
+                                   
+                                    <td><span class="tag tag-success">Active</span></td>
+                                    <td>First </td>
+                                    <td>{{team.created_at | regDate}}</td>
                                     <td>
                                         <a href="#" > <i class="fas fa-edit"></i></a>
                                         /
-                                        <a href="#" > <i class="fas fa-trash red"></i></a>
+                                        <a href="#" @click="deleteTeam(team.id)" > <i class="fas fa-trash red"></i></a>
                                     </td>
                                 </tr>
 
@@ -71,9 +71,9 @@
                                 <has-error :form="formTeam" field="name"></has-error>
                             </div>
                             <div class="form-group">
-                                <select  @change="onChange($event)" type="type" name="type" id="type" class="form-control">
+                                <select @change="onChange($event)" type="type" name="type" id="type" class="form-control">
                                     <option disabled selected value="">Select Category</option>
-                                    <option  v-for="category in categories" v-bind:key="category.id" v-bind:value="category.id">{{category.title}}</option>
+                                    <option  v-for="category in categories" v-bind:key="category.id" v-bind:value="category.id">{{category.name}}</option>
                                 </select>
                                
                             </div>
@@ -81,7 +81,7 @@
                                 <select v-model="formTeam.subcategory_id" @change="onChangeTeam($event)" type="type" name="type" id="type" class="form-control"
                                     :class="{ 'is-invalid': formTeam.errors.has('type') }">
                                     <option disabled selected value="">Select Subcategory</option>
-                                    <option v-for="subcategory in subFilter" v-bind:key="subcategory.id" v-bind:value="subcategory.id">{{subcategory.title}}</option>
+                                    <option v-for="subcategory in subFilter" v-bind:key="subcategory.id" v-bind:value="subcategory.id">{{subcategory.name}}</option>
                                 </select>
                                 <has-error :form="formTeam" field="title"></has-error>
                             </div>
@@ -219,6 +219,32 @@
                         this.$Progress.fail();
            })
         },
+        deleteTeam(id) {
+                swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+
+                    //Send request to the server
+                    if (result.value) {
+                        this.formTeam.delete('api/teams/' + id)
+                            .then(() => {
+                                swal.fire(
+                                    'Deleted!',
+                                    'Your file has been deleted.',
+                                    'success'
+                                )
+                                Fire.$emit('AfterCreate');
+                            })
+                            .catch()
+                    }
+                })
+            },
           loadTeams(){
             axios.get('api/teams')
               .then((response) => this.teams = response.data.data)
