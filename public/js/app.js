@@ -4573,25 +4573,32 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       editMode: false,
+      mode: false,
       categories: [],
       subcategories: [],
       subFilter: [],
       formCategory: new Form({
         id: '',
-        name: ''
+        title: ''
       }),
       formSub: new Form({
         id: '',
-        name: '',
+        title: '',
         category_id: ''
       }),
       formTeam: new Form({
         id: '',
-        name: '',
+        title: '',
         subcategory_id: ''
       }),
       teams: []
@@ -4604,20 +4611,21 @@ __webpack_require__.r(__webpack_exports__);
       });
       return subCategories;
     },
-    addTeamModal: function addTeamModal() {
-      this.teamMode = true;
-      this.formTeam.reset();
-      $('#teamModal').modal('show');
-    },
     subModal: function subModal() {
-      this.editMode = true;
+      this.mode = true;
       this.formSub.reset();
       $('#addNew').modal('show');
     },
     newModal: function newModal() {
+      this.mode = false;
       this.editMode = false;
       this.formCategory.reset();
       $('#addNew').modal('show');
+    },
+    updateModal: function updateModal() {
+      this.formCategory.reset();
+      $('#addNew').modal('show');
+      this.formCategory.fill(category);
     },
     loadCategories: function loadCategories() {
       var _this = this;
@@ -4650,8 +4658,43 @@ __webpack_require__.r(__webpack_exports__);
         _this3.$Progress.fail();
       });
     },
-    createCategory: function createCategory() {
+    updateCategory: function updateCategory(id) {
       var _this4 = this;
+
+      this.$Progress.start();
+      this.formCategory.put('api/categories/' + this.formCategory.id).then(function () {
+        swal.fire('Updated!', 'Your information has been updated.', 'success');
+        Fire.$emit('AfterCreate');
+        $('#editMode').modal('hide');
+
+        _this4.$Progress.finish();
+      })["catch"](function () {
+        _this4.$Progress.fail();
+      });
+    },
+    deleteCategory: function deleteCategory(id) {
+      var _this5 = this;
+
+      swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then(function (result) {
+        //Send request to the server
+        if (result.value) {
+          _this5.formCategory["delete"]('api/categories/' + id).then(function () {
+            swal.fire('Deleted!', 'Your file has been deleted.', 'success');
+            Fire.$emit('AfterCreate');
+          })["catch"]();
+        }
+      });
+    },
+    createCategory: function createCategory() {
+      var _this6 = this;
 
       this.$Progress.start();
       this.formCategory.post('api/categories').then(function () {
@@ -4662,9 +4705,9 @@ __webpack_require__.r(__webpack_exports__);
           title: 'Category created succesfully'
         });
 
-        _this4.$Progress.finish();
+        _this6.$Progress.finish();
       })["catch"](function () {
-        _this4.$Progress.fail();
+        _this6.$Progress.fail();
       });
     },
     onChange: function onChange(event) {
@@ -4678,14 +4721,14 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   created: function created() {
-    var _this5 = this;
+    var _this7 = this;
 
     this.loadCategories();
     this.loadSubcategories();
     Fire.$on('AfterCreate', function () {
-      _this5.loadCategories();
+      _this7.loadCategories();
 
-      _this5.loadSubcategories();
+      _this7.loadSubcategories();
     });
   }
 });
@@ -4851,11 +4894,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
 //
 //
 //
@@ -45857,7 +45895,7 @@ var render = function() {
           _c("div", { staticClass: "card card-widget widget-user-2" }, [
             _c("div", { staticClass: "widget-user-header bg-success" }, [
               _c("h5", { staticClass: "widget-user-desc" }, [
-                _vm._v(_vm._s(category.name))
+                _vm._v(_vm._s(category.title))
               ])
             ]),
             _vm._v(" "),
@@ -45874,7 +45912,7 @@ var render = function() {
                     [
                       _c("span", { staticClass: "nav-link center" }, [
                         _c("span", { staticClass: "widget-user-desc" }, [
-                          _vm._v(_vm._s(subcategory.name))
+                          _vm._v(_vm._s(subcategory.title))
                         ])
                       ])
                     ]
@@ -45904,7 +45942,7 @@ var render = function() {
                   return _c("tr", { key: category.id }, [
                     _c("td", [_vm._v(_vm._s(category.id))]),
                     _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(category.name))]),
+                    _c("td", [_vm._v(_vm._s(category.title))]),
                     _vm._v(" "),
                     _c("td", [
                       _c("span", { staticClass: "tag tag-success" }, [
@@ -45912,7 +45950,24 @@ var render = function() {
                       ])
                     ]),
                     _vm._v(" "),
-                    _vm._m(2, true)
+                    _c("td", [
+                      _vm._m(2, true),
+                      _vm._v(
+                        "\n                                    /\n                                    "
+                      ),
+                      _c(
+                        "a",
+                        {
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              return _vm.deleteCategory(category.id)
+                            }
+                          }
+                        },
+                        [_c("i", { staticClass: "fas fa-trash red" })]
+                      )
+                    ])
                   ])
                 }),
                 0
@@ -45955,7 +46010,7 @@ var render = function() {
                           expression: "editMode"
                         }
                       ],
-                      staticClass: "modal-name",
+                      staticClass: "modal-title",
                       attrs: { id: "addNew" }
                     },
                     [_vm._v("Create Subcategory")]
@@ -45972,7 +46027,7 @@ var render = function() {
                           expression: "!editMode"
                         }
                       ],
-                      staticClass: "modal-name",
+                      staticClass: "modal-title",
                       attrs: { id: "addNew" }
                     },
                     [_vm._v("Create Category")]
@@ -45981,7 +46036,7 @@ var render = function() {
                   _vm._m(3)
                 ]),
                 _vm._v(" "),
-                !_vm.editMode
+                !_vm.mode
                   ? _c(
                       "form",
                       {
@@ -46003,22 +46058,22 @@ var render = function() {
                                   {
                                     name: "model",
                                     rawName: "v-model",
-                                    value: _vm.formCategory.name,
-                                    expression: "formCategory.name"
+                                    value: _vm.formCategory.title,
+                                    expression: "formCategory.title"
                                   }
                                 ],
                                 staticClass: "form-control",
                                 class: {
                                   "is-invalid": _vm.formCategory.errors.has(
-                                    "name"
+                                    "title"
                                   )
                                 },
                                 attrs: {
                                   type: "text",
-                                  name: "name",
-                                  placeholder: "Name"
+                                  title: "title",
+                                  placeholder: "Title"
                                 },
-                                domProps: { value: _vm.formCategory.name },
+                                domProps: { value: _vm.formCategory.title },
                                 on: {
                                   input: function($event) {
                                     if ($event.target.composing) {
@@ -46026,7 +46081,7 @@ var render = function() {
                                     }
                                     _vm.$set(
                                       _vm.formCategory,
-                                      "name",
+                                      "title",
                                       $event.target.value
                                     )
                                   }
@@ -46034,7 +46089,10 @@ var render = function() {
                               }),
                               _vm._v(" "),
                               _c("has-error", {
-                                attrs: { form: _vm.formCategory, field: "name" }
+                                attrs: {
+                                  form: _vm.formCategory,
+                                  field: "title"
+                                }
                               })
                             ],
                             1
@@ -46072,7 +46130,7 @@ var render = function() {
                     )
                   : _vm._e(),
                 _vm._v(" "),
-                _vm.editMode
+                _vm.mode
                   ? _c(
                       "form",
                       {
@@ -46094,20 +46152,20 @@ var render = function() {
                                   {
                                     name: "model",
                                     rawName: "v-model",
-                                    value: _vm.formSub.name,
-                                    expression: "formSub.name"
+                                    value: _vm.formSub.title,
+                                    expression: "formSub.title"
                                   }
                                 ],
                                 staticClass: "form-control",
                                 class: {
-                                  "is-invalid": _vm.formSub.errors.has("name")
+                                  "is-invalid": _vm.formSub.errors.has("title")
                                 },
                                 attrs: {
                                   type: "text",
-                                  name: "name",
-                                  placeholder: "Name"
+                                  title: "title",
+                                  placeholder: "Title"
                                 },
-                                domProps: { value: _vm.formSub.name },
+                                domProps: { value: _vm.formSub.title },
                                 on: {
                                   input: function($event) {
                                     if ($event.target.composing) {
@@ -46115,7 +46173,7 @@ var render = function() {
                                     }
                                     _vm.$set(
                                       _vm.formSub,
-                                      "name",
+                                      "title",
                                       $event.target.value
                                     )
                                   }
@@ -46123,7 +46181,7 @@ var render = function() {
                               }),
                               _vm._v(" "),
                               _c("has-error", {
-                                attrs: { form: _vm.formSub, field: "name" }
+                                attrs: { form: _vm.formSub, field: "title" }
                               })
                             ],
                             1
@@ -46150,7 +46208,7 @@ var render = function() {
                                   },
                                   attrs: {
                                     type: "type",
-                                    name: "type",
+                                    title: "type",
                                     id: "type"
                                   },
                                   on: {
@@ -46195,7 +46253,7 @@ var render = function() {
                                         key: category.id,
                                         domProps: { value: category.id }
                                       },
-                                      [_vm._v(_vm._s(category.name))]
+                                      [_vm._v(_vm._s(category.title))]
                                     )
                                   })
                                 ],
@@ -46262,7 +46320,7 @@ var render = function() {
                   return _c("tr", { key: subcategory.id }, [
                     _c("td", [_vm._v(_vm._s(subcategory.id))]),
                     _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(subcategory.name))]),
+                    _c("td", [_vm._v(_vm._s(subcategory.title))]),
                     _vm._v(" "),
                     _c("td", [
                       _c("span", { staticClass: "tag tag-success" }, [
@@ -46313,7 +46371,7 @@ var render = function() {
                           expression: "editMode"
                         }
                       ],
-                      staticClass: "modal-name",
+                      staticClass: "modal-title",
                       attrs: { id: "addNew" }
                     },
                     [_vm._v("Create Subcategory")]
@@ -46330,7 +46388,7 @@ var render = function() {
                           expression: "!editMode"
                         }
                       ],
-                      staticClass: "modal-name",
+                      staticClass: "modal-title",
                       attrs: { id: "addNew" }
                     },
                     [_vm._v("Create Category")]
@@ -46346,7 +46404,9 @@ var render = function() {
                         on: {
                           submit: function($event) {
                             $event.preventDefault()
-                            return _vm.createCategory()
+                            _vm.editMode
+                              ? _vm.updateCategory()
+                              : _vm.createCategory()
                           }
                         }
                       },
@@ -46361,22 +46421,22 @@ var render = function() {
                                   {
                                     name: "model",
                                     rawName: "v-model",
-                                    value: _vm.formCategory.name,
-                                    expression: "formCategory.name"
+                                    value: _vm.formCategory.title,
+                                    expression: "formCategory.title"
                                   }
                                 ],
                                 staticClass: "form-control",
                                 class: {
                                   "is-invalid": _vm.formCategory.errors.has(
-                                    "name"
+                                    "title"
                                   )
                                 },
                                 attrs: {
                                   type: "text",
-                                  name: "name",
-                                  placeholder: "Name"
+                                  title: "title",
+                                  placeholder: "Title"
                                 },
-                                domProps: { value: _vm.formCategory.name },
+                                domProps: { value: _vm.formCategory.title },
                                 on: {
                                   input: function($event) {
                                     if ($event.target.composing) {
@@ -46384,7 +46444,7 @@ var render = function() {
                                     }
                                     _vm.$set(
                                       _vm.formCategory,
-                                      "name",
+                                      "title",
                                       $event.target.value
                                     )
                                   }
@@ -46392,7 +46452,10 @@ var render = function() {
                               }),
                               _vm._v(" "),
                               _c("has-error", {
-                                attrs: { form: _vm.formCategory, field: "name" }
+                                attrs: {
+                                  form: _vm.formCategory,
+                                  field: "title"
+                                }
                               })
                             ],
                             1
@@ -46452,20 +46515,20 @@ var render = function() {
                                   {
                                     name: "model",
                                     rawName: "v-model",
-                                    value: _vm.formSub.name,
-                                    expression: "formSub.name"
+                                    value: _vm.formSub.title,
+                                    expression: "formSub.title"
                                   }
                                 ],
                                 staticClass: "form-control",
                                 class: {
-                                  "is-invalid": _vm.formSub.errors.has("name")
+                                  "is-invalid": _vm.formSub.errors.has("title")
                                 },
                                 attrs: {
                                   type: "text",
-                                  name: "name",
-                                  placeholder: "Name"
+                                  title: "title",
+                                  placeholder: "Title"
                                 },
-                                domProps: { value: _vm.formSub.name },
+                                domProps: { value: _vm.formSub.title },
                                 on: {
                                   input: function($event) {
                                     if ($event.target.composing) {
@@ -46473,7 +46536,7 @@ var render = function() {
                                     }
                                     _vm.$set(
                                       _vm.formSub,
-                                      "name",
+                                      "title",
                                       $event.target.value
                                     )
                                   }
@@ -46481,7 +46544,7 @@ var render = function() {
                               }),
                               _vm._v(" "),
                               _c("has-error", {
-                                attrs: { form: _vm.formSub, field: "name" }
+                                attrs: { form: _vm.formSub, field: "title" }
                               })
                             ],
                             1
@@ -46508,7 +46571,7 @@ var render = function() {
                                   },
                                   attrs: {
                                     type: "type",
-                                    name: "type",
+                                    title: "type",
                                     id: "type"
                                   },
                                   on: {
@@ -46553,7 +46616,7 @@ var render = function() {
                                         key: category.id,
                                         domProps: { value: category.id }
                                       },
-                                      [_vm._v(_vm._s(category.name))]
+                                      [_vm._v(_vm._s(category.title))]
                                     )
                                   })
                                 ],
@@ -46612,7 +46675,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "card-header " }, [
-      _c("h3", { staticClass: "card-name" }, [_vm._v("Categories")]),
+      _c("h3", { staticClass: "card-title" }, [_vm._v("Categories")]),
       _vm._v(" "),
       _c("div", { staticClass: "card-tools" })
     ])
@@ -46625,7 +46688,7 @@ var staticRenderFns = [
       _c("tr", [
         _c("th", [_vm._v("ID")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Name")]),
+        _c("th", [_vm._v("Title")]),
         _vm._v(" "),
         _c("th", [_vm._v("Registered At")]),
         _vm._v(" "),
@@ -46637,16 +46700,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("a", { attrs: { href: "#" } }, [
-        _c("i", { staticClass: "fas fa-edit" })
-      ]),
-      _vm._v(
-        "\n                                    /\n                                    "
-      ),
-      _c("a", { attrs: { href: "#" } }, [
-        _c("i", { staticClass: "fas fa-trash red" })
-      ])
+    return _c("a", { attrs: { href: "#" } }, [
+      _c("i", { staticClass: "fas fa-edit" })
     ])
   },
   function() {
@@ -46671,7 +46726,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "card-header " }, [
-      _c("h3", { staticClass: "card-name" }, [_vm._v("SubCategories")]),
+      _c("h3", { staticClass: "card-title" }, [_vm._v("SubCategories")]),
       _vm._v(" "),
       _c("div", { staticClass: "card-tools" })
     ])
@@ -46684,7 +46739,7 @@ var staticRenderFns = [
       _c("tr", [
         _c("th", [_vm._v("ID")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Name")]),
+        _c("th", [_vm._v("Title")]),
         _vm._v(" "),
         _c("th", [_vm._v("Registered At")]),
         _vm._v(" "),

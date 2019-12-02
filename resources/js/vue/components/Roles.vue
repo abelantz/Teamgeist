@@ -1,6 +1,5 @@
 <template>
     <div>
-        
         <div class="row mt-2">
             <div class="col-8">
                 <div class="card card-success card-outline">
@@ -40,9 +39,6 @@
                 </div>
                 <!-- /.card -->
             </div>
-        
-
-
             <!-- Modal  -->
             <div class="modal fade" id="addNew" tabindex="-1" role="dialog" aria-labelledby="addNew" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -122,7 +118,6 @@
             </div>
         </div>
         </div>
-    </div>
 </template>
 
 <script>
