@@ -41,7 +41,7 @@ Route::group(['namespace' => 'API'], function () {
     Route::post('users/{user}/sync_permissions', 'UserController@syncPermissions');
 
     Route::apiResource('teams', 'TeamController'); // Team api routes
-    Route::apiResource('members', 'TeamMemberController'); // Team Member api routes
+    Route::apiResource('members', 'MemberController'); // Team Member api routes
 
     // Route::apiResource('contracts', 'ContractController'); // Contract api routes
     Route::apiResource('invoices', 'InvoiceController'); // Invoice api routes
