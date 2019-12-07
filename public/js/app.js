@@ -5933,30 +5933,222 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      labels: ["General", "Equipment", "Band"],
-      dataset1: [{
-        data: [20, 30, 50],
-        backgroundColor: ["Blue", "Orange", "Grey"]
-      }],
-      dataset2: [{
-        data: [30, 60, 80],
-        backgroundColor: ["Blue", "Orange", "Grey"]
-      }],
-      dataset3: [{
-        data: [25, 37, 59],
-        backgroundColor: ["Blue", "Orange", "Grey"]
-      }],
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+        datasets: [{
+          label: '2018 Sales',
+          data: [300, 700, 450, 750, 450]
+        }, {
+          label: '2017 Sales',
+          data: [600, 550, 750, 250, 700]
+        }]
+      },
       option: {
-        title: {
-          display: true,
-          position: "bottom",
-          text: "Sponsoring Data"
-        }
+        titile: true,
+        display: "top",
+        text: "Sponsoring Data"
       }
     };
+  },
+  methods: {
+    sponsorModal: function sponsorModal() {
+      $('#addSponsor').modal("show");
+    }
   },
   mounted: function mounted() {
     console.log('Component mounted.');
@@ -66098,42 +66290,481 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c(
-      "div",
-      { staticClass: "col-6" },
-      [
-        _c("chartjs-bar", {
-          attrs: {
-            target: "sponsoring",
-            labels: _vm.labels,
-            datasets: _vm.dataset1,
-            option: _vm.option
-          }
-        }),
-        _vm._v(" "),
-        _c("chartjs-bar", {
-          attrs: {
-            target: "sponsoring",
-            labels: _vm.labels,
-            datasets: _vm.dataset2,
-            option: _vm.option
-          }
-        }),
-        _vm._v(" "),
-        _c("chartjs-bar", {
-          attrs: {
-            target: "sponsoring",
-            labels: _vm.labels,
-            datasets: _vm.dataset3,
-            option: _vm.option
-          }
-        })
-      ],
-      1
-    )
+    _c("div", { staticClass: "row pb-5" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "col-7 Chart" },
+        [
+          _c("chartjs-bar", {
+            attrs: {
+              labels: _vm.labels,
+              datasets: _vm.datasets,
+              option: _vm.option
+            }
+          })
+        ],
+        1
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-12" }, [
+        _c("div", { staticClass: "card card-info card-outline" }, [
+          _c("div", { staticClass: "card-header" }, [
+            _c("h3", { staticClass: "card-title" }, [_vm._v("Sponsors")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-tools" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-success bg-success",
+                  on: { click: _vm.sponsorModal }
+                },
+                [_vm._v("Add Sponsor "), _c("i", { staticClass: "fa fa-user" })]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _vm._m(1)
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _vm._m(2)
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-5 " }, [
+      _c("h4", { staticClass: "pt-4 text-center" }, [_vm._v("Main Sponsors")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mr-10" }, [
+        _c("div", { staticClass: "col-6 pt-3 text-center" }, [
+          _c("img", {
+            staticStyle: {
+              "border-radius": "50%",
+              width: "140px",
+              height: "140px"
+            },
+            attrs: {
+              src:
+                "https://www.trzcacak.rs/myfile/full/22-222742_emirates-cabin-crew-fly-emirates-logo.png",
+              alt: "Avatar"
+            }
+          }),
+          _vm._v(" "),
+          _c("p", { staticClass: "pt-2" }, [_vm._v("Fly Emirates")])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-6 pt-3 text-center" }, [
+          _c("img", {
+            staticStyle: {
+              "border-radius": "50%",
+              width: "140px",
+              height: "140px",
+              margin: "auto"
+            },
+            attrs: {
+              src:
+                "https://seeklogo.com/images/R/rakuten-logo-A75F21521D-seeklogo.com.png",
+              alt: "Avatar"
+            }
+          }),
+          _vm._v(" "),
+          _c("p", { staticClass: "pt-2" }, [_vm._v("Rakuten")])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "card-body table-responsive p-0",
+        staticStyle: { height: "450px" }
+      },
+      [
+        _c("table", { staticClass: "table table-head-fixed" }, [
+          _c("thead", [
+            _c("tr", [
+              _c("th", [_vm._v("ID")]),
+              _vm._v(" "),
+              _c("th", [_vm._v("Name")]),
+              _vm._v(" "),
+              _c("th", [_vm._v("Type")]),
+              _vm._v(" "),
+              _c("th", [_vm._v("Due to (duration )")]),
+              _vm._v(" "),
+              _c("th", [_vm._v("Amount")]),
+              _vm._v(" "),
+              _c("th", [_vm._v("Modify")])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("tbody", [
+            _c("tr", [
+              _c("td", [_vm._v("183")]),
+              _vm._v(" "),
+              _c("td", [_vm._v("John Doe")]),
+              _vm._v(" "),
+              _c("td", [_vm._v("11-7-2014")]),
+              _vm._v(" "),
+              _c("td", [
+                _c("span", { staticClass: "tag tag-success" }, [
+                  _vm._v("Approved")
+                ])
+              ]),
+              _vm._v(" "),
+              _c("td", [_vm._v("300CHF")]),
+              _vm._v(" "),
+              _c("td", [
+                _c("a", { attrs: { href: "#" } }, [
+                  _c("i", { staticClass: "fas fa-edit" })
+                ]),
+                _vm._v(
+                  "\n                                    /\n                                    "
+                ),
+                _c("a", { attrs: { href: "#" } }, [
+                  _c("i", { staticClass: "fas fa-trash red" })
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("tr", [
+              _c("td", [_vm._v("219")]),
+              _vm._v(" "),
+              _c("td", [_vm._v("Alexander Pierce")]),
+              _vm._v(" "),
+              _c("td", [_vm._v("11-7-2014")]),
+              _vm._v(" "),
+              _c("td", [
+                _c("span", { staticClass: "tag tag-warning" }, [
+                  _vm._v("Pending")
+                ])
+              ]),
+              _vm._v(" "),
+              _c("td", [_vm._v("300CHF")]),
+              _vm._v(" "),
+              _c("td", [
+                _c("a", { attrs: { href: "#" } }, [
+                  _c("i", { staticClass: "fas fa-edit" })
+                ]),
+                _vm._v(
+                  "\n                                    /\n                                    "
+                ),
+                _c("a", { attrs: { href: "#" } }, [
+                  _c("i", { staticClass: "fas fa-trash red" })
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("tr", [
+              _c("td", [_vm._v("657")]),
+              _vm._v(" "),
+              _c("td", [_vm._v("Bob Doe")]),
+              _vm._v(" "),
+              _c("td", [_vm._v("11-7-2014")]),
+              _vm._v(" "),
+              _c("td", [
+                _c("span", { staticClass: "tag tag-primary" }, [
+                  _vm._v("Approved")
+                ])
+              ]),
+              _vm._v(" "),
+              _c("td", [_vm._v("300CHF")]),
+              _vm._v(" "),
+              _c("td", [
+                _c("a", { attrs: { href: "#" } }, [
+                  _c("i", { staticClass: "fas fa-edit" })
+                ]),
+                _vm._v(
+                  "\n                                    /\n                                    "
+                ),
+                _c("a", { attrs: { href: "#" } }, [
+                  _c("i", { staticClass: "fas fa-trash red" })
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("tr", [
+              _c("td", [_vm._v("175")]),
+              _vm._v(" "),
+              _c("td", [_vm._v("Mike Doe")]),
+              _vm._v(" "),
+              _c("td", [_vm._v("11-7-2014")]),
+              _vm._v(" "),
+              _c("td", [
+                _c("span", { staticClass: "tag tag-danger" }, [
+                  _vm._v("Denied")
+                ])
+              ]),
+              _vm._v(" "),
+              _c("td", [_vm._v("300CHF")]),
+              _vm._v(" "),
+              _c("td", [
+                _c("a", { attrs: { href: "#" } }, [
+                  _c("i", { staticClass: "fas fa-edit" })
+                ]),
+                _vm._v(
+                  "\n                                    /\n                                    "
+                ),
+                _c("a", { attrs: { href: "#" } }, [
+                  _c("i", { staticClass: "fas fa-trash red" })
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("tr", [
+              _c("td", [_vm._v("134")]),
+              _vm._v(" "),
+              _c("td", [_vm._v("Jim Doe")]),
+              _vm._v(" "),
+              _c("td", [_vm._v("11-7-2014")]),
+              _vm._v(" "),
+              _c("td", [
+                _c("span", { staticClass: "tag tag-success" }, [
+                  _vm._v("Approved")
+                ])
+              ]),
+              _vm._v(" "),
+              _c("td", [_vm._v("300CHF")]),
+              _vm._v(" "),
+              _c("td", [
+                _c("a", { attrs: { href: "#" } }, [
+                  _c("i", { staticClass: "fas fa-edit" })
+                ]),
+                _vm._v(
+                  "\n                                    /\n                                    "
+                ),
+                _c("a", { attrs: { href: "#" } }, [
+                  _c("i", { staticClass: "fas fa-trash red" })
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("tr", [
+              _c("td", [_vm._v("494")]),
+              _vm._v(" "),
+              _c("td", [_vm._v("Victoria Doe")]),
+              _vm._v(" "),
+              _c("td", [_vm._v("11-7-2014")]),
+              _vm._v(" "),
+              _c("td", [
+                _c("span", { staticClass: "tag tag-warning" }, [
+                  _vm._v("Pending")
+                ])
+              ]),
+              _vm._v(" "),
+              _c("td", [_vm._v("300CHF")]),
+              _vm._v(" "),
+              _c("td", [
+                _c("a", { attrs: { href: "#" } }, [
+                  _c("i", { staticClass: "fas fa-edit" })
+                ]),
+                _vm._v(
+                  "\n                                    /\n                                    "
+                ),
+                _c("a", { attrs: { href: "#" } }, [
+                  _c("i", { staticClass: "fas fa-trash red" })
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("tr", [
+              _c("td", [_vm._v("832")]),
+              _vm._v(" "),
+              _c("td", [_vm._v("Michael Doe")]),
+              _vm._v(" "),
+              _c("td", [_vm._v("11-7-2014")]),
+              _vm._v(" "),
+              _c("td", [
+                _c("span", { staticClass: "tag tag-primary" }, [
+                  _vm._v("Approved")
+                ])
+              ]),
+              _vm._v(" "),
+              _c("td", [_vm._v("300CHF")]),
+              _vm._v(" "),
+              _c("td", [
+                _c("a", { attrs: { href: "#" } }, [
+                  _c("i", { staticClass: "fas fa-edit" })
+                ]),
+                _vm._v(
+                  "\n                                    /\n                                    "
+                ),
+                _c("a", { attrs: { href: "#" } }, [
+                  _c("i", { staticClass: "fas fa-trash red" })
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("tr", [
+              _c("td", [_vm._v("982")]),
+              _vm._v(" "),
+              _c("td", [_vm._v("Rocky Doe")]),
+              _vm._v(" "),
+              _c("td", [_vm._v("11-7-2014")]),
+              _vm._v(" "),
+              _c("td", [
+                _c("span", { staticClass: "tag tag-danger" }, [
+                  _vm._v("Denied")
+                ])
+              ]),
+              _vm._v(" "),
+              _c("td", [_vm._v("300CHF")]),
+              _vm._v(" "),
+              _c("td", [
+                _c("a", { attrs: { href: "#" } }, [
+                  _c("i", { staticClass: "fas fa-edit" })
+                ]),
+                _vm._v(
+                  "\n                                    /\n                                    "
+                ),
+                _c("a", { attrs: { href: "#" } }, [
+                  _c("i", { staticClass: "fas fa-trash red" })
+                ])
+              ])
+            ])
+          ])
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "modal  fade",
+        attrs: {
+          id: "addSponsor",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "addSponsor",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog", attrs: { role: "document" } },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _c(
+                "div",
+                { staticClass: "modal-header card-primary card-outline" },
+                [
+                  _c(
+                    "h5",
+                    { staticClass: "modal-title", attrs: { id: "addSponsor" } },
+                    [_vm._v("Add Sponsor")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "close",
+                      attrs: {
+                        type: "button",
+                        "data-dismiss": "modal",
+                        "aria-label": "Close"
+                      }
+                    },
+                    [
+                      _c("span", { attrs: { "aria-hidden": "true" } }, [
+                        _vm._v("×")
+                      ])
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }, [
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", [_vm._v("Name")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    staticClass: "form-control",
+                    attrs: { type: "text", placeholder: "Enter Name..." }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", [_vm._v("Type")]),
+                  _vm._v(" "),
+                  _c("select", { staticClass: "form-control" }, [
+                    _c("option", [_vm._v("option 1")]),
+                    _vm._v(" "),
+                    _c("option", [_vm._v("option 2")]),
+                    _vm._v(" "),
+                    _c("option", [_vm._v("option 3")]),
+                    _vm._v(" "),
+                    _c("option", [_vm._v("option 4")]),
+                    _vm._v(" "),
+                    _c("option", [_vm._v("option 5")])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", [_vm._v("Date range:")]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group" }, [
+                    _c("div", { staticClass: "input-group-prepend" }, [
+                      _c("span", { staticClass: "input-group-text" }, [
+                        _c("i", { staticClass: "far fa-calendar-alt" })
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      staticClass: "form-control float-right",
+                      attrs: { type: "text", id: "reservation" }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", [_vm._v("Amount")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    staticClass: "form-control",
+                    attrs: { type: "text", placeholder: "100CHF ..." }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-footer" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-secondary",
+                    attrs: { type: "button", "data-dismiss": "modal" }
+                  },
+                  [_vm._v("Close")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+                  [_vm._v("Add New")]
+                )
+              ])
+            ])
+          ]
+        )
+      ]
+    )
+  }
+]
 render._withStripped = true
 
 
