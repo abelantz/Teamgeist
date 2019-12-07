@@ -62,7 +62,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <!-- Create Subcategory -->
+                    <!-- Create team -->
                     <form  @submit.prevent="createTeam()">
                         <div class="modal-body">
                             <div class="form-group">
