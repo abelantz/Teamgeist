@@ -24,6 +24,12 @@ window.Form = Form;
 Vue.component(HasError.name, HasError)
 Vue.component(AlertError.name, AlertError)
 
+import 'chart.js';
+import 'hchs-vue-charts';
+Vue.use(window.VueCharts);
+
+
+
 let routes = [
     { path: '/dashboard', component: require('./vue/components/Dashboard.vue').default },
     { path: '/teams', component: require('./vue/components/Teams.vue').default },
