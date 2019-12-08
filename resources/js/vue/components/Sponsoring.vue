@@ -4,7 +4,6 @@
             <div class="col-5 ">
                 <h4 class="pt-4 text-center">Main Sponsors</h4>
                 <div class="row mr-10">
-
                     <div class="col-6 pt-3 text-center">
                         <img style="border-radius:50%; width: 140px; height:140px;"
                             src="https://www.trzcacak.rs/myfile/full/22-222742_emirates-cabin-crew-fly-emirates-logo.png"
@@ -16,7 +15,6 @@
                             src="https://seeklogo.com/images/R/rakuten-logo-A75F21521D-seeklogo.com.png" alt="Avatar">
                         <p class="pt-2">Rakuten</p>
                     </div>
-
                 </div>
             </div>
             <div class="col-7 Chart">
@@ -55,16 +53,17 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>183</td>
-                                    <td>John Doe</td>
+                                <tr >
+                                    <td >183</td>
+                                    <td>  John Doe 
+                                        </td>
                                     <td>11-7-2014</td>
                                     <td><span class="tag tag-success">Approved</span></td>
                                     <td>300CHF</td>
                                     <td>
-                                        <a href="#"> <i class="fas fa-edit"></i></a>
-                                        /
-                                        <a href="#"> <i class="fas fa-trash red"></i></a>
+                                        <button @click="sponsorModal" class="btn btn-success bg-success"> View</button>
+                                        <button class="btn btn-info bg-info"> Edit</button>
+                                        <button class="btn btn-danger bg-danger">Delete</button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -74,9 +73,9 @@
                                     <td><span class="tag tag-warning">Pending</span></td>
                                     <td>300CHF</td>
                                     <td>
-                                        <a href="#"> <i class="fas fa-edit"></i></a>
-                                        /
-                                        <a href="#"> <i class="fas fa-trash red"></i></a>
+                                       <button class="btn btn-success bg-success"> View</button>
+                                        <button class="btn btn-info bg-info"> Edit</button>
+                                        <button class="btn btn-danger bg-danger">Delete</button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -86,9 +85,9 @@
                                     <td><span class="tag tag-primary">Approved</span></td>
                                     <td>300CHF</td>
                                     <td>
-                                        <a href="#"> <i class="fas fa-edit"></i></a>
-                                        /
-                                        <a href="#"> <i class="fas fa-trash red"></i></a>
+                                       <button class="btn btn-success bg-success"> View</button>
+                                        <button class="btn btn-info bg-info"> Edit</button>
+                                        <button class="btn btn-danger bg-danger">Delete</button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -98,9 +97,9 @@
                                     <td><span class="tag tag-danger">Denied</span></td>
                                     <td>300CHF</td>
                                     <td>
-                                        <a href="#"> <i class="fas fa-edit"></i></a>
-                                        /
-                                        <a href="#"> <i class="fas fa-trash red"></i></a>
+                                       <button class="btn btn-success bg-success"> View</button>
+                                        <button class="btn btn-info bg-info"> Edit</button>
+                                        <button class="btn btn-danger bg-danger">Delete</button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -110,9 +109,9 @@
                                     <td><span class="tag tag-success">Approved</span></td>
                                     <td>300CHF</td>
                                     <td>
-                                        <a href="#"> <i class="fas fa-edit"></i></a>
-                                        /
-                                        <a href="#"> <i class="fas fa-trash red"></i></a>
+                                        <button class="btn btn-success bg-success"> View</button>
+                                        <button class="btn btn-info bg-info"> Edit</button>
+                                        <button class="btn btn-danger bg-danger">Delete</button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -122,9 +121,9 @@
                                     <td><span class="tag tag-warning">Pending</span></td>
                                     <td>300CHF</td>
                                     <td>
-                                        <a href="#"> <i class="fas fa-edit"></i></a>
-                                        /
-                                        <a href="#"> <i class="fas fa-trash red"></i></a>
+                                       <button class="btn btn-success bg-success"> View</button>
+                                        <button class="btn btn-info bg-info"> Edit</button>
+                                        <button class="btn btn-danger bg-danger">Delete</button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -134,9 +133,9 @@
                                     <td><span class="tag tag-primary">Approved</span></td>
                                     <td>300CHF</td>
                                     <td>
-                                        <a href="#"> <i class="fas fa-edit"></i></a>
-                                        /
-                                        <a href="#"> <i class="fas fa-trash red"></i></a>
+                                        <button class="btn btn-success bg-success"> View</button>
+                                        <button class="btn btn-info bg-info"> Edit</button>
+                                        <button class="btn btn-danger bg-danger">Delete</button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -146,9 +145,9 @@
                                     <td><span class="tag tag-danger">Denied</span></td>
                                     <td>300CHF</td>
                                     <td>
-                                        <a href="#"> <i class="fas fa-edit"></i></a>
-                                        /
-                                        <a href="#"> <i class="fas fa-trash red"></i></a>
+                                        <button class="btn btn-success bg-success"> View</button>
+                                        <button class="btn btn-info bg-info"> Edit</button>
+                                        <button class="btn btn-danger bg-danger">Delete</button>
                                     </td>
                                 </tr>
                             </tbody>

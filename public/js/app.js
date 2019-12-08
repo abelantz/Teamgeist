@@ -4777,6 +4777,570 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log('Component mounted.');
@@ -5652,7 +6216,291 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+        datasets: [{
+          label: '2018 Sales',
+          data: [300, 700, 450, 750, 450]
+        }, {
+          label: '2017 Sales',
+          data: [600, 550, 750, 250, 700]
+        }]
+      },
+      option: {
+        titile: true,
+        display: "top",
+        text: "Sponsoring Data"
+      }
+    };
+  },
   mounted: function mounted() {
     console.log('Component mounted.');
   }
@@ -6124,7 +6972,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -6174,7 +7021,51 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+        datasets: [{
+          label: '2018 Sales',
+          data: [300, 700, 450, 750, 450]
+        }, {
+          label: '2017 Sales',
+          data: [600, 550, 750, 250, 700]
+        }]
+      },
+      option: {
+        titile: true,
+        display: "top",
+        text: "Sponsoring Data"
+      }
+    };
+  },
   mounted: function mounted() {
     console.log('Component mounted.');
   }
@@ -64045,7 +64936,1536 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [_c("h1", [_vm._v("\n        Contracts\n    ")])])
+    return _c("div", [
+      _c("h1", [_vm._v("\n        Contracts\n    ")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row pt-3" }, [
+        _c("div", { staticClass: "col-12 pb-2" }, [
+          _c("ul", { staticClass: "nav nav-pills mr-auto " }, [
+            _c("li", { staticClass: "nav-item" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "nav-link active",
+                  attrs: { href: "#board", "data-toggle": "tab" }
+                },
+                [_vm._v("Board")]
+              )
+            ]),
+            _vm._v(" "),
+            _c("li", { staticClass: "nav-item" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "nav-link",
+                  attrs: { href: "#coaches", "data-toggle": "tab" }
+                },
+                [_vm._v("Coaches")]
+              )
+            ]),
+            _vm._v(" "),
+            _c("li", { staticClass: "nav-item" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "nav-link",
+                  attrs: { href: "#players", "data-toggle": "tab" }
+                },
+                [_vm._v("Players")]
+              )
+            ]),
+            _vm._v(" "),
+            _c("li", { staticClass: "nav-item" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "nav-link",
+                  attrs: { href: "#refrees", "data-toggle": "tab" }
+                },
+                [_vm._v("Refrees")]
+              )
+            ]),
+            _vm._v(" "),
+            _c("li", { staticClass: "nav-item" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "nav-link",
+                  attrs: { href: "#facility", "data-toggle": "tab" }
+                },
+                [_vm._v("Facility/Helpers")]
+              )
+            ]),
+            _vm._v(" "),
+            _c("li", { staticClass: "nav-item" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "nav-link",
+                  attrs: { href: "#administration", "data-toggle": "tab" }
+                },
+                [_vm._v("Administration")]
+              )
+            ]),
+            _vm._v(" "),
+            _c("li", { staticClass: "nav-item" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "nav-link",
+                  attrs: { href: "#other", "data-toggle": "tab" }
+                },
+                [_vm._v("Other Contracts")]
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-12 " }, [
+          _c("div", {}, [
+            _c("div", {}, [
+              _c("div", { staticClass: "tab-content  text-center" }, [
+                _c(
+                  "div",
+                  { staticClass: "tab-pane active", attrs: { id: "board" } },
+                  [
+                    _c("div", { staticClass: "card" }, [
+                      _c("div", { staticClass: "card-header" }, [
+                        _c("h3", { staticClass: "card-title" }, [
+                          _vm._v("Board")
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "card-tools" }, [
+                          _c(
+                            "button",
+                            { staticClass: "btn btn-success bg-success" },
+                            [_vm._v("New Board Contract")]
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "card-body table-responsive p-0" },
+                        [
+                          _c("table", { staticClass: "table table-hover" }, [
+                            _c("thead", [
+                              _c("tr", [
+                                _c("th", [_vm._v("ID")]),
+                                _vm._v(" "),
+                                _c("th", [_vm._v("Name")]),
+                                _vm._v(" "),
+                                _c("th", [_vm._v("Type")]),
+                                _vm._v(" "),
+                                _c("th", [_vm._v("Amount")]),
+                                _vm._v(" "),
+                                _c("th", [_vm._v("Date(due to)")]),
+                                _vm._v(" "),
+                                _c("th", [_vm._v("Modify")])
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("tbody", [
+                              _c("tr", [
+                                _c("td", [_vm._v("183")]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("John Doe")]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _c(
+                                    "span",
+                                    { staticClass: "tag tag-success" },
+                                    [_vm._v("President")]
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("300CHF")]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("11-7-2014")]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn btn-success bg-success"
+                                    },
+                                    [_vm._v(" View")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    { staticClass: "btn btn-info bg-info" },
+                                    [_vm._v(" Edit")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    { staticClass: "btn btn-danger bg-danger" },
+                                    [_vm._v("Delete")]
+                                  )
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("tr", [
+                                _c("td", [_vm._v("183")]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("John Doe")]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _c(
+                                    "span",
+                                    { staticClass: "tag tag-success" },
+                                    [_vm._v("President")]
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("300CHF")]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("11-7-2014")]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn btn-success bg-success"
+                                    },
+                                    [_vm._v(" View")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    { staticClass: "btn btn-info bg-info" },
+                                    [_vm._v(" Edit")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    { staticClass: "btn btn-danger bg-danger" },
+                                    [_vm._v("Delete")]
+                                  )
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("tr", [
+                                _c("td", [_vm._v("183")]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("John Doe")]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _c(
+                                    "span",
+                                    { staticClass: "tag tag-success" },
+                                    [_vm._v("President")]
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("300CHF")]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("11-7-2014")]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn btn-success bg-success"
+                                    },
+                                    [_vm._v(" View")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    { staticClass: "btn btn-info bg-info" },
+                                    [_vm._v(" Edit")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    { staticClass: "btn btn-danger bg-danger" },
+                                    [_vm._v("Delete")]
+                                  )
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("tr", [
+                                _c("td", [_vm._v("183")]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("John Doe")]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _c(
+                                    "span",
+                                    { staticClass: "tag tag-success" },
+                                    [_vm._v("President")]
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("300CHF")]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("11-7-2014")]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn btn-success bg-success"
+                                    },
+                                    [_vm._v(" View")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    { staticClass: "btn btn-info bg-info" },
+                                    [_vm._v(" Edit")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    { staticClass: "btn btn-danger bg-danger" },
+                                    [_vm._v("Delete")]
+                                  )
+                                ])
+                              ])
+                            ])
+                          ])
+                        ]
+                      )
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "tab-pane", attrs: { id: "coaches" } },
+                  [
+                    _c("div", { staticClass: "card" }, [
+                      _c("div", { staticClass: "card-header" }, [
+                        _c("h3", { staticClass: "card-title" }, [
+                          _vm._v("Coaches")
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "card-tools" }, [
+                          _c(
+                            "button",
+                            { staticClass: "btn btn-success bg-success" },
+                            [_vm._v("New Coach Contract")]
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "card-body table-responsive p-0" },
+                        [
+                          _c("table", { staticClass: "table table-hover" }, [
+                            _c("thead", [
+                              _c("tr", [
+                                _c("th", [_vm._v("ID")]),
+                                _vm._v(" "),
+                                _c("th", [_vm._v("Name")]),
+                                _vm._v(" "),
+                                _c("th", [_vm._v("Type")]),
+                                _vm._v(" "),
+                                _c("th", [_vm._v("Amount")]),
+                                _vm._v(" "),
+                                _c("th", [_vm._v("Date(due to)")]),
+                                _vm._v(" "),
+                                _c("th", [_vm._v("Modify")])
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("tbody", [
+                              _c("tr", [
+                                _c("td", [_vm._v("183")]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("John Doe")]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _c(
+                                    "span",
+                                    { staticClass: "tag tag-success" },
+                                    [_vm._v("President")]
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("300CHF")]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("11-7-2014")]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn btn-success bg-success"
+                                    },
+                                    [_vm._v(" View")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    { staticClass: "btn btn-info bg-info" },
+                                    [_vm._v(" Edit")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    { staticClass: "btn btn-danger bg-danger" },
+                                    [_vm._v("Delete")]
+                                  )
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("tr", [
+                                _c("td", [_vm._v("183")]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("John Doe")]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _c(
+                                    "span",
+                                    { staticClass: "tag tag-success" },
+                                    [_vm._v("President")]
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("300CHF")]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("11-7-2014")]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn btn-success bg-success"
+                                    },
+                                    [_vm._v(" View")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    { staticClass: "btn btn-info bg-info" },
+                                    [_vm._v(" Edit")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    { staticClass: "btn btn-danger bg-danger" },
+                                    [_vm._v("Delete")]
+                                  )
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("tr", [
+                                _c("td", [_vm._v("183")]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("John Doe")]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _c(
+                                    "span",
+                                    { staticClass: "tag tag-success" },
+                                    [_vm._v("President")]
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("300CHF")]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("11-7-2014")]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn btn-success bg-success"
+                                    },
+                                    [_vm._v(" View")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    { staticClass: "btn btn-info bg-info" },
+                                    [_vm._v(" Edit")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    { staticClass: "btn btn-danger bg-danger" },
+                                    [_vm._v("Delete")]
+                                  )
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("tr", [
+                                _c("td", [_vm._v("183")]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("John Doe")]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _c(
+                                    "span",
+                                    { staticClass: "tag tag-success" },
+                                    [_vm._v("President")]
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("300CHF")]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("11-7-2014")]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn btn-success bg-success"
+                                    },
+                                    [_vm._v(" View")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    { staticClass: "btn btn-info bg-info" },
+                                    [_vm._v(" Edit")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    { staticClass: "btn btn-danger bg-danger" },
+                                    [_vm._v("Delete")]
+                                  )
+                                ])
+                              ])
+                            ])
+                          ])
+                        ]
+                      )
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "tab-pane", attrs: { id: "players" } },
+                  [
+                    _c("div", { staticClass: "card" }, [
+                      _c("div", { staticClass: "card-header" }, [
+                        _c("h3", { staticClass: "card-title" }, [
+                          _vm._v("Players")
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "card-tools" }, [
+                          _c(
+                            "button",
+                            { staticClass: "btn btn-success bg-success" },
+                            [_vm._v("New Player Contract")]
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "card-body table-responsive p-0" },
+                        [
+                          _c("table", { staticClass: "table table-hover" }, [
+                            _c("thead", [
+                              _c("tr", [
+                                _c("th", [_vm._v("ID")]),
+                                _vm._v(" "),
+                                _c("th", [_vm._v("Name")]),
+                                _vm._v(" "),
+                                _c("th", [_vm._v("Type")]),
+                                _vm._v(" "),
+                                _c("th", [_vm._v("Amount")]),
+                                _vm._v(" "),
+                                _c("th", [_vm._v("Date(due to)")]),
+                                _vm._v(" "),
+                                _c("th", [_vm._v("Modify")])
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("tbody", [
+                              _c("tr", [
+                                _c("td", [_vm._v("183")]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("John Doe")]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _c(
+                                    "span",
+                                    { staticClass: "tag tag-success" },
+                                    [_vm._v("President")]
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("300CHF")]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("11-7-2014")]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn btn-success bg-success"
+                                    },
+                                    [_vm._v(" View")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    { staticClass: "btn btn-info bg-info" },
+                                    [_vm._v(" Edit")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    { staticClass: "btn btn-danger bg-danger" },
+                                    [_vm._v("Delete")]
+                                  )
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("tr", [
+                                _c("td", [_vm._v("183")]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("John Doe")]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _c(
+                                    "span",
+                                    { staticClass: "tag tag-success" },
+                                    [_vm._v("President")]
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("300CHF")]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("11-7-2014")]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn btn-success bg-success"
+                                    },
+                                    [_vm._v(" View")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    { staticClass: "btn btn-info bg-info" },
+                                    [_vm._v(" Edit")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    { staticClass: "btn btn-danger bg-danger" },
+                                    [_vm._v("Delete")]
+                                  )
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("tr", [
+                                _c("td", [_vm._v("183")]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("John Doe")]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _c(
+                                    "span",
+                                    { staticClass: "tag tag-success" },
+                                    [_vm._v("President")]
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("300CHF")]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("11-7-2014")]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn btn-success bg-success"
+                                    },
+                                    [_vm._v(" View")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    { staticClass: "btn btn-info bg-info" },
+                                    [_vm._v(" Edit")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    { staticClass: "btn btn-danger bg-danger" },
+                                    [_vm._v("Delete")]
+                                  )
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("tr", [
+                                _c("td", [_vm._v("183")]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("John Doe")]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _c(
+                                    "span",
+                                    { staticClass: "tag tag-success" },
+                                    [_vm._v("President")]
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("300CHF")]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("11-7-2014")]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn btn-success bg-success"
+                                    },
+                                    [_vm._v(" View")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    { staticClass: "btn btn-info bg-info" },
+                                    [_vm._v(" Edit")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    { staticClass: "btn btn-danger bg-danger" },
+                                    [_vm._v("Delete")]
+                                  )
+                                ])
+                              ])
+                            ])
+                          ])
+                        ]
+                      )
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "tab-pane", attrs: { id: "refrees" } },
+                  [
+                    _c("div", { staticClass: "card" }, [
+                      _c("div", { staticClass: "card-header" }, [
+                        _c("h3", { staticClass: "card-title" }, [
+                          _vm._v("Refrees")
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "card-tools" }, [
+                          _c(
+                            "button",
+                            { staticClass: "btn btn-success bg-success" },
+                            [_vm._v("New Refree Contract")]
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "card-body table-responsive p-0" },
+                        [
+                          _c("table", { staticClass: "table table-hover" }, [
+                            _c("thead", [
+                              _c("tr", [
+                                _c("th", [_vm._v("ID")]),
+                                _vm._v(" "),
+                                _c("th", [_vm._v("Name")]),
+                                _vm._v(" "),
+                                _c("th", [_vm._v("Type")]),
+                                _vm._v(" "),
+                                _c("th", [_vm._v("Amount")]),
+                                _vm._v(" "),
+                                _c("th", [_vm._v("Date(due to)")]),
+                                _vm._v(" "),
+                                _c("th", [_vm._v("Modify")])
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("tbody", [
+                              _c("tr", [
+                                _c("td", [_vm._v("183")]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("John Doe")]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _c(
+                                    "span",
+                                    { staticClass: "tag tag-success" },
+                                    [_vm._v("President")]
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("300CHF")]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("11-7-2014")]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn btn-success bg-success"
+                                    },
+                                    [_vm._v(" View")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    { staticClass: "btn btn-info bg-info" },
+                                    [_vm._v(" Edit")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    { staticClass: "btn btn-danger bg-danger" },
+                                    [_vm._v("Delete")]
+                                  )
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("tr", [
+                                _c("td", [_vm._v("183")]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("John Doe")]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _c(
+                                    "span",
+                                    { staticClass: "tag tag-success" },
+                                    [_vm._v("President")]
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("300CHF")]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("11-7-2014")]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn btn-success bg-success"
+                                    },
+                                    [_vm._v(" View")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    { staticClass: "btn btn-info bg-info" },
+                                    [_vm._v(" Edit")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    { staticClass: "btn btn-danger bg-danger" },
+                                    [_vm._v("Delete")]
+                                  )
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("tr", [
+                                _c("td", [_vm._v("183")]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("John Doe")]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _c(
+                                    "span",
+                                    { staticClass: "tag tag-success" },
+                                    [_vm._v("President")]
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("300CHF")]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("11-7-2014")]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn btn-success bg-success"
+                                    },
+                                    [_vm._v(" View")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    { staticClass: "btn btn-info bg-info" },
+                                    [_vm._v(" Edit")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    { staticClass: "btn btn-danger bg-danger" },
+                                    [_vm._v("Delete")]
+                                  )
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("tr", [
+                                _c("td", [_vm._v("183")]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("John Doe")]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _c(
+                                    "span",
+                                    { staticClass: "tag tag-success" },
+                                    [_vm._v("President")]
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("300CHF")]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("11-7-2014")]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn btn-success bg-success"
+                                    },
+                                    [_vm._v(" View")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    { staticClass: "btn btn-info bg-info" },
+                                    [_vm._v(" Edit")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    { staticClass: "btn btn-danger bg-danger" },
+                                    [_vm._v("Delete")]
+                                  )
+                                ])
+                              ])
+                            ])
+                          ])
+                        ]
+                      )
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "tab-pane", attrs: { id: "facility" } },
+                  [
+                    _c("div", { staticClass: "card" }, [
+                      _c("div", { staticClass: "card-header" }, [
+                        _c("h3", { staticClass: "card-title" }, [
+                          _vm._v("Facility / Helpers")
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "card-tools" }, [
+                          _c(
+                            "button",
+                            { staticClass: "btn btn-success bg-success" },
+                            [_vm._v("New Facility Contract")]
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "card-body table-responsive p-0" },
+                        [
+                          _c("table", { staticClass: "table table-hover" }, [
+                            _c("thead", [
+                              _c("tr", [
+                                _c("th", [_vm._v("ID")]),
+                                _vm._v(" "),
+                                _c("th", [_vm._v("Name")]),
+                                _vm._v(" "),
+                                _c("th", [_vm._v("Type")]),
+                                _vm._v(" "),
+                                _c("th", [_vm._v("Amount")]),
+                                _vm._v(" "),
+                                _c("th", [_vm._v("Date(due to)")]),
+                                _vm._v(" "),
+                                _c("th", [_vm._v("Modify")])
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("tbody", [
+                              _c("tr", [
+                                _c("td", [_vm._v("183")]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("John Doe")]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _c(
+                                    "span",
+                                    { staticClass: "tag tag-success" },
+                                    [_vm._v("President")]
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("300CHF")]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("11-7-2014")]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn btn-success bg-success"
+                                    },
+                                    [_vm._v(" View")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    { staticClass: "btn btn-info bg-info" },
+                                    [_vm._v(" Edit")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    { staticClass: "btn btn-danger bg-danger" },
+                                    [_vm._v("Delete")]
+                                  )
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("tr", [
+                                _c("td", [_vm._v("183")]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("John Doe")]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _c(
+                                    "span",
+                                    { staticClass: "tag tag-success" },
+                                    [_vm._v("President")]
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("300CHF")]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("11-7-2014")]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn btn-success bg-success"
+                                    },
+                                    [_vm._v(" View")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    { staticClass: "btn btn-info bg-info" },
+                                    [_vm._v(" Edit")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    { staticClass: "btn btn-danger bg-danger" },
+                                    [_vm._v("Delete")]
+                                  )
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("tr", [
+                                _c("td", [_vm._v("183")]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("John Doe")]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _c(
+                                    "span",
+                                    { staticClass: "tag tag-success" },
+                                    [_vm._v("President")]
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("300CHF")]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("11-7-2014")]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn btn-success bg-success"
+                                    },
+                                    [_vm._v(" View")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    { staticClass: "btn btn-info bg-info" },
+                                    [_vm._v(" Edit")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    { staticClass: "btn btn-danger bg-danger" },
+                                    [_vm._v("Delete")]
+                                  )
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("tr", [
+                                _c("td", [_vm._v("183")]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("John Doe")]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _c(
+                                    "span",
+                                    { staticClass: "tag tag-success" },
+                                    [_vm._v("President")]
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("300CHF")]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("11-7-2014")]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn btn-success bg-success"
+                                    },
+                                    [_vm._v(" View")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    { staticClass: "btn btn-info bg-info" },
+                                    [_vm._v(" Edit")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    { staticClass: "btn btn-danger bg-danger" },
+                                    [_vm._v("Delete")]
+                                  )
+                                ])
+                              ])
+                            ])
+                          ])
+                        ]
+                      )
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "tab-pane", attrs: { id: "administration" } },
+                  [
+                    _c("div", { staticClass: "card" }, [
+                      _c("div", { staticClass: "card-header" }, [
+                        _c("h3", { staticClass: "card-title" }, [
+                          _vm._v("Administration")
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "card-tools" }, [
+                          _c(
+                            "button",
+                            { staticClass: "btn btn-success bg-success" },
+                            [_vm._v("New Administration Contract")]
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "card-body table-responsive p-0" },
+                        [
+                          _c("table", { staticClass: "table table-hover" }, [
+                            _c("thead", [
+                              _c("tr", [
+                                _c("th", [_vm._v("ID")]),
+                                _vm._v(" "),
+                                _c("th", [_vm._v("Name")]),
+                                _vm._v(" "),
+                                _c("th", [_vm._v("Type")]),
+                                _vm._v(" "),
+                                _c("th", [_vm._v("Amount")]),
+                                _vm._v(" "),
+                                _c("th", [_vm._v("Date(due to)")]),
+                                _vm._v(" "),
+                                _c("th", [_vm._v("Modify")])
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("tbody", [
+                              _c("tr", [
+                                _c("td", [_vm._v("183")]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("John Doe")]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _c(
+                                    "span",
+                                    { staticClass: "tag tag-success" },
+                                    [_vm._v("President")]
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("300CHF")]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("11-7-2014")]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn btn-success bg-success"
+                                    },
+                                    [_vm._v(" View")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    { staticClass: "btn btn-info bg-info" },
+                                    [_vm._v(" Edit")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    { staticClass: "btn btn-danger bg-danger" },
+                                    [_vm._v("Delete")]
+                                  )
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("tr", [
+                                _c("td", [_vm._v("183")]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("John Doe")]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _c(
+                                    "span",
+                                    { staticClass: "tag tag-success" },
+                                    [_vm._v("President")]
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("300CHF")]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("11-7-2014")]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn btn-success bg-success"
+                                    },
+                                    [_vm._v(" View")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    { staticClass: "btn btn-info bg-info" },
+                                    [_vm._v(" Edit")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    { staticClass: "btn btn-danger bg-danger" },
+                                    [_vm._v("Delete")]
+                                  )
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("tr", [
+                                _c("td", [_vm._v("183")]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("John Doe")]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _c(
+                                    "span",
+                                    { staticClass: "tag tag-success" },
+                                    [_vm._v("President")]
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("300CHF")]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("11-7-2014")]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn btn-success bg-success"
+                                    },
+                                    [_vm._v(" View")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    { staticClass: "btn btn-info bg-info" },
+                                    [_vm._v(" Edit")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    { staticClass: "btn btn-danger bg-danger" },
+                                    [_vm._v("Delete")]
+                                  )
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("tr", [
+                                _c("td", [_vm._v("183")]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("John Doe")]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _c(
+                                    "span",
+                                    { staticClass: "tag tag-success" },
+                                    [_vm._v("President")]
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("300CHF")]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("11-7-2014")]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn btn-success bg-success"
+                                    },
+                                    [_vm._v(" View")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    { staticClass: "btn btn-info bg-info" },
+                                    [_vm._v(" Edit")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    { staticClass: "btn btn-danger bg-danger" },
+                                    [_vm._v("Delete")]
+                                  )
+                                ])
+                              ])
+                            ])
+                          ])
+                        ]
+                      )
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "tab-pane", attrs: { id: "other" } }, [
+                  _c("div", { staticClass: "card" }, [
+                    _c("div", { staticClass: "card-header" }, [
+                      _c("h3", { staticClass: "card-title" }, [
+                        _vm._v("Other Contracts")
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "card-tools" }, [
+                        _c(
+                          "button",
+                          { staticClass: "btn btn-success bg-success" },
+                          [_vm._v("New Contract")]
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "card-body table-responsive p-0" },
+                      [
+                        _c("table", { staticClass: "table table-hover" }, [
+                          _c("thead", [
+                            _c("tr", [
+                              _c("th", [_vm._v("ID")]),
+                              _vm._v(" "),
+                              _c("th", [_vm._v("Name")]),
+                              _vm._v(" "),
+                              _c("th", [_vm._v("Type")]),
+                              _vm._v(" "),
+                              _c("th", [_vm._v("Amount")]),
+                              _vm._v(" "),
+                              _c("th", [_vm._v("Date(due to)")]),
+                              _vm._v(" "),
+                              _c("th", [_vm._v("Modify")])
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("tbody", [
+                            _c("tr", [
+                              _c("td", [_vm._v("183")]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v("John Doe")]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _c("span", { staticClass: "tag tag-success" }, [
+                                  _vm._v("President")
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v("300CHF")]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v("11-7-2014")]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _c(
+                                  "button",
+                                  { staticClass: "btn btn-success bg-success" },
+                                  [_vm._v(" View")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "button",
+                                  { staticClass: "btn btn-info bg-info" },
+                                  [_vm._v(" Edit")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "button",
+                                  { staticClass: "btn btn-danger bg-danger" },
+                                  [_vm._v("Delete")]
+                                )
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("tr", [
+                              _c("td", [_vm._v("183")]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v("John Doe")]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _c("span", { staticClass: "tag tag-success" }, [
+                                  _vm._v("President")
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v("300CHF")]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v("11-7-2014")]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _c(
+                                  "button",
+                                  { staticClass: "btn btn-success bg-success" },
+                                  [_vm._v(" View")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "button",
+                                  { staticClass: "btn btn-info bg-info" },
+                                  [_vm._v(" Edit")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "button",
+                                  { staticClass: "btn btn-danger bg-danger" },
+                                  [_vm._v("Delete")]
+                                )
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("tr", [
+                              _c("td", [_vm._v("183")]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v("John Doe")]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _c("span", { staticClass: "tag tag-success" }, [
+                                  _vm._v("President")
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v("300CHF")]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v("11-7-2014")]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _c(
+                                  "button",
+                                  { staticClass: "btn btn-success bg-success" },
+                                  [_vm._v(" View")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "button",
+                                  { staticClass: "btn btn-info bg-info" },
+                                  [_vm._v(" Edit")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "button",
+                                  { staticClass: "btn btn-danger bg-danger" },
+                                  [_vm._v("Delete")]
+                                )
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("tr", [
+                              _c("td", [_vm._v("183")]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v("John Doe")]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _c("span", { staticClass: "tag tag-success" }, [
+                                  _vm._v("President")
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v("300CHF")]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v("11-7-2014")]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _c(
+                                  "button",
+                                  { staticClass: "btn btn-success bg-success" },
+                                  [_vm._v(" View")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "button",
+                                  { staticClass: "btn btn-info bg-info" },
+                                  [_vm._v(" Edit")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "button",
+                                  { staticClass: "btn btn-danger bg-danger" },
+                                  [_vm._v("Delete")]
+                                )
+                              ])
+                            ])
+                          ])
+                        ])
+                      ]
+                    )
+                  ])
+                ])
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
   }
 ]
 render._withStripped = true
@@ -65663,14 +68083,515 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _c("h1", [_vm._v("\n        Memberships\n    ")]),
+    _vm._v(" "),
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "row pt-4" }, [
+      _vm._m(1),
+      _vm._v(" "),
+      _vm._m(2),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "col-md-4" },
+        [
+          _c("chartjs-doughnut", {
+            attrs: {
+              labels: _vm.labels,
+              datasets: _vm.datasets,
+              option: _vm.option
+            }
+          })
+        ],
+        1
+      )
+    ]),
+    _vm._v(" "),
+    _vm._m(3)
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [_c("h1", [_vm._v("\n        Memberships\n    ")])])
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-8" }, [
+        _c("button", { staticClass: "btn btn-primary bg-primary" }, [
+          _vm._v("New Member")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-4  text-right" }, [
+        _c("button", { staticClass: "btn btn-warning bg-warning " }, [
+          _vm._v("Create all membership invoices")
+        ]),
+        _vm._v(" "),
+        _c("button", { staticClass: "btn btn-warning bg-warning " }, [
+          _vm._v("Settings")
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-2" }, [
+      _c("div", { staticClass: "card bg-primary" }, [
+        _c("div", { staticClass: "card-header" }, [
+          _c("h3", { staticClass: "card-title" }, [_vm._v("Team List")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-tools" })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-body p-0" }, [
+          _c("table", { staticClass: "table" }, [
+            _c("thead"),
+            _vm._v(" "),
+            _c("tbody", [
+              _c("tr", [_c("td", [_vm._v("Active")])]),
+              _vm._v(" "),
+              _c("tr", [_c("td", [_vm._v("Passive")])]),
+              _vm._v(" "),
+              _c("tr", [_c("td", [_vm._v("Women")])]),
+              _vm._v(" "),
+              _c("tr", [_c("td", [_vm._v("Senioren/Veteranen")])]),
+              _vm._v(" "),
+              _c("tr", [_c("td", [_vm._v("Juniore")])])
+            ])
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-6" }, [
+      _c("div", { staticClass: "card card-primary card-outline" }, [
+        _c("div", { staticClass: "card-header " }, [
+          _c("h3", { staticClass: "card-title " }, [
+            _vm._v("History of finished payments")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-tools" })
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "card-body table-responsive p-0",
+            staticStyle: { height: "235px" }
+          },
+          [
+            _c("table", { staticClass: "table table-head-fixed" }, [
+              _c("thead", [
+                _c("tr", [
+                  _c("th", [_vm._v("Name")]),
+                  _vm._v(" "),
+                  _c("th", [_vm._v("Role")]),
+                  _vm._v(" "),
+                  _c("th", [_vm._v("Amount")]),
+                  _vm._v(" "),
+                  _c("th", [_vm._v("Type")]),
+                  _vm._v(" "),
+                  _c("th", [_vm._v("Date")])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("tbody", [
+                _c("tr", [
+                  _c("td", [_vm._v("John Doe")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("Player")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("300CHF")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("Cash")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("11-7-2014")])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td", [_vm._v("John Doe")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("Player")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("300CHF")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("Cash")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("11-7-2014")])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td", [_vm._v("John Doe")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("Player")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("300CHF")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("Cash")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("11-7-2014")])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td", [_vm._v("John Doe")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("Player")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("300CHF")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("Cash")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("11-7-2014")])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td", [_vm._v("John Doe")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("Player")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("300CHF")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("Cash")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("11-7-2014")])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td", [_vm._v("John Doe")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("Player")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("300CHF")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("Cash")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("11-7-2014")])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td", [_vm._v("John Doe")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("Player")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("300CHF")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("Cash")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("11-7-2014")])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td", [_vm._v("John Doe")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("Player")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("300CHF")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("Cash")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("11-7-2014")])
+                ])
+              ])
+            ])
+          ]
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-12 text-center" }, [
+        _c("div", { staticClass: "card card-primary card-outline" }, [
+          _c("div", { staticClass: "card-header " }, [
+            _c("h3", { staticClass: "card-title " }, [
+              _vm._v("Last new members with open membership fees")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-tools" })
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "card-body table-responsive p-0",
+              staticStyle: { height: "435px" }
+            },
+            [
+              _c("table", { staticClass: "table table-head-fixed" }, [
+                _c("thead", [
+                  _c("tr", [
+                    _c("th", [_vm._v("Name")]),
+                    _vm._v(" "),
+                    _c("th", [_vm._v("Team")]),
+                    _vm._v(" "),
+                    _c("th", [_vm._v("Amount")]),
+                    _vm._v(" "),
+                    _c("th", [_vm._v("Type")]),
+                    _vm._v(" "),
+                    _c("th", [_vm._v("Date")]),
+                    _vm._v(" "),
+                    _c("th", [_vm._v("Modify")])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("tbody", [
+                  _c("tr", [
+                    _c("td", [_vm._v("John Doe")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("Team")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("300CHF")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("Cash")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("11-7-2014")]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "button",
+                        { staticClass: "btn btn-success bg-success" },
+                        [_vm._v(" View")]
+                      ),
+                      _vm._v(" "),
+                      _c("button", { staticClass: "btn btn-info bg-info" }, [
+                        _vm._v(" Edit")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        { staticClass: "btn btn-danger bg-danger" },
+                        [_vm._v("Delete")]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [_vm._v("John Doe")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("Player")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("300CHF")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("Cash")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("11-7-2014")]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "button",
+                        { staticClass: "btn btn-success bg-success" },
+                        [_vm._v(" View")]
+                      ),
+                      _vm._v(" "),
+                      _c("button", { staticClass: "btn btn-info bg-info" }, [
+                        _vm._v(" Edit")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        { staticClass: "btn btn-danger bg-danger" },
+                        [_vm._v("Delete")]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [_vm._v("John Doe")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("Player")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("300CHF")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("Cash")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("11-7-2014")]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "button",
+                        { staticClass: "btn btn-success bg-success" },
+                        [_vm._v(" View")]
+                      ),
+                      _vm._v(" "),
+                      _c("button", { staticClass: "btn btn-info bg-info" }, [
+                        _vm._v(" Edit")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        { staticClass: "btn btn-danger bg-danger" },
+                        [_vm._v("Delete")]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [_vm._v("John Doe")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("Player")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("300CHF")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("Cash")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("11-7-2014")]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "button",
+                        { staticClass: "btn btn-success bg-success" },
+                        [_vm._v(" View")]
+                      ),
+                      _vm._v(" "),
+                      _c("button", { staticClass: "btn btn-info bg-info" }, [
+                        _vm._v(" Edit")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        { staticClass: "btn btn-danger bg-danger" },
+                        [_vm._v("Delete")]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [_vm._v("John Doe")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("Player")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("300CHF")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("Cash")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("11-7-2014")]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "button",
+                        { staticClass: "btn btn-success bg-success" },
+                        [_vm._v(" View")]
+                      ),
+                      _vm._v(" "),
+                      _c("button", { staticClass: "btn btn-info bg-info" }, [
+                        _vm._v(" Edit")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        { staticClass: "btn btn-danger bg-danger" },
+                        [_vm._v("Delete")]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [_vm._v("John Doe")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("Player")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("300CHF")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("Cash")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("11-7-2014")]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "button",
+                        { staticClass: "btn btn-success bg-success" },
+                        [_vm._v(" View")]
+                      ),
+                      _vm._v(" "),
+                      _c("button", { staticClass: "btn btn-info bg-info" }, [
+                        _vm._v(" Edit")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        { staticClass: "btn btn-danger bg-danger" },
+                        [_vm._v("Delete")]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [_vm._v("John Doe")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("Player")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("300CHF")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("Cash")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("11-7-2014")]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "button",
+                        { staticClass: "btn btn-success bg-success" },
+                        [_vm._v(" View")]
+                      ),
+                      _vm._v(" "),
+                      _c("button", { staticClass: "btn btn-info bg-info" }, [
+                        _vm._v(" Edit")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        { staticClass: "btn btn-danger bg-danger" },
+                        [_vm._v("Delete")]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [_vm._v("John Doe")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("Player")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("300CHF")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("Cash")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("11-7-2014")]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "button",
+                        { staticClass: "btn btn-success bg-success" },
+                        [_vm._v(" View")]
+                      ),
+                      _vm._v(" "),
+                      _c("button", { staticClass: "btn btn-info bg-info" }, [
+                        _vm._v(" Edit")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        { staticClass: "btn btn-danger bg-danger" },
+                        [_vm._v("Delete")]
+                      )
+                    ])
+                  ])
+                ])
+              ])
+            ]
+          )
+        ])
+      ])
+    ])
   }
 ]
 render._withStripped = true
@@ -66327,12 +69248,76 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _vm._m(1)
+          _c(
+            "div",
+            {
+              staticClass: "card-body table-responsive p-0",
+              staticStyle: { height: "450px" }
+            },
+            [
+              _c("table", { staticClass: "table table-head-fixed" }, [
+                _vm._m(1),
+                _vm._v(" "),
+                _c("tbody", [
+                  _c("tr", [
+                    _c("td", [_vm._v("183")]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(
+                        "  John Doe \n                                    "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("11-7-2014")]),
+                    _vm._v(" "),
+                    _vm._m(2),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("300CHF")]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-success bg-success",
+                          on: { click: _vm.sponsorModal }
+                        },
+                        [_vm._v(" View")]
+                      ),
+                      _vm._v(" "),
+                      _c("button", { staticClass: "btn btn-info bg-info" }, [
+                        _vm._v(" Edit")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        { staticClass: "btn btn-danger bg-danger" },
+                        [_vm._v("Delete")]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(3),
+                  _vm._v(" "),
+                  _vm._m(4),
+                  _vm._v(" "),
+                  _vm._m(5),
+                  _vm._v(" "),
+                  _vm._m(6),
+                  _vm._v(" "),
+                  _vm._m(7),
+                  _vm._v(" "),
+                  _vm._m(8),
+                  _vm._v(" "),
+                  _vm._m(9)
+                ])
+              ])
+            ]
+          )
         ])
       ])
     ]),
     _vm._v(" "),
-    _vm._m(2)
+    _vm._m(10)
   ])
 }
 var staticRenderFns = [
@@ -66385,258 +69370,253 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "card-body table-responsive p-0",
-        staticStyle: { height: "450px" }
-      },
-      [
-        _c("table", { staticClass: "table table-head-fixed" }, [
-          _c("thead", [
-            _c("tr", [
-              _c("th", [_vm._v("ID")]),
-              _vm._v(" "),
-              _c("th", [_vm._v("Name")]),
-              _vm._v(" "),
-              _c("th", [_vm._v("Type")]),
-              _vm._v(" "),
-              _c("th", [_vm._v("Due to (duration )")]),
-              _vm._v(" "),
-              _c("th", [_vm._v("Amount")]),
-              _vm._v(" "),
-              _c("th", [_vm._v("Modify")])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tbody", [
-            _c("tr", [
-              _c("td", [_vm._v("183")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("John Doe")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("11-7-2014")]),
-              _vm._v(" "),
-              _c("td", [
-                _c("span", { staticClass: "tag tag-success" }, [
-                  _vm._v("Approved")
-                ])
-              ]),
-              _vm._v(" "),
-              _c("td", [_vm._v("300CHF")]),
-              _vm._v(" "),
-              _c("td", [
-                _c("a", { attrs: { href: "#" } }, [
-                  _c("i", { staticClass: "fas fa-edit" })
-                ]),
-                _vm._v(
-                  "\n                                    /\n                                    "
-                ),
-                _c("a", { attrs: { href: "#" } }, [
-                  _c("i", { staticClass: "fas fa-trash red" })
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("tr", [
-              _c("td", [_vm._v("219")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("Alexander Pierce")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("11-7-2014")]),
-              _vm._v(" "),
-              _c("td", [
-                _c("span", { staticClass: "tag tag-warning" }, [
-                  _vm._v("Pending")
-                ])
-              ]),
-              _vm._v(" "),
-              _c("td", [_vm._v("300CHF")]),
-              _vm._v(" "),
-              _c("td", [
-                _c("a", { attrs: { href: "#" } }, [
-                  _c("i", { staticClass: "fas fa-edit" })
-                ]),
-                _vm._v(
-                  "\n                                    /\n                                    "
-                ),
-                _c("a", { attrs: { href: "#" } }, [
-                  _c("i", { staticClass: "fas fa-trash red" })
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("tr", [
-              _c("td", [_vm._v("657")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("Bob Doe")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("11-7-2014")]),
-              _vm._v(" "),
-              _c("td", [
-                _c("span", { staticClass: "tag tag-primary" }, [
-                  _vm._v("Approved")
-                ])
-              ]),
-              _vm._v(" "),
-              _c("td", [_vm._v("300CHF")]),
-              _vm._v(" "),
-              _c("td", [
-                _c("a", { attrs: { href: "#" } }, [
-                  _c("i", { staticClass: "fas fa-edit" })
-                ]),
-                _vm._v(
-                  "\n                                    /\n                                    "
-                ),
-                _c("a", { attrs: { href: "#" } }, [
-                  _c("i", { staticClass: "fas fa-trash red" })
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("tr", [
-              _c("td", [_vm._v("175")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("Mike Doe")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("11-7-2014")]),
-              _vm._v(" "),
-              _c("td", [
-                _c("span", { staticClass: "tag tag-danger" }, [
-                  _vm._v("Denied")
-                ])
-              ]),
-              _vm._v(" "),
-              _c("td", [_vm._v("300CHF")]),
-              _vm._v(" "),
-              _c("td", [
-                _c("a", { attrs: { href: "#" } }, [
-                  _c("i", { staticClass: "fas fa-edit" })
-                ]),
-                _vm._v(
-                  "\n                                    /\n                                    "
-                ),
-                _c("a", { attrs: { href: "#" } }, [
-                  _c("i", { staticClass: "fas fa-trash red" })
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("tr", [
-              _c("td", [_vm._v("134")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("Jim Doe")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("11-7-2014")]),
-              _vm._v(" "),
-              _c("td", [
-                _c("span", { staticClass: "tag tag-success" }, [
-                  _vm._v("Approved")
-                ])
-              ]),
-              _vm._v(" "),
-              _c("td", [_vm._v("300CHF")]),
-              _vm._v(" "),
-              _c("td", [
-                _c("a", { attrs: { href: "#" } }, [
-                  _c("i", { staticClass: "fas fa-edit" })
-                ]),
-                _vm._v(
-                  "\n                                    /\n                                    "
-                ),
-                _c("a", { attrs: { href: "#" } }, [
-                  _c("i", { staticClass: "fas fa-trash red" })
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("tr", [
-              _c("td", [_vm._v("494")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("Victoria Doe")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("11-7-2014")]),
-              _vm._v(" "),
-              _c("td", [
-                _c("span", { staticClass: "tag tag-warning" }, [
-                  _vm._v("Pending")
-                ])
-              ]),
-              _vm._v(" "),
-              _c("td", [_vm._v("300CHF")]),
-              _vm._v(" "),
-              _c("td", [
-                _c("a", { attrs: { href: "#" } }, [
-                  _c("i", { staticClass: "fas fa-edit" })
-                ]),
-                _vm._v(
-                  "\n                                    /\n                                    "
-                ),
-                _c("a", { attrs: { href: "#" } }, [
-                  _c("i", { staticClass: "fas fa-trash red" })
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("tr", [
-              _c("td", [_vm._v("832")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("Michael Doe")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("11-7-2014")]),
-              _vm._v(" "),
-              _c("td", [
-                _c("span", { staticClass: "tag tag-primary" }, [
-                  _vm._v("Approved")
-                ])
-              ]),
-              _vm._v(" "),
-              _c("td", [_vm._v("300CHF")]),
-              _vm._v(" "),
-              _c("td", [
-                _c("a", { attrs: { href: "#" } }, [
-                  _c("i", { staticClass: "fas fa-edit" })
-                ]),
-                _vm._v(
-                  "\n                                    /\n                                    "
-                ),
-                _c("a", { attrs: { href: "#" } }, [
-                  _c("i", { staticClass: "fas fa-trash red" })
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("tr", [
-              _c("td", [_vm._v("982")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("Rocky Doe")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("11-7-2014")]),
-              _vm._v(" "),
-              _c("td", [
-                _c("span", { staticClass: "tag tag-danger" }, [
-                  _vm._v("Denied")
-                ])
-              ]),
-              _vm._v(" "),
-              _c("td", [_vm._v("300CHF")]),
-              _vm._v(" "),
-              _c("td", [
-                _c("a", { attrs: { href: "#" } }, [
-                  _c("i", { staticClass: "fas fa-edit" })
-                ]),
-                _vm._v(
-                  "\n                                    /\n                                    "
-                ),
-                _c("a", { attrs: { href: "#" } }, [
-                  _c("i", { staticClass: "fas fa-trash red" })
-                ])
-              ])
-            ])
-          ])
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("ID")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Name")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Type")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Due to (duration )")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Amount")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Modify")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("span", { staticClass: "tag tag-success" }, [_vm._v("Approved")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("td", [_vm._v("219")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("Alexander Pierce")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("11-7-2014")]),
+      _vm._v(" "),
+      _c("td", [
+        _c("span", { staticClass: "tag tag-warning" }, [_vm._v("Pending")])
+      ]),
+      _vm._v(" "),
+      _c("td", [_vm._v("300CHF")]),
+      _vm._v(" "),
+      _c("td", [
+        _c("button", { staticClass: "btn btn-success bg-success" }, [
+          _vm._v(" View")
+        ]),
+        _vm._v(" "),
+        _c("button", { staticClass: "btn btn-info bg-info" }, [
+          _vm._v(" Edit")
+        ]),
+        _vm._v(" "),
+        _c("button", { staticClass: "btn btn-danger bg-danger" }, [
+          _vm._v("Delete")
         ])
-      ]
-    )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("td", [_vm._v("657")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("Bob Doe")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("11-7-2014")]),
+      _vm._v(" "),
+      _c("td", [
+        _c("span", { staticClass: "tag tag-primary" }, [_vm._v("Approved")])
+      ]),
+      _vm._v(" "),
+      _c("td", [_vm._v("300CHF")]),
+      _vm._v(" "),
+      _c("td", [
+        _c("button", { staticClass: "btn btn-success bg-success" }, [
+          _vm._v(" View")
+        ]),
+        _vm._v(" "),
+        _c("button", { staticClass: "btn btn-info bg-info" }, [
+          _vm._v(" Edit")
+        ]),
+        _vm._v(" "),
+        _c("button", { staticClass: "btn btn-danger bg-danger" }, [
+          _vm._v("Delete")
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("td", [_vm._v("175")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("Mike Doe")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("11-7-2014")]),
+      _vm._v(" "),
+      _c("td", [
+        _c("span", { staticClass: "tag tag-danger" }, [_vm._v("Denied")])
+      ]),
+      _vm._v(" "),
+      _c("td", [_vm._v("300CHF")]),
+      _vm._v(" "),
+      _c("td", [
+        _c("button", { staticClass: "btn btn-success bg-success" }, [
+          _vm._v(" View")
+        ]),
+        _vm._v(" "),
+        _c("button", { staticClass: "btn btn-info bg-info" }, [
+          _vm._v(" Edit")
+        ]),
+        _vm._v(" "),
+        _c("button", { staticClass: "btn btn-danger bg-danger" }, [
+          _vm._v("Delete")
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("td", [_vm._v("134")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("Jim Doe")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("11-7-2014")]),
+      _vm._v(" "),
+      _c("td", [
+        _c("span", { staticClass: "tag tag-success" }, [_vm._v("Approved")])
+      ]),
+      _vm._v(" "),
+      _c("td", [_vm._v("300CHF")]),
+      _vm._v(" "),
+      _c("td", [
+        _c("button", { staticClass: "btn btn-success bg-success" }, [
+          _vm._v(" View")
+        ]),
+        _vm._v(" "),
+        _c("button", { staticClass: "btn btn-info bg-info" }, [
+          _vm._v(" Edit")
+        ]),
+        _vm._v(" "),
+        _c("button", { staticClass: "btn btn-danger bg-danger" }, [
+          _vm._v("Delete")
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("td", [_vm._v("494")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("Victoria Doe")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("11-7-2014")]),
+      _vm._v(" "),
+      _c("td", [
+        _c("span", { staticClass: "tag tag-warning" }, [_vm._v("Pending")])
+      ]),
+      _vm._v(" "),
+      _c("td", [_vm._v("300CHF")]),
+      _vm._v(" "),
+      _c("td", [
+        _c("button", { staticClass: "btn btn-success bg-success" }, [
+          _vm._v(" View")
+        ]),
+        _vm._v(" "),
+        _c("button", { staticClass: "btn btn-info bg-info" }, [
+          _vm._v(" Edit")
+        ]),
+        _vm._v(" "),
+        _c("button", { staticClass: "btn btn-danger bg-danger" }, [
+          _vm._v("Delete")
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("td", [_vm._v("832")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("Michael Doe")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("11-7-2014")]),
+      _vm._v(" "),
+      _c("td", [
+        _c("span", { staticClass: "tag tag-primary" }, [_vm._v("Approved")])
+      ]),
+      _vm._v(" "),
+      _c("td", [_vm._v("300CHF")]),
+      _vm._v(" "),
+      _c("td", [
+        _c("button", { staticClass: "btn btn-success bg-success" }, [
+          _vm._v(" View")
+        ]),
+        _vm._v(" "),
+        _c("button", { staticClass: "btn btn-info bg-info" }, [
+          _vm._v(" Edit")
+        ]),
+        _vm._v(" "),
+        _c("button", { staticClass: "btn btn-danger bg-danger" }, [
+          _vm._v("Delete")
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("td", [_vm._v("982")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("Rocky Doe")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("11-7-2014")]),
+      _vm._v(" "),
+      _c("td", [
+        _c("span", { staticClass: "tag tag-danger" }, [_vm._v("Denied")])
+      ]),
+      _vm._v(" "),
+      _c("td", [_vm._v("300CHF")]),
+      _vm._v(" "),
+      _c("td", [
+        _c("button", { staticClass: "btn btn-success bg-success" }, [
+          _vm._v(" View")
+        ]),
+        _vm._v(" "),
+        _c("button", { staticClass: "btn btn-info bg-info" }, [
+          _vm._v(" Edit")
+        ]),
+        _vm._v(" "),
+        _c("button", { staticClass: "btn btn-danger bg-danger" }, [
+          _vm._v("Delete")
+        ])
+      ])
+    ])
   },
   function() {
     var _vm = this
@@ -66786,16 +69766,107 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _c("h1", [_vm._v("\n        Statistics\n    ")]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c(
+        "div",
+        { staticClass: "col-6" },
+        [
+          _c("chartjs-bar", {
+            attrs: {
+              labels: _vm.labels,
+              datasets: _vm.datasets,
+              option: _vm.option
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "col-6" },
+        [
+          _c("chartjs-doughnut", {
+            attrs: {
+              labels: _vm.labels,
+              datasets: _vm.datasets,
+              option: _vm.option
+            }
+          })
+        ],
+        1
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row pt-5" }, [
+      _c(
+        "div",
+        { staticClass: "col-6" },
+        [
+          _c("chartjs-line", {
+            attrs: {
+              labels: _vm.labels,
+              datasets: _vm.datasets,
+              option: _vm.option
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "col-6" },
+        [
+          _c("chartjs-pie", {
+            attrs: {
+              labels: _vm.labels,
+              datasets: _vm.datasets,
+              option: _vm.option
+            }
+          })
+        ],
+        1
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row pt-5" }, [
+      _c(
+        "div",
+        { staticClass: "col-6" },
+        [
+          _c("chartjs-bar", {
+            attrs: {
+              labels: _vm.labels,
+              datasets: _vm.datasets,
+              option: _vm.option
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "col-6" },
+        [
+          _c("chartjs-bar", {
+            attrs: {
+              labels: _vm.labels,
+              datasets: _vm.datasets,
+              option: _vm.option
+            }
+          })
+        ],
+        1
+      )
+    ])
+  ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [_c("h1", [_vm._v("\n        Statistics\n    ")])])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
