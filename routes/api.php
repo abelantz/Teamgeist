@@ -48,5 +48,7 @@ Route::group(['namespace' => 'API'], function () {
     Route::apiResource('sponsor', 'SponsorController'); //Sponsor api routes
     Route::apiResource('categories', 'CategoryController');
     Route::apiResource('subcategories', 'SubcategoryController');
+    Route::apiResource('trainings', 'TrainingController');
+    Route::apiResource('memberships', 'MembershipController');
     
 });
