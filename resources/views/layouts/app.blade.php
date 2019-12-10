@@ -143,6 +143,22 @@
                                 </p>
                             </router-link>
                         </li>
+                        <li class="nav-item">
+                            <router-link to="/events" class="nav-link">
+                                <i class="nav-icon fas fa-inbox nav-icon green"></i>
+                                <p>
+                                    Events
+                                </p>
+                            </router-link>
+                        </li>
+                        <li class="nav-item">
+                            <router-link to="/meetings" class="nav-link">
+                                <i class="nav-icon fas fa-inbox nav-icon green"></i>
+                                <p>
+                                    Meetings
+                                </p>
+                            </router-link>
+                        </li>
 
                         <li class="nav-item has-treeview menu-open">
                             <a href="#" class="nav-link">

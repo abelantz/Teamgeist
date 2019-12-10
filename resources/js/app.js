@@ -45,6 +45,8 @@ let routes = [
     { path: '/category', component: require('./vue/components/Category.vue').default },
     { path: '/team/:teamId', component: require('./vue/components/Team.vue').default,props: true},
     { path: '/members', component: require('./vue/components/TeamMembers.vue').default },
+    { path: '/events', component: require('./vue/components/Events.vue').default },
+    { path: '/meetings', component: require('./vue/components/Meetings.vue').default },
 ]
 
 const router = new VueRouter({
