@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Models\TeamMember;
+use App\Models\Training;
 use Illuminate\Http\Request;
 
-class TeamMemberController extends Controller
+class TrainingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class TeamMemberController extends Controller
      */
     public function index()
     {
-        $teamMembers = TeamMember::all();
-        return response()->json(['data' => $teamMembers], 200);
+        $trainings = Training::all();
+        return response()->json(['data' => $trainings], 200);
     }
 
     /**
@@ -27,44 +27,43 @@ class TeamMemberController extends Controller
      */
     public function store(Request $request)
     {
-        
-        $teamMember = TeamMember::create($request->all());
-        return response()->json(['data' => $teamMember], 201);
+        $training = Training::create($request->all());
+        return response()->json(['data' => $training], 201);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\TeamMember  $teamMember
+     * @param  \App\Models\Training  $training
      * @return \Illuminate\Http\Response
      */
-    public function show(TeamMember $teamMember)
+    public function show(Training $training)
     {
-        return response()->json(['data' => $teamMember], 200);
+        return response()->json(['data' => $training], 200);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\TeamMember  $teamMember
+     * @param  \App\Models\Training  $training
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TeamMember $teamMember)
+    public function update(Request $request, Training $training)
     {
-        $teamMember->update($request->all());
-        return response()->json(['data' => $teamMember], 200);
+        $training->update($request->all());
+        return response()->json(['data' => $training], 200);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\TeamMember  $teamMember
+     * @param  \App\Models\Training  $training
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TeamMember $teamMember)
+    public function destroy(Training $training)
     {
-        $teamMember->delete();
-        return response()->json(['data' => $teamMember], 204);
+        $training->delete();
+        return response()->json(['data' => $training], 204);
     }
 }
