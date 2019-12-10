@@ -4752,6 +4752,133 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log('Component mounted.');
@@ -65261,7 +65388,277 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [_c("h1", [_vm._v("\n        Communicationss\n    ")])])
+    return _c("div", [
+      _c("h1", [_vm._v("\n        Communicationss\n    ")]),
+      _vm._v(" "),
+      _c("section", { staticClass: "content" }, [
+        _c("div", { staticClass: "container-fluid" }, [
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-md-3" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "btn btn-danger bg-danger btn-block mb-3",
+                  attrs: { href: "#" }
+                },
+                [_vm._v("Compose")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "card" }, [
+                _c("div", { staticClass: "card-header" }, [
+                  _c("h3", { staticClass: "card-title" }, [_vm._v("Folders")]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "card-tools" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-tool",
+                        attrs: {
+                          type: "button",
+                          "data-card-widget": "collapse"
+                        }
+                      },
+                      [_c("i", { staticClass: "fas fa-minus" })]
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-body p-0" }, [
+                  _c("ul", { staticClass: "nav nav-pills flex-column" }, [
+                    _c("li", { staticClass: "nav-item active" }, [
+                      _c(
+                        "a",
+                        { staticClass: "nav-link", attrs: { href: "#" } },
+                        [
+                          _c("i", { staticClass: "fas fa-inbox" }),
+                          _vm._v(
+                            " Inbox\n                                        "
+                          ),
+                          _c(
+                            "span",
+                            { staticClass: "badge bg-primary float-right" },
+                            [_vm._v("12")]
+                          )
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("li", { staticClass: "nav-item" }, [
+                      _c(
+                        "a",
+                        { staticClass: "nav-link", attrs: { href: "#" } },
+                        [
+                          _c("i", { staticClass: "far fa-envelope" }),
+                          _vm._v(" Sent\n                                    ")
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("li", { staticClass: "nav-item" }, [
+                      _c(
+                        "a",
+                        { staticClass: "nav-link", attrs: { href: "#" } },
+                        [
+                          _c("i", { staticClass: "far fa-file-alt" }),
+                          _vm._v(
+                            " Drafts\n                                    "
+                          )
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("li", { staticClass: "nav-item" }, [
+                      _c(
+                        "a",
+                        { staticClass: "nav-link", attrs: { href: "#" } },
+                        [
+                          _c("i", { staticClass: "fas fa-filter" }),
+                          _vm._v(
+                            " Junk\n                                        "
+                          ),
+                          _c(
+                            "span",
+                            { staticClass: "badge bg-warning float-right" },
+                            [_vm._v("65")]
+                          )
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("li", { staticClass: "nav-item" }, [
+                      _c(
+                        "a",
+                        { staticClass: "nav-link", attrs: { href: "#" } },
+                        [
+                          _c("i", { staticClass: "far fa-trash-alt" }),
+                          _vm._v(" Trash\n                                    ")
+                        ]
+                      )
+                    ])
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card" }, [
+                _c("div", { staticClass: "card-header" }, [
+                  _c("h3", { staticClass: "card-title" }, [_vm._v("Labels")]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "card-tools" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-tool",
+                        attrs: {
+                          type: "button",
+                          "data-card-widget": "collapse"
+                        }
+                      },
+                      [_c("i", { staticClass: "fas fa-minus" })]
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-body p-0" }, [
+                  _c("ul", { staticClass: "nav nav-pills flex-column" }, [
+                    _c("li", { staticClass: "nav-item" }, [
+                      _c(
+                        "a",
+                        { staticClass: "nav-link", attrs: { href: "#" } },
+                        [
+                          _c("i", { staticClass: "far fa-circle text-danger" }),
+                          _vm._v(
+                            "\n                                        Important"
+                          )
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("li", { staticClass: "nav-item" }, [
+                      _c(
+                        "a",
+                        { staticClass: "nav-link", attrs: { href: "#" } },
+                        [
+                          _c("i", {
+                            staticClass: "far fa-circle text-warning"
+                          }),
+                          _vm._v(
+                            "\n                                        Promotions"
+                          )
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("li", { staticClass: "nav-item" }, [
+                      _c(
+                        "a",
+                        { staticClass: "nav-link", attrs: { href: "#" } },
+                        [
+                          _c("i", {
+                            staticClass: "far fa-circle text-primary"
+                          }),
+                          _vm._v(
+                            "\n                                        Social"
+                          )
+                        ]
+                      )
+                    ])
+                  ])
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-9" }, [
+              _c("div", { staticClass: "card card-primary card-outline" }, [
+                _c("div", { staticClass: "card-header" }, [
+                  _c("h3", { staticClass: "card-title" }, [
+                    _vm._v("Compose New Message")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-body" }, [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("input", {
+                      staticClass: "form-control",
+                      attrs: { placeholder: "To:" }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("input", {
+                      staticClass: "form-control",
+                      attrs: { placeholder: "Subject:" }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("textarea", {
+                      staticClass: "form-control",
+                      attrs: { id: "exampleFormControlTextarea1", rows: "10" }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("div", { staticClass: "btn btn-default btn-file" }, [
+                      _c("i", { staticClass: "fas fa-paperclip" }),
+                      _vm._v(
+                        " Attachment\n                                    "
+                      ),
+                      _c("input", {
+                        attrs: { type: "file", name: "attachment" }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "help-block" }, [
+                      _vm._v("Max. 32MB")
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-footer" }, [
+                  _c("div", { staticClass: "float-right" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-default",
+                        attrs: { type: "button" }
+                      },
+                      [
+                        _c("i", { staticClass: "fas fa-pencil-alt" }),
+                        _vm._v("\n                                    Draft")
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary",
+                        attrs: { type: "submit" }
+                      },
+                      [
+                        _c("i", { staticClass: "far fa-envelope" }),
+                        _vm._v("\n                                    Send")
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-default",
+                      attrs: { type: "reset" }
+                    },
+                    [
+                      _c("i", { staticClass: "fas fa-times" }),
+                      _vm._v("\n                                Discard")
+                    ]
+                  )
+                ])
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
   }
 ]
 render._withStripped = true
