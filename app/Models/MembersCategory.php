@@ -13,7 +13,7 @@ class MembersCategory extends Model
      * @var array
      */
     protected $fillable = [
-        'title',
+        'title', 'amount'
     ];
 
 }

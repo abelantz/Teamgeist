@@ -47,6 +47,8 @@ let routes = [
     { path: '/members', component: require('./vue/components/TeamMembers.vue').default },
     { path: '/events', component: require('./vue/components/Events.vue').default },
     { path: '/meetings', component: require('./vue/components/Meetings.vue').default },
+    { path: '/trainings', component: require('./vue/components/Trainings.vue').default },
+    { path: '/coaches', component: require('./vue/components/Coaches.vue').default },
 ]
 
 const router = new VueRouter({

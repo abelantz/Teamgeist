@@ -73,7 +73,7 @@
                             <div class="form-group">
                                 <select @change="onChange($event)" type="type" name="type" id="type" class="form-control">
                                     <option disabled selected value="">Select Category</option>
-                                    <option  v-for="category in categories" v-bind:key="category.id" v-bind:value="category.id">{{category.name}}</option>
+                                    <option  v-for="category in categories" v-bind:key="category.id" v-bind:value="category.id">{{category.title}}</option>
                                 </select>
                                
                             </div>
@@ -81,7 +81,7 @@
                                 <select v-model="formTeam.subcategory_id" @change="onChangeTeam($event)" type="type" name="type" id="type" class="form-control"
                                     :class="{ 'is-invalid': formTeam.errors.has('type') }">
                                     <option disabled selected value="">Select Subcategory</option>
-                                    <option v-for="subcategory in subFilter" v-bind:key="subcategory.id" v-bind:value="subcategory.id">{{subcategory.name}}</option>
+                                    <option v-for="subcategory in subFilter" v-bind:key="subcategory.id" v-bind:value="subcategory.id">{{subcategory.title}}</option>
                                 </select>
                                 <has-error :form="formTeam" field="title"></has-error>
                             </div>

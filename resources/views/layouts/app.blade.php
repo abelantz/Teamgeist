@@ -188,12 +188,20 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <router-link  to="/coaches" class="nav-link">
+                                <i class="nav-icon far fa-circle nav-icon green"></i>
+                                <p>
+                                    Coaches
+                                </p>
+                            </router-link >
+                        </li>
+                        <li class="nav-item">
+                            <router-link  to="/trainings" class="nav-link">
                                 <i class="nav-icon far fa-circle nav-icon green"></i>
                                 <p>
                                     Trainings
                                 </p>
-                            </a>
+                            </router-link >
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">

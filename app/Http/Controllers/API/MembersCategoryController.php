@@ -15,7 +15,7 @@ class MembersCategoryController extends Controller
      */
     public function index()
     {
-        $member_categories = MembersCategory::all();
+        $members_categories = MembersCategory::all();
         return response()->json(['data' => $members_categories], 200);
     }
 
