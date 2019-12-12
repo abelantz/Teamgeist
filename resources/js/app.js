@@ -49,6 +49,12 @@ let routes = [
     { path: '/meetings', component: require('./vue/components/Meetings.vue').default },
     { path: '/trainings', component: require('./vue/components/Trainings.vue').default },
     { path: '/coaches', component: require('./vue/components/Coaches.vue').default },
+    { path: '/coach', component: require('./vue/components/Coach.vue').default },
+    { path: '/matchdays', component: require('./vue/components/Matchdays.vue').default },
+    { path: '/players', component: require('./vue/components/Players.vue').default },
+    { path: '/player', component: require('./vue/components/Player.vue').default },
+    { path: '/tasks', component: require('./vue/components/Tasks.vue').default },
+
 ]
 
 const router = new VueRouter({

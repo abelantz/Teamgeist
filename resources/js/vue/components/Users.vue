@@ -32,9 +32,11 @@
                                     <td><span class="tag tag-success">Technical Leader</span></td>
                                     <td>{{user.created_at | regDate}}</td>
                                     <td>
-                                        <a href="#" @click="editModal(user)"> <i class="fas fa-edit"></i></a>
-                                        /
-                                        <a href="#" @click="deleteUser(user.id)"> <i class="fas fa-trash red"></i></a>
+                                        <div class="btn-group btn-group-sm">
+                                            <a href="#" @click="editModal(user)" class="btn btn-info bg-info"><i class="fas fa-edit"></i></a>
+                                            <a href="#" @click="deleteUser(user.id)" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                                        </div>
+                                        
                                     </td>
                                 </tr>
 

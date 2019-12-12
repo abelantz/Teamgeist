@@ -1,13 +1,13 @@
 <template>
     <div>
-        <h1>Trainings</h1>
+        <h1>Matchdays</h1>
         <div class="row">
             <div class="col-12 ">
                 <div class="card card-info card-outline ">
                     <div class="card-header">
-                        <h3 class="card-title">Upcoming Trainings</h3>
+                        <h3 class="card-title">Upcoming Matches</h3>
                         <div class="card-tools">
-                            <button class="btn btn-success bg-success" @click="trainingModal"> Add Training</button>
+                            <button class="btn btn-success bg-success" @click="trainingModal"> Add Match</button>
                         </div>
                     </div>
                     <!-- /.card-header -->
@@ -17,10 +17,11 @@
                                 <tr>
                                     <th>Team Name</th>
                                     <th>Date</th>
-                                    <th>Weekday</th>
+                                    <th>Oppenent</th>
                                     <th>Start Time</th>
                                     <th>End time</th>
                                     <th>Meeting time</th>
+                                    <th>Type</th>
                                     <th>Training field</th>
                                     <th>Wardrobe</th>
                                     <th>Coach / Contact </th>
@@ -35,6 +36,7 @@
                                     <td>14:00</td>
                                     <td>15:30</td>
                                     <td>13:45</td>
+                                    <td>Home</td>
                                     <td>B1</td>
                                     <td>2</td>
                                     <td>Guardiolaa</td>
@@ -53,6 +55,7 @@
                                     <td>14:00</td>
                                     <td>15:30</td>
                                     <td>13:45</td>
+                                    <td>Home</td>
                                     <td>B1</td>
                                     <td>2</td>
                                     <td>Guardiolaa</td>

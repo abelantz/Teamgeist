@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>Coaches</h1>
+        <h1>Players</h1>
 
 
         <div class="row mt-3">
@@ -32,9 +32,9 @@
             <div class="col-12">
                 <div class="card card-success card-outline">
                     <div class="card-header">
-                        <h3 class="card-title">Overview coaches</h3>
+                        <h3 class="card-title">Overview players</h3>
                         <div class="card-tools">
-                            <button class="btn btn-success bg-success" @click="coachModal"> Add Coach</button>
+                            <button class="btn btn-success bg-success" @click="coachModal"> Add Players</button>
                         </div>
                     </div>
                     <!-- /.card-header -->
@@ -54,7 +54,7 @@
                                 <tr>
                                     <td>183</td>
                                     <td>
-                                        <router-link to="/coach">John Doe</router-link>
+                                        <router-link to="/player">John Doe</router-link>
                                     </td>
                                     <td>Fc Barcelona</td>
                                     <td>2nd League</td>
@@ -68,7 +68,7 @@
                                 <tr>
                                     <td>183</td>
                                     <td>
-                                        <router-link to="/coach">John Doe</router-link>
+                                        <router-link to="/player">John Doe</router-link>
                                     </td>
                                     <td>Fc Barcelona</td>
                                     <td>2nd League</td>
@@ -82,7 +82,7 @@
                                 <tr>
                                     <td>183</td>
                                     <td>
-                                        <router-link to="/coach">John Doe</router-link>
+                                        <router-link to="/player">John Doe</router-link>
                                     </td>
                                     <td>Fc Barcelona</td>
                                     <td>2nd League</td>
@@ -102,12 +102,12 @@
             </div>
         </div>
         <!-- Modal -->
-        <div class="modal fade" id="addCoach" tabindex="-1" role="dialog" aria-labelledby="addCoach"
+        <div class="modal fade" id="addPlayer" tabindex="-1" role="dialog" aria-labelledby="addPlayer"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="addCoach">Add Coach</h5>
+                        <h5 class="modal-title" id="addPlayer">Add Player</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -148,7 +148,7 @@
         },
         methods: {
             coachModal(){
-                $('#addCoach').modal('show')
+                $('#addPlayer').modal('show')
             },
             getSubCategories(categoryId) {
                 let subCategories = this.subcategories.filter((subcategory) => {

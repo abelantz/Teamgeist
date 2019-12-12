@@ -204,20 +204,28 @@
                             </router-link >
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <router-link to="/matchdays" class="nav-link">
                                 <i class="nav-icon far fa-circle nav-icon green"></i>
                                 <p>
                                     Matchdays
                                 </p>
-                            </a>
+                            </router-link>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <router-link to="/players" class="nav-link">
+                                <i class="nav-icon far fa-circle nav-icon green"></i>
+                                <p>
+                                    Players
+                                </p>
+                            </router-link>
+                        </li>
+                        <li class="nav-item">
+                            <router-link to="/tasks" class="nav-link">
                                 <i class="nav-icon far fa-circle nav-icon green"></i>
                                 <p>
                                     Tasks
                                 </p>
-                            </a>
+                            </router-link>
                         </li>
                     </ul>
                 </nav>
