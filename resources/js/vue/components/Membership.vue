@@ -72,65 +72,23 @@
                                     <th>Amount</th>
                                     <th>Type</th>
                                     <th>Date</th>
+                                    <th>Modify</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>John Doe</td>
-                                    <td>Player</td>
-                                    <td>300CHF</td>
-                                    <td>Cash</td>
-                                    <td>11-7-2014</td>
-                                </tr>
-                                <tr>
-                                    <td>John Doe</td>
-                                    <td>Player</td>
-                                    <td>300CHF</td>
-                                    <td>Cash</td>
-                                    <td>11-7-2014</td>
-                                </tr>
-                                <tr>
-                                    <td>John Doe</td>
-                                    <td>Player</td>
-                                    <td>300CHF</td>
-                                    <td>Cash</td>
-                                    <td>11-7-2014</td>
-                                </tr>
-                                <tr>
-                                    <td>John Doe</td>
-                                    <td>Player</td>
-                                    <td>300CHF</td>
-                                    <td>Cash</td>
-                                    <td>11-7-2014</td>
-                                </tr>
-                                <tr>
-                                    <td>John Doe</td>
-                                    <td>Player</td>
-                                    <td>300CHF</td>
-                                    <td>Cash</td>
-                                    <td>11-7-2014</td>
-                                </tr>
-                                <tr>
-                                    <td>John Doe</td>
-                                    <td>Player</td>
-                                    <td>300CHF</td>
-                                    <td>Cash</td>
-                                    <td>11-7-2014</td>
-                                </tr>
-                                <tr>
-                                    <td>John Doe</td>
-                                    <td>Player</td>
-                                    <td>300CHF</td>
-                                    <td>Cash</td>
-                                    <td>11-7-2014</td>
-                                </tr>
-                                <tr>
-                                    <td>John Doe</td>
-                                    <td>Player</td>
-                                    <td>300CHF</td>
-                                    <td>Cash</td>
-                                    <td>11-7-2014</td>
-
+                                <tr v-for="members in memberships" v-bind:key="members.id">
+                                    <td>{{ members.name }}</td>
+                                    <td>CHF 1600</td>
+                                    <td>{{ members.type_id}}</td>
+                                    <td>{{ members.paid }}</td>
+                                    <td>{{ members.created_at | regDate }}</td>
+                                    <td>
+                                        <div class="btn-group btn-group-sm">
+                                            <a href="#" class="btn btn-success bg-success"><i class="fas fa-eye"></i></a>
+                                            <a href="#" class="btn btn-info bg-info"><i class="fas fa-edit"></i></a>
+                                            <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                                        </div>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -152,7 +110,7 @@
                         </div>
                     </div>
                     <!-- /.card-header -->
-                    <div class="card-body table-responsive p-0" style="height: 435px;">
+                    <div class="card-body table-responsive p-0" >
                         <table class="table table-head-fixed">
                             <thead>
                                 <tr>
@@ -161,6 +119,7 @@
                                     <th>Amount</th>
                                     <th>Type</th>
                                     <th>Date</th>
+                                    <th>Paid</th>
                                     <th>Modify</th>
                                 </tr>
                             </thead>
@@ -170,97 +129,15 @@
                                     <td>{{ members.team_id}}</td>
                                     <td>CHF 1600</td>
                                     <td>{{ members.type_id}}</td>
-                                    <td>{{ memers.created_at | regDate }}</td>
+                                    <td>{{ members.created_at | regDate }}</td>
+                                    <td>{{ members.paid }}</td>
                                     <td>
-                                        <button class="btn btn-success bg-success"> View</button>
-                                        <button class="btn btn-info bg-info"> Edit</button>
-                                        <button class="btn btn-danger bg-danger">Delete</button>
+                                        <div class="btn-group btn-group-sm">
+                                            <a href="#" class="btn btn-success bg-success"><i class="fas fa-eye"></i></a>
+                                            <a href="#" class="btn btn-info bg-info"><i class="fas fa-edit"></i></a>
+                                            <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                                        </div>
                                     </td>
-                                </tr>
-                                <tr>
-                                    <td>John Doe</td>
-                                    <td>Player</td>
-                                    <td>300CHF</td>
-                                    <td>Cash</td>
-                                    <td>11-7-2014</td>
-                                    <td>
-                                        <button class="btn btn-success bg-success"> View</button>
-                                        <button class="btn btn-info bg-info"> Edit</button>
-                                        <button class="btn btn-danger bg-danger">Delete</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>John Doe</td>
-                                    <td>Player</td>
-                                    <td>300CHF</td>
-                                    <td>Cash</td>
-                                    <td>11-7-2014</td>
-                                    <td>
-                                        <button class="btn btn-success bg-success"> View</button>
-                                        <button class="btn btn-info bg-info"> Edit</button>
-                                        <button class="btn btn-danger bg-danger">Delete</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>John Doe</td>
-                                    <td>Player</td>
-                                    <td>300CHF</td>
-                                    <td>Cash</td>
-                                    <td>11-7-2014</td>
-                                    <td>
-                                        <button class="btn btn-success bg-success"> View</button>
-                                        <button class="btn btn-info bg-info"> Edit</button>
-                                        <button class="btn btn-danger bg-danger">Delete</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>John Doe</td>
-                                    <td>Player</td>
-                                    <td>300CHF</td>
-                                    <td>Cash</td>
-                                    <td>11-7-2014</td>
-                                    <td>
-                                        <button class="btn btn-success bg-success"> View</button>
-                                        <button class="btn btn-info bg-info"> Edit</button>
-                                        <button class="btn btn-danger bg-danger">Delete</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>John Doe</td>
-                                    <td>Player</td>
-                                    <td>300CHF</td>
-                                    <td>Cash</td>
-                                    <td>11-7-2014</td>
-                                    <td>
-                                        <button class="btn btn-success bg-success"> View</button>
-                                        <button class="btn btn-info bg-info"> Edit</button>
-                                        <button class="btn btn-danger bg-danger">Delete</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>John Doe</td>
-                                    <td>Player</td>
-                                    <td>300CHF</td>
-                                    <td>Cash</td>
-                                    <td>11-7-2014</td>
-                                    <td>
-                                        <button class="btn btn-success bg-success"> View</button>
-                                        <button class="btn btn-info bg-info"> Edit</button>
-                                        <button class="btn btn-danger bg-danger">Delete</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>John Doe</td>
-                                    <td>Player</td>
-                                    <td>300CHF</td>
-                                    <td>Cash</td>
-                                    <td>11-7-2014</td>
-                                    <td>
-                                        <button class="btn btn-success bg-success"> View</button>
-                                        <button class="btn btn-info bg-info"> Edit</button>
-                                        <button class="btn btn-danger bg-danger">Delete</button>
-                                    </td>
-
                                 </tr>
                             </tbody>
                         </table>
@@ -437,7 +314,7 @@
                 this.formMembership.post('api/memberships')
                     .then(() => {
                         Fire.$emit('AfterCreate');
-                        $('#addType').modal('hide');
+                        $('#addMember').modal('hide');
                         toast.fire({
                             type: 'success',
                             title: 'Team created succesfully'
@@ -456,6 +333,7 @@
                 axios.get('api/memberships')
                     .then((response) => (this.memberships = response.data.data))
             },
+            
             loadTeams(){
                 axios.get('api/teams')
                     .then((response) => (this.teams = response.data.data))

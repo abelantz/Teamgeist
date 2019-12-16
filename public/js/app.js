@@ -7537,129 +7537,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -7728,7 +7605,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.$Progress.start();
       this.formMembership.post('api/memberships').then(function () {
         Fire.$emit('AfterCreate');
-        $('#addType').modal('hide');
+        $('#addMember').modal('hide');
         toast.fire({
           type: 'success',
           title: 'Team created succesfully'
@@ -8074,6 +7951,291 @@ __webpack_require__.r(__webpack_exports__);
     this.loadCategories();
     this.loadSubcategories();
   }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/vue/components/Refrees.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/vue/components/Refrees.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {};
+  },
+  methods: {
+    refreeModal: function refreeModal() {
+      $('#addRefree').modal('show');
+    }
+  },
+  created: function created() {}
 });
 
 /***/ }),
@@ -8627,9 +8789,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
 //
 //
 //
@@ -72264,7 +72423,46 @@ var render = function() {
     _c("div", { staticClass: "row pt-4" }, [
       _vm._m(1),
       _vm._v(" "),
-      _vm._m(2),
+      _c("div", { staticClass: "col-md-6" }, [
+        _c("div", { staticClass: "card card-primary card-outline" }, [
+          _vm._m(2),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "card-body table-responsive p-0",
+              staticStyle: { height: "235px" }
+            },
+            [
+              _c("table", { staticClass: "table table-head-fixed" }, [
+                _vm._m(3),
+                _vm._v(" "),
+                _c(
+                  "tbody",
+                  _vm._l(_vm.memberships, function(members) {
+                    return _c("tr", { key: members.id }, [
+                      _c("td", [_vm._v(_vm._s(members.name))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v("CHF 1600")]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(members.type_id))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(members.paid))]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _vm._v(_vm._s(_vm._f("regDate")(members.created_at)))
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(4, true)
+                    ])
+                  }),
+                  0
+                )
+              ])
+            ]
+          )
+        ])
+      ]),
       _vm._v(" "),
       _c(
         "div",
@@ -72285,60 +72483,37 @@ var render = function() {
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-12 text-center" }, [
         _c("div", { staticClass: "card card-primary card-outline" }, [
-          _vm._m(3),
+          _vm._m(5),
           _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass: "card-body table-responsive p-0",
-              staticStyle: { height: "435px" }
-            },
-            [
-              _c("table", { staticClass: "table table-head-fixed" }, [
-                _vm._m(4),
-                _vm._v(" "),
-                _c(
-                  "tbody",
-                  [
-                    _vm._l(_vm.memberships, function(members) {
-                      return _c("tr", { key: members.id }, [
-                        _c("td", [_vm._v(_vm._s(members.name))]),
-                        _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(members.team_id))]),
-                        _vm._v(" "),
-                        _c("td", [_vm._v("CHF 1600")]),
-                        _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(members.type_id))]),
-                        _vm._v(" "),
-                        _c("td", [
-                          _vm._v(
-                            _vm._s(_vm._f("regDate")(_vm.memers.created_at))
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _vm._m(5, true)
-                      ])
-                    }),
+          _c("div", { staticClass: "card-body table-responsive p-0" }, [
+            _c("table", { staticClass: "table table-head-fixed" }, [
+              _vm._m(6),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.memberships, function(members) {
+                  return _c("tr", { key: members.id }, [
+                    _c("td", [_vm._v(_vm._s(members.name))]),
                     _vm._v(" "),
-                    _vm._m(6),
+                    _c("td", [_vm._v(_vm._s(members.team_id))]),
                     _vm._v(" "),
-                    _vm._m(7),
+                    _c("td", [_vm._v("CHF 1600")]),
                     _vm._v(" "),
-                    _vm._m(8),
+                    _c("td", [_vm._v(_vm._s(members.type_id))]),
                     _vm._v(" "),
-                    _vm._m(9),
+                    _c("td", [
+                      _vm._v(_vm._s(_vm._f("regDate")(members.created_at)))
+                    ]),
                     _vm._v(" "),
-                    _vm._m(10),
+                    _c("td", [_vm._v(_vm._s(members.paid))]),
                     _vm._v(" "),
-                    _vm._m(11),
-                    _vm._v(" "),
-                    _vm._m(12)
-                  ],
-                  2
-                )
-              ])
-            ]
-          )
+                    _vm._m(7, true)
+                  ])
+                }),
+                0
+              )
+            ])
+          ])
         ])
       ])
     ]),
@@ -72361,7 +72536,7 @@ var render = function() {
           { staticClass: "modal-dialog", attrs: { role: "document" } },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _vm._m(13),
+              _vm._m(8),
               _vm._v(" "),
               _c("div", { staticClass: "modal-body" }, [
                 _c(
@@ -72469,7 +72644,7 @@ var render = function() {
                       )
                     ]),
                     _vm._v(" "),
-                    _vm._m(14)
+                    _vm._m(9)
                   ]
                 )
               ])
@@ -72497,7 +72672,7 @@ var render = function() {
           { staticClass: "modal-dialog", attrs: { role: "document" } },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _vm._m(15),
+              _vm._m(10),
               _vm._v(" "),
               _c("div", { staticClass: "modal-body" }, [
                 _c(
@@ -72822,7 +72997,7 @@ var render = function() {
                       ])
                     ]),
                     _vm._v(" "),
-                    _vm._m(16)
+                    _vm._m(11)
                   ]
                 )
               ])
@@ -72884,138 +73059,53 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-6" }, [
-      _c("div", { staticClass: "card card-primary card-outline" }, [
-        _c("div", { staticClass: "card-header " }, [
-          _c("h3", { staticClass: "card-title " }, [
-            _vm._v("History of finished payments")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-tools" })
+    return _c("div", { staticClass: "card-header " }, [
+      _c("h3", { staticClass: "card-title " }, [
+        _vm._v("History of finished payments")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-tools" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("Name")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Role")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Amount")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Type")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Date")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Modify")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "btn-group btn-group-sm" }, [
+        _c(
+          "a",
+          { staticClass: "btn btn-success bg-success", attrs: { href: "#" } },
+          [_c("i", { staticClass: "fas fa-eye" })]
+        ),
+        _vm._v(" "),
+        _c("a", { staticClass: "btn btn-info bg-info", attrs: { href: "#" } }, [
+          _c("i", { staticClass: "fas fa-edit" })
         ]),
         _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "card-body table-responsive p-0",
-            staticStyle: { height: "235px" }
-          },
-          [
-            _c("table", { staticClass: "table table-head-fixed" }, [
-              _c("thead", [
-                _c("tr", [
-                  _c("th", [_vm._v("Name")]),
-                  _vm._v(" "),
-                  _c("th", [_vm._v("Role")]),
-                  _vm._v(" "),
-                  _c("th", [_vm._v("Amount")]),
-                  _vm._v(" "),
-                  _c("th", [_vm._v("Type")]),
-                  _vm._v(" "),
-                  _c("th", [_vm._v("Date")])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("tbody", [
-                _c("tr", [
-                  _c("td", [_vm._v("John Doe")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("Player")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("300CHF")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("Cash")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("11-7-2014")])
-                ]),
-                _vm._v(" "),
-                _c("tr", [
-                  _c("td", [_vm._v("John Doe")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("Player")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("300CHF")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("Cash")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("11-7-2014")])
-                ]),
-                _vm._v(" "),
-                _c("tr", [
-                  _c("td", [_vm._v("John Doe")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("Player")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("300CHF")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("Cash")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("11-7-2014")])
-                ]),
-                _vm._v(" "),
-                _c("tr", [
-                  _c("td", [_vm._v("John Doe")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("Player")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("300CHF")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("Cash")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("11-7-2014")])
-                ]),
-                _vm._v(" "),
-                _c("tr", [
-                  _c("td", [_vm._v("John Doe")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("Player")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("300CHF")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("Cash")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("11-7-2014")])
-                ]),
-                _vm._v(" "),
-                _c("tr", [
-                  _c("td", [_vm._v("John Doe")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("Player")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("300CHF")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("Cash")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("11-7-2014")])
-                ]),
-                _vm._v(" "),
-                _c("tr", [
-                  _c("td", [_vm._v("John Doe")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("Player")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("300CHF")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("Cash")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("11-7-2014")])
-                ]),
-                _vm._v(" "),
-                _c("tr", [
-                  _c("td", [_vm._v("John Doe")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("Player")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("300CHF")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("Cash")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("11-7-2014")])
-                ])
-              ])
-            ])
-          ]
-        )
+        _c("a", { staticClass: "btn btn-danger", attrs: { href: "#" } }, [
+          _c("i", { staticClass: "fas fa-trash" })
+        ])
       ])
     ])
   },
@@ -73047,6 +73137,8 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Date")]),
         _vm._v(" "),
+        _c("th", [_vm._v("Paid")]),
+        _vm._v(" "),
         _c("th", [_vm._v("Modify")])
       ])
     ])
@@ -73056,223 +73148,19 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("td", [
-      _c("button", { staticClass: "btn btn-success bg-success" }, [
-        _vm._v(" View")
-      ]),
-      _vm._v(" "),
-      _c("button", { staticClass: "btn btn-info bg-info" }, [_vm._v(" Edit")]),
-      _vm._v(" "),
-      _c("button", { staticClass: "btn btn-danger bg-danger" }, [
-        _vm._v("Delete")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("td", [_vm._v("John Doe")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("Player")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("300CHF")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("Cash")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("11-7-2014")]),
-      _vm._v(" "),
-      _c("td", [
-        _c("button", { staticClass: "btn btn-success bg-success" }, [
-          _vm._v(" View")
+      _c("div", { staticClass: "btn-group btn-group-sm" }, [
+        _c(
+          "a",
+          { staticClass: "btn btn-success bg-success", attrs: { href: "#" } },
+          [_c("i", { staticClass: "fas fa-eye" })]
+        ),
+        _vm._v(" "),
+        _c("a", { staticClass: "btn btn-info bg-info", attrs: { href: "#" } }, [
+          _c("i", { staticClass: "fas fa-edit" })
         ]),
         _vm._v(" "),
-        _c("button", { staticClass: "btn btn-info bg-info" }, [
-          _vm._v(" Edit")
-        ]),
-        _vm._v(" "),
-        _c("button", { staticClass: "btn btn-danger bg-danger" }, [
-          _vm._v("Delete")
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("td", [_vm._v("John Doe")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("Player")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("300CHF")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("Cash")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("11-7-2014")]),
-      _vm._v(" "),
-      _c("td", [
-        _c("button", { staticClass: "btn btn-success bg-success" }, [
-          _vm._v(" View")
-        ]),
-        _vm._v(" "),
-        _c("button", { staticClass: "btn btn-info bg-info" }, [
-          _vm._v(" Edit")
-        ]),
-        _vm._v(" "),
-        _c("button", { staticClass: "btn btn-danger bg-danger" }, [
-          _vm._v("Delete")
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("td", [_vm._v("John Doe")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("Player")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("300CHF")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("Cash")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("11-7-2014")]),
-      _vm._v(" "),
-      _c("td", [
-        _c("button", { staticClass: "btn btn-success bg-success" }, [
-          _vm._v(" View")
-        ]),
-        _vm._v(" "),
-        _c("button", { staticClass: "btn btn-info bg-info" }, [
-          _vm._v(" Edit")
-        ]),
-        _vm._v(" "),
-        _c("button", { staticClass: "btn btn-danger bg-danger" }, [
-          _vm._v("Delete")
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("td", [_vm._v("John Doe")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("Player")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("300CHF")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("Cash")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("11-7-2014")]),
-      _vm._v(" "),
-      _c("td", [
-        _c("button", { staticClass: "btn btn-success bg-success" }, [
-          _vm._v(" View")
-        ]),
-        _vm._v(" "),
-        _c("button", { staticClass: "btn btn-info bg-info" }, [
-          _vm._v(" Edit")
-        ]),
-        _vm._v(" "),
-        _c("button", { staticClass: "btn btn-danger bg-danger" }, [
-          _vm._v("Delete")
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("td", [_vm._v("John Doe")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("Player")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("300CHF")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("Cash")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("11-7-2014")]),
-      _vm._v(" "),
-      _c("td", [
-        _c("button", { staticClass: "btn btn-success bg-success" }, [
-          _vm._v(" View")
-        ]),
-        _vm._v(" "),
-        _c("button", { staticClass: "btn btn-info bg-info" }, [
-          _vm._v(" Edit")
-        ]),
-        _vm._v(" "),
-        _c("button", { staticClass: "btn btn-danger bg-danger" }, [
-          _vm._v("Delete")
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("td", [_vm._v("John Doe")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("Player")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("300CHF")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("Cash")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("11-7-2014")]),
-      _vm._v(" "),
-      _c("td", [
-        _c("button", { staticClass: "btn btn-success bg-success" }, [
-          _vm._v(" View")
-        ]),
-        _vm._v(" "),
-        _c("button", { staticClass: "btn btn-info bg-info" }, [
-          _vm._v(" Edit")
-        ]),
-        _vm._v(" "),
-        _c("button", { staticClass: "btn btn-danger bg-danger" }, [
-          _vm._v("Delete")
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("td", [_vm._v("John Doe")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("Player")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("300CHF")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("Cash")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("11-7-2014")]),
-      _vm._v(" "),
-      _c("td", [
-        _c("button", { staticClass: "btn btn-success bg-success" }, [
-          _vm._v(" View")
-        ]),
-        _vm._v(" "),
-        _c("button", { staticClass: "btn btn-info bg-info" }, [
-          _vm._v(" Edit")
-        ]),
-        _vm._v(" "),
-        _c("button", { staticClass: "btn btn-danger bg-danger" }, [
-          _vm._v("Delete")
+        _c("a", { staticClass: "btn btn-danger", attrs: { href: "#" } }, [
+          _c("i", { staticClass: "fas fa-trash" })
         ])
       ])
     ])
@@ -73805,6 +73693,595 @@ var staticRenderFns = [
                   "h5",
                   { staticClass: "modal-title", attrs: { id: "addPlayer" } },
                   [_vm._v("Add Player")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "close",
+                    attrs: {
+                      type: "button",
+                      "data-dismiss": "modal",
+                      "aria-label": "Close"
+                    }
+                  },
+                  [
+                    _c("span", { attrs: { "aria-hidden": "true" } }, [
+                      _vm._v("×")
+                    ])
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }, [
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", [_vm._v("Name")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    staticClass: "form-control",
+                    attrs: { type: "text", placeholder: "Name ..." }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", [_vm._v("Select Team")]),
+                  _vm._v(" "),
+                  _c("select", { staticClass: "form-control" }, [
+                    _c("option", [_vm._v("team 1")]),
+                    _vm._v(" "),
+                    _c("option", [_vm._v("team 2")]),
+                    _vm._v(" "),
+                    _c("option", [_vm._v("team 3")]),
+                    _vm._v(" "),
+                    _c("option", [_vm._v("team 4")]),
+                    _vm._v(" "),
+                    _c("option", [_vm._v("team 5")])
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-footer" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-secondary",
+                    attrs: { type: "button", "data-dismiss": "modal" }
+                  },
+                  [_vm._v("Close")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  { staticClass: "btn btn-primary", attrs: { type: "button" } },
+                  [_vm._v("Save changes")]
+                )
+              ])
+            ])
+          ]
+        )
+      ]
+    )
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/vue/components/Refrees.vue?vue&type=template&id=2cad3f7c&":
+/*!**************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/vue/components/Refrees.vue?vue&type=template&id=2cad3f7c& ***!
+  \**************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("h1", [_vm._v("Refrees")]),
+    _vm._v(" "),
+    _c(
+      "button",
+      {
+        staticClass: "btn btn-success bg-success ",
+        on: { click: _vm.refreeModal }
+      },
+      [_vm._v(" Add Refree")]
+    ),
+    _vm._v(" "),
+    _c("div", { staticClass: "row text-center pt-2" }, [
+      _c("div", { staticClass: "col-6" }, [
+        _c("div", { staticClass: "card card-success card-outline" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body table-responsive p-0" }, [
+            _c("table", { staticClass: "table table-hover" }, [
+              _vm._m(1),
+              _vm._v(" "),
+              _c("tbody", [
+                _c("tr", [
+                  _c("td", [_vm._v("183")]),
+                  _vm._v(" "),
+                  _c(
+                    "td",
+                    [
+                      _c("router-link", { attrs: { to: "/refree" } }, [
+                        _vm._v("John Doe")
+                      ])
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("Active")]),
+                  _vm._v(" "),
+                  _vm._m(2)
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td", [_vm._v("183")]),
+                  _vm._v(" "),
+                  _c(
+                    "td",
+                    [
+                      _c("router-link", { attrs: { to: "/refree" } }, [
+                        _vm._v("John Doe")
+                      ])
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("Active")]),
+                  _vm._v(" "),
+                  _vm._m(3)
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td", [_vm._v("183")]),
+                  _vm._v(" "),
+                  _c(
+                    "td",
+                    [
+                      _c("router-link", { attrs: { to: "/refree" } }, [
+                        _vm._v("John Doe")
+                      ])
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("Active")]),
+                  _vm._v(" "),
+                  _vm._m(4)
+                ])
+              ])
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-6" }, [
+        _c("div", { staticClass: "card card-success card-outline" }, [
+          _vm._m(5),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body table-responsive p-0" }, [
+            _c("table", { staticClass: "table table-hover" }, [
+              _vm._m(6),
+              _vm._v(" "),
+              _c("tbody", [
+                _c("tr", [
+                  _c("td", [_vm._v("183")]),
+                  _vm._v(" "),
+                  _c(
+                    "td",
+                    [
+                      _c("router-link", { attrs: { to: "/refree" } }, [
+                        _vm._v("John Doe")
+                      ])
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("Active")]),
+                  _vm._v(" "),
+                  _vm._m(7)
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td", [_vm._v("183")]),
+                  _vm._v(" "),
+                  _c(
+                    "td",
+                    [
+                      _c("router-link", { attrs: { to: "/refree" } }, [
+                        _vm._v("John Doe")
+                      ])
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("Active")]),
+                  _vm._v(" "),
+                  _vm._m(8)
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td", [_vm._v("183")]),
+                  _vm._v(" "),
+                  _c(
+                    "td",
+                    [
+                      _c("router-link", { attrs: { to: "/refree" } }, [
+                        _vm._v("John Doe")
+                      ])
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("Active")]),
+                  _vm._v(" "),
+                  _vm._m(9)
+                ])
+              ])
+            ])
+          ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _vm._m(10),
+    _vm._v(" "),
+    _vm._m(11)
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header" }, [
+      _c("h3", { staticClass: "card-title" }, [_vm._v("Active refrees")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-tools" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("ID")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Name")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Status")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Modify")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "btn-group btn-group-sm" }, [
+        _c(
+          "a",
+          { staticClass: "btn btn-success bg-success", attrs: { href: "#" } },
+          [_c("i", { staticClass: "fas fa-eye" })]
+        ),
+        _vm._v(" "),
+        _c("a", { staticClass: "btn btn-info bg-info", attrs: { href: "#" } }, [
+          _c("i", { staticClass: "fas fa-edit" })
+        ]),
+        _vm._v(" "),
+        _c("a", { staticClass: "btn btn-danger", attrs: { href: "#" } }, [
+          _c("i", { staticClass: "fas fa-trash" })
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "btn-group btn-group-sm" }, [
+        _c(
+          "a",
+          { staticClass: "btn btn-success bg-success", attrs: { href: "#" } },
+          [_c("i", { staticClass: "fas fa-eye" })]
+        ),
+        _vm._v(" "),
+        _c("a", { staticClass: "btn btn-info bg-info", attrs: { href: "#" } }, [
+          _c("i", { staticClass: "fas fa-edit" })
+        ]),
+        _vm._v(" "),
+        _c("a", { staticClass: "btn btn-danger", attrs: { href: "#" } }, [
+          _c("i", { staticClass: "fas fa-trash" })
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "btn-group btn-group-sm" }, [
+        _c(
+          "a",
+          { staticClass: "btn btn-success bg-success", attrs: { href: "#" } },
+          [_c("i", { staticClass: "fas fa-eye" })]
+        ),
+        _vm._v(" "),
+        _c("a", { staticClass: "btn btn-info bg-info", attrs: { href: "#" } }, [
+          _c("i", { staticClass: "fas fa-edit" })
+        ]),
+        _vm._v(" "),
+        _c("a", { staticClass: "btn btn-danger", attrs: { href: "#" } }, [
+          _c("i", { staticClass: "fas fa-trash" })
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header" }, [
+      _c("h3", { staticClass: "card-title" }, [_vm._v("Juniore refrees")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-tools" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("ID")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Name")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Status")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Modify")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "btn-group btn-group-sm" }, [
+        _c(
+          "a",
+          { staticClass: "btn btn-success bg-success", attrs: { href: "#" } },
+          [_c("i", { staticClass: "fas fa-eye" })]
+        ),
+        _vm._v(" "),
+        _c("a", { staticClass: "btn btn-info bg-info", attrs: { href: "#" } }, [
+          _c("i", { staticClass: "fas fa-edit" })
+        ]),
+        _vm._v(" "),
+        _c("a", { staticClass: "btn btn-danger", attrs: { href: "#" } }, [
+          _c("i", { staticClass: "fas fa-trash" })
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "btn-group btn-group-sm" }, [
+        _c(
+          "a",
+          { staticClass: "btn btn-success bg-success", attrs: { href: "#" } },
+          [_c("i", { staticClass: "fas fa-eye" })]
+        ),
+        _vm._v(" "),
+        _c("a", { staticClass: "btn btn-info bg-info", attrs: { href: "#" } }, [
+          _c("i", { staticClass: "fas fa-edit" })
+        ]),
+        _vm._v(" "),
+        _c("a", { staticClass: "btn btn-danger", attrs: { href: "#" } }, [
+          _c("i", { staticClass: "fas fa-trash" })
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "btn-group btn-group-sm" }, [
+        _c(
+          "a",
+          { staticClass: "btn btn-success bg-success", attrs: { href: "#" } },
+          [_c("i", { staticClass: "fas fa-eye" })]
+        ),
+        _vm._v(" "),
+        _c("a", { staticClass: "btn btn-info bg-info", attrs: { href: "#" } }, [
+          _c("i", { staticClass: "fas fa-edit" })
+        ]),
+        _vm._v(" "),
+        _c("a", { staticClass: "btn btn-danger", attrs: { href: "#" } }, [
+          _c("i", { staticClass: "fas fa-trash" })
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row text-center" }, [
+      _c("div", { staticClass: "col-12" }, [
+        _c("div", { staticClass: "card card-success card-outline" }, [
+          _c("div", { staticClass: "card-header" }, [
+            _c("h3", { staticClass: "card-title" }, [
+              _vm._v("Refrees upcomming matches")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-tools" })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body table-responsive p-0" }, [
+            _c("table", { staticClass: "table table-hover" }, [
+              _c("thead", [
+                _c("tr", [
+                  _c("th", [_vm._v("Date & Time")]),
+                  _vm._v(" "),
+                  _c("th", [_vm._v("Home Team")]),
+                  _vm._v(" "),
+                  _c("th", [_vm._v("Home Team Contact")]),
+                  _vm._v(" "),
+                  _c("th", [_vm._v("Away Team ")]),
+                  _vm._v(" "),
+                  _c("th", [_vm._v("Away Team Contact ")]),
+                  _vm._v(" "),
+                  _c("th", [_vm._v("Refree Name")]),
+                  _vm._v(" "),
+                  _c("th", [_vm._v("Status")]),
+                  _vm._v(" "),
+                  _c("th", [_vm._v("View Match")])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("tbody", [
+                _c("tr", [
+                  _c("td", [_vm._v("18-03-2019 & 19:00")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("FC B")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("fcb@example.com")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("FC a ")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("fca@example.com")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("Colina")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("Open")]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c("div", { staticClass: "btn-group btn-group-sm" }, [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "btn btn-success bg-success",
+                          attrs: { href: "#" }
+                        },
+                        [_c("i", { staticClass: "fas fa-eye" })]
+                      )
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td", [_vm._v("18-03-2019 & 19:00")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("FC B")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("fcb@example.com")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("FC a ")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("fca@example.com")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("Colina")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("Open")]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c("div", { staticClass: "btn-group btn-group-sm" }, [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "btn btn-success bg-success",
+                          attrs: { href: "#" }
+                        },
+                        [_c("i", { staticClass: "fas fa-eye" })]
+                      )
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td", [_vm._v("18-03-2019 & 19:00")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("FC B")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("fcb@example.com")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("FC a ")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("fca@example.com")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("Colina")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("Verified")]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c("div", { staticClass: "btn-group btn-group-sm" }, [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "btn btn-success bg-success",
+                          attrs: { href: "#" }
+                        },
+                        [_c("i", { staticClass: "fas fa-eye" })]
+                      )
+                    ])
+                  ])
+                ])
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "addRefree",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "addRefree",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog", attrs: { role: "document" } },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _c("div", { staticClass: "modal-header" }, [
+                _c(
+                  "h5",
+                  { staticClass: "modal-title", attrs: { id: "addRefree" } },
+                  [_vm._v("Add Refree")]
                 ),
                 _vm._v(" "),
                 _c(
@@ -75155,9 +75632,7 @@ var render = function() {
     _vm._v(" "),
     _vm._m(1),
     _vm._v(" "),
-    _vm._m(2),
-    _vm._v(" "),
-    _vm._m(3)
+    _vm._m(2)
   ])
 }
 var staticRenderFns = [
@@ -75166,7 +75641,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row pt-3" }, [
-      _c("div", { staticClass: "col-8" }, [
+      _c("div", { staticClass: "col-6" }, [
         _c("div", { staticClass: "card card-primary card-outline" }, [
           _c("div", { staticClass: "card-header" }, [
             _c("h3", { staticClass: "card-title" }, [
@@ -75211,15 +75686,9 @@ var staticRenderFns = [
             ]
           )
         ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-8" }, [
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-6" }, [
         _c("div", { staticClass: "card card-primary card-outline" }, [
           _c("div", { staticClass: "card-header" }, [
             _c("h3", { staticClass: "card-title" }, [
@@ -75272,7 +75741,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-8" }, [
+      _c("div", { staticClass: "col-6" }, [
         _c("div", { staticClass: "card card-primary card-outline" }, [
           _c("div", { staticClass: "card-header" }, [
             _c("h3", { staticClass: "card-title" }, [
@@ -75332,7 +75801,7 @@ var staticRenderFns = [
           id: "addTask",
           tabindex: "-1",
           role: "dialog",
-          "aria-labelledby": "exampleModalLabel",
+          "aria-labelledby": "addTask",
           "aria-hidden": "true"
         }
       },
@@ -92823,6 +93292,9 @@ var routes = [{
 }, {
   path: '/tasks',
   component: __webpack_require__(/*! ./vue/components/Tasks.vue */ "./resources/js/vue/components/Tasks.vue")["default"]
+}, {
+  path: '/refrees',
+  component: __webpack_require__(/*! ./vue/components/Refrees.vue */ "./resources/js/vue/components/Refrees.vue")["default"]
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   routes: routes,
@@ -93855,6 +94327,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Players_vue_vue_type_template_id_75e321c0___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Players_vue_vue_type_template_id_75e321c0___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/vue/components/Refrees.vue":
+/*!*************************************************!*\
+  !*** ./resources/js/vue/components/Refrees.vue ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Refrees_vue_vue_type_template_id_2cad3f7c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Refrees.vue?vue&type=template&id=2cad3f7c& */ "./resources/js/vue/components/Refrees.vue?vue&type=template&id=2cad3f7c&");
+/* harmony import */ var _Refrees_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Refrees.vue?vue&type=script&lang=js& */ "./resources/js/vue/components/Refrees.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Refrees_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Refrees_vue_vue_type_template_id_2cad3f7c___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Refrees_vue_vue_type_template_id_2cad3f7c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/vue/components/Refrees.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/vue/components/Refrees.vue?vue&type=script&lang=js&":
+/*!**************************************************************************!*\
+  !*** ./resources/js/vue/components/Refrees.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Refrees_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Refrees.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/vue/components/Refrees.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Refrees_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/vue/components/Refrees.vue?vue&type=template&id=2cad3f7c&":
+/*!********************************************************************************!*\
+  !*** ./resources/js/vue/components/Refrees.vue?vue&type=template&id=2cad3f7c& ***!
+  \********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Refrees_vue_vue_type_template_id_2cad3f7c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Refrees.vue?vue&type=template&id=2cad3f7c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/vue/components/Refrees.vue?vue&type=template&id=2cad3f7c&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Refrees_vue_vue_type_template_id_2cad3f7c___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Refrees_vue_vue_type_template_id_2cad3f7c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

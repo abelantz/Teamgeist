@@ -88,7 +88,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-8">
+            <div class="col-6">
                 <div class="card card-primary card-outline">
                     <div class="card-header">
                         <h3 class="card-title">Open task I give</h3>

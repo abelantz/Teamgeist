@@ -227,6 +227,14 @@
                                 </p>
                             </router-link>
                         </li>
+                        <li class="nav-item">
+                            <router-link to="/refrees" class="nav-link">
+                                <i class="nav-icon far fa-circle nav-icon green"></i>
+                                <p>
+                                    Refrees
+                                </p>
+                            </router-link>
+                        </li>
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
