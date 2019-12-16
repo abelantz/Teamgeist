@@ -362,13 +362,11 @@
             },
         },
         created() {
-            this.loadMemberships();
             this.loadMemberType();
+            this.loadMemberships();
             this.loadTeams();
         },
-        mounted() {
-            console.log('Component mounted.')
-        },
+        
     }
 
 </script>
