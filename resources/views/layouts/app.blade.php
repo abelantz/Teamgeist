@@ -14,7 +14,7 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://kit.fontawesome.com/6a2aa0cafc.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.js"></script> 
-    <script src="{{ asset('js/vue-charts.js') }}" defer></script>
+    <!-- <script src="{{ asset('js/vue-charts.js') }}" defer></script> -->
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -232,6 +232,14 @@
                                 <i class="nav-icon far fa-circle nav-icon green"></i>
                                 <p>
                                     Refrees
+                                </p>
+                            </router-link>
+                        </li>
+                        <li class="nav-item">
+                            <router-link to="/fieldwardrobe" class="nav-link">
+                                <i class="nav-icon far fa-circle nav-icon green"></i>
+                                <p>
+                                    Field & Wardrobe
                                 </p>
                             </router-link>
                         </li>

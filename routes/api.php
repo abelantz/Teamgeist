@@ -55,7 +55,5 @@ Route::group(['namespace' => 'API'], function () {
     Route::apiResource('matchdays', 'MatchdayController');
 
 
-    // Refrees
-    // Matchdays
     
 });

@@ -55,6 +55,8 @@ let routes = [
     { path: '/player', component: require('./vue/components/Player.vue').default },
     { path: '/tasks', component: require('./vue/components/Tasks.vue').default },
     { path: '/refrees', component: require('./vue/components/Refrees.vue').default },
+    { path: '/fieldwardrobe', component: require('./vue/components/FieldWardrobe.vue').default },
+
 
 ]
 
@@ -63,6 +65,12 @@ const router = new VueRouter({
     mode: 'history',
     // linkActiveClass: 'active'
 })
+
+
+
+import { Datetime } from 'vue-datetime';
+import 'vue-datetime/dist/vue-datetime.css'
+Vue.component('datetime', Datetime);
 
 import moment from 'moment';
 Vue.filter('upText', function(string){

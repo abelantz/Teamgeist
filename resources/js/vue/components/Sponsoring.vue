@@ -194,7 +194,7 @@
                                         <i class="far fa-calendar-alt"></i>
                                     </span>
                                 </div>
-                                <input type="text" class="form-control float-right" id="reservation">
+                                <datetime type="time" v-model="time"  class="form-control float-right" ></datetime>
                             </div>
                             <!-- /.input group -->
                         </div>
@@ -251,3 +251,14 @@
     }
 
 </script>
+
+<style  scoped>
+
+
+.vdatetime{
+   
+    width: 100% !important;
+    border: 0 !important;
+}
+
+</style>
