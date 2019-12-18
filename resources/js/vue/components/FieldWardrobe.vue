@@ -89,13 +89,20 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body">
-                        ...
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
+                    <form @submit.prevent="createField()">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <input v-model="fieldForm.name" type="text" name="name" class="form-control"
+                                    placeholder="Name" :class="{ 'is-invalid': fieldForm.errors.has('name') }">
+                                <has-error :form="fieldForm" field="name"></has-error>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Create</button>
+                        </div>
+                    </form>
+                   
                 </div>
             </div>
         </div>
@@ -137,7 +144,23 @@
             },
             addWardrobeModal() {
                 $('#addWardrobe').modal('show');
-            }
+            },
+            createField(){
+                this.$Progress.start();
+                this.fieldForm.post('api/fields')
+                    .then(() => {
+                        Fire.$emit('AfterCreate');
+                        $('#addNew').modal('hide');
+                        toast.fire({
+                            type: 'success',
+                            title: 'Category created succesfully'
+                        });
+                        this.$Progress.finish();
+                    })
+                    .catch(() => {
+                        this.$Progress.fail();
+                    })
+            },
         },
         created() {
 
