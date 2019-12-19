@@ -15,6 +15,7 @@ class CreateWardrobesTable extends Migration
     {
         Schema::create('wardrobes', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('title');
             $table->timestamps();
         });
     }

@@ -6549,36 +6549,97 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    return {};
+    return {
+      fields: [],
+      wardrobes: [],
+      fieldForm: new Form({
+        id: '',
+        title: ''
+      }),
+      wardrobeForm: new Form({
+        id: '',
+        title: ''
+      })
+    };
   },
   methods: {
     addFieldModal: function addFieldModal() {
+      this.fieldForm.reset();
       $('#addField').modal('show');
     },
     addWardrobeModal: function addWardrobeModal() {
+      this.wardrobeForm.reset();
       $('#addWardrobe').modal('show');
     },
-    createField: function createField() {
+    loadFields: function loadFields() {
       var _this = this;
+
+      axios.get('api/fields').then(function (response) {
+        return _this.fields = response.data.data;
+      });
+    },
+    loadWardrobes: function loadWardrobes() {
+      var _this2 = this;
+
+      axios.get('api/wardrobes').then(function (response) {
+        return _this2.wardrobes = response.data.data;
+      });
+    },
+    createField: function createField() {
+      var _this3 = this;
 
       this.$Progress.start();
       this.fieldForm.post('api/fields').then(function () {
         Fire.$emit('AfterCreate');
-        $('#addNew').modal('hide');
+        $('#addField').modal('hide');
         toast.fire({
           type: 'success',
-          title: 'Category created succesfully'
+          title: 'Field created succesfully'
         });
 
-        _this.$Progress.finish();
+        _this3.$Progress.finish();
       })["catch"](function () {
-        _this.$Progress.fail();
+        _this3.$Progress.fail();
+      });
+    },
+    createWardrobe: function createWardrobe() {
+      var _this4 = this;
+
+      this.$Progress.start();
+      this.wardrobeForm.post('api/wardrobes').then(function () {
+        Fire.$emit('AfterCreate');
+        $('#addWardrobe').modal('hide');
+        toast.fire({
+          type: 'success',
+          title: 'Wardrobe created succesfully'
+        });
+
+        _this4.$Progress.finish();
+      })["catch"](function () {
+        _this4.$Progress.fail();
       });
     }
   },
-  created: function created() {}
+  created: function created() {
+    var _this5 = this;
+
+    this.loadFields();
+    this.loadWardrobes();
+    Fire.$on('AfterCreate', function () {
+      _this5.loadFields();
+
+      _this5.loadWardrobes();
+    });
+  }
 });
 
 /***/ }),
@@ -80604,7 +80665,25 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _vm._m(0)
+          _c("div", { staticClass: "card-body table-responsive p-0" }, [
+            _c("table", { staticClass: "table table-hover" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.fields, function(field) {
+                  return _c("tr", { key: field.id }, [
+                    _c("td", [_vm._v(_vm._s(field.id))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(field.title))]),
+                    _vm._v(" "),
+                    _vm._m(1, true)
+                  ])
+                }),
+                0
+              )
+            ])
+          ])
         ])
       ]),
       _vm._v(" "),
@@ -80628,7 +80707,25 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _vm._m(1)
+          _c("div", { staticClass: "card-body table-responsive p-0" }, [
+            _c("table", { staticClass: "table table-hover" }, [
+              _vm._m(2),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.wardrobes, function(wardrobe) {
+                  return _c("tr", { key: wardrobe.id }, [
+                    _c("td", [_vm._v(_vm._s(wardrobe.id))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(wardrobe.title))]),
+                    _vm._v(" "),
+                    _vm._m(3, true)
+                  ])
+                }),
+                0
+              )
+            ])
+          ])
         ])
       ])
     ]),
@@ -80651,7 +80748,7 @@ var render = function() {
           { staticClass: "modal-dialog", attrs: { role: "document" } },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _vm._m(2),
+              _vm._m(4),
               _vm._v(" "),
               _c(
                 "form",
@@ -80674,20 +80771,20 @@ var render = function() {
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.fieldForm.name,
-                              expression: "fieldForm.name"
+                              value: _vm.fieldForm.title,
+                              expression: "fieldForm.title"
                             }
                           ],
                           staticClass: "form-control",
                           class: {
-                            "is-invalid": _vm.fieldForm.errors.has("name")
+                            "is-invalid": _vm.fieldForm.errors.has("title")
                           },
                           attrs: {
                             type: "text",
-                            name: "name",
-                            placeholder: "Name"
+                            name: "title",
+                            placeholder: "Title"
                           },
-                          domProps: { value: _vm.fieldForm.name },
+                          domProps: { value: _vm.fieldForm.title },
                           on: {
                             input: function($event) {
                               if ($event.target.composing) {
@@ -80695,7 +80792,7 @@ var render = function() {
                               }
                               _vm.$set(
                                 _vm.fieldForm,
-                                "name",
+                                "title",
                                 $event.target.value
                               )
                             }
@@ -80703,14 +80800,14 @@ var render = function() {
                         }),
                         _vm._v(" "),
                         _c("has-error", {
-                          attrs: { form: _vm.fieldForm, field: "name" }
+                          attrs: { form: _vm.fieldForm, field: "title" }
                         })
                       ],
                       1
                     )
                   ]),
                   _vm._v(" "),
-                  _vm._m(3)
+                  _vm._m(5)
                 ]
               )
             ])
@@ -80719,7 +80816,91 @@ var render = function() {
       ]
     ),
     _vm._v(" "),
-    _vm._m(4)
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "addWardrobe",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "addWardrobe",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog", attrs: { role: "document" } },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(6),
+              _vm._v(" "),
+              _c(
+                "form",
+                {
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      return _vm.createWardrobe()
+                    }
+                  }
+                },
+                [
+                  _c("div", { staticClass: "modal-body" }, [
+                    _c(
+                      "div",
+                      { staticClass: "form-group" },
+                      [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.wardrobeForm.title,
+                              expression: "wardrobeForm.title"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          class: {
+                            "is-invalid": _vm.wardrobeForm.errors.has("title")
+                          },
+                          attrs: {
+                            type: "text",
+                            name: "title",
+                            placeholder: "Title"
+                          },
+                          domProps: { value: _vm.wardrobeForm.title },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.wardrobeForm,
+                                "title",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("has-error", {
+                          attrs: { form: _vm.wardrobeForm, field: "title" }
+                        })
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(7)
+                ]
+              )
+            ])
+          ]
+        )
+      ]
+    )
   ])
 }
 var staticRenderFns = [
@@ -80727,40 +80908,28 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-body table-responsive p-0" }, [
-      _c("table", { staticClass: "table table-hover" }, [
-        _c("thead", [
-          _c("tr", [
-            _c("th", [_vm._v("ID")]),
-            _vm._v(" "),
-            _c("th", [_vm._v("Title")]),
-            _vm._v(" "),
-            _c("th", [_vm._v("Modify")])
-          ])
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("ID")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Title")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Modify")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "btn-group btn-group-sm" }, [
+        _c("a", { staticClass: "btn btn-info bg-info", attrs: { href: "#" } }, [
+          _c("i", { staticClass: "fas fa-edit" })
         ]),
         _vm._v(" "),
-        _c("tbody", [
-          _c("tr", [
-            _c("td", [_vm._v("12")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("F1")]),
-            _vm._v(" "),
-            _c("td", [
-              _c("div", { staticClass: "btn-group btn-group-sm" }, [
-                _c(
-                  "a",
-                  { staticClass: "btn btn-info bg-info", attrs: { href: "#" } },
-                  [_c("i", { staticClass: "fas fa-edit" })]
-                ),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  { staticClass: "btn btn-danger", attrs: { href: "#" } },
-                  [_c("i", { staticClass: "fas fa-trash" })]
-                )
-              ])
-            ])
-          ])
+        _c("a", { staticClass: "btn btn-danger", attrs: { href: "#" } }, [
+          _c("i", { staticClass: "fas fa-trash" })
         ])
       ])
     ])
@@ -80769,40 +80938,28 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-body table-responsive p-0" }, [
-      _c("table", { staticClass: "table table-hover" }, [
-        _c("thead", [
-          _c("tr", [
-            _c("th", [_vm._v("ID")]),
-            _vm._v(" "),
-            _c("th", [_vm._v("Title")]),
-            _vm._v(" "),
-            _c("th", [_vm._v("Modify")])
-          ])
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("ID")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Title")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Modify")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "btn-group btn-group-sm" }, [
+        _c("a", { staticClass: "btn btn-info bg-info", attrs: { href: "#" } }, [
+          _c("i", { staticClass: "fas fa-edit" })
         ]),
         _vm._v(" "),
-        _c("tbody", [
-          _c("tr", [
-            _c("td", [_vm._v("12")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("F1")]),
-            _vm._v(" "),
-            _c("td", [
-              _c("div", { staticClass: "btn-group btn-group-sm" }, [
-                _c(
-                  "a",
-                  { staticClass: "btn btn-info bg-info", attrs: { href: "#" } },
-                  [_c("i", { staticClass: "fas fa-edit" })]
-                ),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  { staticClass: "btn btn-danger", attrs: { href: "#" } },
-                  [_c("i", { staticClass: "fas fa-trash" })]
-                )
-              ])
-            ])
-          ])
+        _c("a", { staticClass: "btn btn-danger", attrs: { href: "#" } }, [
+          _c("i", { staticClass: "fas fa-trash" })
         ])
       ])
     ])
@@ -80855,74 +81012,45 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "modal fade",
-        attrs: {
-          id: "addWardrobe",
-          tabindex: "-1",
-          role: "dialog",
-          "aria-labelledby": "addWardrobe",
-          "aria-hidden": "true"
-        }
-      },
-      [
-        _c(
-          "div",
-          { staticClass: "modal-dialog", attrs: { role: "document" } },
-          [
-            _c("div", { staticClass: "modal-content" }, [
-              _c("div", { staticClass: "modal-header" }, [
-                _c(
-                  "h5",
-                  { staticClass: "modal-title", attrs: { id: "addWardrobe" } },
-                  [_vm._v("Add Wardrobe")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "close",
-                    attrs: {
-                      type: "button",
-                      "data-dismiss": "modal",
-                      "aria-label": "Close"
-                    }
-                  },
-                  [
-                    _c("span", { attrs: { "aria-hidden": "true" } }, [
-                      _vm._v("×")
-                    ])
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-body" }, [
-                _vm._v("\n                    ...\n                ")
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-footer" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-secondary",
-                    attrs: { type: "button", "data-dismiss": "modal" }
-                  },
-                  [_vm._v("Close")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  { staticClass: "btn btn-primary", attrs: { type: "button" } },
-                  [_vm._v("Save changes")]
-                )
-              ])
-            ])
-          ]
-        )
-      ]
-    )
+    return _c("div", { staticClass: "modal-header" }, [
+      _c("h5", { staticClass: "modal-title", attrs: { id: "addWardrobe" } }, [
+        _vm._v("Add Wardrobe")
+      ]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-danger",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [_vm._v("Close")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+        [_vm._v("Create")]
+      )
+    ])
   }
 ]
 render._withStripped = true
@@ -82161,52 +82289,9 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c(
-      "div",
-      {
-        staticClass: "modal fade",
-        attrs: {
-          id: "addTraining",
-          tabindex: "-1",
-          role: "dialog",
-          "aria-labelledby": "addTraining",
-          "aria-hidden": "true"
-        }
-      },
-      [
-        _c(
-          "div",
-          { staticClass: "modal-dialog", attrs: { role: "document" } },
-          [
-            _c("div", { staticClass: "modal-content" }, [
-              _vm._m(9),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "modal-body" },
-                [
-                  _c("datetime", {
-                    attrs: { type: "time" },
-                    model: {
-                      value: _vm.time,
-                      callback: function($$v) {
-                        _vm.time = $$v
-                      },
-                      expression: "time"
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _vm._m(10)
-            ])
-          ]
-        )
-      ]
-    ),
+    _vm._m(9),
     _vm._v(" "),
-    _vm._m(11)
+    _vm._m(10)
   ])
 }
 var staticRenderFns = [
@@ -82328,45 +82413,72 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-header" }, [
-      _c("h5", { staticClass: "modal-title", attrs: { id: "addTraining" } }, [
-        _vm._v("Modal title")
-      ]),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "close",
-          attrs: {
-            type: "button",
-            "data-dismiss": "modal",
-            "aria-label": "Close"
-          }
-        },
-        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-footer" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-secondary",
-          attrs: { type: "button", "data-dismiss": "modal" }
-        },
-        [_vm._v("Close")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        { staticClass: "btn btn-primary", attrs: { type: "button" } },
-        [_vm._v("Save changes")]
-      )
-    ])
+    return _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "addTraining",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "addTraining",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog", attrs: { role: "document" } },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _c("div", { staticClass: "modal-header" }, [
+                _c(
+                  "h5",
+                  { staticClass: "modal-title", attrs: { id: "addTraining" } },
+                  [_vm._v("Modal title")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "close",
+                    attrs: {
+                      type: "button",
+                      "data-dismiss": "modal",
+                      "aria-label": "Close"
+                    }
+                  },
+                  [
+                    _c("span", { attrs: { "aria-hidden": "true" } }, [
+                      _vm._v("×")
+                    ])
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-footer" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-secondary",
+                    attrs: { type: "button", "data-dismiss": "modal" }
+                  },
+                  [_vm._v("Close")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  { staticClass: "btn btn-primary", attrs: { type: "button" } },
+                  [_vm._v("Save changes")]
+                )
+              ])
+            ])
+          ]
+        )
+      ]
+    )
   },
   function() {
     var _vm = this
@@ -87895,9 +88007,52 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _vm._m(9),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "addTraining",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "addTraining",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog", attrs: { role: "document" } },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(9),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "modal-body" },
+                [
+                  _c("date-picker", {
+                    attrs: { name: "date", config: _vm.options },
+                    model: {
+                      value: _vm.date,
+                      callback: function($$v) {
+                        _vm.date = $$v
+                      },
+                      expression: "date"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _vm._m(10)
+            ])
+          ]
+        )
+      ]
+    ),
     _vm._v(" "),
-    _vm._m(10)
+    _vm._m(11)
   ])
 }
 var staticRenderFns = [
@@ -88017,74 +88172,45 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "modal fade",
-        attrs: {
-          id: "addTraining",
-          tabindex: "-1",
-          role: "dialog",
-          "aria-labelledby": "addTraining",
-          "aria-hidden": "true"
-        }
-      },
-      [
-        _c(
-          "div",
-          { staticClass: "modal-dialog", attrs: { role: "document" } },
-          [
-            _c("div", { staticClass: "modal-content" }, [
-              _c("div", { staticClass: "modal-header" }, [
-                _c(
-                  "h5",
-                  { staticClass: "modal-title", attrs: { id: "addTraining" } },
-                  [_vm._v("Modal title")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "close",
-                    attrs: {
-                      type: "button",
-                      "data-dismiss": "modal",
-                      "aria-label": "Close"
-                    }
-                  },
-                  [
-                    _c("span", { attrs: { "aria-hidden": "true" } }, [
-                      _vm._v("×")
-                    ])
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-body" }, [
-                _vm._v("\n                    ...\n                ")
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-footer" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-secondary",
-                    attrs: { type: "button", "data-dismiss": "modal" }
-                  },
-                  [_vm._v("Close")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  { staticClass: "btn btn-primary", attrs: { type: "button" } },
-                  [_vm._v("Save changes")]
-                )
-              ])
-            ])
-          ]
-        )
-      ]
-    )
+    return _c("div", { staticClass: "modal-header" }, [
+      _c("h5", { staticClass: "modal-title", attrs: { id: "addTraining" } }, [
+        _vm._v("Modal title")
+      ]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-secondary",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [_vm._v("Close")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        { staticClass: "btn btn-primary", attrs: { type: "button" } },
+        [_vm._v("Save changes")]
+      )
+    ])
   },
   function() {
     var _vm = this
@@ -104247,6 +104373,21 @@ var toast = sweetalert2__WEBPACK_IMPORTED_MODULE_9___default.a.mixin({
   timer: 3000
 });
 window.toast = toast;
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('date-picker', VueBootstrapDatetimePicker); // Using font-awesome 5 icons
+
+$.extend(true, $.fn.datetimepicker.defaults, {
+  icons: {
+    time: 'far fa-clock',
+    date: 'far fa-calendar',
+    up: 'fas fa-arrow-up',
+    down: 'fas fa-arrow-down',
+    previous: 'fas fa-chevron-left',
+    next: 'fas fa-chevron-right',
+    today: 'fas fa-calendar-check',
+    clear: 'far fa-trash-alt',
+    close: 'far fa-times-circle'
+  }
+});
 var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   el: '#app',
   router: router

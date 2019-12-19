@@ -22,9 +22,9 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>12</td>
-                                    <td>F1</td>
+                                <tr v-for="field in fields" v-bind:key="field.id">
+                                    <td>{{field.id}}</td>
+                                    <td>{{field.title}}</td>
                                     <td>
                                         <div class="btn-group btn-group-sm">
                                             <a href="#" class="btn btn-info bg-info"><i class="fas fa-edit"></i></a>
@@ -59,9 +59,9 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>12</td>
-                                    <td>F1</td>
+                                <tr v-for="wardrobe in wardrobes" v-bind:key="wardrobe.id">
+                                    <td>{{ wardrobe.id }}</td>
+                                    <td>{{ wardrobe.title }}</td>
                                     <td>
                                        <div class="btn-group btn-group-sm">
                                             <a href="#" class="btn btn-info bg-info"><i class="fas fa-edit"></i></a>
@@ -92,9 +92,9 @@
                     <form @submit.prevent="createField()">
                         <div class="modal-body">
                             <div class="form-group">
-                                <input v-model="fieldForm.name" type="text" name="name" class="form-control"
-                                    placeholder="Name" :class="{ 'is-invalid': fieldForm.errors.has('name') }">
-                                <has-error :form="fieldForm" field="name"></has-error>
+                                 <input v-model="fieldForm.title" type="text" name="title" class="form-control"
+                                    placeholder="Title" :class="{ 'is-invalid': fieldForm.errors.has('title') }">
+                                <has-error :form="fieldForm" field="title"></has-error>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -117,13 +117,20 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body">
-                        ...
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
+                    <form @submit.prevent="createWardrobe()">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <input v-model="wardrobeForm.title" type="text" name="title" class="form-control"
+                                    placeholder="Title" :class="{ 'is-invalid': wardrobeForm.errors.has('title') }">
+                                <has-error :form="wardrobeForm" field="title"></has-error>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Create</button>
+                        </div>
+                    </form>
+                    
                 </div>
             </div>
         </div>
@@ -135,25 +142,60 @@
     export default {
         data() {
             return {
-
+                fields:[],
+                wardrobes:[],
+                fieldForm: new Form({
+                    id:'',
+                    title:''
+                }),
+                wardrobeForm: new Form({
+                    id:'',
+                    title:''
+                }),
             }
         },
         methods: {
             addFieldModal() {
+                this.fieldForm.reset();
                 $('#addField').modal('show');
             },
             addWardrobeModal() {
+                this.wardrobeForm.reset();
                 $('#addWardrobe').modal('show');
             },
-            createField(){
+            loadFields(){
+                axios.get('api/fields')
+                    .then((response) =>  this.fields = response.data.data)
+            },
+            loadWardrobes(){
+                axios.get('api/wardrobes')
+                    .then((response) =>  this.wardrobes = response.data.data)
+            },
+            createField() {
                 this.$Progress.start();
                 this.fieldForm.post('api/fields')
                     .then(() => {
                         Fire.$emit('AfterCreate');
-                        $('#addNew').modal('hide');
+                        $('#addField').modal('hide');
                         toast.fire({
                             type: 'success',
-                            title: 'Category created succesfully'
+                            title: 'Field created succesfully'
+                        });
+                        this.$Progress.finish();
+                    })
+                    .catch(() => {
+                        this.$Progress.fail();
+                    })
+            },
+            createWardrobe(){
+                this.$Progress.start();
+                this.wardrobeForm.post('api/wardrobes')
+                    .then(() => {
+                        Fire.$emit('AfterCreate');
+                        $('#addWardrobe').modal('hide');
+                        toast.fire({
+                            type: 'success',
+                            title: 'Wardrobe created succesfully'
                         });
                         this.$Progress.finish();
                     })
@@ -163,7 +205,12 @@
             },
         },
         created() {
-
+            this.loadFields();
+            this.loadWardrobes();
+             Fire.$on('AfterCreate', () => {
+                this.loadFields();
+                this.loadWardrobes();
+            });
         }
     }
 

@@ -129,7 +129,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        ...
+                        <date-picker name="date" v-model="date" :config="options"></date-picker>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

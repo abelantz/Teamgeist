@@ -132,7 +132,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                       <datetime type="time" v-model="time"></datetime>
+                       <!-- <datetime type="time" v-model="time"></datetime> -->
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
