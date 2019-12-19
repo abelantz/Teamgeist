@@ -129,7 +129,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <date-picker name="date" v-model="date" :config="options"></date-picker>
+                        <picker label="Select Time" only-time  v-model="time" format="HH:mm" formatted="HH:mm" ></picker>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -167,10 +167,15 @@
 </template>
 
 <script>
-    export default {
-        data(){
-            return{
+    import picker from 'vue-ctk-date-time-picker';
+    import 'vue-ctk-date-time-picker/dist/vue-ctk-date-time-picker.css';
 
+    
+
+    export default {
+       data () {
+        return {
+                time:''
             }
         },
         methods:{
@@ -180,6 +185,9 @@
             viewModal(){
                 $('#viewTraining').modal('show')
             },
+        },
+        components:{
+            picker
         },
         created(){
 
