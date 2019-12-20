@@ -50,13 +50,11 @@ Route::group(['namespace' => 'API'], function () {
     Route::apiResource('subcategories', 'SubcategoryController');
     Route::apiResource('trainings', 'TrainingController');
     Route::apiResource('memberships', 'MembershipController');
-    Route::apiResource('mcategories', 'MembersCategoryController');
     Route::apiResource('referees', 'RefereeController');
     Route::apiResource('matchdays', 'MatchdayController');
     Route::apiResource('fields', 'FieldController');
     Route::apiResource('wardrobes', 'WardrobeController');
-
-
-
+    Route::apiResource('member_categories', 'MembersCategoryController');
+    Route::apiResource('refree_categories', 'RefreesCategoryController');
     
 });

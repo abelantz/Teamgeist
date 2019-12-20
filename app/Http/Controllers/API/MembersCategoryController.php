@@ -37,7 +37,7 @@ class MembersCategoryController extends Controller
      * @param  \App\Models\MembersCategory  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $members_category)
+    public function show(MembersCategory $members_category)
     {
         return response()->json(['data' => $members_category], 200);
     }
@@ -61,7 +61,7 @@ class MembersCategoryController extends Controller
      * @param  \App\Models\MembersCategory  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $members_category)
+    public function destroy(MembersCategory $members_category)
     {
         $members_category->delete();
         return response()->json(['data' => $members_category], 204);
