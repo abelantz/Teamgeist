@@ -7149,6 +7149,10 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue_ctk_date_time_picker__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-ctk-date-time-picker */ "./node_modules/vue-ctk-date-time-picker/dist/vue-ctk-date-time-picker.common.js");
+/* harmony import */ var vue_ctk_date_time_picker__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_ctk_date_time_picker__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue_ctk_date_time_picker_dist_vue_ctk_date_time_picker_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-ctk-date-time-picker/dist/vue-ctk-date-time-picker.css */ "./node_modules/vue-ctk-date-time-picker/dist/vue-ctk-date-time-picker.css");
+/* harmony import */ var vue_ctk_date_time_picker_dist_vue_ctk_date_time_picker_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_ctk_date_time_picker_dist_vue_ctk_date_time_picker_css__WEBPACK_IMPORTED_MODULE_1__);
 //
 //
 //
@@ -7320,19 +7324,139 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    return {};
+    return {
+      matchdays: [],
+      teams: [],
+      fields: [],
+      wardrobes: [],
+      formMatch: new Form({
+        team_id: '',
+        date: '',
+        opponent: '',
+        start_time: '',
+        end_time: '',
+        meeting: '',
+        type: '',
+        field_id: '',
+        wardrobe_id: ''
+      })
+    };
   },
   methods: {
-    trainingModal: function trainingModal() {
-      $('#addTraining').modal('show');
+    onChangeTraining: function onChangeTraining(event) {
+      console.log(event.target.value);
+    },
+    onChangeField: function onChangeField(event) {
+      console.log(event.target.value);
+    },
+    onChangeWardrobe: function onChangeWardrobe(event) {
+      console.log(event.target.value);
+    },
+    onChangeType: function onChangeType(event) {
+      console.log(event.target.value);
+    },
+    matchModal: function matchModal() {
+      $('#addMatch').modal('show');
     },
     viewModal: function viewModal() {
-      $('#viewTraining').modal('show');
+      $('#viewMatch').modal('show');
+    },
+    loadMatchdays: function loadMatchdays() {
+      var _this = this;
+
+      axios.get('api/matchdays').then(function (response) {
+        return _this.matchdays = response.data.data;
+      });
+    },
+    loadTeams: function loadTeams() {
+      var _this2 = this;
+
+      axios.get('api/teams').then(function (response) {
+        return _this2.teams = response.data.data;
+      });
+    },
+    loadFields: function loadFields() {
+      var _this3 = this;
+
+      axios.get('api/fields').then(function (response) {
+        return _this3.fields = response.data.data;
+      });
+    },
+    loadWardrobes: function loadWardrobes() {
+      var _this4 = this;
+
+      axios.get('api/wardrobes').then(function (response) {
+        return _this4.wardrobes = response.data.data;
+      });
+    },
+    createMatch: function createMatch() {
+      var _this5 = this;
+
+      this.$Progress.start();
+      this.formMatch.post('api/matchdays').then(function () {
+        Fire.$emit('AfterCreate');
+        $('#addMatch').modal('hide');
+        toast.fire({
+          type: 'success',
+          title: 'Match created succesfully'
+        });
+
+        _this5.$Progress.finish();
+      })["catch"](function () {
+        _this5.$Progress.fail();
+      });
     }
   },
-  created: function created() {}
+  components: {
+    picker: vue_ctk_date_time_picker__WEBPACK_IMPORTED_MODULE_0___default.a
+  },
+  created: function created() {
+    var _this6 = this;
+
+    this.loadTeams();
+    this.loadFields();
+    this.loadWardrobes();
+    this.loadMatchdays();
+    Fire.$on('AfterCreate', function () {
+      _this6.loadMatchdays();
+    });
+  }
 });
 
 /***/ }),
@@ -10174,26 +10298,126 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      time: ''
+      trainings: [],
+      teams: [],
+      fields: [],
+      wardrobes: [],
+      formTraining: new Form({
+        team_id: '',
+        date: '',
+        start_time: '',
+        end_time: '',
+        meeting: '',
+        field_id: '',
+        wardrobe_id: ''
+      })
     };
   },
   methods: {
+    onChangeTraining: function onChangeTraining(event) {
+      console.log(event.target.value);
+    },
+    onChangeField: function onChangeField(event) {
+      console.log(event.target.value);
+    },
+    onChangeWardrobe: function onChangeWardrobe(event) {
+      console.log(event.target.value);
+    },
     trainingModal: function trainingModal() {
       $('#addTraining').modal('show');
     },
     viewModal: function viewModal() {
       $('#viewTraining').modal('show');
+    },
+    loadTrainings: function loadTrainings() {
+      var _this = this;
+
+      axios.get('api/trainings').then(function (response) {
+        return _this.trainings = response.data.data;
+      });
+    },
+    loadTeams: function loadTeams() {
+      var _this2 = this;
+
+      axios.get('api/teams').then(function (response) {
+        return _this2.teams = response.data.data;
+      });
+    },
+    loadFields: function loadFields() {
+      var _this3 = this;
+
+      axios.get('api/fields').then(function (response) {
+        return _this3.fields = response.data.data;
+      });
+    },
+    loadWardrobes: function loadWardrobes() {
+      var _this4 = this;
+
+      axios.get('api/wardrobes').then(function (response) {
+        return _this4.wardrobes = response.data.data;
+      });
+    },
+    createTraining: function createTraining() {
+      var _this5 = this;
+
+      this.$Progress.start();
+      this.formTraining.post('api/trainings').then(function () {
+        Fire.$emit('AfterCreate');
+        $('#addTraining').modal('hide');
+        toast.fire({
+          type: 'success',
+          title: 'Training created succesfully'
+        });
+
+        _this5.$Progress.finish();
+      })["catch"](function () {
+        _this5.$Progress.fail();
+      });
     }
   },
   components: {
     picker: vue_ctk_date_time_picker__WEBPACK_IMPORTED_MODULE_0___default.a
   },
-  created: function created() {}
+  created: function created() {
+    var _this6 = this;
+
+    this.loadTeams();
+    this.loadFields();
+    this.loadWardrobes();
+    this.loadTrainings();
+    Fire.$on('AfterCreate', function () {
+      _this6.loadTrainings();
+    });
+  }
 });
 
 /***/ }),
@@ -107041,7 +107265,7 @@ var render = function() {
                 "button",
                 {
                   staticClass: "btn btn-success bg-success",
-                  on: { click: _vm.trainingModal }
+                  on: { click: _vm.matchModal }
                 },
                 [_vm._v(" Add Match")]
               )
@@ -107049,90 +107273,56 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "card-body table-responsive p-0" }, [
-            _c("table", { staticClass: "table table-hover" }, [
+            _c("table", { staticClass: "table table-hover text-center" }, [
               _vm._m(0),
               _vm._v(" "),
-              _c("tbody", [
-                _c("tr", [
-                  _c("td", [_vm._v("FC Barca")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("12-01-2020")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("Monday")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("14:00")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("15:30")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("13:45")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("Home")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("B1")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("2")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("Guardiolaa")]),
-                  _vm._v(" "),
-                  _c("td", [
-                    _c("div", { staticClass: "btn-group btn-group-sm" }, [
-                      _c(
-                        "a",
-                        {
-                          staticClass: "btn btn-success bg-success",
-                          attrs: { href: "#" },
-                          on: { click: _vm.viewModal }
-                        },
-                        [_c("i", { staticClass: "fas fa-eye" })]
-                      ),
-                      _vm._v(" "),
-                      _vm._m(1),
-                      _vm._v(" "),
-                      _vm._m(2)
+              _c(
+                "tbody",
+                _vm._l(_vm.matchdays, function(matchday) {
+                  return _c("tr", { key: matchday.id }, [
+                    _c("td", [_vm._v(_vm._s(matchday.team_id))]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(_vm._s(_vm._f("regDate")(matchday.date)))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("Monday")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(matchday.start_time))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(matchday.end_time))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(matchday.meeting))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(matchday.type))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(matchday.field_id))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(matchday.wardrobe_id))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("Colina")]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c("div", { staticClass: "btn-group btn-group-sm" }, [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "btn btn-success bg-success",
+                            attrs: { href: "#" },
+                            on: { click: _vm.viewModal }
+                          },
+                          [_c("i", { staticClass: "fas fa-eye" })]
+                        ),
+                        _vm._v(" "),
+                        _vm._m(1, true),
+                        _vm._v(" "),
+                        _vm._m(2, true)
+                      ])
                     ])
                   ])
-                ]),
-                _vm._v(" "),
-                _c("tr", [
-                  _c("td", [_vm._v("FC Bayern Munchen")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("12-01-2020")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("Monday")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("14:00")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("15:30")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("13:45")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("Home")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("B1")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("2")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("Guardiolaa")]),
-                  _vm._v(" "),
-                  _c("td", [
-                    _c("div", { staticClass: "btn-group btn-group-sm" }, [
-                      _c(
-                        "a",
-                        {
-                          staticClass: "btn btn-success bg-success",
-                          attrs: { href: "#" },
-                          on: { click: _vm.viewModal }
-                        },
-                        [_c("i", { staticClass: "fas fa-eye" })]
-                      ),
-                      _vm._v(" "),
-                      _vm._m(3),
-                      _vm._v(" "),
-                      _vm._m(4)
-                    ])
-                  ])
-                ])
-              ])
+                }),
+                0
+              )
             ])
           ])
         ])
@@ -107142,11 +107332,11 @@ var render = function() {
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-6 " }, [
         _c("div", { staticClass: "card card-info card-outline " }, [
-          _vm._m(5),
+          _vm._m(3),
           _vm._v(" "),
           _c("div", { staticClass: "card-body table-responsive p-0" }, [
             _c("table", { staticClass: "table table-hover" }, [
-              _vm._m(6),
+              _vm._m(4),
               _vm._v(" "),
               _c("tbody", [
                 _c("tr", [
@@ -107172,9 +107362,9 @@ var render = function() {
                         [_c("i", { staticClass: "fas fa-eye" })]
                       ),
                       _vm._v(" "),
-                      _vm._m(7),
+                      _vm._m(5),
                       _vm._v(" "),
-                      _vm._m(8)
+                      _vm._m(6)
                     ])
                   ])
                 ])
@@ -107185,9 +107375,443 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _vm._m(9),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "addMatch",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "addMatch",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog", attrs: { role: "document" } },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(7),
+              _vm._v(" "),
+              _c(
+                "form",
+                {
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      return _vm.createMatch()
+                    }
+                  }
+                },
+                [
+                  _c("div", { staticClass: "modal-body " }, [
+                    _c("div", { staticClass: "form-group" }, [
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.formMatch.team_id,
+                              expression: "formMatch.team_id"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { type: "type", name: "type", id: "type" },
+                          on: {
+                            change: [
+                              function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.$set(
+                                  _vm.formMatch,
+                                  "team_id",
+                                  $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                )
+                              },
+                              function($event) {
+                                return _vm.onChangeTraining($event)
+                              }
+                            ]
+                          }
+                        },
+                        [
+                          _c(
+                            "option",
+                            {
+                              attrs: { disabled: "", selected: "", value: "" }
+                            },
+                            [_vm._v("Select Team")]
+                          ),
+                          _vm._v(" "),
+                          _vm._l(_vm.teams, function(team) {
+                            return _c(
+                              "option",
+                              { key: team.id, domProps: { value: team.name } },
+                              [_vm._v(_vm._s(team.name))]
+                            )
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: { form: _vm.formMatch, field: "team" }
+                          })
+                        ],
+                        2
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "form-group" },
+                      [
+                        _c("picker", {
+                          attrs: {
+                            label: "Date",
+                            "only-date": "",
+                            format: "YYYY-MM-DD",
+                            formatted: "DD/MM/YYYY"
+                          },
+                          model: {
+                            value: _vm.formMatch.date,
+                            callback: function($$v) {
+                              _vm.$set(_vm.formMatch, "date", $$v)
+                            },
+                            expression: "formMatch.date"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("has-error", {
+                          attrs: { form: _vm.formMatch, field: "date" }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.formMatch.opponent,
+                            expression: "formMatch.opponent"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text", placeholder: "FC opponent ..." },
+                        domProps: { value: _vm.formMatch.opponent },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.formMatch,
+                              "opponent",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "form-group" },
+                      [
+                        _c("picker", {
+                          attrs: {
+                            label: "Start Time",
+                            "only-time": "",
+                            format: "HH:mm:ss ",
+                            formatted: "HH:mm "
+                          },
+                          model: {
+                            value: _vm.formMatch.start_time,
+                            callback: function($$v) {
+                              _vm.$set(_vm.formMatch, "start_time", $$v)
+                            },
+                            expression: "formMatch.start_time"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("has-error", {
+                          attrs: { form: _vm.formMatch, field: "start" }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "form-group" },
+                      [
+                        _c("picker", {
+                          attrs: {
+                            label: "End Time",
+                            "only-time": "",
+                            format: "HH:mm:ss",
+                            formatted: "HH:mm "
+                          },
+                          model: {
+                            value: _vm.formMatch.end_time,
+                            callback: function($$v) {
+                              _vm.$set(_vm.formMatch, "end_time", $$v)
+                            },
+                            expression: "formMatch.end_time"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("has-error", {
+                          attrs: { form: _vm.formMatch, field: "" }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "form-group" },
+                      [
+                        _c("picker", {
+                          attrs: {
+                            label: "Meeting Time",
+                            "only-time": "",
+                            format: "HH:mm:ss",
+                            formatted: "HH:mm "
+                          },
+                          model: {
+                            value: _vm.formMatch.meeting,
+                            callback: function($$v) {
+                              _vm.$set(_vm.formMatch, "meeting", $$v)
+                            },
+                            expression: "formMatch.meeting"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("has-error", {
+                          attrs: { form: _vm.formMatch, field: "meeting" }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group" }, [
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.formMatch.type,
+                              expression: "formMatch.type"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { type: "type", name: "type", id: "type" },
+                          on: {
+                            change: [
+                              function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.$set(
+                                  _vm.formMatch,
+                                  "type",
+                                  $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                )
+                              },
+                              function($event) {
+                                return _vm.onChangeType($event)
+                              }
+                            ]
+                          }
+                        },
+                        [
+                          _c(
+                            "option",
+                            {
+                              attrs: { disabled: "", selected: "", value: "" }
+                            },
+                            [_vm._v("Select Type")]
+                          ),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Home")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Away")]),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: { form: _vm.formMatch, field: "field" }
+                          })
+                        ],
+                        1
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group" }, [
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.formMatch.field_id,
+                              expression: "formMatch.field_id"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { type: "type", name: "type", id: "type" },
+                          on: {
+                            change: [
+                              function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.$set(
+                                  _vm.formMatch,
+                                  "field_id",
+                                  $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                )
+                              },
+                              function($event) {
+                                return _vm.onChangeField($event)
+                              }
+                            ]
+                          }
+                        },
+                        [
+                          _c(
+                            "option",
+                            {
+                              attrs: { disabled: "", selected: "", value: "" }
+                            },
+                            [_vm._v("Select Field")]
+                          ),
+                          _vm._v(" "),
+                          _vm._l(_vm.fields, function(field) {
+                            return _c(
+                              "option",
+                              {
+                                key: field.id,
+                                domProps: { value: field.title }
+                              },
+                              [_vm._v(_vm._s(field.title))]
+                            )
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: { form: _vm.formMatch, field: "field" }
+                          })
+                        ],
+                        2
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group" }, [
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.formMatch.wardrobe_id,
+                              expression: "formMatch.wardrobe_id"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { type: "type", name: "type", id: "type" },
+                          on: {
+                            change: [
+                              function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.$set(
+                                  _vm.formMatch,
+                                  "wardrobe_id",
+                                  $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                )
+                              },
+                              function($event) {
+                                return _vm.onChangeWardrobe($event)
+                              }
+                            ]
+                          }
+                        },
+                        [
+                          _c(
+                            "option",
+                            {
+                              attrs: { disabled: "", selected: "", value: "" }
+                            },
+                            [_vm._v("Select Wardrobe")]
+                          ),
+                          _vm._v(" "),
+                          _vm._l(_vm.wardrobes, function(wardrobe) {
+                            return _c(
+                              "option",
+                              {
+                                key: wardrobe.id,
+                                domProps: { value: wardrobe.title }
+                              },
+                              [_vm._v(_vm._s(wardrobe.title))]
+                            )
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: { form: _vm.formMatch, field: "wardrobe" }
+                          })
+                        ],
+                        2
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(8)
+                ]
+              )
+            ])
+          ]
+        )
+      ]
+    ),
     _vm._v(" "),
-    _vm._m(10)
+    _vm._m(9)
   ])
 }
 var staticRenderFns = [
@@ -107215,28 +107839,10 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Wardrobe")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Coach / Contact ")]),
+        _c("th", [_vm._v("Referee ")]),
         _vm._v(" "),
         _c("th", [_vm._v("Modify")])
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      { staticClass: "btn btn-info bg-info", attrs: { href: "#" } },
-      [_c("i", { staticClass: "fas fa-edit" })]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { staticClass: "btn btn-danger", attrs: { href: "#" } }, [
-      _c("i", { staticClass: "fas fa-trash" })
     ])
   },
   function() {
@@ -107309,72 +107915,45 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "modal fade",
-        attrs: {
-          id: "addTraining",
-          tabindex: "-1",
-          role: "dialog",
-          "aria-labelledby": "addTraining",
-          "aria-hidden": "true"
-        }
-      },
-      [
-        _c(
-          "div",
-          { staticClass: "modal-dialog", attrs: { role: "document" } },
-          [
-            _c("div", { staticClass: "modal-content" }, [
-              _c("div", { staticClass: "modal-header" }, [
-                _c(
-                  "h5",
-                  { staticClass: "modal-title", attrs: { id: "addTraining" } },
-                  [_vm._v("Modal title")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "close",
-                    attrs: {
-                      type: "button",
-                      "data-dismiss": "modal",
-                      "aria-label": "Close"
-                    }
-                  },
-                  [
-                    _c("span", { attrs: { "aria-hidden": "true" } }, [
-                      _vm._v("×")
-                    ])
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-body" }),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-footer" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-secondary",
-                    attrs: { type: "button", "data-dismiss": "modal" }
-                  },
-                  [_vm._v("Close")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  { staticClass: "btn btn-primary", attrs: { type: "button" } },
-                  [_vm._v("Save changes")]
-                )
-              ])
-            ])
-          ]
-        )
-      ]
-    )
+    return _c("div", { staticClass: "modal-header" }, [
+      _c("h5", { staticClass: "modal-title", attrs: { id: "addMatch" } }, [
+        _vm._v("Add Match")
+      ]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-danger",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [_vm._v("Close")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        { staticClass: "btn btn-success", attrs: { type: "submit" } },
+        [_vm._v("Create")]
+      )
+    ])
   },
   function() {
     var _vm = this
@@ -112771,86 +113350,54 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "card-body table-responsive p-0" }, [
-            _c("table", { staticClass: "table table-hover" }, [
+            _c("table", { staticClass: "table table-hover text-center" }, [
               _vm._m(0),
               _vm._v(" "),
-              _c("tbody", [
-                _c("tr", [
-                  _c("td", [_vm._v("FC Barca")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("12-01-2020")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("Monday")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("14:00")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("15:30")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("13:45")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("B1")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("2")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("Guardiolaa")]),
-                  _vm._v(" "),
-                  _c("td", [
-                    _c("div", { staticClass: "btn-group btn-group-sm" }, [
-                      _c(
-                        "a",
-                        {
-                          staticClass: "btn btn-success bg-success",
-                          attrs: { href: "#" },
-                          on: { click: _vm.viewModal }
-                        },
-                        [_c("i", { staticClass: "fas fa-eye" })]
-                      ),
-                      _vm._v(" "),
-                      _vm._m(1),
-                      _vm._v(" "),
-                      _vm._m(2)
+              _c(
+                "tbody",
+                _vm._l(_vm.trainings, function(training) {
+                  return _c("tr", { key: training.id }, [
+                    _c("td", [_vm._v(_vm._s(training.team_id))]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(_vm._s(_vm._f("regDate")(training.date)))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("Monday")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(training.start_time))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(training.end_time))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(training.meeting))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(training.field_id))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(training.wardrobe_id))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("Guardiolaa")]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c("div", { staticClass: "btn-group btn-group-sm" }, [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "btn btn-success bg-success",
+                            attrs: { href: "#" },
+                            on: { click: _vm.viewModal }
+                          },
+                          [_c("i", { staticClass: "fas fa-eye" })]
+                        ),
+                        _vm._v(" "),
+                        _vm._m(1, true),
+                        _vm._v(" "),
+                        _vm._m(2, true)
+                      ])
                     ])
                   ])
-                ]),
-                _vm._v(" "),
-                _c("tr", [
-                  _c("td", [_vm._v("FC Bayern Munchen")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("12-01-2020")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("Monday")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("14:00")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("15:30")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("13:45")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("B1")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("2")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("Guardiolaa")]),
-                  _vm._v(" "),
-                  _c("td", [
-                    _c("div", { staticClass: "btn-group btn-group-sm" }, [
-                      _c(
-                        "a",
-                        {
-                          staticClass: "btn btn-success bg-success",
-                          attrs: { href: "#" },
-                          on: { click: _vm.viewModal }
-                        },
-                        [_c("i", { staticClass: "fas fa-eye" })]
-                      ),
-                      _vm._v(" "),
-                      _vm._m(3),
-                      _vm._v(" "),
-                      _vm._m(4)
-                    ])
-                  ])
-                ])
-              ])
+                }),
+                0
+              )
             ])
           ])
         ])
@@ -112860,11 +113407,11 @@ var render = function() {
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-6 " }, [
         _c("div", { staticClass: "card card-info card-outline " }, [
-          _vm._m(5),
+          _vm._m(3),
           _vm._v(" "),
           _c("div", { staticClass: "card-body table-responsive p-0" }, [
             _c("table", { staticClass: "table table-hover" }, [
-              _vm._m(6),
+              _vm._m(4),
               _vm._v(" "),
               _c("tbody", [
                 _c("tr", [
@@ -112890,9 +113437,9 @@ var render = function() {
                         [_c("i", { staticClass: "fas fa-eye" })]
                       ),
                       _vm._v(" "),
-                      _vm._m(7),
+                      _vm._m(5),
                       _vm._v(" "),
-                      _vm._m(8)
+                      _vm._m(6)
                     ])
                   ])
                 ])
@@ -112921,39 +113468,337 @@ var render = function() {
           { staticClass: "modal-dialog", attrs: { role: "document" } },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _vm._m(9),
+              _vm._m(7),
               _vm._v(" "),
               _c(
-                "div",
-                { staticClass: "modal-body" },
-                [
-                  _c("picker", {
-                    attrs: {
-                      label: "Select Time",
-                      "only-time": "",
-                      format: "HH:mm",
-                      formatted: "HH:mm"
-                    },
-                    model: {
-                      value: _vm.time,
-                      callback: function($$v) {
-                        _vm.time = $$v
-                      },
-                      expression: "time"
+                "form",
+                {
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      return _vm.createTraining()
                     }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _vm._m(10)
+                  }
+                },
+                [
+                  _c("div", { staticClass: "modal-body" }, [
+                    _c("div", { staticClass: "form-group" }, [
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.formTraining.team_id,
+                              expression: "formTraining.team_id"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { type: "type", name: "type", id: "type" },
+                          on: {
+                            change: [
+                              function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.$set(
+                                  _vm.formTraining,
+                                  "team_id",
+                                  $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                )
+                              },
+                              function($event) {
+                                return _vm.onChangeTraining($event)
+                              }
+                            ]
+                          }
+                        },
+                        [
+                          _c(
+                            "option",
+                            {
+                              attrs: { disabled: "", selected: "", value: "" }
+                            },
+                            [_vm._v("Select Team")]
+                          ),
+                          _vm._v(" "),
+                          _vm._l(_vm.teams, function(team) {
+                            return _c(
+                              "option",
+                              { key: team.id, domProps: { value: team.name } },
+                              [_vm._v(_vm._s(team.name))]
+                            )
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: { form: _vm.formTraining, field: "team" }
+                          })
+                        ],
+                        2
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "form-group" },
+                      [
+                        _c("picker", {
+                          attrs: {
+                            label: "Date",
+                            "only-date": "",
+                            format: "YYYY-MM-DD",
+                            formatted: "DD/MM/YYYY"
+                          },
+                          model: {
+                            value: _vm.formTraining.date,
+                            callback: function($$v) {
+                              _vm.$set(_vm.formTraining, "date", $$v)
+                            },
+                            expression: "formTraining.date"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("has-error", {
+                          attrs: { form: _vm.formTraining, field: "date" }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "form-group" },
+                      [
+                        _c("picker", {
+                          attrs: {
+                            label: "Start Time",
+                            "only-time": "",
+                            format: "HH:MM:SS",
+                            formatted: "HH:mm "
+                          },
+                          model: {
+                            value: _vm.formTraining.start_time,
+                            callback: function($$v) {
+                              _vm.$set(_vm.formTraining, "start_time", $$v)
+                            },
+                            expression: "formTraining.start_time"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("has-error", {
+                          attrs: { form: _vm.formTraining, field: "start" }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "form-group" },
+                      [
+                        _c("picker", {
+                          attrs: {
+                            label: "End Time",
+                            "only-time": "",
+                            format: "HH:MM:SS",
+                            formatted: "HH:mm "
+                          },
+                          model: {
+                            value: _vm.formTraining.end_time,
+                            callback: function($$v) {
+                              _vm.$set(_vm.formTraining, "end_time", $$v)
+                            },
+                            expression: "formTraining.end_time"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("has-error", {
+                          attrs: { form: _vm.formTraining, field: "" }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "form-group" },
+                      [
+                        _c("picker", {
+                          attrs: {
+                            label: "Meeting Time",
+                            "only-time": "",
+                            format: "hh:mm:ss",
+                            formatted: "HH:mm"
+                          },
+                          model: {
+                            value: _vm.formTraining.meeting,
+                            callback: function($$v) {
+                              _vm.$set(_vm.formTraining, "meeting", $$v)
+                            },
+                            expression: "formTraining.meeting"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("has-error", {
+                          attrs: { form: _vm.formTraining, field: "meeting" }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group" }, [
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.formTraining.field_id,
+                              expression: "formTraining.field_id"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { type: "type", name: "type", id: "type" },
+                          on: {
+                            change: [
+                              function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.$set(
+                                  _vm.formTraining,
+                                  "field_id",
+                                  $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                )
+                              },
+                              function($event) {
+                                return _vm.onChangeField($event)
+                              }
+                            ]
+                          }
+                        },
+                        [
+                          _c(
+                            "option",
+                            {
+                              attrs: { disabled: "", selected: "", value: "" }
+                            },
+                            [_vm._v("Select Field")]
+                          ),
+                          _vm._v(" "),
+                          _vm._l(_vm.fields, function(field) {
+                            return _c(
+                              "option",
+                              {
+                                key: field.id,
+                                domProps: { value: field.title }
+                              },
+                              [_vm._v(_vm._s(field.title))]
+                            )
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: { form: _vm.formTraining, field: "field" }
+                          })
+                        ],
+                        2
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group" }, [
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.formTraining.wardrobe_id,
+                              expression: "formTraining.wardrobe_id"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { type: "type", name: "type", id: "type" },
+                          on: {
+                            change: [
+                              function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.$set(
+                                  _vm.formTraining,
+                                  "wardrobe_id",
+                                  $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                )
+                              },
+                              function($event) {
+                                return _vm.onChangeWardrobe($event)
+                              }
+                            ]
+                          }
+                        },
+                        [
+                          _c(
+                            "option",
+                            {
+                              attrs: { disabled: "", selected: "", value: "" }
+                            },
+                            [_vm._v("Select Wardrobe")]
+                          ),
+                          _vm._v(" "),
+                          _vm._l(_vm.wardrobes, function(wardrobe) {
+                            return _c(
+                              "option",
+                              {
+                                key: wardrobe.id,
+                                domProps: { value: wardrobe.title }
+                              },
+                              [_vm._v(_vm._s(wardrobe.title))]
+                            )
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: { form: _vm.formTraining, field: "wardrobe" }
+                          })
+                        ],
+                        2
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(8)
+                ]
+              )
             ])
           ]
         )
       ]
     ),
     _vm._v(" "),
-    _vm._m(11)
+    _vm._m(9)
   ])
 }
 var staticRenderFns = [
@@ -112983,24 +113828,6 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Modify")])
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      { staticClass: "btn btn-info bg-info", attrs: { href: "#" } },
-      [_c("i", { staticClass: "fas fa-edit" })]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { staticClass: "btn btn-danger", attrs: { href: "#" } }, [
-      _c("i", { staticClass: "fas fa-trash" })
     ])
   },
   function() {
@@ -113075,7 +113902,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "modal-header" }, [
       _c("h5", { staticClass: "modal-title", attrs: { id: "addTraining" } }, [
-        _vm._v("Modal title")
+        _vm._v("Add Training")
       ]),
       _vm._v(" "),
       _c(
@@ -113100,7 +113927,7 @@ var staticRenderFns = [
       _c(
         "button",
         {
-          staticClass: "btn btn-secondary",
+          staticClass: "btn btn-danger",
           attrs: { type: "button", "data-dismiss": "modal" }
         },
         [_vm._v("Close")]
@@ -113108,8 +113935,8 @@ var staticRenderFns = [
       _vm._v(" "),
       _c(
         "button",
-        { staticClass: "btn btn-primary", attrs: { type: "button" } },
-        [_vm._v("Save changes")]
+        { staticClass: "btn btn-success", attrs: { type: "submit" } },
+        [_vm._v("Create")]
       )
     ])
   },
@@ -129257,7 +130084,10 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.filter('upText', function (string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 });
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.filter('regDate', function (created) {
-  return moment__WEBPACK_IMPORTED_MODULE_7___default()(created).format('MMMM Do YYYY');
+  return moment__WEBPACK_IMPORTED_MODULE_7___default()(created).format('Do MMMM YYYY');
+});
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.filter('timeFormat', function (value) {
+  return moment__WEBPACK_IMPORTED_MODULE_7___default()(value).format('HH:mm');
 });
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_progressbar__WEBPACK_IMPORTED_MODULE_8___default.a, {

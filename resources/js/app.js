@@ -77,7 +77,10 @@ Vue.filter('upText', function(string){
     return string.charAt(0).toUpperCase() + string.slice(1);
 });
 Vue.filter('regDate', function(created){
-    return moment(created).format('MMMM Do YYYY');
+    return moment(created).format('Do MMMM YYYY');
+});
+Vue.filter('timeFormat', function(value){
+    return moment(value).format('HH:mm');
 });
 
 

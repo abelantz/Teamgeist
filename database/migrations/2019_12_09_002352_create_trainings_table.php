@@ -15,6 +15,13 @@ class CreateTrainingsTable extends Migration
     {
         Schema::create('trainings', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('team_id');
+            $table->date('date');
+            $table->time('start_time');
+            $table->time('end_time');
+            $table->time('meeting');
+            $table->integer('field_id');
+            $table->integer('wardrobe_id');
             $table->timestamps();
         });
     }

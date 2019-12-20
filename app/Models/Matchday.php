@@ -12,6 +12,14 @@ class Matchday extends Model
      * @var array
      */
     protected $fillable = [
-        'id'
+        'team_id',
+        'date',
+        'opponent',
+        'start_time',
+        'end_time',
+        'meeting',
+        'type',
+        'field_id',
+        'wardrobe_id'
     ];
 }

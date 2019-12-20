@@ -12,7 +12,7 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body table-responsive p-0">
-                        <table class="table table-hover">
+                        <table class="table table-hover text-center">
                             <thead>
                                 <tr>
                                     <th>Team Name</th>
@@ -28,42 +28,26 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>FC Barca</td>
-                                    <td>12-01-2020</td>
+                                <tr v-for="training in trainings" v-bind:key="training.id">
+                                    <td>{{training.team_id}}</td>
+                                    <td>{{training.date | regDate}}</td>
                                     <td>Monday</td>
-                                    <td>14:00</td>
-                                    <td>15:30</td>
-                                    <td>13:45</td>
-                                    <td>B1</td>
-                                    <td>2</td>
+                                    <td>{{training.start_time }}</td>
+                                    <td>{{training.end_time }}</td>
+                                    <td>{{training.meeting }}</td>
+                                    <td>{{training.field_id}}</td>
+                                    <td>{{training.wardrobe_id}}</td>
                                     <td>Guardiolaa</td>
                                     <td>
                                         <div class="btn-group btn-group-sm">
-                                            <a href="#" @click="viewModal"  class="btn btn-success bg-success"><i class="fas fa-eye"></i></a>
-                                            <a href="#"  class="btn btn-info bg-info"><i class="fas fa-edit"></i></a>
-                                            <a href="#"  class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                                            <a href="#" @click="viewModal" class="btn btn-success bg-success"><i
+                                                    class="fas fa-eye"></i></a>
+                                            <a href="#" class="btn btn-info bg-info"><i class="fas fa-edit"></i></a>
+                                            <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
                                         </div>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>FC Bayern Munchen</td>
-                                    <td>12-01-2020</td>
-                                    <td>Monday</td>
-                                    <td>14:00</td>
-                                    <td>15:30</td>
-                                    <td>13:45</td>
-                                    <td>B1</td>
-                                    <td>2</td>
-                                    <td>Guardiolaa</td>
-                                    <td>
-                                       <div class="btn-group btn-group-sm">
-                                            <a href="#" @click="viewModal" class="btn btn-success bg-success"><i class="fas fa-eye"></i></a>
-                                            <a href="#"  class="btn btn-info bg-info"><i class="fas fa-edit"></i></a>
-                                            <a href="#"  class="btn btn-danger"><i class="fas fa-trash"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
+                                
                             </tbody>
                         </table>
                     </div>
@@ -102,13 +86,14 @@
                                     <td>Change Field</td>
                                     <td>
                                         <div class="btn-group btn-group-sm">
-                                            <a href="#"  @click="viewModal" class="btn btn-success bg-success"><i class="fas fa-eye"></i></a>
-                                            <a href="#"  class="btn btn-info bg-info"><i class="fas fa-edit"></i></a>
-                                            <a href="#"  class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                                            <a href="#" @click="viewModal" class="btn btn-success bg-success"><i
+                                                    class="fas fa-eye"></i></a>
+                                            <a href="#" class="btn btn-info bg-info"><i class="fas fa-edit"></i></a>
+                                            <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
                                         </div>
                                     </td>
                                 </tr>
-                                
+
                             </tbody>
                         </table>
                     </div>
@@ -123,18 +108,57 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="addTraining">Modal title</h5>
+                        <h5 class="modal-title" id="addTraining">Add Training</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body">
-                        <picker label="Select Time" only-time  v-model="time" format="HH:mm" formatted="HH:mm" ></picker>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
+                    <form @submit.prevent="createTraining()">
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <select v-model="formTraining.team_id" @change="onChangeTraining($event)" type="type" name="type" id="type" class="form-control">
+                                     <option disabled selected value="">Select Team</option>
+                                    <option  v-for="team in teams" v-bind:key="team.id" v-bind:value="team.name">{{team.name}}</option>
+                                    <has-error :form="formTraining" field="team"></has-error>
+                                </select>
+                                </div>
+                                <div class="form-group">
+                                    <picker label="Date" only-date v-model="formTraining.date" format="YYYY-MM-DD" formatted="DD/MM/YYYY"></picker>
+                                    <has-error :form="formTraining" field="date"></has-error>
+                                </div>
+                                <div class="form-group">
+                                    <picker label="Start Time" only-time v-model="formTraining.start_time" format="HH:MM:SS" formatted="HH:mm "></picker>
+                                    <has-error :form="formTraining" field="start"></has-error>
+                                </div>
+                                <div class="form-group">
+                                    <picker label="End Time" only-time v-model="formTraining.end_time" format="HH:MM:SS" formatted="HH:mm "></picker>
+                                    <has-error :form="formTraining" field=""></has-error>
+                                </div>
+                                <div class="form-group">
+                                    <picker label="Meeting Time" only-time v-model="formTraining.meeting" format="hh:mm:ss" formatted="HH:mm"></picker>
+                                    <has-error :form="formTraining" field="meeting"></has-error>
+                                </div>
+                                <div class="form-group">
+                                    <select v-model="formTraining.field_id" @change="onChangeField($event)" type="type" name="type" id="type" class="form-control">
+                                     <option disabled selected value="">Select Field</option>
+                                    <option  v-for="field in fields" v-bind:key="field.id" v-bind:value="field.title">{{field.title}}</option>
+                                    <has-error :form="formTraining" field="field"></has-error>
+                                </select>
+                                </div>
+                                <div class="form-group">
+                                    <select v-model="formTraining.wardrobe_id" @change="onChangeWardrobe($event)" type="type" name="type" id="type" class="form-control">
+                                     <option disabled selected value="">Select Wardrobe</option>
+                                    <option  v-for="wardrobe in wardrobes" v-bind:key="wardrobe.id" v-bind:value="wardrobe.title">{{wardrobe.title}}</option>
+                                    <has-error :form="formTraining" field="wardrobe"></has-error>
+                                </select>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-success">Create</button>
+                            </div>
+                        </form>
+                    
                 </div>
             </div>
         </div>
@@ -170,27 +194,82 @@
     import picker from 'vue-ctk-date-time-picker';
     import 'vue-ctk-date-time-picker/dist/vue-ctk-date-time-picker.css';
 
-    
+
 
     export default {
-       data () {
-        return {
-                time:''
+        data() {
+            return {
+                trainings:[],
+                teams: [],
+                fields: [],
+                wardrobes: [],
+                formTraining: new Form({
+                    team_id: '',
+                    date: '',
+                    start_time: '',
+                    end_time: '',
+                    meeting: '',
+                    field_id: '',
+                    wardrobe_id: '',
+                })
+
             }
         },
-        methods:{
-            trainingModal(){
+        methods: {
+            onChangeTraining(event){console.log(event.target.value)},
+            onChangeField(event){console.log(event.target.value)},
+            onChangeWardrobe(event){console.log(event.target.value)},
+
+            trainingModal() {
                 $('#addTraining').modal('show')
             },
-            viewModal(){
+            viewModal() {
                 $('#viewTraining').modal('show')
             },
+            loadTrainings(){
+                axios.get('api/trainings')
+                    .then((response) => this.trainings = response.data.data)
+            },
+            loadTeams() {
+                axios.get('api/teams')
+                    .then((response) => this.teams = response.data.data)
+            },
+            loadFields() {
+                axios.get('api/fields')
+                    .then((response) => this.fields = response.data.data)
+            },
+            loadWardrobes() {
+                axios.get('api/wardrobes')
+                    .then((response) => this.wardrobes = response.data.data)
+            },
+            createTraining() {
+                this.$Progress.start();
+                this.formTraining.post('api/trainings')
+                    .then(() => {
+                        Fire.$emit('AfterCreate');
+                        $('#addTraining').modal('hide');
+                        toast.fire({
+                            type: 'success',
+                            title: 'Training created succesfully'
+                        });
+                        this.$Progress.finish();
+                    })
+                    .catch(() => {
+                        this.$Progress.fail();
+                    })
+            },
         },
-        components:{
+        components: {
             picker
         },
-        created(){
-
+        created() {
+            this.loadTeams();
+            this.loadFields();
+            this.loadWardrobes();
+            this.loadTrainings();
+            Fire.$on('AfterCreate', () => {
+                this.loadTrainings();
+            });
         }
     }
 

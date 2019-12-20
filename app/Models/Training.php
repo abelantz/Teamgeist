@@ -13,7 +13,13 @@ class Training extends Model
      * @var array
      */
     protected $fillable = [
-        'title', 'time'
+        'team_id',
+        'date',
+        'start_time',
+        'end_time',
+        'meeting',
+        'field_id',
+        'wardrobe_id'
     ];
 
 }
