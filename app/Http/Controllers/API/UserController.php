@@ -116,6 +116,9 @@ class UserController extends Controller
             'email' => $request ['email'],
             'password' => Hash::make($request['password'])
         ]);
+        if($request->has('role_id') && $request->filled('role_id')) {
+            $user->assignRole($request['role_id']);
+        }
         return response()->json(['data' => $user], 201);
     }
 

@@ -56,8 +56,6 @@ let routes = [
     { path: '/tasks', component: require('./vue/components/Tasks.vue').default },
     { path: '/refrees', component: require('./vue/components/Refrees.vue').default },
     { path: '/fieldwardrobe', component: require('./vue/components/FieldWardrobe.vue').default },
-
-
 ]
 
 const router = new VueRouter({
