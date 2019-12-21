@@ -32,7 +32,7 @@
                                 <tr v-for="matchday in matchdays" v-bind:key="matchday.id">
                                     <td>{{matchday.team_id}}</td>
                                     <td>{{matchday.date | regDate}}</td>
-                                    <td>Monday</td>
+                                    <td>{{matchday.opponent}}</td>
                                     <td>{{matchday.start_time}}</td>
                                     <td>{{matchday.end_time}}</td>
                                     <td>{{matchday.meeting}}</td>

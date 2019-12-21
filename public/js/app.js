@@ -8584,6 +8584,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {};
@@ -8591,6 +8608,9 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     refreeModal: function refreeModal() {
       $('#addRefree').modal('show');
+    },
+    refreeCategoryModal: function refreeCategoryModal() {
+      $('#addRefreeCat').modal('show');
     }
   },
   created: function created() {}
@@ -107286,7 +107306,7 @@ var render = function() {
                       _vm._v(_vm._s(_vm._f("regDate")(matchday.date)))
                     ]),
                     _vm._v(" "),
-                    _c("td", [_vm._v("Monday")]),
+                    _c("td", [_vm._v(_vm._s(matchday.opponent))]),
                     _vm._v(" "),
                     _c("td", [_vm._v(_vm._s(matchday.start_time))]),
                     _vm._v(" "),
@@ -109825,6 +109845,15 @@ var render = function() {
       "button",
       {
         staticClass: "btn btn-success bg-success ",
+        on: { click: _vm.refreeCategoryModal }
+      },
+      [_vm._v(" Add Referee Category")]
+    ),
+    _vm._v(" "),
+    _c(
+      "button",
+      {
+        staticClass: "btn btn-success bg-success ",
         on: { click: _vm.refreeModal }
       },
       [_vm._v(" Add Refree")]
@@ -109970,7 +109999,9 @@ var render = function() {
     _vm._v(" "),
     _vm._m(10),
     _vm._v(" "),
-    _vm._m(11)
+    _vm._m(11),
+    _vm._v(" "),
+    _vm._m(12)
   ])
 }
 var staticRenderFns = [
@@ -110086,7 +110117,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Name")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Status")]),
+        _c("th", [_vm._v("Type")]),
         _vm._v(" "),
         _c("th", [_vm._v("Modify")])
       ])
@@ -110347,19 +110378,93 @@ var staticRenderFns = [
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group" }, [
-                  _c("label", [_vm._v("Select Team")]),
+                  _c("label", [_vm._v("Select Category")]),
                   _vm._v(" "),
                   _c("select", { staticClass: "form-control" }, [
-                    _c("option", [_vm._v("team 1")]),
+                    _c("option", [_vm._v("Active")]),
                     _vm._v(" "),
-                    _c("option", [_vm._v("team 2")]),
-                    _vm._v(" "),
-                    _c("option", [_vm._v("team 3")]),
-                    _vm._v(" "),
-                    _c("option", [_vm._v("team 4")]),
-                    _vm._v(" "),
-                    _c("option", [_vm._v("team 5")])
+                    _c("option", [_vm._v("Juniore")])
                   ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-footer" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-secondary",
+                    attrs: { type: "button", "data-dismiss": "modal" }
+                  },
+                  [_vm._v("Close")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  { staticClass: "btn btn-primary", attrs: { type: "button" } },
+                  [_vm._v("Save changes")]
+                )
+              ])
+            ])
+          ]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "addRefreeCat",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "addRefreeCat",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog", attrs: { role: "document" } },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _c("div", { staticClass: "modal-header" }, [
+                _c(
+                  "h5",
+                  { staticClass: "modal-title", attrs: { id: "addRefreeCat" } },
+                  [_vm._v("Add Refree Category")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "close",
+                    attrs: {
+                      type: "button",
+                      "data-dismiss": "modal",
+                      "aria-label": "Close"
+                    }
+                  },
+                  [
+                    _c("span", { attrs: { "aria-hidden": "true" } }, [
+                      _vm._v("×")
+                    ])
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }, [
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", [_vm._v("Title")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    staticClass: "form-control",
+                    attrs: { type: "text", placeholder: "Title ..." }
+                  })
                 ])
               ]),
               _vm._v(" "),
