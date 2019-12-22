@@ -1,17 +1,14 @@
 <template>
     <div>
         <h1>Refrees</h1>
-
-
+        <button class="btn btn-success bg-success " @click="refreeCategoryModal"> Add Referee Category</button>
         <button class="btn btn-success bg-success " @click="refreeModal"> Add Refree</button>
         <div class="row text-center pt-2">
-            
             <div class="col-6">
                 <div class="card card-success card-outline">
                     <div class="card-header">
                         <h3 class="card-title">Active refrees</h3>
                         <div class="card-tools">
-                            <!-- <button class="btn btn-success bg-success" @click="coachModal"> Add Coach</button> -->
                         </div>
                     </div>
                     <!-- /.card-header -->
@@ -80,7 +77,6 @@
                     <div class="card-header">
                         <h3 class="card-title">Juniore refrees</h3>
                         <div class="card-tools">
-                            
                         </div>
                     </div>
                     <!-- /.card-header -->
@@ -90,7 +86,7 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Name</th>
-                                    <th>Status</th>
+                                    <th>Type</th>
                                     <th>Modify</th>
                                 </tr>
                             </thead>
@@ -211,7 +207,6 @@
                                     <td>
                                         <div class="btn-group btn-group-sm">
                                             <a href="#"  class="btn btn-success bg-success"><i class="fas fa-eye"></i></a>
-                                            
                                         </div>                                    
                                     </td>
                                 </tr>
@@ -240,15 +235,37 @@
                             <input type="text" class="form-control" placeholder="Name ...">
                         </div>
                         <div class="form-group">
-                        <label>Select Team</label>
+                        <label>Select Category</label>
                         <select class="form-control">
-                          <option>team 1</option>
-                          <option>team 2</option>
-                          <option>team 3</option>
-                          <option>team 4</option>
-                          <option>team 5</option>
+                          <option>Active</option>
+                          <option>Juniore</option>
                         </select>
                       </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ref Category Modal  -->
+        <div class="modal fade" id="addRefreeCat" tabindex="-1" role="dialog" aria-labelledby="addRefreeCat"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addRefreeCat">Add Refree Category</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Title</label>
+                            <input type="text" class="form-control" placeholder="Title ...">
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -270,6 +287,9 @@
         methods: {
             refreeModal(){
                 $('#addRefree').modal('show')
+            },
+             refreeCategoryModal(){
+                $('#addRefreeCat').modal('show')    
             },
            
         },
