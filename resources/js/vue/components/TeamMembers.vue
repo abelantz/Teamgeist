@@ -69,7 +69,7 @@
                                 <select v-model="membersForm.team_id" @change="onChangeTeam($event)" type="type" name="type"
                                     id="type" class="form-control"
                                     :class="{ 'is-invalid': membersForm.errors.has('type') }">
-                                    <option disabled selected value="">Select Type</option>
+                                    <option disabled selected value="">Select Team</option>
                                     <option v-for="team in teams" v-bind:key="team.id" v-bind:value="team.id">
                                         {{team.name}}</option>
                                 </select>
