@@ -118,7 +118,7 @@
                                 <div class="form-group">
                                     <select v-model="formTraining.team_id" @change="onChangeTraining($event)" type="type" name="type" id="type" class="form-control">
                                      <option disabled selected value="">Select Team</option>
-                                    <option  v-for="team in teams" v-bind:key="team.id" v-bind:value="team.name">{{team.name}}</option>
+                                    <option  v-for="team in teams" v-bind:key="team.id" v-bind:value="team.id">{{team.name}}</option>
                                     <has-error :form="formTraining" field="team"></has-error>
                                 </select>
                                 </div>
@@ -141,7 +141,7 @@
                                 <div class="form-group">
                                     <select v-model="formTraining.field_id" @change="onChangeField($event)" type="type" name="type" id="type" class="form-control">
                                      <option disabled selected value="">Select Field</option>
-                                    <option  v-for="field in fields" v-bind:key="field.id" v-bind:value="field.title">{{field.title}}</option>
+                                    <option  v-for="field in fields" v-bind:key="field.id" v-bind:value="field.id">{{field.title}}</option>
                                     <has-error :form="formTraining" field="field"></has-error>
                                 </select>
                                 </div>
