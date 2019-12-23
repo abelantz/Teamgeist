@@ -16,7 +16,6 @@ class CreateRefreesCategoriesTable extends Migration
         Schema::create('refrees_categories', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title');
-            $table->integer('amount');
             $table->timestamps();
         });
     }

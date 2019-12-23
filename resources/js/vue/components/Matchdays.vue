@@ -152,14 +152,14 @@
                                 <div class="form-group">
                                     <select v-model="formMatch.field_id" @change="onChangeField($event)" type="type" name="type" id="type" class="form-control">
                                      <option disabled selected value="">Select Field</option>
-                                    <option  v-for="field in fields" v-bind:key="field.id" v-bind:value="field.title">{{field.title}}</option>
+                                    <option  v-for="field in fields" v-bind:key="field.id" v-bind:value="field.id">{{field.title}}</option>
                                     <has-error :form="formMatch" field="field"></has-error>
                                 </select>
                                 </div>
                                 <div class="form-group">
                                     <select v-model="formMatch.wardrobe_id" @change="onChangeWardrobe($event)" type="type" name="type" id="type" class="form-control">
                                      <option disabled selected value="">Select Wardrobe</option>
-                                    <option  v-for="wardrobe in wardrobes" v-bind:key="wardrobe.id" v-bind:value="wardrobe.title">{{wardrobe.title}}</option>
+                                    <option  v-for="wardrobe in wardrobes" v-bind:key="wardrobe.id" v-bind:value="wardrobe.id">{{wardrobe.title}}</option>
                                     <has-error :form="formMatch" field="wardrobe"></has-error>
                                 </select>
                                 </div>
