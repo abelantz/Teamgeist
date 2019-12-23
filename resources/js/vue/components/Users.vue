@@ -29,7 +29,7 @@
                                     <td>{{user.id}}</td>
                                     <td>{{user.name | upText }}</td>
                                     <td>{{user.email}}</td>
-                                    <td><span class="tag tag-success">Technical Leader</span></td>
+                                    <td>{{user.role_id}}</td>
                                     <td>{{user.created_at | regDate}}</td>
                                     <td>
                                         <div class="btn-group btn-group-sm">
@@ -80,17 +80,15 @@
                                 <has-error :form="form" field="name"></has-error>
                             </div>
                             <div class="form-group">
-                                <select type="type" name="type" id="type" class="form-control" placeholder="Password"
-                                    :class="{ 'is-invalid': form.errors.has('type') }">
-                                    <option value="">Select User Role</option>
-                                    <option value="">Club</option>
-                                    <option value="">Team</option>
-                                    <option value="">Coach</option>
-                                    <option value="">Player</option>
-                                    <option value="">Facility</option>
-                                </select>
-                                <has-error :form="form" field="name"></has-error>
-                            </div>
+                                    <select v-model="form.role_id" @change="onChange($event)" type="role"
+                                        title="role" id="role" class="form-control"
+                                        :class="{ 'is-invalid': form.errors.has('role') }">
+                                        <option disabled value="">Select Role</option>
+                                        <option v-for="role in roles" v-bind:key="role.id"
+                                            v-bind:value="role.id">{{role.name}}</option>
+                                    </select>
+                                    <has-error :form="form" field="role"></has-error>
+                             </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
@@ -111,9 +109,11 @@
             return {
                 editMode: false,
                 users: [],
+                roles:[],
                 form: new Form({
                     id: '',
                     name: '',
+                    role_id: '',
                     email: '',
                     password: '',
                     // type:''
@@ -179,6 +179,11 @@
                 axios.get('api/users')
                      .then((response) => (this.users = response.data.data));
             },
+            onChange(event){console.log(event.target.value)},
+            loadRoles(){
+                axios.get('api/roles')
+                    .then((response) => this.roles = response.data.data)
+            },
             createUser() {
                 this.$Progress.start();
                 this.form.post('api/users')
@@ -200,6 +205,7 @@
 
         created() {
             this.loadUsers();
+            this.loadRoles();
             Fire.$on('AfterCreate', () => {
                 this.loadUsers();
             });

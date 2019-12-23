@@ -55,6 +55,7 @@ let routes = [
     { path: '/player', component: require('./vue/components/Player.vue').default },
     { path: '/tasks', component: require('./vue/components/Tasks.vue').default },
     { path: '/refrees', component: require('./vue/components/Refrees.vue').default },
+    { path: '/refree/:refreeId', component: require('./vue/components/Refree.vue').default,props: true},
     { path: '/fieldwardrobe', component: require('./vue/components/FieldWardrobe.vue').default },
 ]
 

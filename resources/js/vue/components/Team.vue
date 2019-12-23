@@ -132,6 +132,19 @@
                 }),
             }
         },
+        computed: {
+            membersId: function () {
+                return this.members.filter((member) => {
+                    return member.team_id == this.teamId;
+                })
+            },
+            teamsId: function () {
+                return this.teams.filter((team) => {
+                    return team.id == this.teamId;
+                })
+            },
+
+        },
         methods: {
             memberModal() {
                 this.editMode = false;
@@ -213,40 +226,30 @@
                     }
                 })
             },
+            loadMembers(){
+                 axios.get('../api/members')
+                .then((response) => {
+                    this.members = response.data.data
+                });
+            },
+            loadTeams(){
+                axios.get('../api/teams')
+                .then((response) => {
+                    this.teams = response.data.data
+                });
+            }
         },
 
-        computed: {
-            membersId: function () {
-                return this.members.filter((member) => {
-                    return member.team_id == this.teamId;
-                })
-            },
-            teamsId: function () {
-                return this.teams.filter((team) => {
-                    return team.id == this.teamId;
-                })
-            },
-
-        },
+        
         created() {
             // var that = this;
             // this.loadTeam();
             this.loadRoles();
-
-            axios.get('../api/members')
-                .then((response) => {
-                    this.members = response.data.data
-                });
-            axios.get('../api/teams')
-                .then((response) => {
-                    this.teams = response.data.data
-                });
+            this.loadMembers();
+            this.loadTeams();
+            
             Fire.$on('AfterCreate', () => {
-                axios.get('../api/members')
-                    .then((response) => {
-                        this.members = response.data.data
-                    });
-
+                 this.loadMembers();
             });
         },
 

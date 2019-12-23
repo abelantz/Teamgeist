@@ -26,7 +26,7 @@
                                 <tr v-for="refree in getRefrees(category.id)" v-bind:key="refree.id"> 
                                     <td>{{refree.id}}</td>
                                     <td>
-                                        <router-link to="/refree">{{refree.name}}</router-link>
+                                        <router-link :to="'/refree/' + refree.id">{{refree.name}}</router-link>
                                     </td>
                                     <td>{{refree.type_id}}</td>
                                     <td>
