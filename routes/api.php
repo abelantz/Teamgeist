@@ -55,6 +55,6 @@ Route::group(['namespace' => 'API'], function () {
     Route::apiResource('fields', 'FieldController');
     Route::apiResource('wardrobes', 'WardrobeController');
     Route::apiResource('member_categories', 'MembersCategoryController');
-    Route::apiResource('refree_categories', 'RefreesCategoryController');
+    Route::apiResource('referee_categories', 'RefreesCategoryController');
     
 });

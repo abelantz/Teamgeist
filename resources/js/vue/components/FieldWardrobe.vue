@@ -7,7 +7,7 @@
                     <div class="card-header ">
                         <h3 class="card-title">Fields</h3>
                         <div class="card-tools">
-                            <button class="btn btn-success bg-success" @click="addFieldModal"> Add New <i
+                            <button class="btn btn-success bg-success" @click="showFieldCreateModal"> Add New <i
                                     class="fas fa-user-plus "></i></button>
                         </div>
                     </div>
@@ -28,7 +28,7 @@
                                     <td>
                                         <div class="btn-group btn-group-sm">
                                             <a href="#" class="btn btn-info bg-info"><i class="fas fa-edit"></i></a>
-                                            <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                                            <button class="btn btn-danger" @click="deleteField(field.id)"><i class="fas fa-trash"></i></button>
                                         </div>
                                     </td>
                                 </tr>
@@ -44,7 +44,7 @@
                     <div class="card-header ">
                         <h3 class="card-title">Wardrobe</h3>
                         <div class="card-tools">
-                            <button class="btn btn-success bg-success" @click="addWardrobeModal"> Add New <i
+                            <button class="btn btn-success bg-success" @click="showWardobeCreateModal"> Add New <i
                                     class="fas fa-user-plus "></i></button>
                         </div>
                     </div>
@@ -65,7 +65,7 @@
                                     <td>
                                        <div class="btn-group btn-group-sm">
                                             <a href="#" class="btn btn-info bg-info"><i class="fas fa-edit"></i></a>
-                                            <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                                            <button class="btn btn-danger" @click="deleteWardrobe(wardrobe.id)"><i class="fas fa-trash"></i></button>
                                         </div>
                                     </td>
                                 </tr>
@@ -92,9 +92,8 @@
                     <form @submit.prevent="createField()">
                         <div class="modal-body">
                             <div class="form-group">
-                                 <input v-model="fieldForm.title" type="text" name="title" class="form-control"
-                                    placeholder="Title" :class="{ 'is-invalid': fieldForm.errors.has('title') }">
-                                <has-error :form="fieldForm" field="title"></has-error>
+                                 <input v-model="field.title" type="text" name="title" class="form-control"
+                                    placeholder="Title">
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -120,9 +119,8 @@
                     <form @submit.prevent="createWardrobe()">
                         <div class="modal-body">
                             <div class="form-group">
-                                <input v-model="wardrobeForm.title" type="text" name="title" class="form-control"
-                                    placeholder="Title" :class="{ 'is-invalid': wardrobeForm.errors.has('title') }">
-                                <has-error :form="wardrobeForm" field="title"></has-error>
+                                <input v-model="wardrobe.title" type="text" name="title" class="form-control"
+                                    placeholder="Title">
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -142,76 +140,50 @@
     export default {
         data() {
             return {
-                fields:[],
-                wardrobes:[],
-                fieldForm: new Form({
+                field: {
                     id:'',
                     title:''
-                }),
-                wardrobeForm: new Form({
-                    id:'',
-                    title:''
-                }),
+                },
+                wardrobe: {
+                    id: '',
+                    title: ''
+                }
             }
         },
-        methods: {
-            addFieldModal() {
-                this.fieldForm.reset();
-                $('#addField').modal('show');
+
+        computed: {
+            fields() {
+                return this.$store.state.fields
             },
-            addWardrobeModal() {
-                this.wardrobeForm.reset();
-                $('#addWardrobe').modal('show');
-            },
-            loadFields(){
-                axios.get('api/fields')
-                    .then((response) =>  this.fields = response.data.data)
-            },
-            loadWardrobes(){
-                axios.get('api/wardrobes')
-                    .then((response) =>  this.wardrobes = response.data.data)
-            },
-            createField() {
-                this.$Progress.start();
-                this.fieldForm.post('api/fields')
-                    .then(() => {
-                        Fire.$emit('AfterCreate');
-                        $('#addField').modal('hide');
-                        toast.fire({
-                            type: 'success',
-                            title: 'Field created succesfully'
-                        });
-                        this.$Progress.finish();
-                    })
-                    .catch(() => {
-                        this.$Progress.fail();
-                    })
-            },
-            createWardrobe(){
-                this.$Progress.start();
-                this.wardrobeForm.post('api/wardrobes')
-                    .then(() => {
-                        Fire.$emit('AfterCreate');
-                        $('#addWardrobe').modal('hide');
-                        toast.fire({
-                            type: 'success',
-                            title: 'Wardrobe created succesfully'
-                        });
-                        this.$Progress.finish();
-                    })
-                    .catch(() => {
-                        this.$Progress.fail();
-                    })
+            wardrobes() {
+                return this.$store.state.wardrobes
             },
         },
-        created() {
-            this.loadFields();
-            this.loadWardrobes();
-             Fire.$on('AfterCreate', () => {
-                this.loadFields();
-                this.loadWardrobes();
-            });
-        }
+
+        methods: {
+            showWardobeCreateModal() {
+                $('#addWardrobe').modal('show');
+            },
+            showFieldCreateModal() {
+                $('#addField').modal('show');
+            },
+            createField() {
+                this.$store.dispatch('createField', this.field)
+                            .then(res => $('#addField').modal('hide'));
+            },
+            createWardrobe() {
+                this.$store.dispatch('createWardrobe', this.wardrobe)
+                            .then(res => $('#addWardrobe').modal('hide'));
+            },
+            deleteField(fieldId) {
+                this.$store.dispatch('deleteField', fieldId)
+                            .then(res => console.log('field deleted'));
+            },
+            deleteWardrobe(wardrobeId) {
+                this.$store.dispatch('deleteWardrobe', wardrobeId)
+                            .then(res => console.log('wardrobe deleted'));
+            }
+        },
     }
 
 </script>

@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Http\Controllers\Controller;
+use App\Models\User;
+use App\Models\Invoice;
 use App\Models\Membership;
 use Illuminate\Http\Request;
+use App\Models\MembersCategory;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 
 class MembershipController extends Controller
 {
@@ -27,7 +31,22 @@ class MembershipController extends Controller
      */
     public function store(Request $request)
     {
-        $membership = Membership::create($request->all());
+        $request->password = Hash::make($request->password);
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password)
+        ]);
+        $membership = Membership::create([
+            'categories_member_id' => $request->categories_member_id,
+            'team_id' => $request->team_id,
+            'user_id' => $user->id
+        ]);
+        $invoice = Invoice::create([
+            'membership_id' => $membership->id,
+            'amount' => MembersCategory::find($request->categories_member_id)->amount,
+            'paid' => 0
+        ]);
         return response()->json(['data' => $membership], 201);
     }
 

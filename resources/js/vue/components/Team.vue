@@ -121,9 +121,6 @@
         data() {
             return {
                 editMode: false,
-                members: [],
-                roles: [],
-                teams: [],
                 teamForm: new Form({
                     id: '',
                     name: '',
@@ -132,7 +129,17 @@
                 }),
             }
         },
+
         computed: {
+            teams() {
+                return this.$store.state.teams;
+            },
+            members() {
+                return this.$store.state.members;
+            },
+            roles() {
+                return this.$store.state.roles;
+            },
             membersId: function () {
                 return this.members.filter((member) => {
                     return member.team_id == this.teamId;
@@ -145,6 +152,7 @@
             },
 
         },
+        
         methods: {
             memberModal() {
                 this.editMode = false;
@@ -156,10 +164,6 @@
                 this.teamForm.reset();
                 $('#addNew').modal('show');
                 this.teamForm.fill(member);
-            },
-            loadRoles() {
-                axios.get('../api/roles')
-                    .then((response) => this.roles = response.data.data);
             },
             updateTeamMember(id) {
                 this.$Progress.start();
@@ -226,33 +230,8 @@
                     }
                 })
             },
-            loadMembers(){
-                 axios.get('../api/members')
-                .then((response) => {
-                    this.members = response.data.data
-                });
-            },
-            loadTeams(){
-                axios.get('../api/teams')
-                .then((response) => {
-                    this.teams = response.data.data
-                });
-            }
-        },
-
-        
-        created() {
-            // var that = this;
-            // this.loadTeam();
-            this.loadRoles();
-            this.loadMembers();
-            this.loadTeams();
             
-            Fire.$on('AfterCreate', () => {
-                 this.loadMembers();
-            });
         },
-
 
     }
 

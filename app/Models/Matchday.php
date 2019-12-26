@@ -13,11 +13,9 @@ class Matchday extends Model
      */
     protected $fillable = [
         'team_id',
-        'date',
         'opponent',
-        'start_time',
-        'end_time',
-        'meeting',
+        'date',
+        'time',
         'type',
         'field_id',
         'wardrobe_id'

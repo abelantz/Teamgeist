@@ -37,7 +37,6 @@
     export default {
         data() {
             return {
-                data: {
                     labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
                     datasets: [{
                             label: '2018 Sales',
@@ -47,8 +46,8 @@
                             label: '2017 Sales',
                             data: [600, 550, 750, 250, 700]
                         }
-                    ]
-                },
+                    ],
+            
                 option: {
                     titile: true,
                     display: "top",

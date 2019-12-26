@@ -45,45 +45,9 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
+                                                 <tr v-for="team in teams" v-bind:key="team.id">
                                                     <td>183</td>
-                                                    <td>John Doe</td>
-                                                    <td><span class="tag tag-success">President</span></td>
-                                                    <td>300CHF</td>
-                                                    <td>11-7-2014</td>
-                                                    <td>
-                                                        <button class="btn btn-success bg-success"> View</button>
-                                                        <button class="btn btn-info bg-info"> Edit</button>
-                                                        <button class="btn btn-danger bg-danger">Delete</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>183</td>
-                                                    <td>John Doe</td>
-                                                    <td><span class="tag tag-success">President</span></td>
-                                                    <td>300CHF</td>
-                                                    <td>11-7-2014</td>
-                                                    <td>
-                                                        <button class="btn btn-success bg-success"> View</button>
-                                                        <button class="btn btn-info bg-info"> Edit</button>
-                                                        <button class="btn btn-danger bg-danger">Delete</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>183</td>
-                                                    <td>John Doe</td>
-                                                    <td><span class="tag tag-success">President</span></td>
-                                                    <td>300CHF</td>
-                                                    <td>11-7-2014</td>
-                                                    <td>
-                                                        <button class="btn btn-success bg-success"> View</button>
-                                                        <button class="btn btn-info bg-info"> Edit</button>
-                                                        <button class="btn btn-danger bg-danger">Delete</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>183</td>
-                                                    <td>John Doe</td>
+                                                    <td>{{ team.name }}</td>
                                                     <td><span class="tag tag-success">President</span></td>
                                                     <td>300CHF</td>
                                                     <td>11-7-2014</td>
@@ -427,45 +391,9 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
+                                                 <tr v-for="team in teams" v-bind:key="team.id">
                                                     <td>183</td>
-                                                    <td>John Doe</td>
-                                                    <td><span class="tag tag-success">President</span></td>
-                                                    <td>300CHF</td>
-                                                    <td>11-7-2014</td>
-                                                    <td>
-                                                        <button class="btn btn-success bg-success"> View</button>
-                                                        <button class="btn btn-info bg-info"> Edit</button>
-                                                        <button class="btn btn-danger bg-danger">Delete</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>183</td>
-                                                    <td>John Doe</td>
-                                                    <td><span class="tag tag-success">President</span></td>
-                                                    <td>300CHF</td>
-                                                    <td>11-7-2014</td>
-                                                    <td>
-                                                        <button class="btn btn-success bg-success"> View</button>
-                                                        <button class="btn btn-info bg-info"> Edit</button>
-                                                        <button class="btn btn-danger bg-danger">Delete</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>183</td>
-                                                    <td>John Doe</td>
-                                                    <td><span class="tag tag-success">President</span></td>
-                                                    <td>300CHF</td>
-                                                    <td>11-7-2014</td>
-                                                    <td>
-                                                        <button class="btn btn-success bg-success"> View</button>
-                                                        <button class="btn btn-info bg-info"> Edit</button>
-                                                        <button class="btn btn-danger bg-danger">Delete</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>183</td>
-                                                    <td>John Doe</td>
+                                                    <td>{{ team.name }}</td>
                                                     <td><span class="tag tag-success">President</span></td>
                                                     <td>300CHF</td>
                                                     <td>11-7-2014</td>
@@ -503,55 +431,8 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>183</td>
-                                                    <td>John Doe</td>
-                                                    <td><span class="tag tag-success">President</span></td>
-                                                    <td>300CHF</td>
-                                                    <td>11-7-2014</td>
-                                                    <td>
-                                                        <button class="btn btn-success bg-success"> View</button>
-                                                        <button class="btn btn-info bg-info"> Edit</button>
-                                                        <button class="btn btn-danger bg-danger">Delete</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>183</td>
-                                                    <td>John Doe</td>
-                                                    <td><span class="tag tag-success">President</span></td>
-                                                    <td>300CHF</td>
-                                                    <td>11-7-2014</td>
-                                                    <td>
-                                                        <button class="btn btn-success bg-success"> View</button>
-                                                        <button class="btn btn-info bg-info"> Edit</button>
-                                                        <button class="btn btn-danger bg-danger">Delete</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>183</td>
-                                                    <td>John Doe</td>
-                                                    <td><span class="tag tag-success">President</span></td>
-                                                    <td>300CHF</td>
-                                                    <td>11-7-2014</td>
-                                                    <td>
-                                                        <button class="btn btn-success bg-success"> View</button>
-                                                        <button class="btn btn-info bg-info"> Edit</button>
-                                                        <button class="btn btn-danger bg-danger">Delete</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>183</td>
-                                                    <td>John Doe</td>
-                                                    <td><span class="tag tag-success">President</span></td>
-                                                    <td>300CHF</td>
-                                                    <td>11-7-2014</td>
-                                                    <td>
-                                                        <button class="btn btn-success bg-success"> View</button>
-                                                        <button class="btn btn-info bg-info"> Edit</button>
-                                                        <button class="btn btn-danger bg-danger">Delete</button>
-                                                    </td>
-                                                </tr>
                                             </tbody>
+                                            
                                         </table>
                                     </div>
                                     <!-- /.card-body -->
@@ -573,9 +454,12 @@
 <script>
     export default {
 
-        mounted() {
-            console.log('Component mounted.')
+        computed: {
+            teams() {
+                return this.$store.state.teams
+            }
         },
+        
     }
 
 </script>

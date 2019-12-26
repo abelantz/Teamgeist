@@ -162,8 +162,8 @@
                                         title="type" id="type" class="form-control"
                                         :class="{ 'is-invalid': formReferee.errors.has('type') }">
                                         <option disabled value="">Select Type</option>
-                                        <option v-for="type in types" v-bind:key="type.id"
-                                            v-bind:value="type.id">{{type.name}}</option>
+                                        <option v-for="role in roles" v-bind:key="role.id"
+                                            v-bind:value="role.id">{{role.name}}</option>
                                     </select>
                                     <has-error :form="formReferee" field=""></has-error>
                              </div>
@@ -215,10 +215,6 @@
     export default {
         data() {
             return {
-                matchdays:[],
-                types:[],
-                categories:[],
-                refrees:[],
                 formReferee: new Form({
                     name:'',
                     category_id: '',
@@ -229,6 +225,23 @@
                 }),
             }
         },
+
+        computed: {
+            referees() {
+                return this.$store.state.referees;
+            },
+            categories() {
+                return this.$store.state.categories;
+            },
+            roles() {
+                return this.$store.state.roles;
+            },
+            matchdays() {
+                return this.$store.state.matchdays;
+            },
+            
+        },
+ 
         methods: {
              getRefrees(categoryId) {
                 let refreesFilter = this.refrees.filter((refree) => {
@@ -242,22 +255,6 @@
             },
              refreeCategoryModal(){
                 $('#addRefreeCat').modal('show')    
-            },
-            loadRefrees(){
-                axios.get('api/referees')
-                    .then((response) => this.refrees = response.data.data)
-            },
-            loadCategories(){
-                axios.get('api/refree_categories')
-                    .then((response) => this.categories = response.data.data)
-            },
-            loadTypes(){
-                axios.get('api/roles')
-                    .then((response) => this.types = response.data.data)
-            },
-            loadMatchdays(){
-                axios.get('api/matchdays')
-                    .then((response) => this.matchdays = response.data.data)
             },
             createRefereeCat(){
               this.$Progress.start();
@@ -294,15 +291,6 @@
             },
            
         },
-        created() {
-            this.loadCategories();
-            this.loadTypes();
-            this.loadRefrees();
-            Fire.$on('AfterCreate', () => {
-                this.loadCategories();
-                this.loadRefrees();
-            });
-        }
     }
 
 </script>

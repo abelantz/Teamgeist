@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import Vuex from 'vuex';
 import VueProgressBar from 'vue-progressbar';
 import { Form, HasError, AlertError } from 'vform';
 import { Datetime } from 'vue-datetime';
@@ -13,7 +14,6 @@ import 'vue-datetime/dist/vue-datetime.css'
 import 'bootstrap';
 import '@fortawesome/fontawesome-free';
 
-let Fire = new Vue();
 const toast = swal.mixin({
     toast: true,
     position: 'top-end',
@@ -24,14 +24,15 @@ const toast = swal.mixin({
 window.Vue = Vue;
 window.swal = swal;
 window.toast = toast;
-window.Fire = Fire;
 window.axios = axios;
 window.Popper = Popper;
 window.$ = window.jQuery = jquery;
 window.Form = Form;
+window.Vuex = Vuex
 
 require('admin-lte');
 
+Vue.use(Vuex)
 Vue.use(window.VueCharts);
 Vue.use(VueProgressBar, {
     color: 'rgb(143, 255, 199)',

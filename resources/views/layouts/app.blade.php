@@ -57,190 +57,86 @@
                         <!-- <li class="nav-header">Club User</li> -->
                         <li class="nav-item">
                             <router-link to="/dashboard" class="nav-link">
-                                <i class="nav-icon fas fa-columns nav-icon green"></i>
-                                <p>
-                                    Dashboard
-                                </p>
+                                <i class="nav-icon far fa-circle nav-icon green"></i>
+                                <p>Dashboard</p>
                             </router-link>
                         </li>
-                        <li class="nav-item has-treeview menu-open">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-user-friends nav-icon green"></i>
-                                <p>
-                                    Teams
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview" style="display: block;">
-                                <li class="nav-item">
-                                    <router-link to="/teams" class="nav-link">
-                                        <i class="nav-icon far fa-circle nav-icon green"></i>
-                                        <p>
-                                            Teams
-                                        </p>
-                                    </router-link>
-                                </li>
-
-                                <li class="nav-item">
-                                    <router-link to="/category" class="nav-link">
-                                        <i class="far fa-circle nav-icon green"></i>
-                                        <p>Category</p>
-                                    </router-link>
-                                </li>
-                                <li class="nav-item">
-                                    <router-link to="/members" class="nav-link">
-                                        <i class="far fa-circle nav-icon green"></i>
-                                        <p>Team Members</p>
-                                    </router-link>
-                                </li>
-                            </ul>
+                        <li class="nav-item">
+                            <router-link to="/teams" class="nav-link">
+                                <i class="nav-icon far fa-circle nav-icon green"></i>
+                                <p>Teams</p>
+                            </router-link>
+                        </li>
+                        <li class="nav-item">
+                            <router-link to="/members" class="nav-link">
+                                <i class="far fa-circle nav-icon green"></i>
+                                <p>Team Members</p>
+                            </router-link>
+                        </li>
+                        <li class="nav-item">
+                            <router-link to="/category" class="nav-link">
+                                <i class="far fa-circle nav-icon green"></i>
+                                <p>Category</p>
+                            </router-link>
                         </li>
                         <li class="nav-item">
                             <router-link to="/invoice" class="nav-link">
-                                <i class="nav-icon fas fa-file-alt nav-icon green "></i>
-                                <p>
-                                    Invoice
-                                </p>
-                            </router-link>
-                        </li>
-                        <li class="nav-item">
-                            <router-link to="/sponsoring" class="nav-link">
-                                <i class="nav-icon fab fa-hubspot nav-icon green"></i>
-                                <p>
-                                    Sponsoring
-                                </p>
+                                <i class="nav-icon far fa-circle nav-icon green "></i>
+                                <p>Invoice</p>
                             </router-link>
                         </li>
                         <li class="nav-item">
                             <router-link to="/membership" class="nav-link">
-                                <i class="nav-icon fas fa-user-tie nav-icon green"></i>
-                                <p>
-                                    Membership
-                                </p>
+                                <i class="nav-icon far fa-circle nav-icon green"></i>
+                                <p>Membership</p>
                             </router-link>
-                        </li>
-                        <li class="nav-item">
-                            <router-link to="/contracts" class="nav-link">
-                                <i class="nav-icon fas fa-file-contract nav-icon green"></i>
-                                <p>
-                                    Contracts
-                                </p>
-                            </router-link>
-                        </li>
-                        <li class="nav-item">
-                            <router-link to="/statistics" class="nav-link">
-                                <i class="nav-icon fas fa-chart-line nav-icon green"></i>
-                                <p>
-                                    Statistics
-                                </p>
-                            </router-link>
-                        </li>
-                        <li class="nav-item">
-                            <router-link to="/communications" class="nav-link">
-                                <i class="nav-icon fas fa-inbox nav-icon green"></i>
-                                <p>
-                                    Communications
-                                </p>
-                            </router-link>
-                        </li>
-                        <li class="nav-item">
-                            <router-link to="/events" class="nav-link">
-                                <i class="nav-icon fas fa-inbox nav-icon green"></i>
-                                <p>
-                                    Events
-                                </p>
-                            </router-link>
-                        </li>
-                        <li class="nav-item">
-                            <router-link to="/meetings" class="nav-link">
-                                <i class="nav-icon fas fa-inbox nav-icon green"></i>
-                                <p>
-                                    Meetings
-                                </p>
-                            </router-link>
-                        </li>
-
-                        <li class="nav-item has-treeview menu-open">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-user-friends nav-icon green"></i>
-                                <p>
-                                    User Management
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview" style="display: block;">
-                                <li class="nav-item">
-                                    <router-link to="/users" class="nav-link">
-                                        <i class="nav-icon far fa-dot-circle nav-icon green"></i>
-                                        <p>
-                                            Users
-                                        </p>
-                                    </router-link>
-                                </li>
-                                <li class="nav-item">
-                                    <router-link to="/roles" class="nav-link">
-                                        <i class="nav-icon far fa-dot-circle nav-icon green"></i>
-                                        <p>
-                                            Roles
-                                        </p>
-                                    </router-link>
-                                </li>
-                            </ul>
                         </li>
                         <li class="nav-item">
                             <router-link  to="/coaches" class="nav-link">
                                 <i class="nav-icon far fa-circle nav-icon green"></i>
-                                <p>
-                                    Coaches
-                                </p>
+                                <p>Coaches</p>
                             </router-link >
-                        </li>
-                        <li class="nav-item">
-                            <router-link  to="/trainings" class="nav-link">
-                                <i class="nav-icon far fa-circle nav-icon green"></i>
-                                <p>
-                                    Trainings
-                                </p>
-                            </router-link >
-                        </li>
-                        <li class="nav-item">
-                            <router-link to="/matchdays" class="nav-link">
-                                <i class="nav-icon far fa-circle nav-icon green"></i>
-                                <p>
-                                    Matchdays
-                                </p>
-                            </router-link>
                         </li>
                         <li class="nav-item">
                             <router-link to="/players" class="nav-link">
                                 <i class="nav-icon far fa-circle nav-icon green"></i>
-                                <p>
-                                    Players
-                                </p>
-                            </router-link>
-                        </li>
-                        <li class="nav-item">
-                            <router-link to="/tasks" class="nav-link">
-                                <i class="nav-icon far fa-circle nav-icon green"></i>
-                                <p>
-                                    Tasks
-                                </p>
+                                <p>Players</p>
                             </router-link>
                         </li>
                         <li class="nav-item">
                             <router-link to="/refrees" class="nav-link">
                                 <i class="nav-icon far fa-circle nav-icon green"></i>
-                                <p>
-                                    Refrees
-                                </p>
+                                <p>Refrees</p>
                             </router-link>
+                        </li>
+                        <li class="nav-item">
+                            <router-link to="/matchdays" class="nav-link">
+                                <i class="nav-icon far fa-circle nav-icon green"></i>
+                                <p>Matchdays</p>
+                            </router-link>
+                        </li>
+                        <li class="nav-item">
+                            <router-link  to="/trainings" class="nav-link">
+                                <i class="nav-icon far fa-circle nav-icon green"></i>
+                                <p>Trainings</p>
+                            </router-link >
                         </li>
                         <li class="nav-item">
                             <router-link to="/fieldwardrobe" class="nav-link">
                                 <i class="nav-icon far fa-circle nav-icon green"></i>
-                                <p>
-                                    Field & Wardrobe
-                                </p>
+                                <p>Field & Wardrobe</p>
+                            </router-link>
+                        </li>
+                        <li class="nav-item">
+                            <router-link to="/users" class="nav-link">
+                                <i class="nav-icon far fa-circle nav-icon green"></i>
+                                <p>Users</p>
+                            </router-link>
+                        </li>
+                        <li class="nav-item">
+                            <router-link to="/roles" class="nav-link">
+                                <i class="nav-icon far fa-circle nav-icon green"></i>
+                                <p>Roles</p>
                             </router-link>
                         </li>
                     </ul>

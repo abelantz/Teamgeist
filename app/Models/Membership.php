@@ -13,7 +13,7 @@ class Membership extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'type','type_id', 'team_id', 'paid', 'free'
+        'category_member_id', 'team_id', 'user_id'
     ];
 
 }

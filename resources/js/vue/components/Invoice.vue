@@ -4,10 +4,10 @@
             Invoice
         </h1>
         <div class="row">
-            <div class="col-6">
+            <div class="col-12">
                 <div class="card card-success card-outline">
                     <div class="card-header">
-                        <h3 class="card-title">Expenses of coaches</h3>
+                        <h3 class="card-title">Payments of memberships</h3>
                         <div class="card-tools">
                         </div>
                     </div>
@@ -87,290 +87,7 @@
                 </div>
                 <!-- /.card -->
             </div>
-
-            <div class="col-6">
-                <div class="card card-success card-outline">
-                    <div class="card-header">
-                        <h3 class="card-title">Expenses of coaches</h3>
-                        <div class="card-tools">
-                        </div>
-                    </div>
-                    <!-- /.card-header -->
-                    <div class="card-body table-responsive p-0" style="height: 300px;">
-                        <table class="table table-head-fixed">
-                            <thead>
-                                <tr>
-                                    <th>Team</th>
-                                    <th>Date</th>
-                                    <th>Amount</th>
-                                    <th>Details</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Barca</td>
-                                    <td>11-7-2014</td>
-                                    <td><span class="tag tag-success">300CHF</span></td>
-                                    <td><button class="btn btn-info bg-info">View</button></td>
-                                </tr>
-                                <tr>
-                                    <td>Barca</td>
-                                    <td>11-7-2014</td>
-                                    <td><span class="tag tag-success">300CHF</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Barca</td>
-                                    <td>11-7-2014</td>
-                                    <td><span class="tag tag-success">300CHF</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Barca</td>
-                                    <td>11-7-2014</td>
-                                    <td><span class="tag tag-success">300CHF</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Barca</td>
-                                    <td>11-7-2014</td>
-                                    <td><span class="tag tag-success">300CHF</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Barca</td>
-                                    <td>11-7-2014</td>
-                                    <td><span class="tag tag-success">300CHF</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Barca</td>
-                                    <td>11-7-2014</td>
-                                    <td><span class="tag tag-success">300CHF</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Barca</td>
-                                    <td>11-7-2014</td>
-                                    <td><span class="tag tag-success">300CHF</span></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- /.card-body -->
-                </div>
-                <!-- /.card -->
-            </div>
         </div>
-
-        <div class="row">
-            <div class="col-6">
-                <div class="card card-success card-outline">
-                    <div class="card-header">
-                        <h3 class="card-title">Expenses of coaches</h3>
-                        <div class="card-tools">
-                        </div>
-                    </div>
-                    <!-- /.card-header -->
-                    <div class="card-body table-responsive p-0" style="height: 300px;">
-                        <table class="table table-head-fixed">
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Team</th>
-                                    <th>Date</th>
-                                    <th>Amount</th>
-                                    <th>Details</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>John Doe</td>
-                                    <td>Barca</td>
-                                    <td>11-7-2014</td>
-                                    <td><span class="tag tag-success">300CHF</span></td>
-                                    <td><button class="btn btn-info bg-info">View</button></td>
-                                </tr>
-                                <tr>
-                                    <td>John Doe</td>
-                                    <td>Barca</td>
-                                    <td>11-7-2014</td>
-                                    <td><span class="tag tag-success">300CHF</span></td>
-                                </tr>
-                                <tr>
-                                    <td>John Doe</td>
-                                    <td>Barca</td>
-                                    <td>11-7-2014</td>
-                                    <td><span class="tag tag-success">300CHF</span></td>
-                                </tr>
-                                <tr>
-                                    <td>John Doe</td>
-                                    <td>Barca</td>
-                                    <td>11-7-2014</td>
-                                    <td><span class="tag tag-success">300CHF</span></td>
-                                </tr>
-                                <tr>
-                                    <td>John Doe</td>
-                                    <td>Barca</td>
-                                    <td>11-7-2014</td>
-                                    <td><span class="tag tag-success">300CHF</span></td>
-                                </tr>
-                                <tr>
-                                    <td>John Doe</td>
-                                    <td>Barca</td>
-                                    <td>11-7-2014</td>
-                                    <td><span class="tag tag-success">300CHF</span></td>
-                                </tr>
-                                <tr>
-                                    <td>John Doe</td>
-                                    <td>Barca</td>
-                                    <td>11-7-2014</td>
-                                    <td><span class="tag tag-success">300CHF</span></td>
-                                </tr>
-                                <tr>
-                                    <td>John Doe</td>
-                                    <td>Barca</td>
-                                    <td>11-7-2014</td>
-                                    <td><span class="tag tag-success">300CHF</span></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- /.card-body -->
-                </div>
-                <!-- /.card -->
-            </div>
-
-            <div class="col-6">
-                <div class="card card-success card-outline">
-                    <div class="card-header">
-                        <h3 class="card-title">Expenses of coaches</h3>
-                        <div class="card-tools">
-                        </div>
-                    </div>
-                    <!-- /.card-header -->
-                    <div class="card-body table-responsive p-0" style="height: 300px;">
-                        <table class="table table-head-fixed">
-                            <thead>
-                                <tr>
-                                    <th>Team</th>
-                                    <th>Date</th>
-                                    <th>Amount</th>
-                                    <th>Details</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Barca</td>
-                                    <td>11-7-2014</td>
-                                    <td><span class="tag tag-success">300CHF</span></td>
-                                    <td><button class="btn btn-info bg-info">View</button></td>
-                                </tr>
-                                <tr>
-                                    <td>Barca</td>
-                                    <td>11-7-2014</td>
-                                    <td><span class="tag tag-success">300CHF</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Barca</td>
-                                    <td>11-7-2014</td>
-                                    <td><span class="tag tag-success">300CHF</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Barca</td>
-                                    <td>11-7-2014</td>
-                                    <td><span class="tag tag-success">300CHF</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Barca</td>
-                                    <td>11-7-2014</td>
-                                    <td><span class="tag tag-success">300CHF</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Barca</td>
-                                    <td>11-7-2014</td>
-                                    <td><span class="tag tag-success">300CHF</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Barca</td>
-                                    <td>11-7-2014</td>
-                                    <td><span class="tag tag-success">300CHF</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Barca</td>
-                                    <td>11-7-2014</td>
-                                    <td><span class="tag tag-success">300CHF</span></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- /.card-body -->
-                </div>
-                <!-- /.card -->
-            </div>
-            <div class="col-12">
-                <div class="card card-success card-outline">
-                    <div class="card-header">
-                        <h3 class="card-title">To be paid card (yellow / red)</h3>
-                        <div class="card-tools">
-                        </div>
-                    </div>
-                    <!-- /.card-header -->
-                    <div class="card-body table-responsive p-0" style="height: 300px;">
-                        <table class="table table-head-fixed">
-                            <thead>
-                                <tr>
-                                    <th>Team</th>
-                                    <th>Date</th>
-                                    <th>Amount</th>
-                                    <th>Details</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Barca</td>
-                                    <td>11-7-2014</td>
-                                    <td><span class="tag tag-success">300CHF</span></td>
-                                    <td><button class="btn btn-info bg-info">View</button></td>
-                                </tr>
-                                <tr>
-                                    <td>Barca</td>
-                                    <td>11-7-2014</td>
-                                    <td><span class="tag tag-success">300CHF</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Barca</td>
-                                    <td>11-7-2014</td>
-                                    <td><span class="tag tag-success">300CHF</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Barca</td>
-                                    <td>11-7-2014</td>
-                                    <td><span class="tag tag-success">300CHF</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Barca</td>
-                                    <td>11-7-2014</td>
-                                    <td><span class="tag tag-success">300CHF</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Barca</td>
-                                    <td>11-7-2014</td>
-                                    <td><span class="tag tag-success">300CHF</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Barca</td>
-                                    <td>11-7-2014</td>
-                                    <td><span class="tag tag-success">300CHF</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Barca</td>
-                                    <td>11-7-2014</td>
-                                    <td><span class="tag tag-success">300CHF</span></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- /.card-body -->
-                </div>
-                <!-- /.card -->
-            </div>
-        </div>
-
 
         <!-- Modal -->
         <div class="modal  fade" id="viewDetails" tabindex="-1" role="dialog" aria-labelledby="viewDetails"
@@ -470,7 +187,7 @@
 
 <script>
     export default {
-        dat(){
+        data() {
             return{
 
             }
@@ -479,9 +196,6 @@
             detailsModal(){
                 $('#viewDetails').modal('show');
             }
-        },
-        created(){
-
         },
         mounted() {
             console.log('Component mounted.')

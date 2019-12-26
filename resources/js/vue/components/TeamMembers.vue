@@ -104,9 +104,6 @@
         data() {
             return {
                 editMode: false,
-                members: [],
-                teams:[],
-                roles:[],
                 membersForm: new Form({
                     id: '',
                     name: '',
@@ -116,6 +113,19 @@
                 })
             }
         },
+
+        computed: {
+            teams() {
+                return this.$store.state.teams
+            },
+            members() {
+                return this.$store.state.members
+            },
+            roles() {
+                return this.$store.state.roles
+            }
+        },
+
         methods: {
             updateUser(id) {
                 this.$Progress.start();
@@ -177,18 +187,6 @@
             onChange(event){
                 console.log(event.target.value);
             },
-            loadMembers() {
-                axios.get('api/members')
-                    .then((response) => (this.members = response.data.data));
-            },
-            loadRoles(){
-                axios.get('api/roles')
-                    .then((response) => (this.roles = response.data.data));
-            },
-            loadTeams(){
-                axios.get('api/teams')
-                    .then((response) => this.teams = response.data.data);
-            },
             createUser() {
                 this.$Progress.start();
                 this.membersForm.post('api/members')
@@ -207,19 +205,6 @@
             },
 
         },
-       
-
-        created() {
-            this.loadMembers();
-            this.loadRoles();
-            this.loadTeams();
-            Fire.$on('AfterCreate', () => {
-                this.loadMembers();
-                this.loadRoles();
-                this.loadTeams();
-            });
-
-        }
     }
 
 </script>

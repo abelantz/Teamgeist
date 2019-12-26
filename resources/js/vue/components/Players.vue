@@ -140,35 +140,22 @@
 
 <script>
     export default {
-        data() {
-            return {
-                categories: [],
-                subcategories: [],
+
+        computed: {
+            categories() {
+                return this.$store.state.categories
+            },
+            subcategories() {
+                return this.$store.state.subcategories
             }
         },
+
         methods: {
             coachModal(){
                 $('#addPlayer').modal('show')
             },
-            getSubCategories(categoryId) {
-                let subCategories = this.subcategories.filter((subcategory) => {
-                    return subcategory.category_id == categoryId
-                })
-                return subCategories;
-            },
-            loadCategories() {
-                axios.get('api/categories')
-                    .then((response) => (this.categories = response.data.data));
-            },
-            loadSubcategories() {
-                axios.get('api/subcategories')
-                    .then((response) => (this.subcategories = response.data.data))
-            },
         },
-        created() {
-            this.loadCategories();
-            this.loadSubcategories();
-        }
+
     }
 
 </script>

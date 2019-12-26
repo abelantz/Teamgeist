@@ -108,8 +108,6 @@
         data() {
             return {
                 editMode: false,
-                users: [],
-                roles:[],
                 form: new Form({
                     id: '',
                     name: '',
@@ -120,6 +118,16 @@
                 })
             }
         },
+
+        computed: {
+            users() {
+                return this.$store.state.users
+            },
+            roles() {
+                return this.$store.state.roles
+            }
+        },
+
         methods: {
             updateUser(id) {
                 this.$Progress.start();
@@ -175,15 +183,7 @@
                     }
                 })
             },
-            loadUsers() {
-                axios.get('api/users')
-                     .then((response) => (this.users = response.data.data));
-            },
             onChange(event){console.log(event.target.value)},
-            loadRoles(){
-                axios.get('api/roles')
-                    .then((response) => this.roles = response.data.data)
-            },
             createUser() {
                 this.$Progress.start();
                 this.form.post('api/users')
@@ -203,14 +203,6 @@
 
         },
 
-        created() {
-            this.loadUsers();
-            this.loadRoles();
-            Fire.$on('AfterCreate', () => {
-                this.loadUsers();
-            });
-
-        }
     }
 
 </script>

@@ -2,32 +2,6 @@
     <div>
         <h1>Coaches</h1>
 
-
-        <div class="row mt-3">
-            <div v-for="category in categories" v-bind:key="category.id" class="col-md-3">
-                <!-- Widget: user widget style 2 -->
-                <div class="card card-widget widget-user-2">
-                    <!-- Add the bg color to the header using any of the bg-* classes -->
-                    <div class="widget-user-header bg-success">
-
-                        <!-- /.widget-user-image -->
-                        <!-- <h3 class="widget-user-usertitle">Nadia Carmichael</h3> -->
-                        <h5 class="widget-user-desc">{{category.title}}</h5>
-                    </div>
-                    <div class="card-footer p-0">
-                        <ul class="nav flex-column">
-                            <li v-for="subcategory in getSubCategories(category.id)" v-bind:key="subcategory.id"
-                                class="nav-item">
-                                <span class="nav-link ">
-                                    <span class="widget-user-desc">{{subcategory.title}}</span>
-                                </span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- /.widget-user -->
-            </div>
-        </div>
         <div class="row text-center ">
             <div class="col-12">
                 <div class="card card-success card-outline">
@@ -44,53 +18,19 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Name</th>
-                                    <th>Team name</th>
-                                    <th>League</th>
-                                    <th>Size</th>
+                                    <th>Team</th>
                                     <th>Modify</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>183</td>
-                                    <td>
-                                        <router-link to="/coach">John Doe</router-link>
-                                    </td>
-                                    <td>Fc Barcelona</td>
-                                    <td>2nd League</td>
-                                    <td>Size</td>
+                                    <td>{{ coach.id }}</td>
+                                    <td>{{ coach.name }}</td>
+                                    <td>{{ coach.team_id }}</td>
                                     <td>
                                         <button class="btn btn-success bg-success"> View</button>
                                         <button class="btn btn-info bg-info"> Edit</button>
-                                        <button class="btn btn-danger bg-danger">Delete</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>183</td>
-                                    <td>
-                                        <router-link to="/coach">John Doe</router-link>
-                                    </td>
-                                    <td>Fc Barcelona</td>
-                                    <td>2nd League</td>
-                                    <td>Size</td>
-                                    <td>
-                                        <button class="btn btn-success bg-success"> View</button>
-                                        <button class="btn btn-info bg-info"> Edit</button>
-                                        <button class="btn btn-danger bg-danger">Delete</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>183</td>
-                                    <td>
-                                        <router-link to="/coach">John Doe</router-link>
-                                    </td>
-                                    <td>Fc Barcelona</td>
-                                    <td>2nd League</td>
-                                    <td>Size</td>
-                                    <td>
-                                        <button class="btn btn-success bg-success"> View</button>
-                                        <button class="btn btn-info bg-info"> Edit</button>
-                                        <button class="btn btn-danger bg-danger">Delete</button>
+                                        <button class="btn btn-danger bg-danger" @click="deleteCoach(coach.id)">Delete</button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -119,12 +59,9 @@
                         </div>
                         <div class="form-group">
                         <label>Select Team</label>
-                        <select class="form-control">
-                          <option>team 1</option>
-                          <option>team 2</option>
-                          <option>team 3</option>
-                          <option>team 4</option>
-                          <option>team 5</option>
+                        <select v-model="coach.team_id" class="form-control">
+                            <option disabled selected value="">Select Team</option>
+                            <option  v-for="team in teams" v-bind:key="team.id" v-bind:value="team.id">{{ team.name }}</option>
                         </select>
                       </div>
                     </div>
@@ -140,35 +77,28 @@
 
 <script>
     export default {
+
         data() {
             return {
-                categories: [],
-                subcategories: [],
+                coach: {
+                    name: '',
+                    team_id: ''
+                }
             }
         },
+
+        computed: {
+            teams() {
+                return this.$store.state.teams;
+            }
+        },
+
         methods: {
-            coachModal(){
+            coachModal() {
                 $('#addCoach').modal('show')
             },
-            getSubCategories(categoryId) {
-                let subCategories = this.subcategories.filter((subcategory) => {
-                    return subcategory.category_id == categoryId
-                })
-                return subCategories;
-            },
-            loadCategories() {
-                axios.get('api/categories')
-                    .then((response) => (this.categories = response.data.data));
-            },
-            loadSubcategories() {
-                axios.get('api/subcategories')
-                    .then((response) => (this.subcategories = response.data.data))
-            },
         },
-        created() {
-            this.loadCategories();
-            this.loadSubcategories();
-        }
+
     }
 
 </script>

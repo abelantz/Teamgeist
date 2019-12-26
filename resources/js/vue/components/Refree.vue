@@ -8,30 +8,13 @@
 <script>
     export default {
         props: ['refreeId'],
-        data() {
-            return {
-                referees: [],
-            }
-        },
+
         computed:{
-             refree: function () {
-                 return this.referees.filter((refree) => {
-                    return refree.id == this.refreeId;
-                })
+             referee() {
+                 return this.$store.state.referees[0]
             },
         },
-        methods: {
-            
-            loadRefrees() {
-                axios.get('../api/referees')
-                    .then((response) => this.referees = response.data.data)
-            },
-           
-            
-        },
-        created() {
-            this.loadRefrees();
-        },
+
     }
 
 </script>
