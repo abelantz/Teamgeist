@@ -1,6 +1,6 @@
 <template>
     <div>
-        <section class="content">
+       
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-3">
@@ -55,11 +55,12 @@
                                             <td>{{member.type}}</td>
                                             <td>{{member.created_at | regDate}}</td>
                                             <td>
-                                                <a href="#" @click="editModal(member)"> <i class="fas fa-edit"></i></a>
-                                                /
-                                                <a href="#" @click="deleteMember(member.id)"> <i
-                                                        class="fas fa-trash red"></i></a>
+                                               <div class="btn-group btn-group-sm">
+                                                <a href="#"  class="btn btn-info bg-info"><i class="fas fa-edit"></i></a>
+                                                <a href="#" @click="deleteMember(member.id)" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                                              </div>
                                             </td>
+                                            
                                         </tr>
                                     </tbody>
                                 </table>
@@ -68,6 +69,7 @@
                         </div>
                         <!-- /.card -->
                     </div>
+               
 
 
 
@@ -111,7 +113,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        
     </div>
 </template>
 

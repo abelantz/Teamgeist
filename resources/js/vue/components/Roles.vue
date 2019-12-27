@@ -27,9 +27,11 @@
                                     <td>{{role.name}}</td>
                                     <td>{{role.permissions}}</td>
                                     <td>
-                                        <a href="#" @click="editModal(role)" > <i class="fas fa-edit"></i></a>
-                                        /
-                                        <a href="#" > <i class="fas fa-trash red"></i></a>
+                                        <div class="btn-group btn-group-sm">
+                                            <a href="#"   class="btn btn-success bg-success"><i class="fas fa-eye"></i></a>
+                                            <a href="#"   class="btn btn-info bg-info"><i class="fas fa-edit"></i></a>
+                                            <a href="#"   class="btn btn-danger bg-danger"><i class="fas fa-trash"></i></a>
+                                        </div>
                                     </td>
                                 </tr>
                             </tbody>

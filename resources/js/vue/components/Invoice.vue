@@ -12,7 +12,7 @@
                         </div>
                     </div>
                     <!-- /.card-header -->
-                    <div class="card-body table-responsive p-0" style="height: 300px;">
+                    <div class="card-body table-responsive p-0" >
                         <table class="table table-head-fixed">
                             <thead>
                                 <tr>
@@ -29,56 +29,55 @@
                                     <td>Barca</td>
                                     <td>11-7-2014</td>
                                     <td><span class="tag tag-success">300CHF</span></td>
-                                    <td><button @click="detailsModal" class="btn btn-info bg-info">View</button></td>
+                                    <td>
+                                        <div class="btn-group btn-group-sm">
+                                            <a href="#"  @click="detailsModal" class="btn btn-success bg-success"><i class="fas fa-eye"></i></a>
+                                        </div>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>John Doe</td>
                                     <td>Barca</td>
                                     <td>11-7-2014</td>
                                     <td><span class="tag tag-success">300CHF</span></td>
-                                    <td><button class="btn btn-info bg-info">View</button></td>
+                                    <td>
+                                        <div class="btn-group btn-group-sm">
+                                            <a href="#"  @click="detailsModal" class="btn btn-success bg-success"><i class="fas fa-eye"></i></a>
+                                        </div>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>John Doe</td>
                                     <td>Barca</td>
                                     <td>11-7-2014</td>
                                     <td><span class="tag tag-success">300CHF</span></td>
-                                    <td><button class="btn btn-info bg-info">View</button></td>
+                                    <td>
+                                        <div class="btn-group btn-group-sm">
+                                            <a href="#"  @click="detailsModal" class="btn btn-success bg-success"><i class="fas fa-eye"></i></a>
+                                        </div>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>John Doe</td>
                                     <td>Barca</td>
                                     <td>11-7-2014</td>
                                     <td><span class="tag tag-success">300CHF</span></td>
-                                    <td><button class="btn btn-info bg-info">View</button></td>
+                                    <td>
+                                        <div class="btn-group btn-group-sm">
+                                            <a href="#"  @click="detailsModal" class="btn btn-success bg-success"><i class="fas fa-eye"></i></a>
+                                        </div>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>John Doe</td>
                                     <td>Barca</td>
                                     <td>11-7-2014</td>
                                     <td><span class="tag tag-success">300CHF</span></td>
-                                    <td><button class="btn btn-info bg-info">View</button></td>
-                                </tr>
-                                <tr>
-                                    <td>John Doe</td>
-                                    <td>Barca</td>
-                                    <td>11-7-2014</td>
-                                    <td><span class="tag tag-success">300CHF</span></td>
-                                    <td><button class="btn btn-info bg-info">View</button></td>
-                                </tr>
-                                <tr>
-                                    <td>John Doe</td>
-                                    <td>Barca</td>
-                                    <td>11-7-2014</td>
-                                    <td><span class="tag tag-success">300CHF</span></td>
-                                    <td><button class="btn btn-info bg-info">View</button></td>
-                                </tr>
-                                <tr>
-                                    <td>John Doe</td>
-                                    <td>Barca</td>
-                                    <td>11-7-2014</td>
-                                    <td><span class="tag tag-success">300CHF</span></td>
-                                    <td><button class="btn btn-info bg-info">View</button></td>
+                                    <td>
+                                        <div class="btn-group btn-group-sm">
+                                            <a href="#"  @click="detailsModal" class="btn btn-success bg-success"><i class="fas fa-eye"></i></a>
+                                        </div>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>

@@ -20,7 +20,7 @@
                     </div>
                     <div class="card-footer p-0">
                         <ul class="nav flex-column">
-                            <li v-for="subcategory in subcategories" v-bind:key="subcategory.id"
+                            <li v-for="subcategory in getSubCategories(category.id)" v-bind:key="subcategory.id"
                                 class="nav-item">
                                 <span class="nav-link center">
                                     <span class="widget-user-desc">{{subcategory.title}}</span>
@@ -113,6 +113,8 @@
             subcategories() {
                 return this.$store.state.subcategories
             },
+            
+            
         },
 
         methods: {
@@ -140,6 +142,13 @@
                 this.$store.dispatch('deleteSubCategory', subCategoryId)
                                             .then(res => console.log(res));
             },
+            getSubCategories(categoryId) {
+                let subCategories = this.subcategories.filter((subcategory) => {
+                    return subcategory.category_id == categoryId
+                })
+                return subCategories;
+            },
+            
         },
     }
 

@@ -28,9 +28,11 @@
                                     <td>{{ coach.name }}</td>
                                     <td>{{ coach.team_id }}</td>
                                     <td>
-                                        <button class="btn btn-success bg-success"> View</button>
-                                        <button class="btn btn-info bg-info"> Edit</button>
-                                        <button class="btn btn-danger bg-danger" @click="deleteCoach(coach.id)">Delete</button>
+                                        <div class="btn-group btn-group-sm">
+                                            <a href="#"   class="btn btn-success bg-success"><i class="fas fa-eye"></i></a>
+                                            <a href="#"   class="btn btn-info bg-info"><i class="fas fa-edit"></i></a>
+                                            <a href="#"  @click="deleteCoach(coach.id)" class="btn btn-danger bg-danger"><i class="fas fa-trash"></i></a>
+                                        </div>
                                     </td>
                                 </tr>
                             </tbody>
