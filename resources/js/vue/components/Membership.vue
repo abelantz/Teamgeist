@@ -12,7 +12,7 @@
             <div class="col-md-4  text-right">
                 <div class="form-group">
                     <select v-model="membership.type_id" class="form-control">
-                        <option disabled value="">Select Type</option>
+                        <option disabled selected value="">Select Type</option>
                         <option v-for="category in memberCategories" v-bind:key="category.id"
                             v-bind:value="category.id">{{ category.title }}</option>
                     </select>
@@ -38,23 +38,20 @@
                                     <th>Amount</th>
                                     <th>Type</th>
                                     <th>Date</th>
-                                    <th>Paid</th>
                                     <th>Modify</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr v-for="members in memberships" v-bind:key="members.id">
-                                    <td>{{ members.name }}</td>
-                                    <td>{{ members.team_id}}</td>
-                                    <td>CHF 1600</td>
-                                    <td>{{ members.type_id}}</td>
-                                    <td>{{ members.created_at | regDate }}</td>
-                                    <td>{{ members.paid }}</td>
+                                <tr v-for="membership in memberships" v-bind:key="membership.id">
+                                    <td>{{ getMembershipUser(membership.user_id).name }}</td>
+                                    <td>{{ getMembershipTeam(membership.team_id).name }}</td>
+                                    <td>CHF {{ getMembershipCategory(membership.members_categories_id).amount }}</td>
+                                    <td>{{ getMembershipCategory(membership.members_categories_id).title }}</td>
+                                    <td>{{ membership.created_at | regDate }}</td>
                                     <td>
                                         <div class="btn-group btn-group-sm">
-                                            <a href="#" class="btn btn-success bg-success"><i class="fas fa-eye"></i></a>
                                             <a href="#" class="btn btn-info bg-info"><i class="fas fa-edit"></i></a>
-                                            <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                                            <a @click="deleteMembership(membership.id)" href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
                                         </div>
                                     </td>
                                 </tr>
@@ -199,10 +196,25 @@
             },
             roles() {
                 return this.$store.state.roles
-            }
+            },
         },
 
         methods: {
+            getMembershipUser(userId) {
+                return this.$store.state.users.find(user => {
+                    return user.id == userId;
+                }) || '';
+            },
+            getMembershipTeam(teamId) {
+                return this.teams.find(team => {
+                    return team.id == teamId;
+                }) || '';
+            },
+            getMembershipCategory(categoryId) {
+                return this.memberCategories.find(category => {
+                    return category.id == categoryId;
+                }) || '';
+            },
             showCreateMemberCategoryModal() {
                 $('#addType').modal('show');
             },
@@ -217,6 +229,10 @@
                 this.$store.dispatch('createMemberCategory', this.memberCategory)
                             .then(res => $('#addType').modal('hide'));
             },
+            deleteMembership(membershipId) {
+                this.$store.dispatch('deleteMembership', membershipId)
+                            .then(res => console.log('membership deleted'));
+            }
         },
         
     }

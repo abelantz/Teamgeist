@@ -33,9 +33,11 @@
                                     <td><span class="tag tag-success">{{member.type}}</span></td>
                                     <td>{{member.created_at | regDate}}</td>
                                     <td>
-                                        <a href="#" @click="editModal(member)"> <i class="fas fa-edit"></i></a>
-                                        /
-                                        <a href="#" @click="deleteUser(member.id)"> <i class="fas fa-trash red"></i></a>
+                                        <div class="btn-group btn-group-sm">
+                                            <a href="#" class="btn btn-info bg-info"><i class="fas fa-edit"></i></a>
+                                            <a href="#" @click="deleteMember(member.id)" class="btn btn-danger"><i
+                                                        class="fas fa-trash"></i></a>
+                                        </div>
                                     </td>
                                 </tr>
 
@@ -52,45 +54,37 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 v-show="editMode" class="modal-title" id="addNew">Update Member</h5>
-                        <h5 v-show="!editMode" class="modal-title" id="addNew">Create Member</h5>
+                        <h5 class="modal-title" id="addNew">Create Member</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form @submit.prevent="editMode ? updateUser() : createUser ()">
+                    <form @submit.prevent="createMember">
                         <div class="modal-body">
                             <div class="form-group">
-                                <input v-model="membersForm.name" type="text" name="name" class="form-control"
-                                    placeholder="Name" :class="{ 'is-invalid': membersForm.errors.has('name') }">
-                                <has-error :form="membersForm" field="name"></has-error>
+                                <input v-model="member.name" type="text" name="name" class="form-control" 
+                                    placeholder="Name">
                             </div>
                             <div class="form-group">
-                                <select v-model="membersForm.team_id" @change="onChangeTeam($event)" type="type" name="type"
-                                    id="type" class="form-control"
-                                    :class="{ 'is-invalid': membersForm.errors.has('type') }">
-                                    <option disabled selected value="">Select Team  </option>
+                                <select v-model="member.team_id" type="type" name="type"
+                                    id="type" class="form-control">
+                                    <option disabled selected value="">Select Team</option>
                                     <option v-for="team in teams" v-bind:key="team.id" v-bind:value="team.id">
                                         {{team.name}}</option>
                                 </select>
-                                <has-error :form="membersForm" field="type"></has-error>
                             </div>
                             <div class="form-group">
-                                <select v-model="membersForm.type" @change="onChange($event)" type="type" name="type"
-                                    id="type" class="form-control"
-                                    :class="{ 'is-invalid': membersForm.errors.has('type') }">
+                                <select v-model="member.membership_id" type="type" name="type"
+                                    id="type" class="form-control">
                                     <option disabled selected value="">Select Type</option>
-                                    <option v-for="role in roles" v-bind:key="role.id" v-bind:value="role.name">
-                                        {{role.name}}</option>
+                                    <option v-for="membership in memberships" v-bind:key="membership.id" v-bind:value="membership.id">
+                                        {{ membership.name }}</option>
                                 </select>
-                                <has-error :form="membersForm" field="type"></has-error>
                             </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
-                            <button v-show="editMode" type="submit" class="btn btn-success">Update</button>
-                            <button v-show="!editMode" type="submit" class="btn btn-success">Create</button>
-
+                            <button type="submit" class="btn btn-success">Create</button>
                         </div>
                     </form>
                 </div>
@@ -103,105 +97,35 @@
     export default {
         data() {
             return {
-                editMode: false,
-                membersForm: new Form({
-                    id: '',
+                member: {
                     name: '',
-                    type: '',
                     team_id: '',
-                    // type:''
-                })
+                    membership_id: '',
+                }
             }
         },
 
         computed: {
-            teams() {
-                return this.$store.state.teams
-            },
             members() {
                 return this.$store.state.members
             },
-            roles() {
-                return this.$store.state.roles
+            teams() {
+                return this.$store.state.teams
+            },
+            memberships() {
+                return this.$store.state.memberships
             }
         },
 
         methods: {
-            updateUser(id) {
-                this.$Progress.start();
-                this.membersForm.put('api/members/' + this.membersForm.id)
-                    .then(() => {
-                        swal.fire(
-                            'Updated!',
-                            'Your information has been updated.',
-                            'success'
-                        )
-                        Fire.$emit('AfterCreate');
-                        $('#addNew').modal('hide');
-                        this.$Progress.finish();
-                    })
-                    .catch(() => {
-                        this.$Progress.fail();
-                    })
-            },
-            editModal(user) {
-                this.editMode = true;
-                this.membersForm.reset();
-                $('#addNew').modal('show');
-                this.membersForm.fill(user);
-            },
-            newModal() {
-                this.editMode = false;
-                this.membersForm.reset();
-                $('#addNew').modal('show');
-            },
-            deleteUser(id) {
-                swal.fire({
-                    title: 'Are you sure?',
-                    text: "You won't be able to revert this!",
-                    type: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, delete it!'
-                }).then((result) => {
 
-                    //Send request to the server
-                    if (result.value) {
-                        this.membersForm.delete('api/members/' + id)
-                            .then(() => {
-                                swal.fire(
-                                    'Deleted!',
-                                    'Your file has been deleted.',
-                                    'success'
-                                )
-                                Fire.$emit('AfterCreate');
-                            })
-                            .catch()
-                    }
-                })
+            newModal() {
+                $('#addNew').modal('show');
             },
-            onChangeTeam(event){
-                console.log(event.target.value);
-            },
-            onChange(event){
-                console.log(event.target.value);
-            },
-            createUser() {
-                this.$Progress.start();
-                this.membersForm.post('api/members')
-                    .then(() => {
-                        Fire.$emit('AfterCreate');
-                        $('#addNew').modal('hide');
-                        toast.fire({
-                            type: 'success',
-                            title: 'User created succesfully'
-                        });
-                        this.$Progress.finish();
-                    })
-                    .catch(() => {
-                        this.$Progress.fail();
-                    })
+
+            createMember() {
+                this.$store.dispatch('createMember', this.member)
+                            .then(res => $('#addNew').modal('hide'));
             },
 
         },

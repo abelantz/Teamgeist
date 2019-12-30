@@ -38,13 +38,13 @@ class MembershipController extends Controller
             'password' => Hash::make($request->password)
         ]);
         $membership = Membership::create([
-            'categories_member_id' => $request->categories_member_id,
+            'members_categories_id' => $request->members_categories_id,
             'team_id' => $request->team_id,
-            'user_id' => $user->id
+            'user_id' => $user->id,
         ]);
         $invoice = Invoice::create([
             'membership_id' => $membership->id,
-            'amount' => MembersCategory::find($request->categories_member_id)->amount,
+            'amount' => MembersCategory::find($request->members_categories_id)->amount,
             'paid' => 0
         ]);
         return response()->json(['data' => $membership], 201);

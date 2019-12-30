@@ -2,11 +2,7 @@ import './bootstrap';
 import router from './vue/router';
 import { store } from './vue/store';
 
-
-
-
-
-new Vue({
+export default new Vue({
     el: '#app',
     store: store,
     router: router,

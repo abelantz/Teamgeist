@@ -91,18 +91,12 @@
                                 <p>Membership</p>
                             </router-link>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <router-link  to="/coaches" class="nav-link">
                                 <i class="nav-icon far fa-circle nav-icon green"></i>
                                 <p>Coaches</p>
                             </router-link >
-                        </li>
-                        <li class="nav-item">
-                            <router-link to="/players" class="nav-link">
-                                <i class="nav-icon far fa-circle nav-icon green"></i>
-                                <p>Players</p>
-                            </router-link>
-                        </li>
+                        </li> -->
                         <li class="nav-item">
                             <router-link to="/refrees" class="nav-link">
                                 <i class="nav-icon far fa-circle nav-icon green"></i>

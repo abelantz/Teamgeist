@@ -28,17 +28,16 @@
                             </thead>
                             <tbody>
                                 <tr v-for="matchday in matchdays" v-bind:key="matchday.id">
-                                    <td>{{matchday.team_id}}</td>
-                                    <td>{{matchday.date | regDate}}</td>
-                                    <td>{{matchday.opponent}}</td>
-                                    <td>{{matchday.start_time}}</td>
-                                    <td>{{matchday.type}}</td>
-                                    <td>{{matchday.field_id}}</td>
-                                    <td>{{matchday.wardrobe_id}}</td>
+                                    <td>{{ getMatchdayTeam(matchday.team_id).name }}</td>
+                                    <td>{{ matchday.opponent }}</td>
+                                    <td>{{ matchday.date | regDate }}</td>
+                                    <td>{{ matchday.time }}</td>
+                                    <td>{{ matchday.type }}</td>
+                                    <td>{{ getMatchdayField(matchday.field_id).title }}</td>
+                                    <td>{{ getMatchdayWardrobe(matchday.wardrobe_id).title }}</td>
                                     <td>Colina</td>
                                     <td>
                                         <div class="btn-group btn-group-sm">
-                                            <a href="#" class="btn btn-success bg-success"><i class="fas fa-eye"></i></a>
                                             <a href="#" class="btn btn-info bg-info"><i class="fas fa-edit"></i></a>
                                             <button class="btn btn-danger" @click="deleteMatchday(matchday.id)"><i class="fas fa-trash"></i></button>
                                         </div>
@@ -79,7 +78,7 @@
                                     <picker label="Date" only-date v-model="matchday.date" format="YYYY-MM-DD" formatted="DD/MM/YYYY"></picker>
                                 </div>
                                 <div class="form-group">
-                                    <picker label="Start Time" only-time v-model="matchday.start_time" format="HH:mm:ss " formatted="HH:mm "></picker>
+                                    <picker label="Start Time" only-time v-model="matchday.time" format="HH:mm:ss " formatted="HH:mm "></picker>
                                 </div>
                                 <div class="form-group">
                                     <select v-model="matchday.type" type="type" name="type" id="type" class="form-control">
@@ -132,7 +131,7 @@
                     team_id: '',
                     opponent:'',
                     date: '',
-                    start_time: '',
+                    time: '',
                     type:'',
                     field_id: '',
                     wardrobe_id: '',
@@ -156,6 +155,21 @@
         },
 
         methods: {
+            getMatchdayTeam(teamId) {
+                return this.teams.find(team => {
+                    return team.id == teamId;
+                });
+            },
+            getMatchdayField(fieldId) {
+                return this.fields.find(field => {
+                    return field.id == fieldId;
+                });
+            },
+            getMatchdayWardrobe(wardrobeId) {
+                return this.wardrobes.find(wardrobe => {
+                    return wardrobe.id == wardrobeId;
+                });
+            },
             showCreateMatchdayModal() {
                 $('#addMatch').modal('show')
             },

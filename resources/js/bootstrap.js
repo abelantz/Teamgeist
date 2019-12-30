@@ -13,6 +13,7 @@ import 'hchs-vue-charts';
 import 'vue-datetime/dist/vue-datetime.css'
 import 'bootstrap';
 import '@fortawesome/fontawesome-free';
+import app from './app';
 
 const toast = swal.mixin({
     toast: true,
@@ -29,6 +30,7 @@ window.Popper = Popper;
 window.$ = window.jQuery = jquery;
 window.Form = Form;
 window.Vuex = Vuex
+window.$Progress = VueProgressBar
 
 require('admin-lte');
 
@@ -52,6 +54,31 @@ Vue.filter('regDate', function(created){
 Vue.filter('timeFormat', function(value){
     return moment(value).format('HH:mm');
 });
-
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 window.axios.defaults.headers.common['X-CSRF-TOKEN'] = document.head.querySelector('meta[name="csrf-token"]');
+
+axios.interceptors.request.use((config) => {
+    if(config.method == 'post' || config.method == 'put' || config.method == 'delete') {
+        app.$Progress.start();
+    }
+    return config;
+}, (error) => {
+    return Promise.reject(error);
+});
+
+window.axios.interceptors.response.use((response) => {
+    if(response.status == 200) {
+        app.$Progress.finish();
+    }
+    if(response.status == 201 || response.status == 204) {
+        app.$Progress.finish();
+        toast.fire({
+            type: 'success',
+            title: 'Success'
+        });
+    }
+    
+    return response;
+}, (error) => {
+    return Promise.reject(error.message);
+});

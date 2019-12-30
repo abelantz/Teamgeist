@@ -143,10 +143,9 @@
                                             .then(res => console.log(res));
             },
             getSubCategories(categoryId) {
-                let subCategories = this.subcategories.filter((subcategory) => {
+                return this.subcategories.filter((subcategory) => {
                     return subcategory.category_id == categoryId
                 })
-                return subCategories;
             },
             
         },

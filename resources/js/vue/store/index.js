@@ -13,8 +13,11 @@ export const store = new Vuex.Store({
         memberships: [],
         memberCategories: [],
         referees: [],
+        refereeCategories: [],
         roles: [],
         permissions: [],
+        invoices: [],
+        users: []
     },
     mutations: {
         getTeams(state, payload) {
@@ -50,182 +53,276 @@ export const store = new Vuex.Store({
         getReferees(state, payload) {
             state.referees =  payload
         },
+        getRefereeCategories(state, payload) {
+            state.refereeCategories =  payload
+        },
         getRoles(state, payload) {
             state.roles = payload
         },
         getPermissions(state, payload) {
             state.permissions = payload
-        }
+        },
+        getInvoices(state, payload) {
+            state.invoices = payload
+        },
+        getUsers(state, payload) {
+            state.users = payload
+        },
     },
     actions: {
-        getTeams({commit}) {
+        getTeams({commit, dispatch}) {
             axios.get('api/teams')
                     .then((response) => {
                         commit('getTeams', response.data.data)
                         return response;
                     })
         },
-        createTeam({commit}, payload) {
+        createTeam({commit, dispatch}, payload) {
             return axios.post('api/teams', payload)
                     .then((response) => {
+                        dispatch('getTeams');
                         return response;
                     })
         },
-        deleteTeam({commit}, payload) {
+        deleteTeam({commit, dispatch}, payload) {
             return axios.delete('api/teams/' + payload)
                     .then((response) => {
+                        dispatch('getTeams');
                         return response;
                     })
         },
-        getMembers({commit}) {
+        getMembers({commit, dispatch}) {
             axios.get('api/members')
                     .then((response) => 
                         commit('getMembers', response.data.data));
         },
-        getCategories({commit}) {
+        createMember({commit, dispatch}, payload) {
+            return axios.post('api/members', payload)
+                    .then((response) => {
+                        dispatch('getMembers');
+                        dispatch('getUsers');
+                        dispatch('getInvoices');
+                        return response;
+                    })
+        },
+        getCategories({commit, dispatch}) {
             axios.get('api/categories')
                     .then((response) => 
                         commit('getCategories', response.data.data));
         },
-        createCategory({commit}, payload) {
+        createCategory({commit, dispatch}, payload) {
             return axios.post('api/categories', payload)
                         .then((response) => {
+                            dispatch('getCategories');
                             return response;
                         })
         },
-        deleteCategory({commit}, payload) {
+        deleteCategory({commit, dispatch}, payload) {
             return axios.delete('api/categories/' + payload)
                     .then((response) => {
+                        dispatch('getCategories');
                         return response;
                     })
         },
-        createSubCategory({commit}, payload) {
-            return axios.post('api/subcategories', payload)
-                        .then((response) => {
-                            return response;
-                        })
-        },
-        deleteSubCategory({commit}, payload) {
-            return axios.delete('api/subcategories/' + payload)
-                    .then((response) => {
-                        return response;
-                    })
-        },
-        getSubcategories({commit}) {
+        getSubcategories({commit, dispatch}) {
             axios.get('api/subcategories')
                     .then((response) => 
                         commit('getSubcategories', response.data.data));
         },
-        getFields({commit}) {
+        createSubCategory({commit, dispatch}, payload) {
+            return axios.post('api/subcategories', payload)
+                        .then((response) => {
+                            dispatch('getSubcategories');
+                            return response;
+                        })
+        },
+        deleteSubCategory({commit, dispatch}, payload) {
+            return axios.delete('api/subcategories/' + payload)
+                    .then((response) => {
+                        dispatch('getSubcategories');
+                        return response;
+                    })
+        },
+        getFields({commit, dispatch}) {
             axios.get('api/fields')
                     .then((response) =>  
                         commit('getFields', response.data.data));
         },
-        createField({commit}, payload) {
+        createField({commit, dispatch}, payload) {
             return axios.post('api/fields', payload)
                         .then((response) => {
+                            dispatch('getFields');
                             return response;
                         })
         },
-        deleteField({commit}, payload) {
+        deleteField({commit, dispatch}, payload) {
             return axios.delete('api/fields/' + payload)
                     .then((response) => {
+                        dispatch('getFields');
                         return response;
                     })
         },
-        getWardrobes({commit}) {
+        getWardrobes({commit, dispatch}) {
             axios.get('api/wardrobes')
                     .then((response) =>  
                         commit('getWardrobes', response.data.data));
         },
-        createWardrobe({commit}, payload) {
+        createWardrobe({commit, dispatch}, payload) {
             return axios.post('api/wardrobes', payload)
                         .then((response) => {
+                            dispatch('getWardrobes');
                             return response;
                         })
         },
-        deleteWardrobe({commit}, payload) {
+        deleteWardrobe({commit, dispatch}, payload) {
             return axios.delete('api/wardrobes/' + payload)
                     .then((response) => {
+                        dispatch('getWardrobes');
                         return response;
                     })
         },
-        getMatchdays({commit}) {
+        getMatchdays({commit, dispatch}) {
             axios.get('api/matchdays')
                         .then((response) => 
                             commit('getMatchdays', response.data.data));
         },
-        createMatchday({commit}, payload) {
+        createMatchday({commit, dispatch}, payload) {
             return axios.post('api/matchdays', payload)
                         .then((response) => {
+                            dispatch('getMatchdays');
                             return response;
                         })
         },
-        deleteMatchday({commit}, payload) {
+        deleteMatchday({commit, dispatch}, payload) {
             return axios.delete('api/matchdays/' + payload)
                     .then((response) => {
+                        dispatch('getMatchdays');
                         return response;
                     })
         },
-        getTrainings({commit}) {
+        getTrainings({commit, dispatch}) {
             axios.get('api/trainings')
                         .then((response) => 
                             commit('getTrainings', response.data.data));
         },
-        createTraining({commit}, payload) {
+        createTraining({commit, dispatch}, payload) {
             return axios.post('api/trainings', payload)
                         .then((response) => {
+                            dispatch('getTrainings');
                             return response;
                         })
         },
-        deleteTraining({commit}, payload) {
+        deleteTraining({commit, dispatch}, payload) {
             return axios.delete('api/trainings/' + payload)
                     .then((response) => {
+                        dispatch('getTrainings');
                         return response;
                     })
         },
-        getMemberships({commit}) {
+        getMemberships({commit, dispatch}) {
             axios.get('api/memberships')
                         .then((response) => 
                             commit('getMemberships', response.data.data));
         },
-        createMembership({commit}, payload) {
+        createMembership({commit, dispatch}, payload) {
             return axios.post('api/memberships', payload)
                         .then((response) => {
+                            dispatch('getMemberships');
+                            dispatch('getUsers');
+                            dispatch('getInvoices');
                             return response;
                         })
         },
-        getMemberCategories({commit}) {
+        deleteMembership({commit, dispatch}, payload) {
+            return axios.delete('api/memberships/' + payload)
+                    .then((response) => {
+                        dispatch('getMemberships');
+                        return response;
+                    })
+        },
+        getMemberCategories({commit, dispatch}) {
             axios.get('api/member_categories')
                             .then((response) => 
                                 commit('getMemberCategories', response.data.data));
         },
-        createMemberCategory({commit}, payload) {
+        createMemberCategory({commit, dispatch}, payload) {
             return axios.post('api/member_categories', payload)
                         .then((response) => {
+                            dispatch('getMemberCategories')
                             return response;
                         })
         },
-        getReferees({commit}) {
+        getReferees({commit, dispatch}) {
             axios.get('api/referees')
                             .then((response) => 
                                 commit('getReferees', response.data.data));
         },
-        getRoles({commit}) {
+        createReferee({commit, dispatch}, payload) {
+            return axios.post('api/referees', payload)
+                        .then((response) => {
+                            dispatch('getReferees')
+                            return response;
+                        })
+        },
+        deleteReferee({commit, dispatch}, payload) {
+            return axios.delete('api/referees/' + payload)
+                    .then((response) => {
+                        dispatch('getReferees')
+                        return response;
+                    })
+        },
+        getRefereeCategories({commit, dispatch}) {
+            axios.get('api/referee_categories')
+                            .then((response) => 
+                                commit('getRefereeCategories', response.data.data));
+        },
+        createRefereeCategory({commit, dispatch}, payload) {
+            return axios.post('api/referee_categories', payload)
+                        .then((response) => {
+                            dispatch('getRefereeCategories')
+                            return response;
+                        })
+        },
+        deleteRefereeCategory({commit, dispatch}, payload) {
+            return axios.delete('api/referee_categories/' + payload)
+                    .then((response) => {
+                        dispatch('getRefereeCategories')
+                        return response;
+                    })
+        },
+        getRoles({commit, dispatch}) {
             axios.get('api/roles')
                             .then((response) => 
                                 commit('getRoles', response.data.data));
         },
-        createRole({commit}, payload) {
+        createRole({commit, dispatch}, payload) {
             return axios.post('api/roles', payload)
                         .then((response) => {
+                            dispatch('getRoles')
                             return response;
                         })
         },
-        getPermissions({commit}) {
+        getPermissions({commit, dispatch}) {
             axios.get('api/permissions')
                             .then((response) => 
                                 commit('getPermissions', response.data.data));
+        },
+        getInvoices({commit, dispatch}) {
+            axios.get('api/invoices')
+                            .then((response) => 
+                                commit('getInvoices', response.data.data));
+        },
+        updateInvoice({commit, dispatch}, payload) {
+            return axios.put('api/invoices/' + payload, {paid: 1})
+                    .then((response) => {
+                        dispatch('getInvoices')
+                        return response;
+                    })
+        },
+        getUsers({commit, dispatch}) {
+            axios.get('api/users')
+                            .then((response) => 
+                                commit('getUsers', response.data.data));
         },
     }
 });
@@ -241,31 +338,8 @@ store.dispatch('getTrainings');
 store.dispatch('getMemberships');
 store.dispatch('getMemberCategories');
 store.dispatch('getReferees');
+store.dispatch('getRefereeCategories');
 store.dispatch('getRoles');
 store.dispatch('getPermissions');
-
-let Fire = new Vue();
-window.Fire = Fire;
-
-
-import { Form, HasError, AlertError } from 'vform';
-window.Form = Form;
-Vue.component(HasError.name, HasError)
-Vue.component(AlertError.name, AlertError)
-
-import VueProgressBar from 'vue-progressbar';
-Vue.use(VueProgressBar, {
-    color: 'rgb(143, 255, 199)',
-    failedColor: 'red',
-    height: '10px'
-});
-
-import swal from 'sweetalert2';
-window.swal = swal;
-const toast = swal.mixin({
-    toast: true,
-    position: 'top-end',
-    showConfirmButton: false,
-    timer: 3000
-});
-window.toast = toast;
+store.dispatch('getInvoices');
+store.dispatch('getUsers');

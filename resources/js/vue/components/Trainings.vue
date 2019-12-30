@@ -26,16 +26,14 @@
                             </thead>
                             <tbody>
                                 <tr v-for="training in trainings" v-bind:key="training.id">
-                                    <td>{{training.team_id}}</td>
-                                    <td>{{training.date | regDate}}</td>
-                                    <td>{{training.start_time }}</td>
-                                    <td>{{training.end_time }}</td>
-                                    <td>{{training.field_id}}</td>
-                                    <td>{{training.wardrobe_id}}</td>
+                                    <td>{{ getTrainingTeam(training.team_id).name }}</td>
+                                    <td>{{ training.date | regDate }}</td>
+                                    <td>{{ training.start_time }}</td>
+                                    <td>{{ training.end_time }}</td>
+                                    <td>{{ getTrainingField(training.field_id).title }}</td>
+                                    <td>{{ getTrainingWardrobe(training.wardrobe_id).title }}</td>
                                     <td>
                                         <div class="btn-group btn-group-sm">
-                                            <a href="#" class="btn btn-success bg-success"><i
-                                                    class="fas fa-eye"></i></a>
                                             <a href="#" class="btn btn-info bg-info"><i class="fas fa-edit"></i></a>
                                             <button class="btn btn-danger" @click="deleteTraining(training.id)"><i class="fas fa-trash"></i></button>
                                         </div>
@@ -145,6 +143,21 @@
         },
 
         methods: {
+            getTrainingTeam(teamId) {
+                return this.teams.find(team => {
+                    return team.id == teamId;
+                });
+            },
+            getTrainingField(fieldId) {
+                return this.fields.find(field => {
+                    return field.id == fieldId;
+                });
+            },
+            getTrainingWardrobe(wardrobeId) {
+                return this.wardrobes.find(wardrobe => {
+                    return wardrobe.id == wardrobeId;
+                });
+            },
             showCreateTrainingsModal() {
                 $('#addTraining').modal('show')
             },

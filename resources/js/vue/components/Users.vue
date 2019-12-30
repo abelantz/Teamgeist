@@ -33,7 +33,7 @@
                                     <td>{{user.created_at | regDate}}</td>
                                     <td>
                                         <div class="btn-group btn-group-sm">
-                                            <a href="#" @click="editModal(user)" class="btn btn-info bg-info"><i class="fas fa-edit"></i></a>
+                                            <a href="#"  class="btn btn-info bg-info"><i class="fas fa-edit"></i></a>
                                             <a href="#" @click="deleteUser(user.id)" class="btn btn-danger"><i class="fas fa-trash"></i></a>
                                         </div>
                                         
@@ -54,46 +54,38 @@
         <div class="modal fade" id="addNew" tabindex="-1" role="dialog" aria-labelledby="addNew" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 v-show="editMode" class="modal-title" id="addNew">Update User</h5>
-                        <h5 v-show="!editMode" class="modal-title" id="addNew">Create User</h5>
+                    <div class="modal-header">=
+                        <h5 class="modal-title" id="addNew">Create User</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form @submit.prevent="editMode ? updateUser() : createUser ()">
+                    <form @submit.prevent="createUser">
                         <div class="modal-body">
                             <div class="form-group">
-                                <input v-model="form.name" type="text" name="name" class="form-control"
-                                    placeholder="Name" :class="{ 'is-invalid': form.errors.has('name') }">
-                                <has-error :form="form" field="name"></has-error>
+                                <input v-model="user.name" type="text" name="name" class="form-control"
+                                    placeholder="Name">
                             </div>
                             <div class="form-group">
-                                <input v-model="form.email" type="email" name="email" class="form-control"
-                                    placeholder="Email" :class="{ 'is-invalid': form.errors.has('email') }">
-                                <has-error :form="form" field="name"></has-error>
+                                <input v-model="user.email" type="email" name="email" class="form-control"
+                                    placeholder="Email">
                             </div>
                             <div class="form-group">
-                                <input v-model="form.password" type="password" name="password" id="password"
-                                    class="form-control" placeholder="Password"
-                                    :class="{ 'is-invalid': form.errors.has('password') }">
-                                <has-error :form="form" field="name"></has-error>
+                                <input v-model="user.password" type="password" name="password" id="password"
+                                    class="form-control" placeholder="Password">
                             </div>
                             <div class="form-group">
-                                    <select v-model="form.role_id" @change="onChange($event)" type="role"
-                                        title="role" id="role" class="form-control"
-                                        :class="{ 'is-invalid': form.errors.has('role') }">
+                                    <select v-model="user.role_id" type="role"
+                                        title="role" id="role" class="form-control">
                                         <option disabled value="">Select Role</option>
                                         <option v-for="role in roles" v-bind:key="role.id"
                                             v-bind:value="role.id">{{role.name}}</option>
                                     </select>
-                                    <has-error :form="form" field="role"></has-error>
                              </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
-                            <button v-show="editMode" type="submit" class="btn btn-success">Update</button>
-                            <button v-show="!editMode" type="submit" class="btn btn-success">Create</button>
+                            <button type="submit" class="btn btn-success">Create</button>
 
                         </div>
                     </form>
@@ -107,15 +99,12 @@
     export default {
         data() {
             return {
-                editMode: false,
-                form: new Form({
-                    id: '',
+                user: {
                     name: '',
-                    role_id: '',
                     email: '',
                     password: '',
-                    // type:''
-                })
+                    role_id: ''
+                }
             }
         },
 
@@ -129,76 +118,8 @@
         },
 
         methods: {
-            updateUser(id) {
-                this.$Progress.start();
-                this.form.put('api/users/' + this.form.id)
-                    .then(() => {
-                        swal.fire(
-                            'Updated!',
-                            'Your information has been updated.',
-                            'success'
-                        )
-                        Fire.$emit('AfterCreate');
-                        $('#addNew').modal('hide');
-                        this.$Progress.finish();
-                    })
-                    .catch(() => {
-                        this.$Progress.fail();
-                    })
-            },
-            editModal(user) {
-                this.editMode = true;
-                this.form.reset();
-                $('#addNew').modal('show');
-                this.form.fill(user);
-            },
             newModal() {
-                this.editMode = false;
-                this.form.reset();
                 $('#addNew').modal('show');
-            },
-            deleteUser(id) {
-                swal.fire({
-                    title: 'Are you sure?',
-                    text: "You won't be able to revert this!",
-                    type: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, delete it!'
-                }).then((result) => {
-
-                    //Send request to the server
-                    if (result.value) {
-                        this.form.delete('api/users/' + id)
-                            .then(() => {
-                                swal.fire(
-                                    'Deleted!',
-                                    'Your file has been deleted.',
-                                    'success'
-                                )
-                                Fire.$emit('AfterCreate');
-                            })
-                            .catch()
-                    }
-                })
-            },
-            onChange(event){console.log(event.target.value)},
-            createUser() {
-                this.$Progress.start();
-                this.form.post('api/users')
-                    .then(() => {
-                        Fire.$emit('AfterCreate');
-                        $('#addNew').modal('hide');
-                        toast.fire({
-                            type: 'success',
-                            title: 'User created succesfully'
-                        });
-                        this.$Progress.finish();
-                    })
-                    .catch(() => {
-                        this.$Progress.fail();
-                    })
             },
 
         },

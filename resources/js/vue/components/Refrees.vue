@@ -4,10 +4,10 @@
         <button class="btn btn-success bg-success " @click="refreeCategoryModal"> Add Referee Category</button>
         <button class="btn btn-success bg-success " @click="refreeModal"> Add Refree</button>
         <div class="row text-center pt-2">
-            <div v-for="category in categories" v-bind:key="category.id" class="col-6">
+            <div class="col-12">
                 <div class="card card-success card-outline">
                     <div class="card-header">
-                        <h3 class="card-title">{{category.title}}</h3>
+                        <h3 class="card-title">Referees</h3>
                         <div class="card-tools">
                         </div>
                     </div>
@@ -23,17 +23,14 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr v-for="refree in getRefrees(category.id)" v-bind:key="refree.id"> 
-                                    <td>{{refree.id}}</td>
-                                    <td>
-                                        <router-link :to="'/refree/' + refree.id">{{refree.name}}</router-link>
-                                    </td>
-                                    <td>{{refree.type_id}}</td>
+                                <tr v-for="referee in referees" v-bind:key="referee.id"> 
+                                    <td>{{ referee.id }}</td>
+                                    <td>{{ referee.name }}</td>
+                                    <td>{{ getRefereeCategory(referee.referee_category_id).title }}</td>
                                     <td>
                                         <div class="btn-group btn-group-sm">
-                                            <a href="#"  class="btn btn-success bg-success"><i class="fas fa-eye"></i></a>
                                             <a href="#"  class="btn btn-info bg-info"><i class="fas fa-edit"></i></a>
-                                            <a href="#"  class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                                            <a href="#" @click="deleteReferee(referee.id)"  class="btn btn-danger"><i class="fas fa-trash"></i></a>
                                         </div>                                    
                                     </td>
                                 </tr>
@@ -47,86 +44,6 @@
             
         </div>
 
-
-        <!-- Upcommig Matches  -->
-        <div class="row text-center">
-             <div class="col-12">
-                <div class="card card-success card-outline">
-                    <div class="card-header">
-                        <h3 class="card-title">Refrees upcomming matches</h3>
-                        <div class="card-tools">
-                        </div>
-                    </div>
-                    <!-- /.card-header -->
-                    <div class="card-body table-responsive p-0">
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th>Date & Time</th>
-                                    <th>Home Team</th>
-                                    <th>Home Team Contact</th>
-                                    <th>Away Team </th>
-                                    <th>Away Team Contact </th>
-                                    <th>Refree Name</th>
-                                    <th>Status</th>
-                                    <th>View Match</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>18-03-2019 & 19:00</td>
-                                    <td>FC B</td>
-                                    <td>fcb@example.com</td>
-                                    <td>FC a </td>
-                                    <td>fca@example.com</td>
-                                    <td>Colina</td>
-                                    <td>Open</td>
-                                    <td>
-                                        <div class="btn-group btn-group-sm">
-                                            <a href="#"  class="btn btn-success bg-success"><i class="fas fa-eye"></i></a>
-                                            
-                                        </div>                                    
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>18-03-2019 & 19:00</td>
-                                    <td>FC B</td>
-                                    <td>fcb@example.com</td>
-                                    <td>FC a </td>
-                                    <td>fca@example.com</td>
-                                    <td>Colina</td>
-                                    <td>Open</td>
-                                    <td>
-                                        <div class="btn-group btn-group-sm">
-                                            <a href="#"  class="btn btn-success bg-success"><i class="fas fa-eye"></i></a>
-                                            
-                                        </div>                                    
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>18-03-2019 & 19:00</td>
-                                    <td>FC B</td>
-                                    <td>fcb@example.com</td>
-                                    <td>FC a </td>
-                                    <td>fca@example.com</td>
-                                    <td>Colina</td>
-                                    <td>Verified</td>
-                                    <td>
-                                        <div class="btn-group btn-group-sm">
-                                            <a href="#"  class="btn btn-success bg-success"><i class="fas fa-eye"></i></a>
-                                        </div>                                    
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- /.card-body -->
-                </div>
-                <!-- /.card -->
-            </div>
-        </div>
-
-
         <!--Add Referee Modal -->
         <div class="modal fade" id="addRefree" tabindex="-1" role="dialog" aria-labelledby="addRefree"
             aria-hidden="true">
@@ -138,34 +55,21 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form @submit.prevent="createReferee()">
+                    <form @submit.prevent="createReferee">
                         <div class="modal-body">
                             <div class="form-group">
                                 <div class="form-group">
-                                <input v-model="formReferee.name" type="text" name="name" class="form-control"
-                                    placeholder="Name" :class="{ 'is-invalid': formReferee.errors.has('name') }">
-                                <has-error :form="formReferee" field="title"></has-error>
+                                <input v-model="referee.name" type="text" name="name" class="form-control"
+                                    placeholder="Name">
                             </div>
                             </div>
                             <div class="form-group">
-                                    <select v-model="formReferee.category_id" @change="onChange($event)" type="category"
-                                        title="category" id="category" class="form-control"
-                                        :class="{ 'is-invalid': formReferee.errors.has('category') }">
+                                    <select v-model="referee.referee_category_id" type="category"
+                                        title="category" id="category" class="form-control">
                                         <option disabled value="">Select Category</option>
-                                        <option v-for="category in categories" v-bind:key="category.id"
+                                        <option v-for="category in refereeCategories" v-bind:key="category.id"
                                             v-bind:value="category.id">{{category.title}}</option>
                                     </select>
-                                    <has-error :form="formReferee" field=""></has-error>
-                             </div>
-                             <div class="form-group">
-                                    <select v-model="formReferee.type_id" @change="onChange($event)" type="type"
-                                        title="type" id="type" class="form-control"
-                                        :class="{ 'is-invalid': formReferee.errors.has('type') }">
-                                        <option disabled value="">Select Type</option>
-                                        <option v-for="role in roles" v-bind:key="role.id"
-                                            v-bind:value="role.id">{{role.name}}</option>
-                                    </select>
-                                    <has-error :form="formReferee" field=""></has-error>
                              </div>
                              <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -190,19 +94,18 @@
                         </button>
                     </div>
 
-                    <form @submit.prevent="createRefereeCat()">
+                    <form @submit.prevent="createRefereeCategory">
                         <div class="modal-body">
                             <div class="form-group">
                                 <div class="form-group">
-                                <input v-model="formCatRefree.title" type="text" name="title" class="form-control"
-                                    placeholder="Title" :class="{ 'is-invalid': formCatRefree.errors.has('title') }">
-                                <has-error :form="formCatRefree" field="title"></has-error>
+                                <input v-model="refereeCategory.title" type="text" name="title" class="form-control"
+                                    placeholder="Title">
                             </div>
                             </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
                         </div>
                     </form>
                 </div>
@@ -215,14 +118,13 @@
     export default {
         data() {
             return {
-                formReferee: new Form({
+                referee: {
                     name:'',
-                    category_id: '',
-                    type_id:'',
-                }),
-                formCatRefree: new Form({
+                    referee_category_id: '',
+                },
+                refereeCategory: {
                     title: ''
-                }),
+                },
             }
         },
 
@@ -230,66 +132,31 @@
             referees() {
                 return this.$store.state.referees;
             },
-            categories() {
-                return this.$store.state.categories;
+            refereeCategories() {
+                return this.$store.state.refereeCategories;
             },
-            roles() {
-                return this.$store.state.roles;
-            },
-            matchdays() {
-                return this.$store.state.matchdays;
-            },
-            
         },
  
         methods: {
-             getRefrees(categoryId) {
-                let refreesFilter = this.refrees.filter((refree) => {
-                    return refree.category_id == categoryId
+            getRefereeCategory(categoryId) {
+                return this.refereeCategories.find(category => {
+                    return category.id == categoryId;
                 })
-                return refreesFilter;
             },
-            onChange(event){console.log(event.target.value)},
-            refreeModal(){
+            refreeModal() {
                 $('#addRefree').modal('show')
             },
-             refreeCategoryModal(){
+             refreeCategoryModal() {
                 $('#addRefreeCat').modal('show')    
             },
-            createRefereeCat(){
-              this.$Progress.start();
-                this.formCatRefree.post('api/refree_categories')
-                    .then(() => {
-                        Fire.$emit('AfterCreate');
-                        $('#addRefreeCat').modal('hide');
-                        toast.fire({
-                            type: 'success',
-                            title: 'Referee Category created succesfully'
-                        });
-                        this.$Progress.finish();
-                    })
-                    .catch(() => {
-                        this.$Progress.fail();
-                    })
+            createRefereeCategory() {
+              this.$store.dispatch('createRefereeCategory', this.refereeCategory)
+                            .then(res => $('#addRefreeCat').modal('hide'))
             },
-
-            createReferee(){
-              this.$Progress.start();
-                this.formReferee.post('api/referees')
-                    .then(() => {
-                        Fire.$emit('AfterCreate');
-                        $('#addRefree').modal('hide');
-                        toast.fire({
-                            type: 'success',
-                            title: 'Referee Category created succesfully'
-                        });
-                        this.$Progress.finish();
-                    })
-                    .catch(() => {
-                        this.$Progress.fail();
-                    })
+            createReferee() {
+              this.$store.dispatch('createReferee', this.referee)
+                            .then(res => $('#addRefree').modal('hide')) 
             },
-           
         },
     }
 

@@ -34,8 +34,14 @@
                                         <router-link :to="'/team/' + team.id ">{{team.name}}</router-link>
                                     </td>
 
-                                    <td><span class="tag tag-success">Active</span></td>
-                                    <td>First </td>
+                                    <td>
+                                        <span class="tag tag-success">
+                                         {{ getCategoryName(getSubcategoryName(team.subcategory_id).category_id).title }}
+                                         </span>
+                                    </td>
+                                    <td>
+                                        {{ getSubcategoryName(team.subcategory_id).title }}
+                                    </td>
                                     <td>{{team.created_at | regDate}}</td>
                                     <td>
                                         <div class="btn-group btn-group-sm">
@@ -125,29 +131,27 @@
             subcategories() {
                 return this.$store.state.subcategories
             },
-
+            
             
         },
 
         methods: {
+            getSubcategoryName(subcategoryId) {
+                return this.subcategories.find(subcategory => {
+                    return subcategory.id == subcategoryId
+                })
+            },
+            getCategoryName(categoryId) {
+                return this.categories.find(category => {
+                    return category.id == categoryId
+                })
+            },
             showCreateTeamModal() {
                 $('#teamModal').modal('show');
             },
             createTeam() {
-                this.$Progress.start();
                 this.$store.dispatch('createTeam', this.team)
-                    .then(res => {
-                        Fire.$emit('AfterCreate');
-                        $('#teamModal').modal('hide');
-                        toast.fire({
-                            type: 'success',
-                            title: 'Team created succesfully'
-                        });
-                        this.$Progress.finish();
-                    })
-                    .catch(() => {
-                        this.$Progress.fail();
-                    });
+                    .then(res => $('#teamModal').modal('hide'))
             },
             deleteTeam(teamId) {
                 this.$store.dispatch('deleteTeam', teamId)
