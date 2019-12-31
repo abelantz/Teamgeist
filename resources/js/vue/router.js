@@ -25,6 +25,8 @@ import Player from './components/Player';
 import Tasks from './components/Tasks';
 import Refrees from './components/Refrees';
 import FieldWardrobe from './components/FieldWardrobe';
+import Liveticker from './components/Liveticker';
+
 
 const routes = [
     { path: '/dashboard', component: Dashboard },
@@ -52,6 +54,8 @@ const routes = [
     { path: '/tasks', component: Tasks },
     { path: '/refrees', component: Refrees },
     { path: '/fieldwardrobe', component: FieldWardrobe },
+    { path: '/live', component: Liveticker },
+
 ];
 
 Vue.use(VueRouter);
