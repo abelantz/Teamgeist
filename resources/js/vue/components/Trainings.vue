@@ -21,8 +21,8 @@
                                     <th>End time</th>
                                     <th>Training field</th>
                                     <th>Wardrobe</th>
-                                    <th>Modify</th>
                                     <th>Attendance</th>
+                                    <th>Modify</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -35,16 +35,17 @@
                                     <td>{{ getTrainingWardrobe(training.wardrobe_id).title }}</td>
                                     <td>
                                         <div class="btn-group btn-group-sm">
-                                            <a href="#" class="btn btn-info bg-info"><i class="fas fa-edit"></i></a>
-                                            <button class="btn btn-danger" @click="deleteTraining(training.id)"><i class="fas fa-trash"></i></button>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="btn-group btn-group-sm">
                                             <button class="btn btn-success" @click="showAttendanceModal"><i class="fa fa-plus-square-o" ></i></button>
                                         </div>
                                         
                                     </td>
+                                    <td>
+                                        <div class="btn-group btn-group-sm">
+                                            <a href="#" class="btn btn-info bg-info"><i class="fas fa-edit"></i></a>
+                                            <button class="btn btn-danger" @click="deleteTraining(training.id)"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                    
                                 </tr>
                                 
                             </tbody>
@@ -121,15 +122,12 @@
                     </div>
                     <form @submit.prevent="">
                             <div class="modal-body">
-                                <div class="form-group">
                                 <div class="form-check">
-                                    <ul>
-                                        <li v-for="member in members" v-bind:key="member.id">
-                                            <input  class="form-check-input" type="checkbox" :value="member.id" v-model="training.attendance">
-                                            <label  class="form-check-label">{{member.name}}</label>
-                                        </li>
-                                    </ul>
-                                </div>
+                                    <div class="list-group" v-for="member in members" v-bind:key="member.id">
+                                        <input class="form-check-input" type="checkbox" :value="member.id"
+                                            v-model="training.attendance">
+                                        <label class="form-check-label">{{member.name}}</label>
+                                    </div>
                             </div>
                             </div>
                             <div class="modal-footer">
