@@ -22,6 +22,7 @@
                                     <th>Training field</th>
                                     <th>Wardrobe</th>
                                     <th>Modify</th>
+                                    <th>Attendance</th>
                                 </tr>
                             </thead>
                             <tbody>
