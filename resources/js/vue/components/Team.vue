@@ -84,14 +84,14 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <form @submit.prevent=" createTeamMember()">
+                            <form @submit.prevent="createTeamMember()">
                                 <div class="modal-body">
                                     <div class="form-group">
-                                        <input v-model="team.name" @change="onChangeTeam($event)" type="text" name="name"
+                                        <input v-model="team_members.name" @change="onChangeTeam($event)" type="text" name="name"
                                             class="form-control" placeholder="Name">
                                     </div>
                                     <div class="form-group">
-                                        <select v-model="team.type" @change="onChangeRole($event)" type="type" name="type"
+                                        <select v-model="team_members.type" @change="onChangeRole($event)" type="type" name="type"
                                             id="type" class="form-control">
                                             <option disabled selected value="">Select Type</option>
                                             <option v-for="role in roles" v-bind:key="role.id" v-bind:value="role.name">
@@ -119,7 +119,7 @@
         data() {
             return {
                 editMode: false,
-                team:{
+                team_members:{
                     id: '',
                     name: '',
                     type: '',
@@ -163,16 +163,16 @@
             },
 
             createTeamMember() {
-                this.$store.dispatch('createTeamMember', this.members)
+                this.$store.dispatch('createTeamMembers', this.members)
                     .then(res => $('#addNew').modal('hide'))
             },
-            membersId: function () {
-                return this.members.filter((member) => {
+            membersId() {
+                return this.members.find((member) => {
                     return member.team_id == this.teamId;
                 })
             },
-            teamsId: function() {
-                return this.teams.filter((team) => {
+            teamsId() {
+                return this.teams.find((team) => {
                     return team.id == this.teamId;
                 })
             },

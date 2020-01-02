@@ -8221,7 +8221,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       editMode: false,
-      team: {
+      team_members: {
         id: '',
         name: '',
         type: '',
@@ -8258,21 +8258,21 @@ __webpack_require__.r(__webpack_exports__);
       console.log(event.target.value);
     },
     createTeamMember: function createTeamMember() {
-      this.$store.dispatch('createTeamMember', this.members).then(function (res) {
+      this.$store.dispatch('createTeamMembers', this.members).then(function (res) {
         return $('#addNew').modal('hide');
       });
     },
     membersId: function membersId() {
       var _this = this;
 
-      return this.members.filter(function (member) {
+      return this.members.find(function (member) {
         return member.team_id == _this.teamId;
       });
     },
     teamsId: function teamsId() {
       var _this2 = this;
 
-      return this.teams.filter(function (team) {
+      return this.teams.find(function (team) {
         return team.id == _this2.teamId;
       });
     }
@@ -107874,8 +107874,8 @@ var render = function() {
                               {
                                 name: "model",
                                 rawName: "v-model",
-                                value: _vm.team.name,
-                                expression: "team.name"
+                                value: _vm.team_members.name,
+                                expression: "team_members.name"
                               }
                             ],
                             staticClass: "form-control",
@@ -107884,7 +107884,7 @@ var render = function() {
                               name: "name",
                               placeholder: "Name"
                             },
-                            domProps: { value: _vm.team.name },
+                            domProps: { value: _vm.team_members.name },
                             on: {
                               change: function($event) {
                                 return _vm.onChangeTeam($event)
@@ -107893,7 +107893,11 @@ var render = function() {
                                 if ($event.target.composing) {
                                   return
                                 }
-                                _vm.$set(_vm.team, "name", $event.target.value)
+                                _vm.$set(
+                                  _vm.team_members,
+                                  "name",
+                                  $event.target.value
+                                )
                               }
                             }
                           })
@@ -107907,8 +107911,8 @@ var render = function() {
                                 {
                                   name: "model",
                                   rawName: "v-model",
-                                  value: _vm.team.type,
-                                  expression: "team.type"
+                                  value: _vm.team_members.type,
+                                  expression: "team_members.type"
                                 }
                               ],
                               staticClass: "form-control",
@@ -107926,7 +107930,7 @@ var render = function() {
                                         return val
                                       })
                                     _vm.$set(
-                                      _vm.team,
+                                      _vm.team_members,
                                       "type",
                                       $event.target.multiple
                                         ? $$selectedVal
@@ -128557,164 +128561,170 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_0__["default"].Store({
         return response;
       });
     },
-    getMembers: function getMembers(_ref4) {
+    createTeamMembers: function createTeamMembers(_ref4, payload) {
       var commit = _ref4.commit;
+      return axios.post('../api/members', payload).then(function (response) {
+        return response;
+      });
+    },
+    getMembers: function getMembers(_ref5) {
+      var commit = _ref5.commit;
       axios.get('api/members').then(function (response) {
         return commit('getMembers', response.data.data);
       });
     },
-    getCategories: function getCategories(_ref5) {
-      var commit = _ref5.commit;
+    getCategories: function getCategories(_ref6) {
+      var commit = _ref6.commit;
       axios.get('api/categories').then(function (response) {
         return commit('getCategories', response.data.data);
       });
     },
-    createCategory: function createCategory(_ref6, payload) {
-      var commit = _ref6.commit;
+    createCategory: function createCategory(_ref7, payload) {
+      var commit = _ref7.commit;
       return axios.post('api/categories', payload).then(function (response) {
         return response;
       });
     },
-    deleteCategory: function deleteCategory(_ref7, payload) {
-      var commit = _ref7.commit;
+    deleteCategory: function deleteCategory(_ref8, payload) {
+      var commit = _ref8.commit;
       return axios["delete"]('api/categories/' + payload).then(function (response) {
         return response;
       });
     },
-    createSubCategory: function createSubCategory(_ref8, payload) {
-      var commit = _ref8.commit;
+    createSubCategory: function createSubCategory(_ref9, payload) {
+      var commit = _ref9.commit;
       return axios.post('api/subcategories', payload).then(function (response) {
         return response;
       });
     },
-    deleteSubCategory: function deleteSubCategory(_ref9, payload) {
-      var commit = _ref9.commit;
+    deleteSubCategory: function deleteSubCategory(_ref10, payload) {
+      var commit = _ref10.commit;
       return axios["delete"]('api/subcategories/' + payload).then(function (response) {
         return response;
       });
     },
-    getSubcategories: function getSubcategories(_ref10) {
-      var commit = _ref10.commit;
+    getSubcategories: function getSubcategories(_ref11) {
+      var commit = _ref11.commit;
       axios.get('api/subcategories').then(function (response) {
         return commit('getSubcategories', response.data.data);
       });
     },
-    getFields: function getFields(_ref11) {
-      var commit = _ref11.commit;
+    getFields: function getFields(_ref12) {
+      var commit = _ref12.commit;
       axios.get('api/fields').then(function (response) {
         return commit('getFields', response.data.data);
       });
     },
-    createField: function createField(_ref12, payload) {
-      var commit = _ref12.commit;
+    createField: function createField(_ref13, payload) {
+      var commit = _ref13.commit;
       return axios.post('api/fields', payload).then(function (response) {
         return response;
       });
     },
-    deleteField: function deleteField(_ref13, payload) {
-      var commit = _ref13.commit;
+    deleteField: function deleteField(_ref14, payload) {
+      var commit = _ref14.commit;
       return axios["delete"]('api/fields/' + payload).then(function (response) {
         return response;
       });
     },
-    getWardrobes: function getWardrobes(_ref14) {
-      var commit = _ref14.commit;
+    getWardrobes: function getWardrobes(_ref15) {
+      var commit = _ref15.commit;
       axios.get('api/wardrobes').then(function (response) {
         return commit('getWardrobes', response.data.data);
       });
     },
-    createWardrobe: function createWardrobe(_ref15, payload) {
-      var commit = _ref15.commit;
+    createWardrobe: function createWardrobe(_ref16, payload) {
+      var commit = _ref16.commit;
       return axios.post('api/wardrobes', payload).then(function (response) {
         return response;
       });
     },
-    deleteWardrobe: function deleteWardrobe(_ref16, payload) {
-      var commit = _ref16.commit;
+    deleteWardrobe: function deleteWardrobe(_ref17, payload) {
+      var commit = _ref17.commit;
       return axios["delete"]('api/wardrobes/' + payload).then(function (response) {
         return response;
       });
     },
-    getMatchdays: function getMatchdays(_ref17) {
-      var commit = _ref17.commit;
+    getMatchdays: function getMatchdays(_ref18) {
+      var commit = _ref18.commit;
       axios.get('api/matchdays').then(function (response) {
         return commit('getMatchdays', response.data.data);
       });
     },
-    createMatchday: function createMatchday(_ref18, payload) {
-      var commit = _ref18.commit;
+    createMatchday: function createMatchday(_ref19, payload) {
+      var commit = _ref19.commit;
       return axios.post('api/matchdays', payload).then(function (response) {
         return response;
       });
     },
-    deleteMatchday: function deleteMatchday(_ref19, payload) {
-      var commit = _ref19.commit;
+    deleteMatchday: function deleteMatchday(_ref20, payload) {
+      var commit = _ref20.commit;
       return axios["delete"]('api/matchdays/' + payload).then(function (response) {
         return response;
       });
     },
-    getTrainings: function getTrainings(_ref20) {
-      var commit = _ref20.commit;
+    getTrainings: function getTrainings(_ref21) {
+      var commit = _ref21.commit;
       axios.get('api/trainings').then(function (response) {
         return commit('getTrainings', response.data.data);
       });
     },
-    createTraining: function createTraining(_ref21, payload) {
-      var commit = _ref21.commit;
+    createTraining: function createTraining(_ref22, payload) {
+      var commit = _ref22.commit;
       return axios.post('api/trainings', payload).then(function (response) {
         return response;
       });
     },
-    deleteTraining: function deleteTraining(_ref22, payload) {
-      var commit = _ref22.commit;
+    deleteTraining: function deleteTraining(_ref23, payload) {
+      var commit = _ref23.commit;
       return axios["delete"]('api/trainings/' + payload).then(function (response) {
         return response;
       });
     },
-    getMemberships: function getMemberships(_ref23) {
-      var commit = _ref23.commit;
+    getMemberships: function getMemberships(_ref24) {
+      var commit = _ref24.commit;
       axios.get('api/memberships').then(function (response) {
         return commit('getMemberships', response.data.data);
       });
     },
-    createMembership: function createMembership(_ref24, payload) {
-      var commit = _ref24.commit;
+    createMembership: function createMembership(_ref25, payload) {
+      var commit = _ref25.commit;
       return axios.post('api/memberships', payload).then(function (response) {
         return response;
       });
     },
-    getMemberCategories: function getMemberCategories(_ref25) {
-      var commit = _ref25.commit;
+    getMemberCategories: function getMemberCategories(_ref26) {
+      var commit = _ref26.commit;
       axios.get('api/member_categories').then(function (response) {
         return commit('getMemberCategories', response.data.data);
       });
     },
-    createMemberCategory: function createMemberCategory(_ref26, payload) {
-      var commit = _ref26.commit;
+    createMemberCategory: function createMemberCategory(_ref27, payload) {
+      var commit = _ref27.commit;
       return axios.post('api/member_categories', payload).then(function (response) {
         return response;
       });
     },
-    getReferees: function getReferees(_ref27) {
-      var commit = _ref27.commit;
+    getReferees: function getReferees(_ref28) {
+      var commit = _ref28.commit;
       axios.get('api/referees').then(function (response) {
         return commit('getReferees', response.data.data);
       });
     },
-    getRoles: function getRoles(_ref28) {
-      var commit = _ref28.commit;
+    getRoles: function getRoles(_ref29) {
+      var commit = _ref29.commit;
       axios.get('api/roles').then(function (response) {
         return commit('getRoles', response.data.data);
       });
     },
-    createRole: function createRole(_ref29, payload) {
-      var commit = _ref29.commit;
+    createRole: function createRole(_ref30, payload) {
+      var commit = _ref30.commit;
       return axios.post('api/roles', payload).then(function (response) {
         return response;
       });
     },
-    getPermissions: function getPermissions(_ref30) {
-      var commit = _ref30.commit;
+    getPermissions: function getPermissions(_ref31) {
+      var commit = _ref31.commit;
       axios.get('api/permissions').then(function (response) {
         return commit('getPermissions', response.data.data);
       });

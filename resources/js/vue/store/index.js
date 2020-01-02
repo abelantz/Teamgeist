@@ -77,6 +77,12 @@ export const store = new Vuex.Store({
                         return response;
                     })
         },
+        createTeamMembers({commit}, payload) {
+            return axios.post('../api/members', payload)
+                    .then((response) => {
+                        return response;
+            })
+        },
         getMembers({commit}) {
             axios.get('api/members')
                     .then((response) => 
