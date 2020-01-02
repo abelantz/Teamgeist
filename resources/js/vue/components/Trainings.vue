@@ -39,6 +39,12 @@
                                             <button class="btn btn-danger" @click="deleteTraining(training.id)"><i class="fas fa-trash"></i></button>
                                         </div>
                                     </td>
+                                    <td>
+                                        <div class="btn-group btn-group-sm">
+                                            <button class="btn btn-success" @click="showAttendanceModal"><i class="fa fa-plus-square-o" ></i></button>
+                                        </div>
+                                        
+                                    </td>
                                 </tr>
                                 
                             </tbody>
@@ -100,6 +106,41 @@
                 </div>
             </div>
         </div>
+
+        <!-- Attendance Modal  -->
+
+        <div class="modal fade" id="addAttendance" tabindex="-1" role="dialog" aria-labelledby="addAttendance"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addAttendance">Add Players to Training</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form @submit.prevent="">
+                            <div class="modal-body">
+                                <div class="form-group">
+                                <div class="form-check">
+                                    <ul>
+                                        <li v-for="member in members" v-bind:key="member.id">
+                                            <input  class="form-check-input" type="checkbox" :value="member.id" v-model="training.attendance">
+                                            <label  class="form-check-label">{{member.name}}</label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-success">Create</button>
+                            </div>
+                        </form>
+                    
+                </div>
+            </div>
+        </div>
     </div>
 
 
@@ -124,6 +165,7 @@
                     end_time: '',
                     field_id: '',
                     wardrobe_id: '',
+                    attendance:[]
                 }
             }
         },
@@ -134,6 +176,9 @@
             },
             trainings() {
                 return this.$store.state.trainings
+            },
+            members() {
+                return this.$store.state.members
             },
             fields() {
                 return this.$store.state.fields
@@ -161,6 +206,9 @@
             },
             showCreateTrainingsModal() {
                 $('#addTraining').modal('show')
+            },
+            showAttendanceModal() {
+                $('#addAttendance').modal('show')
             },
             createTraining() {
                 this.$store.dispatch('createTraining', this.training)

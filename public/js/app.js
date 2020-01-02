@@ -7438,6 +7438,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -8123,21 +8124,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['teamId'],
   data: function data() {
     return {
       editMode: false,
-      teamForm: new Form({
+      team: {
         id: '',
         name: '',
         type: '',
         team_id: this.teamId
-      })
+      }
     };
   },
   computed: {
@@ -8149,6 +8146,29 @@ __webpack_require__.r(__webpack_exports__);
     },
     roles: function roles() {
       return this.$store.state.roles;
+    }
+  },
+  methods: {
+    memberModal: function memberModal() {
+      this.editMode = false; // this..reset();
+
+      $('#addNew').modal('show');
+    },
+    editModal: function editModal(member) {
+      this.editMode = true; // this..reset();
+
+      $('#addNew').modal('show'); // this..fill(member);
+    },
+    onChangeTeam: function onChangeTeam(event) {
+      console.log(event.target.value);
+    },
+    onChangeRole: function onChangeRole(event) {
+      console.log(event.target.value);
+    },
+    createTeamMember: function createTeamMember() {
+      this.$store.dispatch('createTeamMember', this.members).then(function (res) {
+        return $('#addNew').modal('hide');
+      });
     },
     membersId: function membersId() {
       var _this = this;
@@ -8162,77 +8182,6 @@ __webpack_require__.r(__webpack_exports__);
 
       return this.teams.filter(function (team) {
         return team.id == _this2.teamId;
-      });
-    }
-  },
-  methods: {
-    memberModal: function memberModal() {
-      this.editMode = false;
-      this.teamForm.reset();
-      $('#addNew').modal('show');
-    },
-    editModal: function editModal(member) {
-      this.editMode = true;
-      this.teamForm.reset();
-      $('#addNew').modal('show');
-      this.teamForm.fill(member);
-    },
-    updateTeamMember: function updateTeamMember(id) {
-      var _this3 = this;
-
-      this.$Progress.start();
-      this.teamForm.put('../api/members/' + this.teamForm.id).then(function () {
-        swal.fire('Updated!', 'Your information has been updated.', 'success');
-        Fire.$emit('AfterCreate');
-        $('#addNew').modal('hide');
-
-        _this3.$Progress.finish();
-      })["catch"](function () {
-        _this3.$Progress.fail();
-      });
-    },
-    onChangeTeam: function onChangeTeam(event) {
-      console.log(event.target.value);
-    },
-    onChangeRole: function onChangeRole(event) {
-      console.log(event.target.value);
-    },
-    createTeamMember: function createTeamMember() {
-      var _this4 = this;
-
-      this.$Progress.start();
-      this.teamForm.post('../api/members').then(function () {
-        Fire.$emit('AfterCreate');
-        $('#addNew').modal('hide');
-        toast.fire({
-          type: 'success',
-          title: 'Team Member created succesfully'
-        });
-
-        _this4.$Progress.finish();
-      })["catch"](function () {
-        _this4.$Progress.fail();
-      });
-    },
-    deleteMember: function deleteMember(id) {
-      var _this5 = this;
-
-      swal.fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
-        type: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
-      }).then(function (result) {
-        //Send request to the server
-        if (result.value) {
-          _this5.teamForm["delete"]('../api/members/' + id).then(function () {
-            swal.fire('Deleted!', 'Your file has been deleted.', 'success');
-            Fire.$emit('AfterCreate');
-          })["catch"]();
-        }
       });
     }
   }
@@ -8668,6 +8617,47 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -8682,7 +8672,8 @@ __webpack_require__.r(__webpack_exports__);
         start_time: '',
         end_time: '',
         field_id: '',
-        wardrobe_id: ''
+        wardrobe_id: '',
+        attendance: []
       }
     };
   },
@@ -8692,6 +8683,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     trainings: function trainings() {
       return this.$store.state.trainings;
+    },
+    members: function members() {
+      return this.$store.state.members;
     },
     fields: function fields() {
       return this.$store.state.fields;
@@ -8718,6 +8712,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     showCreateTrainingsModal: function showCreateTrainingsModal() {
       $('#addTraining').modal('show');
+    },
+    showAttendanceModal: function showAttendanceModal() {
+      $('#addAttendance').modal('show');
     },
     createTraining: function createTraining() {
       this.$store.dispatch('createTraining', this.training).then(function (res) {
@@ -106088,75 +106085,85 @@ var render = function() {
                         })
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "form-group" }, [
-                        _c("div", { staticClass: "form-check" }, [
-                          _c(
-                            "ul",
-                            _vm._l(_vm.permissions, function(permission) {
-                              return _c("li", { key: permission.id }, [
-                                _c("input", {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value: _vm.role.permissions,
-                                      expression: "role.permissions"
-                                    }
-                                  ],
-                                  staticClass: "form-check-input",
-                                  attrs: { type: "checkbox" },
-                                  domProps: {
-                                    value: permission.name,
-                                    checked: Array.isArray(_vm.role.permissions)
-                                      ? _vm._i(
-                                          _vm.role.permissions,
-                                          permission.name
-                                        ) > -1
-                                      : _vm.role.permissions
-                                  },
-                                  on: {
-                                    change: function($event) {
-                                      var $$a = _vm.role.permissions,
-                                        $$el = $event.target,
-                                        $$c = $$el.checked ? true : false
-                                      if (Array.isArray($$a)) {
-                                        var $$v = permission.name,
-                                          $$i = _vm._i($$a, $$v)
-                                        if ($$el.checked) {
-                                          $$i < 0 &&
-                                            _vm.$set(
-                                              _vm.role,
-                                              "permissions",
-                                              $$a.concat([$$v])
-                                            )
-                                        } else {
-                                          $$i > -1 &&
-                                            _vm.$set(
-                                              _vm.role,
-                                              "permissions",
-                                              $$a
-                                                .slice(0, $$i)
-                                                .concat($$a.slice($$i + 1))
-                                            )
-                                        }
+                      _c(
+                        "div",
+                        { staticClass: "form-group" },
+                        _vm._l(_vm.permissions, function(permission) {
+                          return _c(
+                            "div",
+                            {
+                              key: permission.id,
+                              staticClass: "custom-control custom-checkbox"
+                            },
+                            [
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.role.permissions,
+                                    expression: "role.permissions"
+                                  }
+                                ],
+                                staticClass: "custom-control-input",
+                                attrs: {
+                                  type: "checkbox",
+                                  id: "customCheckbox1"
+                                },
+                                domProps: {
+                                  value: permission.name,
+                                  checked: Array.isArray(_vm.role.permissions)
+                                    ? _vm._i(
+                                        _vm.role.permissions,
+                                        permission.name
+                                      ) > -1
+                                    : _vm.role.permissions
+                                },
+                                on: {
+                                  change: function($event) {
+                                    var $$a = _vm.role.permissions,
+                                      $$el = $event.target,
+                                      $$c = $$el.checked ? true : false
+                                    if (Array.isArray($$a)) {
+                                      var $$v = permission.name,
+                                        $$i = _vm._i($$a, $$v)
+                                      if ($$el.checked) {
+                                        $$i < 0 &&
+                                          _vm.$set(
+                                            _vm.role,
+                                            "permissions",
+                                            $$a.concat([$$v])
+                                          )
                                       } else {
-                                        _vm.$set(_vm.role, "permissions", $$c)
+                                        $$i > -1 &&
+                                          _vm.$set(
+                                            _vm.role,
+                                            "permissions",
+                                            $$a
+                                              .slice(0, $$i)
+                                              .concat($$a.slice($$i + 1))
+                                          )
                                       }
+                                    } else {
+                                      _vm.$set(_vm.role, "permissions", $$c)
                                     }
                                   }
-                                }),
-                                _vm._v(" "),
-                                _c(
-                                  "label",
-                                  { staticClass: "form-check-label" },
-                                  [_vm._v(_vm._s(permission.name))]
-                                )
-                              ])
-                            }),
-                            0
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "custom-control-label",
+                                  attrs: { for: "customCheckbox1" }
+                                },
+                                [_vm._v(_vm._s(permission.name))]
+                              )
+                            ]
                           )
-                        ])
-                      ])
+                        }),
+                        0
+                      )
                     ]),
                     _vm._v(" "),
                     _vm._m(3)
@@ -106211,7 +106218,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "modal-header" }, [
       _c("h5", { staticClass: "modal-title", attrs: { id: "addNew" } }, [
-        _vm._v("Add  Role")
+        _vm._v("Add Role")
       ]),
       _vm._v(" "),
       _c(
@@ -107336,11 +107343,7 @@ var render = function() {
                   return _c(
                     "h3",
                     { key: t.id, staticClass: "profile-username text-center" },
-                    [
-                      _vm._v(
-                        "\n                                " + _vm._s(t.name)
-                      )
-                    ]
+                    [_vm._v("\n                            " + _vm._s(t.name))]
                   )
                 }),
                 _vm._v(" "),
@@ -107442,43 +107445,7 @@ var render = function() {
               },
               [
                 _c("div", { staticClass: "modal-content" }, [
-                  _c("div", { staticClass: "modal-header" }, [
-                    _c(
-                      "h5",
-                      {
-                        directives: [
-                          {
-                            name: "show",
-                            rawName: "v-show",
-                            value: _vm.editMode,
-                            expression: "editMode"
-                          }
-                        ],
-                        staticClass: "modal-title",
-                        attrs: { id: "addNew" }
-                      },
-                      [_vm._v("Update User")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "h5",
-                      {
-                        directives: [
-                          {
-                            name: "show",
-                            rawName: "v-show",
-                            value: !_vm.editMode,
-                            expression: "!editMode"
-                          }
-                        ],
-                        staticClass: "modal-title",
-                        attrs: { id: "addNew" }
-                      },
-                      [_vm._v("Create User")]
-                    ),
-                    _vm._v(" "),
-                    _vm._m(3)
-                  ]),
+                  _vm._m(3),
                   _vm._v(" "),
                   _c(
                     "form",
@@ -107486,146 +107453,115 @@ var render = function() {
                       on: {
                         submit: function($event) {
                           $event.preventDefault()
-                          _vm.editMode
-                            ? _vm.updateTeamMember()
-                            : _vm.createTeamMember()
+                          return _vm.createTeamMember()
                         }
                       }
                     },
                     [
                       _c("div", { staticClass: "modal-body" }, [
-                        _c(
-                          "div",
-                          { staticClass: "form-group" },
-                          [
-                            _c("input", {
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.team.name,
+                                expression: "team.name"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              name: "name",
+                              placeholder: "Name"
+                            },
+                            domProps: { value: _vm.team.name },
+                            on: {
+                              change: function($event) {
+                                return _vm.onChangeTeam($event)
+                              },
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(_vm.team, "name", $event.target.value)
+                              }
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "form-group" }, [
+                          _c(
+                            "select",
+                            {
                               directives: [
                                 {
                                   name: "model",
                                   rawName: "v-model",
-                                  value: _vm.teamForm.name,
-                                  expression: "teamForm.name"
+                                  value: _vm.team.type,
+                                  expression: "team.type"
                                 }
                               ],
                               staticClass: "form-control",
-                              class: {
-                                "is-invalid": _vm.teamForm.errors.has("name")
-                              },
-                              attrs: {
-                                type: "text",
-                                name: "name",
-                                placeholder: "Name"
-                              },
-                              domProps: { value: _vm.teamForm.name },
+                              attrs: { type: "type", name: "type", id: "type" },
                               on: {
-                                change: function($event) {
-                                  return _vm.onChangeTeam($event)
-                                },
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
+                                change: [
+                                  function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.$set(
+                                      _vm.team,
+                                      "type",
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
+                                    )
+                                  },
+                                  function($event) {
+                                    return _vm.onChangeRole($event)
                                   }
-                                  _vm.$set(
-                                    _vm.teamForm,
-                                    "name",
-                                    $event.target.value
-                                  )
-                                }
+                                ]
                               }
-                            }),
-                            _vm._v(" "),
-                            _c("has-error", {
-                              attrs: { form: _vm.teamForm, field: "name" }
-                            })
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "form-group" },
-                          [
-                            _c(
-                              "select",
-                              {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.teamForm.type,
-                                    expression: "teamForm.type"
+                            },
+                            [
+                              _c(
+                                "option",
+                                {
+                                  attrs: {
+                                    disabled: "",
+                                    selected: "",
+                                    value: ""
                                   }
-                                ],
-                                staticClass: "form-control",
-                                class: {
-                                  "is-invalid": _vm.teamForm.errors.has("type")
                                 },
-                                attrs: {
-                                  type: "type",
-                                  name: "type",
-                                  id: "type"
-                                },
-                                on: {
-                                  change: [
-                                    function($event) {
-                                      var $$selectedVal = Array.prototype.filter
-                                        .call($event.target.options, function(
-                                          o
-                                        ) {
-                                          return o.selected
-                                        })
-                                        .map(function(o) {
-                                          var val =
-                                            "_value" in o ? o._value : o.value
-                                          return val
-                                        })
-                                      _vm.$set(
-                                        _vm.teamForm,
-                                        "type",
-                                        $event.target.multiple
-                                          ? $$selectedVal
-                                          : $$selectedVal[0]
-                                      )
-                                    },
-                                    function($event) {
-                                      return _vm.onChangeRole($event)
-                                    }
-                                  ]
-                                }
-                              },
-                              [
-                                _c(
+                                [_vm._v("Select Type")]
+                              ),
+                              _vm._v(" "),
+                              _vm._l(_vm.roles, function(role) {
+                                return _c(
                                   "option",
                                   {
-                                    attrs: {
-                                      disabled: "",
-                                      selected: "",
-                                      value: ""
-                                    }
+                                    key: role.id,
+                                    domProps: { value: role.name }
                                   },
-                                  [_vm._v("Select Type")]
-                                ),
-                                _vm._v(" "),
-                                _vm._l(_vm.roles, function(role) {
-                                  return _c(
-                                    "option",
-                                    {
-                                      key: role.id,
-                                      domProps: { value: role.name }
-                                    },
-                                    [_vm._v(_vm._s(role.name))]
-                                  )
-                                })
-                              ],
-                              2
-                            ),
-                            _vm._v(" "),
-                            _c("has-error", {
-                              attrs: { form: _vm.teamForm, field: "type" }
-                            })
-                          ],
-                          1
-                        )
+                                  [
+                                    _vm._v(
+                                      "\n                                            " +
+                                        _vm._s(role.name)
+                                    )
+                                  ]
+                                )
+                              })
+                            ],
+                            2
+                          )
+                        ])
                       ]),
                       _vm._v(" "),
                       _vm._m(4)
@@ -107697,18 +107633,24 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      {
-        staticClass: "close",
-        attrs: {
-          type: "button",
-          "data-dismiss": "modal",
-          "aria-label": "Close"
-        }
-      },
-      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
-    )
+    return _c("div", { staticClass: "modal-header" }, [
+      _c("h5", { staticClass: "modal-title", attrs: { id: "addNew" } }, [
+        _vm._v("Create Team Member")
+      ]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
   },
   function() {
     var _vm = this
@@ -108562,6 +108504,19 @@ var render = function() {
                           [_c("i", { staticClass: "fas fa-trash" })]
                         )
                       ])
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c("div", { staticClass: "btn-group btn-group-sm" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-success",
+                            on: { click: _vm.showAttendanceModal }
+                          },
+                          [_c("i", { staticClass: "fa fa-plus-square-o" })]
+                        )
+                      ])
                     ])
                   ])
                 }),
@@ -108850,6 +108805,117 @@ var render = function() {
           ]
         )
       ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "addAttendance",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "addAttendance",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog", attrs: { role: "document" } },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(4),
+              _vm._v(" "),
+              _c(
+                "form",
+                {
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                    }
+                  }
+                },
+                [
+                  _c("div", { staticClass: "modal-body" }, [
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("div", { staticClass: "form-check" }, [
+                        _c(
+                          "ul",
+                          _vm._l(_vm.members, function(member) {
+                            return _c("li", { key: member.id }, [
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.training.attendance,
+                                    expression: "training.attendance"
+                                  }
+                                ],
+                                staticClass: "form-check-input",
+                                attrs: { type: "checkbox" },
+                                domProps: {
+                                  value: member.id,
+                                  checked: Array.isArray(
+                                    _vm.training.attendance
+                                  )
+                                    ? _vm._i(
+                                        _vm.training.attendance,
+                                        member.id
+                                      ) > -1
+                                    : _vm.training.attendance
+                                },
+                                on: {
+                                  change: function($event) {
+                                    var $$a = _vm.training.attendance,
+                                      $$el = $event.target,
+                                      $$c = $$el.checked ? true : false
+                                    if (Array.isArray($$a)) {
+                                      var $$v = member.id,
+                                        $$i = _vm._i($$a, $$v)
+                                      if ($$el.checked) {
+                                        $$i < 0 &&
+                                          _vm.$set(
+                                            _vm.training,
+                                            "attendance",
+                                            $$a.concat([$$v])
+                                          )
+                                      } else {
+                                        $$i > -1 &&
+                                          _vm.$set(
+                                            _vm.training,
+                                            "attendance",
+                                            $$a
+                                              .slice(0, $$i)
+                                              .concat($$a.slice($$i + 1))
+                                          )
+                                      }
+                                    } else {
+                                      _vm.$set(_vm.training, "attendance", $$c)
+                                    }
+                                  }
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("label", { staticClass: "form-check-label" }, [
+                                _vm._v(_vm._s(member.name))
+                              ])
+                            ])
+                          }),
+                          0
+                        )
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(5)
+                ]
+              )
+            ])
+          ]
+        )
+      ]
     )
   ])
 }
@@ -108895,6 +108961,50 @@ var staticRenderFns = [
     return _c("div", { staticClass: "modal-header" }, [
       _c("h5", { staticClass: "modal-title", attrs: { id: "addTraining" } }, [
         _vm._v("Add Training")
+      ]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-danger",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [_vm._v("Close")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        { staticClass: "btn btn-success", attrs: { type: "submit" } },
+        [_vm._v("Create")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c("h5", { staticClass: "modal-title", attrs: { id: "addAttendance" } }, [
+        _vm._v("Add Players to Training")
       ]),
       _vm._v(" "),
       _c(
