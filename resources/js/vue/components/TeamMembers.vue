@@ -70,15 +70,15 @@
                                     id="type" class="form-control">
                                     <option disabled selected value="">Select Team</option>
                                     <option v-for="team in teams" v-bind:key="team.id" v-bind:value="team.id">
-                                        {{team.name}}</option>
+                                        {{ team.name }}</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <select v-model="member.membership_id" type="type" name="type"
                                     id="type" class="form-control">
-                                    <option disabled selected value="">Select Type</option>
+                                    <option disabled selected value="">Select Membership</option>
                                     <option v-for="membership in memberships" v-bind:key="membership.id" v-bind:value="membership.id">
-                                        {{ membership.name }}</option>
+                                        {{ getMembershipUser(membership.user_id).name }}</option>
                                 </select>
                             </div>
                         </div>
@@ -114,10 +114,15 @@
             },
             memberships() {
                 return this.$store.state.memberships
-            }
+            },
         },
 
         methods: {
+            getMembershipUser(userId) {
+                return this.$store.state.users.find(user => {
+                    return user.id == userId
+                }) || '';
+            },
 
             newModal() {
                 $('#addNew').modal('show');

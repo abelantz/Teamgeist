@@ -14,6 +14,7 @@ import 'vue-datetime/dist/vue-datetime.css'
 import 'bootstrap';
 import '@fortawesome/fontawesome-free';
 import app from './app';
+import LightTimeline from 'vue-light-timeline';
 
 const toast = swal.mixin({
     toast: true,
@@ -36,6 +37,7 @@ require('admin-lte');
 
 Vue.use(Vuex)
 Vue.use(window.VueCharts);
+Vue.use(LightTimeline);
 Vue.use(VueProgressBar, {
     color: 'rgb(143, 255, 199)',
     failedColor: 'red',
