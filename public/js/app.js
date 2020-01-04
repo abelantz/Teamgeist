@@ -6559,6 +6559,87 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -6575,6 +6656,11 @@ __webpack_require__.r(__webpack_exports__);
         type: '',
         field_id: '',
         wardrobe_id: ''
+      },
+      preparation: {
+        matchday_id: '',
+        formation: '',
+        members: []
       }
     };
   },
@@ -6584,6 +6670,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     teams: function teams() {
       return this.$store.state.teams;
+    },
+    members: function members() {
+      return this.$store.state.members;
     },
     fields: function fields() {
       return this.$store.state.fields;
@@ -6610,6 +6699,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     showCreateMatchdayModal: function showCreateMatchdayModal() {
       $('#addMatch').modal('show');
+    },
+    showPreparationModal: function showPreparationModal() {
+      $('#addFormation').modal('show');
     },
     createMatchday: function createMatchday() {
       this.$store.dispatch('createMatchday', this.matchday).then(function (res) {
@@ -7578,6 +7670,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -8263,21 +8356,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['teamId'],
   data: function data() {
     return {
       editMode: false,
-      teamForm: new Form({
+      team_members: {
         id: '',
         name: '',
         type: '',
         team_id: this.teamId
-      })
+      }
     };
   },
   computed: {
@@ -8289,47 +8378,18 @@ __webpack_require__.r(__webpack_exports__);
     },
     roles: function roles() {
       return this.$store.state.roles;
-    },
-    membersId: function membersId() {
-      var _this = this;
-
-      return this.members.filter(function (member) {
-        return member.team_id == _this.teamId;
-      });
-    },
-    teamsId: function teamsId() {
-      var _this2 = this;
-
-      return this.teams.filter(function (team) {
-        return team.id == _this2.teamId;
-      });
     }
   },
   methods: {
     memberModal: function memberModal() {
-      this.editMode = false;
-      this.teamForm.reset();
+      this.editMode = false; // this..reset();
+
       $('#addNew').modal('show');
     },
     editModal: function editModal(member) {
-      this.editMode = true;
-      this.teamForm.reset();
-      $('#addNew').modal('show');
-      this.teamForm.fill(member);
-    },
-    updateTeamMember: function updateTeamMember(id) {
-      var _this3 = this;
+      this.editMode = true; // this..reset();
 
-      this.$Progress.start();
-      this.teamForm.put('../api/members/' + this.teamForm.id).then(function () {
-        swal.fire('Updated!', 'Your information has been updated.', 'success');
-        Fire.$emit('AfterCreate');
-        $('#addNew').modal('hide');
-
-        _this3.$Progress.finish();
-      })["catch"](function () {
-        _this3.$Progress.fail();
-      });
+      $('#addNew').modal('show'); // this..fill(member);
     },
     onChangeTeam: function onChangeTeam(event) {
       console.log(event.target.value);
@@ -8338,41 +8398,22 @@ __webpack_require__.r(__webpack_exports__);
       console.log(event.target.value);
     },
     createTeamMember: function createTeamMember() {
-      var _this4 = this;
-
-      this.$Progress.start();
-      this.teamForm.post('../api/members').then(function () {
-        Fire.$emit('AfterCreate');
-        $('#addNew').modal('hide');
-        toast.fire({
-          type: 'success',
-          title: 'Team Member created succesfully'
-        });
-
-        _this4.$Progress.finish();
-      })["catch"](function () {
-        _this4.$Progress.fail();
+      this.$store.dispatch('createTeamMembers', this.members).then(function (res) {
+        return $('#addNew').modal('hide');
       });
     },
-    deleteMember: function deleteMember(id) {
-      var _this5 = this;
+    membersId: function membersId() {
+      var _this = this;
 
-      swal.fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
-        type: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
-      }).then(function (result) {
-        //Send request to the server
-        if (result.value) {
-          _this5.teamForm["delete"]('../api/members/' + id).then(function () {
-            swal.fire('Deleted!', 'Your file has been deleted.', 'success');
-            Fire.$emit('AfterCreate');
-          })["catch"]();
-        }
+      return this.members.find(function (member) {
+        return member.team_id == _this.teamId;
+      });
+    },
+    teamsId: function teamsId() {
+      var _this2 = this;
+
+      return this.teams.find(function (team) {
+        return team.id == _this2.teamId;
       });
     }
   }
@@ -8812,6 +8853,46 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -8826,7 +8907,8 @@ __webpack_require__.r(__webpack_exports__);
         start_time: '',
         end_time: '',
         field_id: '',
-        wardrobe_id: ''
+        wardrobe_id: '',
+        attendance: []
       }
     };
   },
@@ -8836,6 +8918,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     trainings: function trainings() {
       return this.$store.state.trainings;
+    },
+    members: function members() {
+      return this.$store.state.members;
     },
     fields: function fields() {
       return this.$store.state.fields;
@@ -8862,6 +8947,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     showCreateTrainingsModal: function showCreateTrainingsModal() {
       $('#addTraining').modal('show');
+    },
+    showAttendanceModal: function showAttendanceModal() {
+      $('#addAttendance').modal('show');
     },
     createTraining: function createTraining() {
       this.$store.dispatch('createTraining', this.training).then(function (res) {
@@ -29668,7 +29756,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.vdatetime[data-v-69ff72ea]{\r\n   \r\n    width: 100% !important;\r\n    border: 0 !important;\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n.vdatetime[data-v-69ff72ea]{\n   \n    width: 100% !important;\n    border: 0 !important;\n}\n\n", ""]);
 
 // exports
 
@@ -103710,7 +103798,7 @@ var render = function() {
                   staticClass: "btn btn-success bg-success",
                   on: { click: _vm.showCreateMatchdayModal }
                 },
-                [_vm._v(" Add Match")]
+                [_vm._v(" Add\n                            Match")]
               )
             ])
           ]),
@@ -103752,6 +103840,19 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("td", [_vm._v("Colina")]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c("div", { staticClass: "btn-group btn-group-sm" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-success",
+                            on: { click: _vm.showPreparationModal }
+                          },
+                          [_c("i", { staticClass: "fa fa-plus-square-o" })]
+                        )
+                      ])
+                    ]),
                     _vm._v(" "),
                     _c("td", [
                       _c("div", { staticClass: "btn-group btn-group-sm" }, [
@@ -103860,7 +103961,12 @@ var render = function() {
                             return _c(
                               "option",
                               { key: team.id, domProps: { value: team.id } },
-                              [_vm._v(_vm._s(team.name))]
+                              [
+                                _vm._v(
+                                  "\n                                    " +
+                                    _vm._s(team.name)
+                                )
+                              ]
                             )
                           })
                         ],
@@ -104043,7 +104149,12 @@ var render = function() {
                             return _c(
                               "option",
                               { key: field.id, domProps: { value: field.id } },
-                              [_vm._v(_vm._s(field.title))]
+                              [
+                                _vm._v(
+                                  "\n                                    " +
+                                    _vm._s(field.title)
+                                )
+                              ]
                             )
                           })
                         ],
@@ -104117,6 +104228,256 @@ var render = function() {
           ]
         )
       ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "addFormation",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "addFormation",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog", attrs: { role: "document" } },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(4),
+              _vm._v(" "),
+              _c(
+                "form",
+                {
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                    }
+                  }
+                },
+                [
+                  _c("div", { staticClass: "modal-body " }, [
+                    _c("div", { staticClass: "form-group" }, [
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.preparation.formation,
+                              expression: "preparation.formation"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { type: "type", name: "type", id: "type" },
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.preparation,
+                                "formation",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c(
+                            "option",
+                            {
+                              attrs: { disabled: "", selected: "", value: "" }
+                            },
+                            [_vm._v("Select Formation")]
+                          ),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "2–3–5" } }, [
+                            _vm._v("2–3–5")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "3–3–4" } }, [
+                            _vm._v("3–3–4")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "4–2–4" } }, [
+                            _vm._v("4–2–4")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "4-4-2" } }, [
+                            _vm._v("4-4-2")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "4–4–1–1" } }, [
+                            _vm._v("4–4–1–1")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "4-3-3" } }, [
+                            _vm._v("4-3-3")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "4–1–2–3" } }, [
+                            _vm._v("4–1–2–3")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "4–1–2–1–2" } }, [
+                            _vm._v("4–1–2–1–2")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "4–1–3–2" } }, [
+                            _vm._v("4–1–3–2")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "4–3–2–1" } }, [
+                            _vm._v("4–3–2–1")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "5–3–2" } }, [
+                            _vm._v("5–3–2")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "3–4–3" } }, [
+                            _vm._v("3–4–3")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "3–5–2" } }, [
+                            _vm._v("3–5–2")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "3–4–1–2" } }, [
+                            _vm._v("3–4–1–2")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "3–6–1" } }, [
+                            _vm._v("3–6–1")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "4–5–1" } }, [
+                            _vm._v("4–5–1")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "4–2–3–1" } }, [
+                            _vm._v("4–2–3–1")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "4–6–0" } }, [
+                            _vm._v("4–6–0")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "5–4–1" } }, [
+                            _vm._v("5–4–1")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "1–6–3" } }, [
+                            _vm._v("1–6–3")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "4–2–2–2" } }, [
+                            _vm._v("4–2–2–2")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "3–3–1–3" } }, [
+                            _vm._v("3–3–1–3")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "3–3–3–1" } }, [
+                            _vm._v("3–3–3–1")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "4–2–1–3–3–1" } }, [
+                            _vm._v("4–2–1–3")
+                          ])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "form-check" },
+                      _vm._l(_vm.members, function(member) {
+                        return _c(
+                          "div",
+                          { key: member.id, staticClass: "list-group" },
+                          [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.preparation.members,
+                                  expression: "preparation.members"
+                                }
+                              ],
+                              staticClass: "form-check-input",
+                              attrs: { type: "checkbox" },
+                              domProps: {
+                                value: member.id,
+                                checked: Array.isArray(_vm.preparation.members)
+                                  ? _vm._i(_vm.preparation.members, member.id) >
+                                    -1
+                                  : _vm.preparation.members
+                              },
+                              on: {
+                                change: function($event) {
+                                  var $$a = _vm.preparation.members,
+                                    $$el = $event.target,
+                                    $$c = $$el.checked ? true : false
+                                  if (Array.isArray($$a)) {
+                                    var $$v = member.id,
+                                      $$i = _vm._i($$a, $$v)
+                                    if ($$el.checked) {
+                                      $$i < 0 &&
+                                        _vm.$set(
+                                          _vm.preparation,
+                                          "members",
+                                          $$a.concat([$$v])
+                                        )
+                                    } else {
+                                      $$i > -1 &&
+                                        _vm.$set(
+                                          _vm.preparation,
+                                          "members",
+                                          $$a
+                                            .slice(0, $$i)
+                                            .concat($$a.slice($$i + 1))
+                                        )
+                                    }
+                                  } else {
+                                    _vm.$set(_vm.preparation, "members", $$c)
+                                  }
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("label", { staticClass: "form-check-label" }, [
+                              _vm._v(_vm._s(member.name))
+                            ])
+                          ]
+                        )
+                      }),
+                      0
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(5)
+                ]
+              )
+            ])
+          ]
+        )
+      ]
     )
   ])
 }
@@ -104143,6 +104504,8 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Referee ")]),
         _vm._v(" "),
+        _c("th", [_vm._v("Preparation")]),
+        _vm._v(" "),
         _c("th", [_vm._v("Modify")])
       ])
     ])
@@ -104164,6 +104527,50 @@ var staticRenderFns = [
     return _c("div", { staticClass: "modal-header" }, [
       _c("h5", { staticClass: "modal-title", attrs: { id: "addMatch" } }, [
         _vm._v("Add Match")
+      ]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-danger",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [_vm._v("Close")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        { staticClass: "btn btn-success", attrs: { type: "submit" } },
+        [_vm._v("Create")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c("h5", { staticClass: "modal-title", attrs: { id: "addFormation" } }, [
+        _vm._v("Add Formation")
       ]),
       _vm._v(" "),
       _c(
@@ -106408,75 +106815,85 @@ var render = function() {
                         })
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "form-group" }, [
-                        _c("div", { staticClass: "form-check" }, [
-                          _c(
-                            "ul",
-                            _vm._l(_vm.permissions, function(permission) {
-                              return _c("li", { key: permission.id }, [
-                                _c("input", {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value: _vm.role.permissions,
-                                      expression: "role.permissions"
-                                    }
-                                  ],
-                                  staticClass: "form-check-input",
-                                  attrs: { type: "checkbox" },
-                                  domProps: {
-                                    value: permission.name,
-                                    checked: Array.isArray(_vm.role.permissions)
-                                      ? _vm._i(
-                                          _vm.role.permissions,
-                                          permission.name
-                                        ) > -1
-                                      : _vm.role.permissions
-                                  },
-                                  on: {
-                                    change: function($event) {
-                                      var $$a = _vm.role.permissions,
-                                        $$el = $event.target,
-                                        $$c = $$el.checked ? true : false
-                                      if (Array.isArray($$a)) {
-                                        var $$v = permission.name,
-                                          $$i = _vm._i($$a, $$v)
-                                        if ($$el.checked) {
-                                          $$i < 0 &&
-                                            _vm.$set(
-                                              _vm.role,
-                                              "permissions",
-                                              $$a.concat([$$v])
-                                            )
-                                        } else {
-                                          $$i > -1 &&
-                                            _vm.$set(
-                                              _vm.role,
-                                              "permissions",
-                                              $$a
-                                                .slice(0, $$i)
-                                                .concat($$a.slice($$i + 1))
-                                            )
-                                        }
+                      _c(
+                        "div",
+                        { staticClass: "form-group" },
+                        _vm._l(_vm.permissions, function(permission) {
+                          return _c(
+                            "div",
+                            {
+                              key: permission.id,
+                              staticClass: "custom-control custom-checkbox"
+                            },
+                            [
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.role.permissions,
+                                    expression: "role.permissions"
+                                  }
+                                ],
+                                staticClass: "custom-control-input",
+                                attrs: {
+                                  type: "checkbox",
+                                  id: "customCheckbox1"
+                                },
+                                domProps: {
+                                  value: permission.name,
+                                  checked: Array.isArray(_vm.role.permissions)
+                                    ? _vm._i(
+                                        _vm.role.permissions,
+                                        permission.name
+                                      ) > -1
+                                    : _vm.role.permissions
+                                },
+                                on: {
+                                  change: function($event) {
+                                    var $$a = _vm.role.permissions,
+                                      $$el = $event.target,
+                                      $$c = $$el.checked ? true : false
+                                    if (Array.isArray($$a)) {
+                                      var $$v = permission.name,
+                                        $$i = _vm._i($$a, $$v)
+                                      if ($$el.checked) {
+                                        $$i < 0 &&
+                                          _vm.$set(
+                                            _vm.role,
+                                            "permissions",
+                                            $$a.concat([$$v])
+                                          )
                                       } else {
-                                        _vm.$set(_vm.role, "permissions", $$c)
+                                        $$i > -1 &&
+                                          _vm.$set(
+                                            _vm.role,
+                                            "permissions",
+                                            $$a
+                                              .slice(0, $$i)
+                                              .concat($$a.slice($$i + 1))
+                                          )
                                       }
+                                    } else {
+                                      _vm.$set(_vm.role, "permissions", $$c)
                                     }
                                   }
-                                }),
-                                _vm._v(" "),
-                                _c(
-                                  "label",
-                                  { staticClass: "form-check-label" },
-                                  [_vm._v(_vm._s(permission.name))]
-                                )
-                              ])
-                            }),
-                            0
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "custom-control-label",
+                                  attrs: { for: "customCheckbox1" }
+                                },
+                                [_vm._v(_vm._s(permission.name))]
+                              )
+                            ]
                           )
-                        ])
-                      ])
+                        }),
+                        0
+                      )
                     ]),
                     _vm._v(" "),
                     _vm._m(3)
@@ -106531,7 +106948,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "modal-header" }, [
       _c("h5", { staticClass: "modal-title", attrs: { id: "addNew" } }, [
-        _vm._v("Add  Role")
+        _vm._v("Add Role")
       ]),
       _vm._v(" "),
       _c(
@@ -107656,11 +108073,7 @@ var render = function() {
                   return _c(
                     "h3",
                     { key: t.id, staticClass: "profile-username text-center" },
-                    [
-                      _vm._v(
-                        "\n                                " + _vm._s(t.name)
-                      )
-                    ]
+                    [_vm._v("\n                            " + _vm._s(t.name))]
                   )
                 }),
                 _vm._v(" "),
@@ -107762,43 +108175,7 @@ var render = function() {
               },
               [
                 _c("div", { staticClass: "modal-content" }, [
-                  _c("div", { staticClass: "modal-header" }, [
-                    _c(
-                      "h5",
-                      {
-                        directives: [
-                          {
-                            name: "show",
-                            rawName: "v-show",
-                            value: _vm.editMode,
-                            expression: "editMode"
-                          }
-                        ],
-                        staticClass: "modal-title",
-                        attrs: { id: "addNew" }
-                      },
-                      [_vm._v("Update User")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "h5",
-                      {
-                        directives: [
-                          {
-                            name: "show",
-                            rawName: "v-show",
-                            value: !_vm.editMode,
-                            expression: "!editMode"
-                          }
-                        ],
-                        staticClass: "modal-title",
-                        attrs: { id: "addNew" }
-                      },
-                      [_vm._v("Create User")]
-                    ),
-                    _vm._v(" "),
-                    _vm._m(3)
-                  ]),
+                  _vm._m(3),
                   _vm._v(" "),
                   _c(
                     "form",
@@ -107806,146 +108183,119 @@ var render = function() {
                       on: {
                         submit: function($event) {
                           $event.preventDefault()
-                          _vm.editMode
-                            ? _vm.updateTeamMember()
-                            : _vm.createTeamMember()
+                          return _vm.createTeamMember()
                         }
                       }
                     },
                     [
                       _c("div", { staticClass: "modal-body" }, [
-                        _c(
-                          "div",
-                          { staticClass: "form-group" },
-                          [
-                            _c("input", {
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.team_members.name,
+                                expression: "team_members.name"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              name: "name",
+                              placeholder: "Name"
+                            },
+                            domProps: { value: _vm.team_members.name },
+                            on: {
+                              change: function($event) {
+                                return _vm.onChangeTeam($event)
+                              },
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.team_members,
+                                  "name",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "form-group" }, [
+                          _c(
+                            "select",
+                            {
                               directives: [
                                 {
                                   name: "model",
                                   rawName: "v-model",
-                                  value: _vm.teamForm.name,
-                                  expression: "teamForm.name"
+                                  value: _vm.team_members.type,
+                                  expression: "team_members.type"
                                 }
                               ],
                               staticClass: "form-control",
-                              class: {
-                                "is-invalid": _vm.teamForm.errors.has("name")
-                              },
-                              attrs: {
-                                type: "text",
-                                name: "name",
-                                placeholder: "Name"
-                              },
-                              domProps: { value: _vm.teamForm.name },
+                              attrs: { type: "type", name: "type", id: "type" },
                               on: {
-                                change: function($event) {
-                                  return _vm.onChangeTeam($event)
-                                },
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
+                                change: [
+                                  function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.$set(
+                                      _vm.team_members,
+                                      "type",
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
+                                    )
+                                  },
+                                  function($event) {
+                                    return _vm.onChangeRole($event)
                                   }
-                                  _vm.$set(
-                                    _vm.teamForm,
-                                    "name",
-                                    $event.target.value
-                                  )
-                                }
+                                ]
                               }
-                            }),
-                            _vm._v(" "),
-                            _c("has-error", {
-                              attrs: { form: _vm.teamForm, field: "name" }
-                            })
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "form-group" },
-                          [
-                            _c(
-                              "select",
-                              {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.teamForm.type,
-                                    expression: "teamForm.type"
+                            },
+                            [
+                              _c(
+                                "option",
+                                {
+                                  attrs: {
+                                    disabled: "",
+                                    selected: "",
+                                    value: ""
                                   }
-                                ],
-                                staticClass: "form-control",
-                                class: {
-                                  "is-invalid": _vm.teamForm.errors.has("type")
                                 },
-                                attrs: {
-                                  type: "type",
-                                  name: "type",
-                                  id: "type"
-                                },
-                                on: {
-                                  change: [
-                                    function($event) {
-                                      var $$selectedVal = Array.prototype.filter
-                                        .call($event.target.options, function(
-                                          o
-                                        ) {
-                                          return o.selected
-                                        })
-                                        .map(function(o) {
-                                          var val =
-                                            "_value" in o ? o._value : o.value
-                                          return val
-                                        })
-                                      _vm.$set(
-                                        _vm.teamForm,
-                                        "type",
-                                        $event.target.multiple
-                                          ? $$selectedVal
-                                          : $$selectedVal[0]
-                                      )
-                                    },
-                                    function($event) {
-                                      return _vm.onChangeRole($event)
-                                    }
-                                  ]
-                                }
-                              },
-                              [
-                                _c(
+                                [_vm._v("Select Type")]
+                              ),
+                              _vm._v(" "),
+                              _vm._l(_vm.roles, function(role) {
+                                return _c(
                                   "option",
                                   {
-                                    attrs: {
-                                      disabled: "",
-                                      selected: "",
-                                      value: ""
-                                    }
+                                    key: role.id,
+                                    domProps: { value: role.name }
                                   },
-                                  [_vm._v("Select Type")]
-                                ),
-                                _vm._v(" "),
-                                _vm._l(_vm.roles, function(role) {
-                                  return _c(
-                                    "option",
-                                    {
-                                      key: role.id,
-                                      domProps: { value: role.name }
-                                    },
-                                    [_vm._v(_vm._s(role.name))]
-                                  )
-                                })
-                              ],
-                              2
-                            ),
-                            _vm._v(" "),
-                            _c("has-error", {
-                              attrs: { form: _vm.teamForm, field: "type" }
-                            })
-                          ],
-                          1
-                        )
+                                  [
+                                    _vm._v(
+                                      "\n                                            " +
+                                        _vm._s(role.name)
+                                    )
+                                  ]
+                                )
+                              })
+                            ],
+                            2
+                          )
+                        ])
                       ]),
                       _vm._v(" "),
                       _vm._m(4)
@@ -108017,18 +108367,24 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      {
-        staticClass: "close",
-        attrs: {
-          type: "button",
-          "data-dismiss": "modal",
-          "aria-label": "Close"
-        }
-      },
-      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
-    )
+    return _c("div", { staticClass: "modal-header" }, [
+      _c("h5", { staticClass: "modal-title", attrs: { id: "addNew" } }, [
+        _vm._v("Create Team Member")
+      ]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
   },
   function() {
     var _vm = this
@@ -108870,6 +109226,19 @@ var render = function() {
                     _vm._v(" "),
                     _c("td", [
                       _c("div", { staticClass: "btn-group btn-group-sm" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-success",
+                            on: { click: _vm.showAttendanceModal }
+                          },
+                          [_c("i", { staticClass: "fa fa-plus-square-o" })]
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c("div", { staticClass: "btn-group btn-group-sm" }, [
                         _vm._m(1, true),
                         _vm._v(" "),
                         _c(
@@ -109173,6 +109542,114 @@ var render = function() {
           ]
         )
       ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "addAttendance",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "addAttendance",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog", attrs: { role: "document" } },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(4),
+              _vm._v(" "),
+              _c(
+                "form",
+                {
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                    }
+                  }
+                },
+                [
+                  _c("div", { staticClass: "modal-body" }, [
+                    _c(
+                      "div",
+                      { staticClass: "form-check" },
+                      _vm._l(_vm.members, function(member) {
+                        return _c(
+                          "div",
+                          { key: member.id, staticClass: "list-group" },
+                          [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.training.attendance,
+                                  expression: "training.attendance"
+                                }
+                              ],
+                              staticClass: "form-check-input",
+                              attrs: { type: "checkbox" },
+                              domProps: {
+                                value: member.id,
+                                checked: Array.isArray(_vm.training.attendance)
+                                  ? _vm._i(_vm.training.attendance, member.id) >
+                                    -1
+                                  : _vm.training.attendance
+                              },
+                              on: {
+                                change: function($event) {
+                                  var $$a = _vm.training.attendance,
+                                    $$el = $event.target,
+                                    $$c = $$el.checked ? true : false
+                                  if (Array.isArray($$a)) {
+                                    var $$v = member.id,
+                                      $$i = _vm._i($$a, $$v)
+                                    if ($$el.checked) {
+                                      $$i < 0 &&
+                                        _vm.$set(
+                                          _vm.training,
+                                          "attendance",
+                                          $$a.concat([$$v])
+                                        )
+                                    } else {
+                                      $$i > -1 &&
+                                        _vm.$set(
+                                          _vm.training,
+                                          "attendance",
+                                          $$a
+                                            .slice(0, $$i)
+                                            .concat($$a.slice($$i + 1))
+                                        )
+                                    }
+                                  } else {
+                                    _vm.$set(_vm.training, "attendance", $$c)
+                                  }
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("label", { staticClass: "form-check-label" }, [
+                              _vm._v(_vm._s(member.name))
+                            ])
+                          ]
+                        )
+                      }),
+                      0
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(5)
+                ]
+              )
+            ])
+          ]
+        )
+      ]
     )
   ])
 }
@@ -109195,6 +109672,8 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Wardrobe")]),
         _vm._v(" "),
+        _c("th", [_vm._v("Attendance")]),
+        _vm._v(" "),
         _c("th", [_vm._v("Modify")])
       ])
     ])
@@ -109216,6 +109695,50 @@ var staticRenderFns = [
     return _c("div", { staticClass: "modal-header" }, [
       _c("h5", { staticClass: "modal-title", attrs: { id: "addTraining" } }, [
         _vm._v("Add Training")
+      ]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-danger",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [_vm._v("Close")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        { staticClass: "btn btn-success", attrs: { type: "submit" } },
+        [_vm._v("Create")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c("h5", { staticClass: "modal-title", attrs: { id: "addAttendance" } }, [
+        _vm._v("Add Players to Training")
       ]),
       _vm._v(" "),
       _c(
@@ -126148,10 +126671,10 @@ var regionDayMap = {
 /*!*********************************************!*\
   !*** ./node_modules/weekstart/package.json ***!
   \*********************************************/
-/*! exports provided: _args, _from, _id, _inBundle, _integrity, _location, _phantomChildren, _requested, _requiredBy, _resolved, _spec, _where, author, bugs, description, devDependencies, homepage, keywords, license, main, module, name, repository, scripts, types, umd:main, version, default */
+/*! exports provided: _from, _id, _inBundle, _integrity, _location, _phantomChildren, _requested, _requiredBy, _resolved, _shasum, _spec, _where, author, bugs, bundleDependencies, deprecated, description, devDependencies, homepage, keywords, license, main, module, name, repository, scripts, types, umd:main, version, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"_args\":[[\"weekstart@1.0.1\",\"C:\\\\laragon\\\\www\\\\teamgeist\"]],\"_from\":\"weekstart@1.0.1\",\"_id\":\"weekstart@1.0.1\",\"_inBundle\":false,\"_integrity\":\"sha512-h6B1HSJxg7sZEXqIpDqAtwiDBp3x5y2jY8WYcUSBhLTcTCy7laQzBmamqMuQM5fpvo1pgpma0OCRpE2W8xrA9A==\",\"_location\":\"/weekstart\",\"_phantomChildren\":{},\"_requested\":{\"type\":\"version\",\"registry\":true,\"raw\":\"weekstart@1.0.1\",\"name\":\"weekstart\",\"escapedName\":\"weekstart\",\"rawSpec\":\"1.0.1\",\"saveSpec\":null,\"fetchSpec\":\"1.0.1\"},\"_requiredBy\":[\"/\"],\"_resolved\":\"https://registry.npmjs.org/weekstart/-/weekstart-1.0.1.tgz\",\"_spec\":\"1.0.1\",\"_where\":\"C:\\\\laragon\\\\www\\\\teamgeist\",\"author\":{\"name\":\"Denis Sikuler\"},\"bugs\":{\"url\":\"https://github.com/gamtiq/weekstart/issues\"},\"description\":\"Library to get first day of week.\",\"devDependencies\":{\"@babel/preset-env\":\"7.6.3\",\"eslint\":\"6.5.1\",\"eslint-config-guard\":\"1.0.3\",\"ink-docstrap\":\"1.3.2\",\"jest\":\"24.9.0\",\"jsdoc\":\"3.6.3\",\"microbundle\":\"0.4.4\",\"version-bump-prompt\":\"5.0.5\"},\"homepage\":\"https://github.com/gamtiq/weekstart\",\"keywords\":[\"week\",\"start\",\"first\",\"day\",\"locale\",\"country\",\"region\"],\"license\":\"MIT\",\"main\":\"dist/commonjs/main.js\",\"module\":\"dist/es-module/main.js\",\"name\":\"weekstart\",\"repository\":{\"type\":\"git\",\"url\":\"git://github.com/gamtiq/weekstart.git\"},\"scripts\":{\"all\":\"npm run check-all && npm run doc && npm run build\",\"build\":\"npm run build-umd && npm run build-commonjs && npm run build-esm && npm run build-umd-min\",\"build-commonjs\":\"microbundle build \\\"src/!(*.test).js\\\" --output dist/commonjs --format cjs --strict --no-compress\",\"build-esm\":\"microbundle build \\\"src/!(*.test).js\\\" --output dist/es-module --format es --no-compress\",\"build-umd\":\"microbundle build src/main.js src/full.js --output dist --format umd --strict --no-compress\",\"build-umd-min\":\"microbundle build src/main.js src/full.js --output dist/min --format umd --strict\",\"check\":\"npm run lint && npm test\",\"check-all\":\"npm run lint-all && npm test\",\"doc\":\"jsdoc -c jsdoc-conf.json\",\"lint\":\"eslint --cache --max-warnings 0 \\\"**/*.js\\\"\",\"lint-all\":\"eslint --max-warnings 0 \\\"**/*.js\\\"\",\"lint-all-error\":\"eslint \\\"**/*.js\\\"\",\"lint-error\":\"eslint --cache \\\"**/*.js\\\"\",\"release\":\"bump patch --commit --tag --all --push package.json package-lock.json bower.json component.json\",\"release-major\":\"bump major --commit --tag --all --push package.json package-lock.json bower.json component.json\",\"release-minor\":\"bump minor --commit --tag --all --push package.json package-lock.json bower.json component.json\",\"test\":\"jest\"},\"types\":\"./index.d.ts\",\"umd:main\":\"dist/main.js\",\"version\":\"1.0.1\"}");
+module.exports = JSON.parse("{\"_from\":\"weekstart\",\"_id\":\"weekstart@1.0.1\",\"_inBundle\":false,\"_integrity\":\"sha512-h6B1HSJxg7sZEXqIpDqAtwiDBp3x5y2jY8WYcUSBhLTcTCy7laQzBmamqMuQM5fpvo1pgpma0OCRpE2W8xrA9A==\",\"_location\":\"/weekstart\",\"_phantomChildren\":{},\"_requested\":{\"type\":\"tag\",\"registry\":true,\"raw\":\"weekstart\",\"name\":\"weekstart\",\"escapedName\":\"weekstart\",\"rawSpec\":\"\",\"saveSpec\":null,\"fetchSpec\":\"latest\"},\"_requiredBy\":[\"#USER\",\"/\"],\"_resolved\":\"https://registry.npmjs.org/weekstart/-/weekstart-1.0.1.tgz\",\"_shasum\":\"950970b48e5797e06fc1a762f3d0f013312321e1\",\"_spec\":\"weekstart\",\"_where\":\"/Applications/MAMP/htdocs/Teamgeist\",\"author\":{\"name\":\"Denis Sikuler\"},\"bugs\":{\"url\":\"https://github.com/gamtiq/weekstart/issues\"},\"bundleDependencies\":false,\"deprecated\":false,\"description\":\"Library to get first day of week.\",\"devDependencies\":{\"@babel/preset-env\":\"7.6.3\",\"eslint\":\"6.5.1\",\"eslint-config-guard\":\"1.0.3\",\"ink-docstrap\":\"1.3.2\",\"jest\":\"24.9.0\",\"jsdoc\":\"3.6.3\",\"microbundle\":\"0.4.4\",\"version-bump-prompt\":\"5.0.5\"},\"homepage\":\"https://github.com/gamtiq/weekstart\",\"keywords\":[\"week\",\"start\",\"first\",\"day\",\"locale\",\"country\",\"region\"],\"license\":\"MIT\",\"main\":\"dist/commonjs/main.js\",\"module\":\"dist/es-module/main.js\",\"name\":\"weekstart\",\"repository\":{\"type\":\"git\",\"url\":\"git://github.com/gamtiq/weekstart.git\"},\"scripts\":{\"all\":\"npm run check-all && npm run doc && npm run build\",\"build\":\"npm run build-umd && npm run build-commonjs && npm run build-esm && npm run build-umd-min\",\"build-commonjs\":\"microbundle build \\\"src/!(*.test).js\\\" --output dist/commonjs --format cjs --strict --no-compress\",\"build-esm\":\"microbundle build \\\"src/!(*.test).js\\\" --output dist/es-module --format es --no-compress\",\"build-umd\":\"microbundle build src/main.js src/full.js --output dist --format umd --strict --no-compress\",\"build-umd-min\":\"microbundle build src/main.js src/full.js --output dist/min --format umd --strict\",\"check\":\"npm run lint && npm test\",\"check-all\":\"npm run lint-all && npm test\",\"doc\":\"jsdoc -c jsdoc-conf.json\",\"lint\":\"eslint --cache --max-warnings 0 \\\"**/*.js\\\"\",\"lint-all\":\"eslint --max-warnings 0 \\\"**/*.js\\\"\",\"lint-all-error\":\"eslint \\\"**/*.js\\\"\",\"lint-error\":\"eslint --cache \\\"**/*.js\\\"\",\"release\":\"bump patch --commit --tag --all --push package.json package-lock.json bower.json component.json\",\"release-major\":\"bump major --commit --tag --all --push package.json package-lock.json bower.json component.json\",\"release-minor\":\"bump minor --commit --tag --all --push package.json package-lock.json bower.json component.json\",\"test\":\"jest\"},\"types\":\"./index.d.ts\",\"umd:main\":\"dist/main.js\",\"version\":\"1.0.1\"}");
 
 /***/ }),
 
@@ -128282,6 +128805,12 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "store", function() { return store; });
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var vform__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vform */ "./node_modules/vform/dist/vform.common.js");
+/* harmony import */ var vform__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vform__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var vue_progressbar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-progressbar */ "./node_modules/vue-progressbar/dist/vue-progressbar.js");
+/* harmony import */ var vue_progressbar__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vue_progressbar__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_3__);
 
 var store = new vuex__WEBPACK_IMPORTED_MODULE_0__["default"].Store({
   state: {
@@ -128296,11 +128825,8 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_0__["default"].Store({
     memberships: [],
     memberCategories: [],
     referees: [],
-    refereeCategories: [],
     roles: [],
-    permissions: [],
-    invoices: [],
-    users: []
+    permissions: []
   },
   mutations: {
     getTeams: function getTeams(state, payload) {
@@ -128336,332 +128862,199 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_0__["default"].Store({
     getReferees: function getReferees(state, payload) {
       state.referees = payload;
     },
-    getRefereeCategories: function getRefereeCategories(state, payload) {
-      state.refereeCategories = payload;
-    },
     getRoles: function getRoles(state, payload) {
       state.roles = payload;
     },
     getPermissions: function getPermissions(state, payload) {
       state.permissions = payload;
-    },
-    getInvoices: function getInvoices(state, payload) {
-      state.invoices = payload;
-    },
-    getUsers: function getUsers(state, payload) {
-      state.users = payload;
     }
   },
   actions: {
     getTeams: function getTeams(_ref) {
-      var commit = _ref.commit,
-          dispatch = _ref.dispatch;
+      var commit = _ref.commit;
       axios.get('api/teams').then(function (response) {
         commit('getTeams', response.data.data);
         return response;
       });
     },
     createTeam: function createTeam(_ref2, payload) {
-      var commit = _ref2.commit,
-          dispatch = _ref2.dispatch;
+      var commit = _ref2.commit;
       return axios.post('api/teams', payload).then(function (response) {
-        dispatch('getTeams');
         return response;
       });
     },
     deleteTeam: function deleteTeam(_ref3, payload) {
-      var commit = _ref3.commit,
-          dispatch = _ref3.dispatch;
+      var commit = _ref3.commit;
       return axios["delete"]('api/teams/' + payload).then(function (response) {
-        dispatch('getTeams');
         return response;
       });
     },
-    getMembers: function getMembers(_ref4) {
-      var commit = _ref4.commit,
-          dispatch = _ref4.dispatch;
+    createTeamMembers: function createTeamMembers(_ref4, payload) {
+      var commit = _ref4.commit;
+      return axios.post('../api/members', payload).then(function (response) {
+        return response;
+      });
+    },
+    getMembers: function getMembers(_ref5) {
+      var commit = _ref5.commit;
       axios.get('api/members').then(function (response) {
         return commit('getMembers', response.data.data);
       });
     },
-    createMember: function createMember(_ref5, payload) {
-      var commit = _ref5.commit,
-          dispatch = _ref5.dispatch;
-      return axios.post('api/members', payload).then(function (response) {
-        dispatch('getMembers');
-        dispatch('getUsers');
-        dispatch('getInvoices');
-        return response;
-      });
-    },
     getCategories: function getCategories(_ref6) {
-      var commit = _ref6.commit,
-          dispatch = _ref6.dispatch;
+      var commit = _ref6.commit;
       axios.get('api/categories').then(function (response) {
         return commit('getCategories', response.data.data);
       });
     },
     createCategory: function createCategory(_ref7, payload) {
-      var commit = _ref7.commit,
-          dispatch = _ref7.dispatch;
+      var commit = _ref7.commit;
       return axios.post('api/categories', payload).then(function (response) {
-        dispatch('getCategories');
         return response;
       });
     },
     deleteCategory: function deleteCategory(_ref8, payload) {
-      var commit = _ref8.commit,
-          dispatch = _ref8.dispatch;
+      var commit = _ref8.commit;
       return axios["delete"]('api/categories/' + payload).then(function (response) {
-        dispatch('getCategories');
         return response;
       });
     },
-    getSubcategories: function getSubcategories(_ref9) {
-      var commit = _ref9.commit,
-          dispatch = _ref9.dispatch;
+    createSubCategory: function createSubCategory(_ref9, payload) {
+      var commit = _ref9.commit;
+      return axios.post('api/subcategories', payload).then(function (response) {
+        return response;
+      });
+    },
+    deleteSubCategory: function deleteSubCategory(_ref10, payload) {
+      var commit = _ref10.commit;
+      return axios["delete"]('api/subcategories/' + payload).then(function (response) {
+        return response;
+      });
+    },
+    getSubcategories: function getSubcategories(_ref11) {
+      var commit = _ref11.commit;
       axios.get('api/subcategories').then(function (response) {
         return commit('getSubcategories', response.data.data);
       });
     },
-    createSubCategory: function createSubCategory(_ref10, payload) {
-      var commit = _ref10.commit,
-          dispatch = _ref10.dispatch;
-      return axios.post('api/subcategories', payload).then(function (response) {
-        dispatch('getSubcategories');
-        return response;
-      });
-    },
-    deleteSubCategory: function deleteSubCategory(_ref11, payload) {
-      var commit = _ref11.commit,
-          dispatch = _ref11.dispatch;
-      return axios["delete"]('api/subcategories/' + payload).then(function (response) {
-        dispatch('getSubcategories');
-        return response;
-      });
-    },
     getFields: function getFields(_ref12) {
-      var commit = _ref12.commit,
-          dispatch = _ref12.dispatch;
+      var commit = _ref12.commit;
       axios.get('api/fields').then(function (response) {
         return commit('getFields', response.data.data);
       });
     },
     createField: function createField(_ref13, payload) {
-      var commit = _ref13.commit,
-          dispatch = _ref13.dispatch;
+      var commit = _ref13.commit;
       return axios.post('api/fields', payload).then(function (response) {
-        dispatch('getFields');
         return response;
       });
     },
     deleteField: function deleteField(_ref14, payload) {
-      var commit = _ref14.commit,
-          dispatch = _ref14.dispatch;
+      var commit = _ref14.commit;
       return axios["delete"]('api/fields/' + payload).then(function (response) {
-        dispatch('getFields');
         return response;
       });
     },
     getWardrobes: function getWardrobes(_ref15) {
-      var commit = _ref15.commit,
-          dispatch = _ref15.dispatch;
+      var commit = _ref15.commit;
       axios.get('api/wardrobes').then(function (response) {
         return commit('getWardrobes', response.data.data);
       });
     },
     createWardrobe: function createWardrobe(_ref16, payload) {
-      var commit = _ref16.commit,
-          dispatch = _ref16.dispatch;
+      var commit = _ref16.commit;
       return axios.post('api/wardrobes', payload).then(function (response) {
-        dispatch('getWardrobes');
         return response;
       });
     },
     deleteWardrobe: function deleteWardrobe(_ref17, payload) {
-      var commit = _ref17.commit,
-          dispatch = _ref17.dispatch;
+      var commit = _ref17.commit;
       return axios["delete"]('api/wardrobes/' + payload).then(function (response) {
-        dispatch('getWardrobes');
         return response;
       });
     },
     getMatchdays: function getMatchdays(_ref18) {
-      var commit = _ref18.commit,
-          dispatch = _ref18.dispatch;
+      var commit = _ref18.commit;
       axios.get('api/matchdays').then(function (response) {
         return commit('getMatchdays', response.data.data);
       });
     },
     createMatchday: function createMatchday(_ref19, payload) {
-      var commit = _ref19.commit,
-          dispatch = _ref19.dispatch;
+      var commit = _ref19.commit;
       return axios.post('api/matchdays', payload).then(function (response) {
-        dispatch('getMatchdays');
         return response;
       });
     },
     deleteMatchday: function deleteMatchday(_ref20, payload) {
-      var commit = _ref20.commit,
-          dispatch = _ref20.dispatch;
+      var commit = _ref20.commit;
       return axios["delete"]('api/matchdays/' + payload).then(function (response) {
-        dispatch('getMatchdays');
         return response;
       });
     },
     getTrainings: function getTrainings(_ref21) {
-      var commit = _ref21.commit,
-          dispatch = _ref21.dispatch;
+      var commit = _ref21.commit;
       axios.get('api/trainings').then(function (response) {
         return commit('getTrainings', response.data.data);
       });
     },
     createTraining: function createTraining(_ref22, payload) {
-      var commit = _ref22.commit,
-          dispatch = _ref22.dispatch;
+      var commit = _ref22.commit;
       return axios.post('api/trainings', payload).then(function (response) {
-        dispatch('getTrainings');
         return response;
       });
     },
     deleteTraining: function deleteTraining(_ref23, payload) {
-      var commit = _ref23.commit,
-          dispatch = _ref23.dispatch;
+      var commit = _ref23.commit;
       return axios["delete"]('api/trainings/' + payload).then(function (response) {
-        dispatch('getTrainings');
         return response;
       });
     },
     getMemberships: function getMemberships(_ref24) {
-      var commit = _ref24.commit,
-          dispatch = _ref24.dispatch;
+      var commit = _ref24.commit;
       axios.get('api/memberships').then(function (response) {
         return commit('getMemberships', response.data.data);
       });
     },
     createMembership: function createMembership(_ref25, payload) {
-      var commit = _ref25.commit,
-          dispatch = _ref25.dispatch;
+      var commit = _ref25.commit;
       return axios.post('api/memberships', payload).then(function (response) {
-        dispatch('getMemberships');
-        dispatch('getUsers');
-        dispatch('getInvoices');
         return response;
       });
     },
-    deleteMembership: function deleteMembership(_ref26, payload) {
-      var commit = _ref26.commit,
-          dispatch = _ref26.dispatch;
-      return axios["delete"]('api/memberships/' + payload).then(function (response) {
-        dispatch('getMemberships');
-        return response;
-      });
-    },
-    getMemberCategories: function getMemberCategories(_ref27) {
-      var commit = _ref27.commit,
-          dispatch = _ref27.dispatch;
+    getMemberCategories: function getMemberCategories(_ref26) {
+      var commit = _ref26.commit;
       axios.get('api/member_categories').then(function (response) {
         return commit('getMemberCategories', response.data.data);
       });
     },
-    createMemberCategory: function createMemberCategory(_ref28, payload) {
-      var commit = _ref28.commit,
-          dispatch = _ref28.dispatch;
+    createMemberCategory: function createMemberCategory(_ref27, payload) {
+      var commit = _ref27.commit;
       return axios.post('api/member_categories', payload).then(function (response) {
-        dispatch('getMemberCategories');
         return response;
       });
     },
-    getReferees: function getReferees(_ref29) {
-      var commit = _ref29.commit,
-          dispatch = _ref29.dispatch;
+    getReferees: function getReferees(_ref28) {
+      var commit = _ref28.commit;
       axios.get('api/referees').then(function (response) {
         return commit('getReferees', response.data.data);
       });
     },
-    createReferee: function createReferee(_ref30, payload) {
-      var commit = _ref30.commit,
-          dispatch = _ref30.dispatch;
-      return axios.post('api/referees', payload).then(function (response) {
-        dispatch('getReferees');
-        return response;
-      });
-    },
-    deleteReferee: function deleteReferee(_ref31, payload) {
-      var commit = _ref31.commit,
-          dispatch = _ref31.dispatch;
-      return axios["delete"]('api/referees/' + payload).then(function (response) {
-        dispatch('getReferees');
-        return response;
-      });
-    },
-    getRefereeCategories: function getRefereeCategories(_ref32) {
-      var commit = _ref32.commit,
-          dispatch = _ref32.dispatch;
-      axios.get('api/referee_categories').then(function (response) {
-        return commit('getRefereeCategories', response.data.data);
-      });
-    },
-    createRefereeCategory: function createRefereeCategory(_ref33, payload) {
-      var commit = _ref33.commit,
-          dispatch = _ref33.dispatch;
-      return axios.post('api/referee_categories', payload).then(function (response) {
-        dispatch('getRefereeCategories');
-        return response;
-      });
-    },
-    deleteRefereeCategory: function deleteRefereeCategory(_ref34, payload) {
-      var commit = _ref34.commit,
-          dispatch = _ref34.dispatch;
-      return axios["delete"]('api/referee_categories/' + payload).then(function (response) {
-        dispatch('getRefereeCategories');
-        return response;
-      });
-    },
-    getRoles: function getRoles(_ref35) {
-      var commit = _ref35.commit,
-          dispatch = _ref35.dispatch;
+    getRoles: function getRoles(_ref29) {
+      var commit = _ref29.commit;
       axios.get('api/roles').then(function (response) {
         return commit('getRoles', response.data.data);
       });
     },
-    createRole: function createRole(_ref36, payload) {
-      var commit = _ref36.commit,
-          dispatch = _ref36.dispatch;
+    createRole: function createRole(_ref30, payload) {
+      var commit = _ref30.commit;
       return axios.post('api/roles', payload).then(function (response) {
-        dispatch('getRoles');
         return response;
       });
     },
-    getPermissions: function getPermissions(_ref37) {
-      var commit = _ref37.commit,
-          dispatch = _ref37.dispatch;
+    getPermissions: function getPermissions(_ref31) {
+      var commit = _ref31.commit;
       axios.get('api/permissions').then(function (response) {
         return commit('getPermissions', response.data.data);
-      });
-    },
-    getInvoices: function getInvoices(_ref38) {
-      var commit = _ref38.commit,
-          dispatch = _ref38.dispatch;
-      axios.get('api/invoices').then(function (response) {
-        return commit('getInvoices', response.data.data);
-      });
-    },
-    updateInvoice: function updateInvoice(_ref39, payload) {
-      var commit = _ref39.commit,
-          dispatch = _ref39.dispatch;
-      return axios.put('api/invoices/' + payload, {
-        paid: 1
-      }).then(function (response) {
-        dispatch('getInvoices');
-        return response;
-      });
-    },
-    getUsers: function getUsers(_ref40) {
-      var commit = _ref40.commit,
-          dispatch = _ref40.dispatch;
-      axios.get('api/users').then(function (response) {
-        return commit('getUsers', response.data.data);
       });
     }
   }
@@ -128677,11 +129070,29 @@ store.dispatch('getTrainings');
 store.dispatch('getMemberships');
 store.dispatch('getMemberCategories');
 store.dispatch('getReferees');
-store.dispatch('getRefereeCategories');
 store.dispatch('getRoles');
 store.dispatch('getPermissions');
-store.dispatch('getInvoices');
-store.dispatch('getUsers');
+var Fire = new Vue();
+window.Fire = Fire;
+
+window.Form = vform__WEBPACK_IMPORTED_MODULE_1__["Form"];
+Vue.component(vform__WEBPACK_IMPORTED_MODULE_1__["HasError"].name, vform__WEBPACK_IMPORTED_MODULE_1__["HasError"]);
+Vue.component(vform__WEBPACK_IMPORTED_MODULE_1__["AlertError"].name, vform__WEBPACK_IMPORTED_MODULE_1__["AlertError"]);
+
+Vue.use(vue_progressbar__WEBPACK_IMPORTED_MODULE_2___default.a, {
+  color: 'rgb(143, 255, 199)',
+  failedColor: 'red',
+  height: '10px'
+});
+
+window.swal = sweetalert2__WEBPACK_IMPORTED_MODULE_3___default.a;
+var toast = sweetalert2__WEBPACK_IMPORTED_MODULE_3___default.a.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 3000
+});
+window.toast = toast;
 
 /***/ }),
 
@@ -128703,8 +129114,8 @@ store.dispatch('getUsers');
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\laragon\www\teamgeist\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\laragon\www\teamgeist\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Applications/MAMP/htdocs/Teamgeist/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/Teamgeist/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

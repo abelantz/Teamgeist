@@ -7,7 +7,8 @@
                     <div class="card-header">
                         <h3 class="card-title">Upcoming Matches</h3>
                         <div class="card-tools">
-                            <button class="btn btn-success bg-success" @click="showCreateMatchdayModal"> Add Match</button>
+                            <button class="btn btn-success bg-success" @click="showCreateMatchdayModal"> Add
+                                Match</button>
                         </div>
                     </div>
                     <!-- /.card-header -->
@@ -23,6 +24,7 @@
                                     <th>Training field</th>
                                     <th>Wardrobe</th>
                                     <th>Referee </th>
+                                    <th>Preparation</th>
                                     <th>Modify</th>
                                 </tr>
                             </thead>
@@ -38,12 +40,19 @@
                                     <td>Colina</td>
                                     <td>
                                         <div class="btn-group btn-group-sm">
+                                            <button class="btn btn-success" @click="showPreparationModal"><i
+                                                    class="fa fa-plus-square-o"></i></button>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="btn-group btn-group-sm">
                                             <a href="#" class="btn btn-info bg-info"><i class="fas fa-edit"></i></a>
-                                            <button class="btn btn-danger" @click="deleteMatchday(matchday.id)"><i class="fas fa-trash"></i></button>
+                                            <button class="btn btn-danger" @click="deleteMatchday(matchday.id)"><i
+                                                    class="fas fa-trash"></i></button>
                                         </div>
                                     </td>
                                 </tr>
-                                
+
                             </tbody>
                         </table>
                     </div>
@@ -53,8 +62,7 @@
             </div>
         </div>
         <!-- Modal  -->
-        <div class="modal fade" id="addMatch" tabindex="-1" role="dialog" aria-labelledby="addMatch"
-            aria-hidden="true">
+        <div class="modal fade" id="addMatch" tabindex="-1" role="dialog" aria-labelledby="addMatch" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -64,48 +72,121 @@
                         </button>
                     </div>
                     <form @submit.prevent="createMatchday">
-                            <div class="modal-body ">
-                                <div class="form-group">
-                                    <select v-model="matchday.team_id" type="type" name="type" id="type" class="form-control">
-                                     <option disabled selected value="">Select Team</option>
-                                    <option  v-for="team in teams" v-bind:key="team.id" v-bind:value="team.id">{{team.name}}</option>
+                        <div class="modal-body ">
+                            <div class="form-group">
+                                <select v-model="matchday.team_id" type="type" name="type" id="type"
+                                    class="form-control">
+                                    <option disabled selected value="">Select Team</option>
+                                    <option v-for="team in teams" v-bind:key="team.id" v-bind:value="team.id">
+                                        {{team.name}}</option>
                                 </select>
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" v-model="matchday.opponent" class="form-control" placeholder="FC opponent ...">
-                                </div>
-                                <div class="form-group">
-                                    <picker label="Date" only-date v-model="matchday.date" format="YYYY-MM-DD" formatted="DD/MM/YYYY"></picker>
-                                </div>
-                                <div class="form-group">
-                                    <picker label="Start Time" only-time v-model="matchday.time" format="HH:mm:ss " formatted="HH:mm "></picker>
-                                </div>
-                                <div class="form-group">
-                                    <select v-model="matchday.type" type="type" name="type" id="type" class="form-control">
-                                     <option disabled selected value="">Select Type</option>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" v-model="matchday.opponent" class="form-control"
+                                    placeholder="FC opponent ...">
+                            </div>
+                            <div class="form-group">
+                                <picker label="Date" only-date v-model="matchday.date" format="YYYY-MM-DD"
+                                    formatted="DD/MM/YYYY"></picker>
+                            </div>
+                            <div class="form-group">
+                                <picker label="Start Time" only-time v-model="matchday.time" format="HH:mm:ss "
+                                    formatted="HH:mm "></picker>
+                            </div>
+                            <div class="form-group">
+                                <select v-model="matchday.type" type="type" name="type" id="type" class="form-control">
+                                    <option disabled selected value="">Select Type</option>
                                     <option value="home">Home</option>
                                     <option value="away">Away</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <select v-model="matchday.field_id" type="type" name="type" id="type" class="form-control">
-                                     <option disabled selected value="">Select Field</option>
-                                    <option  v-for="field in fields" v-bind:key="field.id" v-bind:value="field.id">{{field.title}}</option>
                                 </select>
-                                </div>
-                                <div class="form-group">
-                                    <select v-model="matchday.wardrobe_id" type="type" name="type" id="type" class="form-control">
-                                     <option disabled selected value="">Select Wardrobe</option>
-                                    <option  v-for="wardrobe in wardrobes" v-bind:key="wardrobe.id" v-bind:value="wardrobe.id">{{wardrobe.title}}</option>
+                            </div>
+                            <div class="form-group">
+                                <select v-model="matchday.field_id" type="type" name="type" id="type"
+                                    class="form-control">
+                                    <option disabled selected value="">Select Field</option>
+                                    <option v-for="field in fields" v-bind:key="field.id" v-bind:value="field.id">
+                                        {{field.title}}</option>
                                 </select>
-                                </div>
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-success">Create</button>
+                            <div class="form-group">
+                                <select v-model="matchday.wardrobe_id" type="type" name="type" id="type"
+                                    class="form-control">
+                                    <option disabled selected value="">Select Wardrobe</option>
+                                    <option v-for="wardrobe in wardrobes" v-bind:key="wardrobe.id"
+                                        v-bind:value="wardrobe.id">{{wardrobe.title}}</option>
+                                </select>
                             </div>
-                            
-                        </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-success">Create</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Preparation Modal  -->
+        <div class="modal fade" id="addFormation" tabindex="-1" role="dialog" aria-labelledby="addFormation"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addFormation">Add Formation</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form @submit.prevent="">
+                        <div class="modal-body ">
+
+                            <div class="form-group">
+                                <select v-model="preparation.formation" type="type" name="type" id="type"
+                                    class="form-control">
+                                    <option disabled selected value="">Select Formation</option>
+                                    <option value="2–3–5">2–3–5</option>
+                                    <option value="3–3–4">3–3–4</option>
+                                    <option value="4–2–4">4–2–4</option>
+                                    <option value="4-4-2">4-4-2</option>
+                                    <option value="4–4–1–1">4–4–1–1</option>
+                                    <option value="4-3-3">4-3-3</option>
+                                    <option value="4–1–2–3">4–1–2–3</option>
+                                    <option value="4–1–2–1–2">4–1–2–1–2</option>
+                                    <option value="4–1–3–2">4–1–3–2</option>
+                                    <option value="4–3–2–1">4–3–2–1</option>
+                                    <option value="5–3–2">5–3–2</option>
+                                    <option value="3–4–3">3–4–3</option>
+                                    <option value="3–5–2">3–5–2</option>
+                                    <option value="3–4–1–2">3–4–1–2</option>
+                                    <option value="3–6–1">3–6–1</option>
+                                    <option value="4–5–1">4–5–1</option>
+                                    <option value="4–2–3–1">4–2–3–1</option>
+                                    <option value="4–6–0">4–6–0</option>
+                                    <option value="5–4–1">5–4–1</option>
+                                    <option value="1–6–3">1–6–3</option>
+                                    <option value="4–2–2–2">4–2–2–2</option>
+                                    <option value="3–3–1–3">3–3–1–3</option>
+                                    <option value="3–3–3–1">3–3–3–1</option>
+                                    <option value="4–2–1–3–3–1">4–2–1–3</option>
+                                </select>
+                            </div>
+                            <div class="form-check">
+                                    
+                                    <div class="list-group" v-for="member in members" v-bind:key="member.id">
+                                        <input class="form-check-input" type="checkbox" :value="member.id"
+                                            v-model="preparation.members">
+                                        <label class="form-check-label">{{member.name}}</label>
+                                    </div>
+                                
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-success">Create</button>
+                        </div>
+
+                    </form>
                 </div>
             </div>
         </div>
@@ -119,8 +200,8 @@
     import 'vue-ctk-date-time-picker/dist/vue-ctk-date-time-picker.css';
 
 
-   export default {
-       
+    export default {
+
         components: {
             picker
         },
@@ -129,12 +210,18 @@
             return {
                 matchday: {
                     team_id: '',
-                    opponent:'',
+                    opponent: '',
                     date: '',
                     time: '',
-                    type:'',
+                    type: '',
                     field_id: '',
                     wardrobe_id: '',
+
+                },
+                preparation: {
+                    matchday_id: '',
+                    formation: '',
+                    members: []
                 }
             }
         },
@@ -145,6 +232,9 @@
             },
             teams() {
                 return this.$store.state.teams
+            },
+            members() {
+                return this.$store.state.members
             },
             fields() {
                 return this.$store.state.fields
@@ -173,13 +263,16 @@
             showCreateMatchdayModal() {
                 $('#addMatch').modal('show')
             },
+            showPreparationModal() {
+                $('#addFormation').modal('show')
+            },
             createMatchday() {
                 this.$store.dispatch('createMatchday', this.matchday)
-                            .then(res => $('#addMatch').modal('hide'));
+                    .then(res => $('#addMatch').modal('hide'));
             },
             deleteMatchday(matchdayId) {
                 this.$store.dispatch('deleteMatchday', matchdayId)
-                            .then(res => console.log('deleted matchday'));
+                    .then(res => console.log('deleted matchday'));
             }
         },
 
