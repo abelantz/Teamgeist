@@ -39,7 +39,6 @@ class MembershipController extends Controller
         ]);
         $membership = Membership::create([
             'members_categories_id' => $request->members_categories_id,
-            'team_id' => $request->team_id,
             'user_id' => $user->id,
         ]);
         $invoice = Invoice::create([

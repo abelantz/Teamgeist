@@ -15,6 +15,7 @@ export const store = new Vuex.Store({
         referees: [],
         roles: [],
         permissions: [],
+        users: []
     },
     mutations: {
         getTeams(state, payload) {
@@ -55,6 +56,9 @@ export const store = new Vuex.Store({
         },
         getPermissions(state, payload) {
             state.permissions = payload
+        },
+        getUsers(state, payload) {
+            state.users = payload
         }
     },
     actions: {
@@ -233,6 +237,11 @@ export const store = new Vuex.Store({
                             .then((response) => 
                                 commit('getPermissions', response.data.data));
         },
+        getUsers({commit}) {
+            axios.get('api/users')
+                            .then((response) => 
+                                commit('getUsers', response.data.data));
+        },
     }
 });
 
@@ -249,31 +258,4 @@ store.dispatch('getMemberCategories');
 store.dispatch('getReferees');
 store.dispatch('getRoles');
 store.dispatch('getPermissions');
-
-
-
-let Fire = new Vue();
-window.Fire = Fire;
-
-
-import { Form, HasError, AlertError } from 'vform';
-window.Form = Form;
-Vue.component(HasError.name, HasError)
-Vue.component(AlertError.name, AlertError)
-
-import VueProgressBar from 'vue-progressbar';
-Vue.use(VueProgressBar, {
-    color: 'rgb(143, 255, 199)',
-    failedColor: 'red',
-    height: '10px'
-});
-
-import swal from 'sweetalert2';
-window.swal = swal;
-const toast = swal.mixin({
-    toast: true,
-    position: 'top-end',
-    showConfirmButton: false,
-    timer: 3000
-});
-window.toast = toast;
+store.dispatch('getUsers');
