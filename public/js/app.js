@@ -4414,10 +4414,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -7025,30 +7021,12 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -7291,12 +7269,11 @@ __webpack_require__.r(__webpack_exports__);
       this.memberCategory = {};
     },
     editMembership: function editMembership(membershipId) {
-      var _this = this;
-
       $('#editMembershipModal').modal('show');
-      this.membership = this.memberships.find(function (membership) {
-        return _this.membership == membershipId;
+      var membershipById = this.memberships.find(function (membership) {
+        return membership.id == membershipId;
       });
+      this.membership = _objectSpread({}, membershipById);
     },
     createMembership: function createMembership() {
       this.$store.dispatch('createMembership', this.membership).then(function (res) {
@@ -100104,36 +100081,38 @@ var render = function() {
       { staticClass: "row mt-3" },
       _vm._l(_vm.categories, function(category) {
         return _c("div", { key: category.id, staticClass: "col-md-3" }, [
-          _c("div", { staticClass: "card card-widget widget-user-2" }, [
-            _c("div", { staticClass: "widget-user-header bg-success" }, [
-              _c("h5", { staticClass: "widget-user-desc" }, [
-                _vm._v(_vm._s(category.title))
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-footer p-0" }, [
-              _c(
-                "ul",
-                { staticClass: "nav flex-column" },
-                _vm._l(_vm.getSubCategories(category.id), function(
-                  subcategory
-                ) {
-                  return _c(
-                    "li",
-                    { key: subcategory.id, staticClass: "nav-item" },
-                    [
-                      _c("span", { staticClass: "nav-link center" }, [
-                        _c("span", { staticClass: "widget-user-desc" }, [
-                          _vm._v(_vm._s(subcategory.title))
-                        ])
-                      ])
-                    ]
-                  )
-                }),
-                0
-              )
-            ])
-          ])
+          _c(
+            "div",
+            { staticClass: "card bg-primary" },
+            [
+              _c("div", { staticClass: "card-header" }, [
+                _c("h3", { staticClass: "card-title" }, [
+                  _vm._v(_vm._s(category.title))
+                ]),
+                _vm._v(" "),
+                _vm._m(0, true)
+              ]),
+              _vm._v(" "),
+              _vm._l(_vm.getSubCategories(category.id), function(subcategory) {
+                return _c(
+                  "div",
+                  {
+                    key: subcategory.id,
+                    staticClass: "card-body",
+                    staticStyle: { display: "block" }
+                  },
+                  [
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(subcategory.title) +
+                        "\n                "
+                    )
+                  ]
+                )
+              })
+            ],
+            2
+          )
         ])
       }),
       0
@@ -100195,7 +100174,7 @@ var render = function() {
                   [_vm._v("Create Category")]
                 ),
                 _vm._v(" "),
-                _vm._m(0)
+                _vm._m(1)
               ]),
               _vm._v(" "),
               _vm.categoryMode
@@ -100244,7 +100223,7 @@ var render = function() {
                         ])
                       ]),
                       _vm._v(" "),
-                      _vm._m(1)
+                      _vm._m(2)
                     ]
                   )
                 : _vm._e(),
@@ -100356,7 +100335,7 @@ var render = function() {
                         ])
                       ]),
                       _vm._v(" "),
-                      _vm._m(2)
+                      _vm._m(3)
                     ]
                   )
                 : _vm._e()
@@ -100368,6 +100347,21 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-tools" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-tool",
+          attrs: { type: "button", "data-card-widget": "collapse" }
+        },
+        [_c("i", { staticClass: "fas fa-minus" })]
+      )
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -105572,12 +105566,10 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "tbody",
-                _vm._l(_vm.memberships, function(membership) {
-                  return _c("tr", { key: membership.id }, [
+                _vm._l(_vm.memberships, function(member) {
+                  return _c("tr", { key: member.id }, [
                     _c("td", [
-                      _vm._v(
-                        _vm._s(_vm.getMembershipUser(membership.user_id).name)
-                      )
+                      _vm._v(_vm._s(_vm.getMembershipUser(member.user_id).name))
                     ]),
                     _vm._v(" "),
                     _c("td", [
@@ -105585,7 +105577,7 @@ var render = function() {
                         "CHF " +
                           _vm._s(
                             _vm.getMembershipCategory(
-                              membership.members_categories_id
+                              member.members_categories_id
                             ).amount
                           )
                       )
@@ -105595,14 +105587,14 @@ var render = function() {
                       _vm._v(
                         _vm._s(
                           _vm.getMembershipCategory(
-                            membership.members_categories_id
+                            member.members_categories_id
                           ).title
                         )
                       )
                     ]),
                     _vm._v(" "),
                     _c("td", [
-                      _vm._v(_vm._s(_vm._f("regDate")(membership.created_at)))
+                      _vm._v(_vm._s(_vm._f("regDate")(member.created_at)))
                     ]),
                     _vm._v(" "),
                     _c("td", [
@@ -105614,7 +105606,7 @@ var render = function() {
                             attrs: { href: "#" },
                             on: {
                               click: function($event) {
-                                return _vm.editMembership(membership.id)
+                                return _vm.editMembership(member.id)
                               }
                             }
                           },
@@ -105628,7 +105620,7 @@ var render = function() {
                             attrs: { href: "#" },
                             on: {
                               click: function($event) {
-                                return _vm.deleteMembership(membership.id)
+                                return _vm.deleteMembership(member.id)
                               }
                             }
                           },
@@ -106002,7 +105994,7 @@ var render = function() {
                               }
                             ],
                             staticClass: "form-control",
-                            attrs: { title: "type", id: "type" },
+                            attrs: { title: "category", id: "category" },
                             on: {
                               change: function($event) {
                                 var $$selectedVal = Array.prototype.filter
@@ -106110,191 +106102,6 @@ var render = function() {
                   [
                     _c("div", { staticClass: "modal-body" }, [
                       _c("div", { staticClass: "form-group" }, [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.membership.name,
-                              expression: "membership.name"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: {
-                            type: "text",
-                            name: "name",
-                            placeholder: "Name"
-                          },
-                          domProps: { value: _vm.membership.name },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(
-                                _vm.membership,
-                                "name",
-                                $event.target.value
-                              )
-                            }
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "form-group" }, [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.membership.email,
-                              expression: "membership.email"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: {
-                            type: "email",
-                            name: "email",
-                            placeholder: "Email"
-                          },
-                          domProps: { value: _vm.membership.email },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(
-                                _vm.membership,
-                                "email",
-                                $event.target.value
-                              )
-                            }
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "form-group" }, [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.membership.password,
-                              expression: "membership.password"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: {
-                            type: "text",
-                            name: "password",
-                            placeholder: "Password"
-                          },
-                          domProps: { value: _vm.membership.password },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(
-                                _vm.membership,
-                                "password",
-                                $event.target.value
-                              )
-                            }
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "form-group" }, [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.membership.password_confirmation,
-                              expression: "membership.password_confirmation"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: {
-                            type: "text",
-                            name: "password_confirmation",
-                            placeholder: "Confirm password"
-                          },
-                          domProps: {
-                            value: _vm.membership.password_confirmation
-                          },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(
-                                _vm.membership,
-                                "password_confirmation",
-                                $event.target.value
-                              )
-                            }
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "form-group" }, [
-                        _c(
-                          "select",
-                          {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.membership.role_id,
-                                expression: "membership.role_id"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            attrs: { title: "role", id: "role" },
-                            on: {
-                              change: function($event) {
-                                var $$selectedVal = Array.prototype.filter
-                                  .call($event.target.options, function(o) {
-                                    return o.selected
-                                  })
-                                  .map(function(o) {
-                                    var val = "_value" in o ? o._value : o.value
-                                    return val
-                                  })
-                                _vm.$set(
-                                  _vm.membership,
-                                  "role_id",
-                                  $event.target.multiple
-                                    ? $$selectedVal
-                                    : $$selectedVal[0]
-                                )
-                              }
-                            }
-                          },
-                          [
-                            _c(
-                              "option",
-                              {
-                                attrs: { disabled: "", selected: "", value: "" }
-                              },
-                              [_vm._v("Select Role")]
-                            ),
-                            _vm._v(" "),
-                            _vm._l(_vm.roles, function(role) {
-                              return _c(
-                                "option",
-                                { key: role.id, domProps: { value: role.id } },
-                                [_vm._v(_vm._s(role.name))]
-                              )
-                            })
-                          ],
-                          2
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "form-group" }, [
                         _c(
                           "select",
                           {
@@ -106307,7 +106114,7 @@ var render = function() {
                               }
                             ],
                             staticClass: "form-control",
-                            attrs: { title: "type", id: "type" },
+                            attrs: { title: "category2", id: "category2" },
                             on: {
                               change: function($event) {
                                 var $$selectedVal = Array.prototype.filter

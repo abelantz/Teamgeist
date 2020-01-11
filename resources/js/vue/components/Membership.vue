@@ -41,16 +41,16 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr v-for="membership in memberships" v-bind:key="membership.id">
-                                    <td>{{ getMembershipUser(membership.user_id).name }}</td>
-                                    <td>CHF {{ getMembershipCategory(membership.members_categories_id).amount }}</td>
-                                    <td>{{ getMembershipCategory(membership.members_categories_id).title }}</td>
-                                    <td>{{ membership.created_at | regDate }}</td>
+                                <tr v-for="member in memberships" v-bind:key="member.id">
+                                    <td>{{ getMembershipUser(member.user_id).name }}</td>
+                                    <td>CHF {{ getMembershipCategory(member.members_categories_id).amount }}</td>
+                                    <td>{{ getMembershipCategory(member.members_categories_id).title }}</td>
+                                    <td>{{ member.created_at | regDate }}</td>
                                     <td>
                                         <div class="btn-group btn-group-sm">
-                                            <a href="#" @click="editMembership(membership.id)" 
+                                            <a href="#" @click="editMembership(member.id)" 
                                                         class="btn btn-info bg-info"><i class="fas fa-edit"></i></a>
-                                            <a @click="deleteMembership(membership.id)" href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                                            <a @click="deleteMembership(member.id)" href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
                                         </div>
                                     </td>
                                 </tr>
@@ -134,7 +134,7 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <select v-model="membership.members_categories_id" title="type" id="type" class="form-control">
+                                    <select v-model="membership.members_categories_id" title="category" id="category" class="form-control">
                                         <option disabled selected value="">Select Member Type</option>
                                         <option v-for="category in memberCategories" 
                                                 v-bind:key="category.id"
@@ -166,31 +166,7 @@
                         <form @submit.prevent="updateMembership">
                             <div class="modal-body">
                                 <div class="form-group">
-                                    <input v-model="membership.name" type="text" name="name" class="form-control"
-                                        placeholder="Name">
-                                </div>
-                                <div class="form-group">
-                                    <input v-model="membership.email" type="email" name="email" class="form-control"
-                                        placeholder="Email">
-                                </div>
-                                <div class="form-group">
-                                    <input v-model="membership.password" type="text" name="password" class="form-control"
-                                        placeholder="Password">
-                                </div>
-                                <div class="form-group">
-                                    <input v-model="membership.password_confirmation" type="text" name="password_confirmation" class="form-control"
-                                        placeholder="Confirm password">
-                                </div>
-                                <div class="form-group">
-                                    <select v-model="membership.role_id" title="role" id="role" class="form-control">
-                                        <option disabled selected value="">Select Role</option>
-                                        <option v-for="role in roles" 
-                                                v-bind:key="role.id"
-                                                v-bind:value="role.id">{{ role.name }}</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <select v-model="membership.members_categories_id" title="type" id="type" class="form-control">
+                                    <select v-model="membership.members_categories_id" title="category2" id="category2" class="form-control">
                                         <option disabled selected value="">Select Member Type</option>
                                         <option v-for="category in memberCategories" 
                                                 v-bind:key="category.id"
@@ -268,9 +244,10 @@
             },
             editMembership(membershipId) {
                 $('#editMembershipModal').modal('show');
-                this.membership = this.memberships.find(membership => {
-                    return this.membership == membershipId;
-                })
+                var membershipById = this.memberships.find(membership => {
+                    return membership.id == membershipId;
+                });
+                this.membership = { ...membershipById };
             },
             createMembership() {
                 this.$store.dispatch('createMembership', this.membership)

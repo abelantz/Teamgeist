@@ -101,25 +101,25 @@ export const store = new Vuex.Store({
             return axios.post('api/categories', payload)
                         .then((response) => {
                             return response;
-                        })
+                        });
         },
         deleteCategory({commit}, payload) {
             return axios.delete('api/categories/' + payload)
                     .then((response) => {
                         return response;
-                    })
+                    });
         },
         createSubCategory({commit}, payload) {
             return axios.post('api/subcategories', payload)
                         .then((response) => {
                             return response;
-                        })
+                        });
         },
         deleteSubCategory({commit}, payload) {
             return axios.delete('api/subcategories/' + payload)
                     .then((response) => {
                         return response;
-                    })
+                    });
         },
         getSubcategories({commit}) {
             axios.get('api/subcategories')
@@ -135,13 +135,13 @@ export const store = new Vuex.Store({
             return axios.post('api/fields', payload)
                         .then((response) => {
                             return response;
-                        })
+                        });
         },
         deleteField({commit}, payload) {
             return axios.delete('api/fields/' + payload)
                     .then((response) => {
                         return response;
-                    })
+                    });
         },
         getWardrobes({commit}) {
             axios.get('api/wardrobes')
@@ -152,13 +152,13 @@ export const store = new Vuex.Store({
             return axios.post('api/wardrobes', payload)
                         .then((response) => {
                             return response;
-                        })
+                        });
         },
         deleteWardrobe({commit}, payload) {
             return axios.delete('api/wardrobes/' + payload)
                     .then((response) => {
                         return response;
-                    })
+                    });
         },
         getMatchdays({commit}) {
             axios.get('api/matchdays')
@@ -169,13 +169,13 @@ export const store = new Vuex.Store({
             return axios.post('api/matchdays', payload)
                         .then((response) => {
                             return response;
-                        })
+                        });
         },
         deleteMatchday({commit}, payload) {
             return axios.delete('api/matchdays/' + payload)
                     .then((response) => {
                         return response;
-                    })
+                    });
         },
         getTrainings({commit}) {
             axios.get('api/trainings')
@@ -186,13 +186,13 @@ export const store = new Vuex.Store({
             return axios.post('api/trainings', payload)
                         .then((response) => {
                             return response;
-                        })
+                        });
         },
         deleteTraining({commit}, payload) {
             return axios.delete('api/trainings/' + payload)
                     .then((response) => {
                         return response;
-                    })
+                    });
         },
         getMemberships({commit}) {
             axios.get('api/memberships')
@@ -203,7 +203,7 @@ export const store = new Vuex.Store({
             return axios.post('api/memberships', payload)
                         .then((response) => {
                             return response;
-                        })
+                        });
         },
         getMemberCategories({commit}) {
             axios.get('api/member_categories')
@@ -214,7 +214,7 @@ export const store = new Vuex.Store({
             return axios.post('api/member_categories', payload)
                         .then((response) => {
                             return response;
-                        })
+                        });
         },
         getReferees({commit}) {
             axios.get('api/referees')
@@ -230,7 +230,7 @@ export const store = new Vuex.Store({
             return axios.post('api/roles', payload)
                         .then((response) => {
                             return response;
-                        })
+                        });
         },
         getPermissions({commit}) {
             axios.get('api/permissions')
