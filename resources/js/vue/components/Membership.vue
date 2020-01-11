@@ -11,7 +11,7 @@
             </div>
             <div class="col-md-4  text-right">
                 <div class="form-group">
-                    <select v-model="membership.type_id" class="form-control">
+                    <select class="form-control">
                         <option disabled selected value="">Select Type</option>
                         <option v-for="category in memberCategories" v-bind:key="category.id"
                             v-bind:value="category.id">{{ category.title }}</option>
@@ -34,7 +34,6 @@
                             <thead>
                                 <tr>
                                     <th>Name</th>
-                                    <th>Team</th>
                                     <th>Amount</th>
                                     <th>Type</th>
                                     <th>Date</th>
@@ -44,13 +43,13 @@
                             <tbody>
                                 <tr v-for="membership in memberships" v-bind:key="membership.id">
                                     <td>{{ getMembershipUser(membership.user_id).name }}</td>
-                                    <td>{{ getMembershipTeam(membership.team_id).name }}</td>
                                     <td>CHF {{ getMembershipCategory(membership.members_categories_id).amount }}</td>
                                     <td>{{ getMembershipCategory(membership.members_categories_id).title }}</td>
                                     <td>{{ membership.created_at | regDate }}</td>
                                     <td>
                                         <div class="btn-group btn-group-sm">
-                                            <a href="#" class="btn btn-info bg-info"><i class="fas fa-edit"></i></a>
+                                            <a href="#" @click="editMembership(membership.id)" 
+                                                        class="btn btn-info bg-info"><i class="fas fa-edit"></i></a>
                                             <a @click="deleteMembership(membership.id)" href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
                                         </div>
                                     </td>
@@ -64,11 +63,11 @@
         </div>
 
         <!-- Member Type Modal  -->
-        <div class="modal  fade" id="addType" tabindex="-1" role="dialog" aria-labelledby="addType" aria-hidden="true">
+        <div class="modal  fade" id="createMemberCategoryModal" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header card-primary card-outline">
-                        <h5 class="modal-title" id="addType">Add Member Type</h5>
+                        <h5 class="modal-title">Add Member Type</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -86,7 +85,7 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-danger" @click="hideModal">Close</button>
                                 <button type="submit" class="btn btn-success">Create</button>
                             </div>
                         </form>
@@ -97,12 +96,12 @@
 
         <!-- Membership Modal -->
 
-        <div class="modal  fade" id="addMember" tabindex="-1" role="dialog" aria-labelledby="addMember"
+        <div class="modal  fade" id="createMembershipModal" tabindex="-1" role="dialog"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header card-primary card-outline">
-                        <h5 class="modal-title" id="addMember">Add Member </h5>
+                        <h5 class="modal-title">Add Membership </h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -142,18 +141,66 @@
                                                 v-bind:value="category.id">{{ category.title }}</option>
                                     </select>
                                 </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" @click="hideModal">Close</button>
+                                <button type="submit" class="btn btn-success">Create</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal  fade" id="editMembershipModal" tabindex="-1" role="dialog"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header card-primary card-outline">
+                        <h5 class="modal-title">Edit Membership </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form @submit.prevent="updateMembership">
+                            <div class="modal-body">
                                 <div class="form-group">
-                                    <select v-model="membership.team_id" name="team" id="team" class="form-control">
-                                        <option disabled selected value="">Select Team</option>
-                                        <option v-for="team in teams" 
-                                                v-bind:key="team.id" 
-                                                v-bind:value="team.id">{{ team.name }}</option>
+                                    <input v-model="membership.name" type="text" name="name" class="form-control"
+                                        placeholder="Name">
+                                </div>
+                                <div class="form-group">
+                                    <input v-model="membership.email" type="email" name="email" class="form-control"
+                                        placeholder="Email">
+                                </div>
+                                <div class="form-group">
+                                    <input v-model="membership.password" type="text" name="password" class="form-control"
+                                        placeholder="Password">
+                                </div>
+                                <div class="form-group">
+                                    <input v-model="membership.password_confirmation" type="text" name="password_confirmation" class="form-control"
+                                        placeholder="Confirm password">
+                                </div>
+                                <div class="form-group">
+                                    <select v-model="membership.role_id" title="role" id="role" class="form-control">
+                                        <option disabled selected value="">Select Role</option>
+                                        <option v-for="role in roles" 
+                                                v-bind:key="role.id"
+                                                v-bind:value="role.id">{{ role.name }}</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <select v-model="membership.members_categories_id" title="type" id="type" class="form-control">
+                                        <option disabled selected value="">Select Member Type</option>
+                                        <option v-for="category in memberCategories" 
+                                                v-bind:key="category.id"
+                                                v-bind:value="category.id">{{ category.title }}</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-success">Create</button>
+                                <button type="button" class="btn btn-danger" @click="hideModal">Close</button>
+                                <button type="submit" class="btn btn-success">Update</button>
                             </div>
                         </form>
                     </div>
@@ -178,7 +225,6 @@
                     password: '',
                     password_confirmation: '',
                     members_categories_id: '',
-                    team_id: '',
                     role_id: '',
                 },
             }
@@ -191,9 +237,6 @@
             memberCategories() {
                 return this.$store.state.memberCategories
             },
-            teams() {
-                return this.$store.state.teams
-            },
             roles() {
                 return this.$store.state.roles
             },
@@ -205,21 +248,29 @@
                     return user.id == userId;
                 }) || '';
             },
-            getMembershipTeam(teamId) {
-                return this.teams.find(team => {
-                    return team.id == teamId;
-                }) || '';
-            },
             getMembershipCategory(categoryId) {
                 return this.memberCategories.find(category => {
                     return category.id == categoryId;
                 }) || '';
             },
             showCreateMemberCategoryModal() {
-                $('#addType').modal('show');
+                $('#createMemberCategoryModal').modal('show');
             },
             showCreateMembershipModal() {
-                $('#addMember').modal('show');
+                $('#createMembershipModal').modal('show');
+            },
+            hideModal() {
+                $('#createMembershipModal').modal('hide');
+                $('#createMemberCategoryModal').modal('hide');
+                $('#editMembershipModal').modal('hide');
+                this.membership = {};
+                this.memberCategory = {};
+            },
+            editMembership(membershipId) {
+                $('#editMembershipModal').modal('show');
+                this.membership = this.memberships.find(membership => {
+                    return this.membership == membershipId;
+                })
             },
             createMembership() {
                 this.$store.dispatch('createMembership', this.membership)
@@ -228,6 +279,9 @@
             createMemberCategory() {
                 this.$store.dispatch('createMemberCategory', this.memberCategory)
                             .then(res => $('#addType').modal('hide'));
+            },
+            updateMembership() {
+                console.log('UPDATE', this.membership);
             },
             deleteMembership(membershipId) {
                 this.$store.dispatch('deleteMembership', membershipId)

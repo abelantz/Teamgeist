@@ -34,9 +34,10 @@
                                     <td>{{member.created_at | regDate}}</td>
                                     <td>
                                         <div class="btn-group btn-group-sm">
-                                            <a href="#" class="btn btn-info bg-info"><i class="fas fa-edit"></i></a>
-                                            <a href="#" @click="deleteMember(member.id)" class="btn btn-danger"><i
-                                                        class="fas fa-trash"></i></a>
+                                            <a href="#" @click="editMember(member.id)" 
+                                                        class="btn btn-info bg-info"><i class="fas fa-edit"></i></a>
+                                            <a href="#" @click="deleteMember(member.id)" 
+                                                        class="btn btn-danger"><i class="fas fa-trash"></i></a>
                                         </div>
                                     </td>
                                 </tr>
@@ -49,8 +50,7 @@
         </div>
 
         <!-- Modal  -->
-
-        <div class="modal fade" id="addNew" tabindex="-1" role="dialog" aria-labelledby="addNew" aria-hidden="true">
+        <div class="modal fade" id="createMemberModal" tabindex="-1" role="dialog" aria-labelledby="addNew" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -83,13 +83,56 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-outline-danger" @click="hideModal">Close</button>
                             <button type="submit" class="btn btn-success">Create</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
+
+        <div class="modal fade" id="editMemberModal" tabindex="-1" role="dialog" aria-labelledby="addNew" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Edit Member</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form @submit.prevent="updateMember">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <input v-model="member.name" type="text" name="name" class="form-control" 
+                                    placeholder="Name">
+                            </div>
+                            <div class="form-group">
+                                <select v-model="member.team_id" type="text" name="team"
+                                    id="team" class="form-control">
+                                    <option disabled selected value="">Select Team</option>
+                                    <option v-for="team in teams" v-bind:key="team.id" v-bind:value="team.id">
+                                        {{ team.name }}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <select v-model="member.membership_id" type="text" name="membership"
+                                    id="membership" class="form-control">
+                                    <option disabled selected value="">Select Membership</option>
+                                    <option v-for="membership in memberships" v-bind:key="membership.id" v-bind:value="membership.id">
+                                        {{ getMembershipUser(membership.user_id).name }}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-danger" @click="hideModal">Close</button>
+                            <button type="submit" class="btn btn-success">Update</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
     </div>
 </template>
 
@@ -125,12 +168,29 @@
             },
 
             newModal() {
-                $('#addNew').modal('show');
+                $('#createMemberModal').modal('show');
+            },
+
+            hideModal() {
+                $('#createMemberModal').modal('hide');
+                $('#editMemberModal').modal('hide');
+                this.member = {}
+            },
+
+            editMember(memberId) {
+                $('#editMemberModal').modal('show');
+                this.member = this.members.find(member => {
+                    return member.id == memberId
+                });
             },
 
             createMember() {
                 this.$store.dispatch('createMember', this.member)
                             .then(res => $('#addNew').modal('hide'));
+            },
+
+            updateMember() {
+                console.log('UPDATE', this.member);
             },
 
         },
