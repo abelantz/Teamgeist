@@ -33,7 +33,7 @@
                                     <td>{{user.created_at | regDate}}</td>
                                     <td>
                                         <div class="btn-group btn-group-sm">
-                                            <a href="#"  class="btn btn-info bg-info"><i class="fas fa-edit"></i></a>
+                                            <a href="#" @click="editUser(user.id)" class="btn btn-info bg-info"><i class="fas fa-edit"></i></a>
                                             <a href="#" @click="deleteUser(user.id)" class="btn btn-danger"><i class="fas fa-trash"></i></a>
                                         </div>
                                         
@@ -61,6 +61,50 @@
                         </button>
                     </div>
                     <form @submit.prevent="createUser">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <input v-model="user.name" type="text" name="name" class="form-control"
+                                    placeholder="Name">
+                            </div>
+                            <div class="form-group">
+                                <input v-model="user.email" type="email" name="email" class="form-control"
+                                    placeholder="Email">
+                            </div>
+                            <div class="form-group">
+                                <input v-model="user.password" type="password" name="password" id="password"
+                                    class="form-control" placeholder="Password">
+                            </div>
+                            <div class="form-group">
+                                    <select v-model="user.role_id" type="role"
+                                        title="role" id="role" class="form-control">
+                                        <option disabled value="">Select Role</option>
+                                        <option v-for="role in roles" v-bind:key="role.id"
+                                            v-bind:value="role.id">{{role.name}}</option>
+                                    </select>
+                             </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-success">Create</button>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Edit User  -->
+
+         <div class="modal fade" id="editUserModal" tabindex="-1" role="dialog" aria-labelledby="editUserModal" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editUserModal">Edit User</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form @submit.prevent="updateUser">
                         <div class="modal-body">
                             <div class="form-group">
                                 <input v-model="user.name" type="text" name="name" class="form-control"
@@ -121,7 +165,15 @@
             newModal() {
                 $('#addNew').modal('show');
             },
-
+            editUser(userId){
+                $('#editUserModal').modal('show');
+                this.user = this.users.find(user => {
+                    return user.id == userId;
+                })
+            },
+            updateUser(){
+                console.log('UPDATE', this.users);
+            }
         },
 
     }

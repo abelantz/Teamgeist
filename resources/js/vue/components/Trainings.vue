@@ -41,7 +41,7 @@
                                     </td>
                                     <td>
                                         <div class="btn-group btn-group-sm">
-                                            <a href="#" class="btn btn-info bg-info"><i class="fas fa-edit"></i></a>
+                                            <button class="btn btn-info bg-info" @click="editTraining(training.id)"><i class="fas fa-edit"></i></button>
                                             <button class="btn btn-danger" @click="deleteTraining(training.id)"><i class="fas fa-trash"></i></button>
                                         </div>
                                     </td>
@@ -139,6 +139,60 @@
                 </div>
             </div>
         </div>
+
+        <!-- Edit Training Modal  -->
+
+        <div class="modal  fade" id="editTrainingModal" tabindex="-1" role="dialog"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header card-primary card-outline">
+                        <h5 class="modal-title">Edit Training </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form @submit.prevent="updateTraining">
+                             <div class="modal-body">
+                                <div class="form-group">
+                                    <select v-model="training.team_id" type="type" name="type" id="type" class="form-control">
+                                     <option disabled selected value="">Select Team</option>
+                                    <option  v-for="team in teams" v-bind:key="team.id" v-bind:value="team.id">{{team.name}}</option>
+                                </select>
+                                </div>
+                                <div class="form-group">
+                                    <picker label="Date" only-date v-model="training.date" format="YYYY-MM-DD" formatted="DD/MM/YYYY"></picker>
+                                </div>
+                                <div class="form-group">
+                                    <picker label="Start Time" only-time v-model="training.start_time" format="HH:MM:SS" formatted="HH:mm "></picker>
+                                </div>
+                                <div class="form-group">
+                                    <picker label="End Time" only-time v-model="training.end_time" format="HH:MM:SS" formatted="HH:mm "></picker>
+                                </div>
+                                <div class="form-group">
+                                    <select v-model="training.field_id" type="type" name="type" id="type" class="form-control">
+                                    <option disabled selected value="">Select Field</option>
+                                    <option  v-for="field in fields" v-bind:key="field.id" v-bind:value="field.id">{{field.title}}</option>
+
+                                </select>
+                                </div>
+                                <div class="form-group">
+                                    <select v-model="training.wardrobe_id" type="type" name="type" id="type" class="form-control">
+                                     <option disabled selected value="">Select Wardrobe</option>
+                                    <option  v-for="wardrobe in wardrobes" v-bind:key="wardrobe.id" v-bind:value="wardrobe.id">{{wardrobe.title}}</option>
+                                </select>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" >Close</button>
+                                <button type="submit" class="btn btn-success">Update</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 
@@ -208,6 +262,12 @@
             showAttendanceModal() {
                 $('#addAttendance').modal('show')
             },
+            editTraining(trainingId) {
+                $('#editTrainingModal').modal('show');
+                this.training = this.trainings.find(training => {
+                    return training.id == trainingId;
+                })
+            },
             createTraining() {
                 this.$store.dispatch('createTraining', this.training)
                             .then(res => $('#addTraining').modal('hide'));
@@ -215,7 +275,10 @@
             deleteTraining(trainingId) {
                 this.$store.dispatch('deleteTraining', trainingId)
                             .then(res => console.log('training deleted'));
-            }
+            },
+            updateTraining(){
+                console.log('UPDATE', this.training)
+            },
         },
         
         

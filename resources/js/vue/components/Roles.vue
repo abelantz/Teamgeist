@@ -77,6 +77,41 @@
                 </div>
             </div>
             <!-- Edit Modal  -->
+
+            <div class="modal fade" id="editRoleModal" tabindex="-1" role="dialog" aria-labelledby="addNew" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="addNew">Add Role</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <form @submit.prevent="updateRole">
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <input v-model="role.name" type="text" name="name" class="form-control"
+                                        placeholder="Name">
+                                </div>
+                                <div class="form-group">
+                                    <div v-for="permission in permissions" v-bind:key="permission.id" class="custom-control custom-checkbox">
+                                        <input class="custom-control-input" type="checkbox" id="customCheckbox1"
+                                            :value="permission.name"
+                                            v-model="role.permissions">
+                                        <label for="customCheckbox1" class="custom-control-label">{{permission.name}}</label>
+                                    </div>
+                                    
+                                </div>
+                                
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Create</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -109,6 +144,15 @@
                 this.$store.dispatch('createRole', this.role)
                     .then(res => $('#addNew').modal('hide'))
             },
+            editRole(roleId){
+                $('#editRoleModal').modal('show');
+                this.role = this.roles.find(role => {
+                    return role.id == roleId;
+                })
+            },
+            updateRole(){
+                console.log('UPDATE', this.roles);
+            }
         },
     }
 

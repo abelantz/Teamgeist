@@ -46,7 +46,8 @@
                                     </td>
                                     <td>
                                         <div class="btn-group btn-group-sm">
-                                            <a href="#" class="btn btn-info bg-info"><i class="fas fa-edit"></i></a>
+                                            <button class="btn btn-info bg-info" @click="editMatchday(matchday.id)"><i
+                                                    class="fas fa-edit"></i></button>
                                             <button class="btn btn-danger" @click="deleteMatchday(matchday.id)"><i
                                                     class="fas fa-trash"></i></button>
                                         </div>
@@ -72,6 +73,73 @@
                         </button>
                     </div>
                     <form @submit.prevent="createMatchday">
+                        <div class="modal-body ">
+                            <div class="form-group">
+                                <select v-model="matchday.team_id" type="type" name="type" id="type"
+                                    class="form-control">
+                                    <option disabled selected value="">Select Team</option>
+                                    <option v-for="team in teams" v-bind:key="team.id" v-bind:value="team.id">
+                                        {{team.name}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" v-model="matchday.opponent" class="form-control"
+                                    placeholder="FC opponent ...">
+                            </div>
+                            <div class="form-group">
+                                <picker label="Date" only-date v-model="matchday.date" format="YYYY-MM-DD"
+                                    formatted="DD/MM/YYYY"></picker>
+                            </div>
+                            <div class="form-group">
+                                <picker label="Start Time" only-time v-model="matchday.time" format="HH:mm:ss "
+                                    formatted="HH:mm "></picker>
+                            </div>
+                            <div class="form-group">
+                                <select v-model="matchday.type" type="type" name="type" id="type" class="form-control">
+                                    <option disabled selected value="">Select Type</option>
+                                    <option value="home">Home</option>
+                                    <option value="away">Away</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <select v-model="matchday.field_id" type="type" name="type" id="type"
+                                    class="form-control">
+                                    <option disabled selected value="">Select Field</option>
+                                    <option v-for="field in fields" v-bind:key="field.id" v-bind:value="field.id">
+                                        {{field.title}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <select v-model="matchday.wardrobe_id" type="type" name="type" id="type"
+                                    class="form-control">
+                                    <option disabled selected value="">Select Wardrobe</option>
+                                    <option v-for="wardrobe in wardrobes" v-bind:key="wardrobe.id"
+                                        v-bind:value="wardrobe.id">{{wardrobe.title}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-success">Create</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- edit matchday  -->
+
+        <div class="modal fade" id="editMatchdayModal" tabindex="-1" role="dialog" aria-labelledby="addMatch" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addMatch">Update Match</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form @submit.prevent="updateMatchday">
                         <div class="modal-body ">
                             <div class="form-group">
                                 <select v-model="matchday.team_id" type="type" name="type" id="type"
@@ -260,6 +328,12 @@
                     return wardrobe.id == wardrobeId;
                 });
             },
+            editMatchday(matchdayId){
+                $('#editMatchdayModal').modal('show');
+                this.matchday = this.matchdays.find(matchday => {
+                    return matchday.id == matchdayId;
+                })
+            },
             showCreateMatchdayModal() {
                 $('#addMatch').modal('show')
             },
@@ -273,6 +347,9 @@
             deleteMatchday(matchdayId) {
                 this.$store.dispatch('deleteMatchday', matchdayId)
                     .then(res => console.log('deleted matchday'));
+            },
+            updateMatchday(){
+                console.log('UPDATE', this.matchdays);
             }
         },
 

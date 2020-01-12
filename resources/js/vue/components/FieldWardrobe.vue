@@ -27,7 +27,7 @@
                                     <td>{{field.title}}</td>
                                     <td>
                                         <div class="btn-group btn-group-sm">
-                                            <a href="#" class="btn btn-info bg-info"><i class="fas fa-edit"></i></a>
+                                            <button class="btn btn-info bg-info" @click="editField(field.id)"><i class="fas fa-edit"></i></button>
                                             <button class="btn btn-danger" @click="deleteField(field.id)"><i class="fas fa-trash"></i></button>
                                         </div>
                                     </td>
@@ -64,7 +64,7 @@
                                     <td>{{ wardrobe.title }}</td>
                                     <td>
                                        <div class="btn-group btn-group-sm">
-                                            <a href="#" class="btn btn-info bg-info"><i class="fas fa-edit"></i></a>
+                                            <button class="btn btn-info bg-info" @click="editWardrobe(wardrobe.id)"><i class="fas fa-edit"></i></button>
                                             <button class="btn btn-danger" @click="deleteWardrobe(wardrobe.id)"><i class="fas fa-trash"></i></button>
                                         </div>
                                     </td>
@@ -105,6 +105,36 @@
                 </div>
             </div>
         </div>
+
+        <!-- Edit Field Modal -->
+
+        <div class="modal fade" id="editFieldModal" tabindex="-1" role="dialog" aria-labelledby="editFieldModal"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editFieldModal">Edit Field</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form @submit.prevent="updateField">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                 <input v-model="field.title" type="text" name="title" class="form-control"
+                                    placeholder="Title">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Create</button>
+                        </div>
+                    </form>
+                   
+                </div>
+            </div>
+        </div>
+
         <!-- Wardrobe Modal  -->
         <div class="modal fade" id="addWardrobe" tabindex="-1" role="dialog" aria-labelledby="addWardrobe"
             aria-hidden="true">
@@ -132,8 +162,36 @@
                 </div>
             </div>
         </div>
-    </div>
 
+        <!-- Edit Wardrobe Modal  -->
+
+        <div class="modal fade" id="editWardrobeModal" tabindex="-1" role="dialog" aria-labelledby="addWardrobe"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editWardrobeModal">Edit Wardrobe</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form @submit.prevent="updateWardrobe">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <input v-model="wardrobe.title" type="text" name="title" class="form-control"
+                                    placeholder="Title">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Create</button>
+                        </div>
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -171,6 +229,18 @@
                 this.$store.dispatch('createField', this.field)
                             .then(res => $('#addField').modal('hide'));
             },
+            editField(fieldId){
+                $('#editFieldModal').modal('show');
+                this.field = this.fields.find(field => {
+                    return field.id == fieldId;
+                })
+            },
+            editWardrobe(wardrobeId){
+                $('#editWardrobeModal').modal('show');
+                this.wardrobe = this.wardrobes.find(wardrobe => {
+                    return wardrobe.id == wardrobeId;
+                })
+            },
             createWardrobe() {
                 this.$store.dispatch('createWardrobe', this.wardrobe)
                             .then(res => $('#addWardrobe').modal('hide'));
@@ -182,6 +252,12 @@
             deleteWardrobe(wardrobeId) {
                 this.$store.dispatch('deleteWardrobe', wardrobeId)
                             .then(res => console.log('wardrobe deleted'));
+            },
+            updateField(){
+                console.log('UPDATE', this.fields);
+            },
+            updateWardrobe(){
+                console.log('UPDATE', this.wardrobes);
             }
         },
     }
