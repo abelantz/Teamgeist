@@ -16,7 +16,6 @@ class CreateMembershipsTable extends Migration
         Schema::create('memberships', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedInteger('members_categories_id');
-            $table->unsignedInteger('team_id');
             $table->unsignedInteger('user_id');
             $table->boolean('paid');
             $table->timestamps();

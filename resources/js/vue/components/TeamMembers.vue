@@ -8,7 +8,7 @@
                         <h3 class="card-title">Team Members</h3>
 
                         <div class="card-tools">
-                            <button class="btn btn-info bg-info" @click="newModal"> Add New <i
+                            <button class="btn btn-info bg-info" @click="showCreateMemberModal"> Add New <i
                                     class="fas fa-user-plus "></i></button>
                         </div>
                     </div>
@@ -29,7 +29,7 @@
                                 <tr v-for="member in members" v-bind:key="member.id">
                                     <td>{{member.id}}</td>
                                     <td>{{member.name | upText }}</td>
-                                    <td>{{member.team_id}}</td>
+                                    <td>{{ getMemberTeam(member.team_id).name }}</td>
                                     <td><span class="tag tag-success">{{member.type}}</span></td>
                                     <td>{{member.created_at | regDate}}</td>
                                     <td>
@@ -167,7 +167,14 @@
                 }) || '';
             },
 
-            newModal() {
+            getMemberTeam(teamId) {
+                return this.$store.state.teams.find(team => {
+                    return team.id == teamId
+                }) || '';
+            },
+
+
+            showCreateMemberModal() {
                 $('#createMemberModal').modal('show');
             },
 
@@ -179,18 +186,20 @@
 
             editMember(memberId) {
                 $('#editMemberModal').modal('show');
-                this.member = this.members.find(member => {
+                var member = this.members.find(member => {
                     return member.id == memberId
                 });
+                this.member = { ...member };
             },
 
             createMember() {
                 this.$store.dispatch('createMember', this.member)
-                            .then(res => $('#addNew').modal('hide'));
+                            .then(res => this.hideModal());
             },
 
             updateMember() {
-                console.log('UPDATE', this.member);
+                this.$store.dispatch('updateMember', this.member)
+                            .then(res => this.hideModal());
             },
 
         },

@@ -69,9 +69,17 @@ export const store = new Vuex.Store({
                         return response;
                     })
         },
-        createTeam({commit}, payload) {
+        createTeam({commit, dispatch}, payload) {
             return axios.post('api/teams', payload)
                     .then((response) => {
+                        dispatch('getTeams');
+                        return response;
+                    })
+        },
+        editTeam({commit, dispatch}, payload) {
+            return axios.put('api/teams/' + payload.id, payload)
+                    .then((response) => {
+                        dispatch('getTeams');
                         return response;
                     })
         },
@@ -81,16 +89,24 @@ export const store = new Vuex.Store({
                         return response;
                     })
         },
-        createTeamMembers({commit}, payload) {
-            return axios.post('../api/members', payload)
-                    .then((response) => {
-                        return response;
-            })
-        },
         getMembers({commit}) {
             axios.get('api/members')
                     .then((response) => 
                         commit('getMembers', response.data.data));
+        },
+        createMember({commit, dispatch}, payload) {
+            return axios.post('api/members', payload)
+                        .then((response) => {
+                            dispatch('getMembers');
+                            return response;
+                        });
+        },
+        updateMember({commit, dispatch}, payload) {
+            return axios.put('api/members/' + payload.id, payload)
+                        .then((response) => {
+                            dispatch('getMembers');
+                            return response;
+                        });
         },
         getCategories({commit}) {
             axios.get('api/categories')
@@ -134,6 +150,14 @@ export const store = new Vuex.Store({
         createField({commit}, payload) {
             return axios.post('api/fields', payload)
                         .then((response) => {
+                            dispatch('getFields');
+                            return response;
+                        });
+        },
+        updateField({commit, dispatch}, payload) {
+            return axios.post('api/fields/' + payload.id, payload)
+                        .then((response) => {
+                            dispatch('getFields');
                             return response;
                         });
         },
@@ -151,6 +175,14 @@ export const store = new Vuex.Store({
         createWardrobe({commit}, payload) {
             return axios.post('api/wardrobes', payload)
                         .then((response) => {
+                            dispatch('getWardrobes');
+                            return response;
+                        });
+        },
+        updateWardrobe({commit, dispatch}, payload) {
+            return axios.post('api/wardrobes/' + payload.id, payload)
+                        .then((response) => {
+                            dispatch('getWardrobes');
                             return response;
                         });
         },
@@ -199,9 +231,17 @@ export const store = new Vuex.Store({
                         .then((response) => 
                             commit('getMemberships', response.data.data));
         },
-        createMembership({commit}, payload) {
+        createMembership({commit, dispatch}, payload) {
             return axios.post('api/memberships', payload)
                         .then((response) => {
+                            dispatch('getMemberships');
+                            return response;
+                        });
+        },
+        updateMembership({commit, dispatch}, payload) {
+            return axios.put('api/memberships/' + payload.id, payload)
+                        .then((response) => {
+                            dispatch('getMemberships');
                             return response;
                         });
         },
@@ -220,6 +260,12 @@ export const store = new Vuex.Store({
             axios.get('api/referees')
                             .then((response) => 
                                 commit('getReferees', response.data.data));
+        },
+        createReferee({commit}, payload) {
+            return axios.post('api/referee_category', payload)
+                        .then((response) => {
+                            return response;
+                        });
         },
         getRoles({commit}) {
             axios.get('api/roles')
@@ -241,6 +287,20 @@ export const store = new Vuex.Store({
             axios.get('api/users')
                             .then((response) => 
                                 commit('getUsers', response.data.data));
+        },
+        createUser({commit, dispatch}, payload) {
+            return axios.post('api/users', payload)
+                        .then((response) => {
+                            dispatch('getUsers');
+                            return response;
+                        });
+        },
+        updateUser({commit, dispatch}, payload) {
+            return axios.put('api/users/' + payload.id, payload)
+                        .then((response) => {
+                            dispatch('getUsers');
+                            return response;
+                        });
         },
     }
 });

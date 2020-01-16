@@ -209,10 +209,11 @@
             },
             createTeam() {
                 this.$store.dispatch('createTeam', this.team)
-                    .then(res => $('#createTeamModal').modal('hide'))
+                    .then(res => this.hideModal());
             },
-            updateTeam(teamId) {
-                console.log('UPDATE TEAM', this.team);
+            updateTeam() {
+                this.$store.dispatch('editTeam', this.team)
+                    .then(res => this.hideModal());
             },
             deleteTeam(teamId) {
                 this.$store.dispatch('deleteTeam', teamId)

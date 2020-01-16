@@ -225,21 +225,29 @@
             showFieldCreateModal() {
                 $('#addField').modal('show');
             },
-            createField() {
-                this.$store.dispatch('createField', this.field)
-                            .then(res => $('#addField').modal('hide'));
+            hideModal() {
+                $('#addField').modal('hide');
+                $('#addWardrobe').modal('hide');
+                this.field = {};
+                this.wardrobe = {};
             },
             editField(fieldId){
                 $('#editFieldModal').modal('show');
-                this.field = this.fields.find(field => {
+                var field = this.fields.find(field => {
                     return field.id == fieldId;
                 })
+                this.field = { ...field };
             },
             editWardrobe(wardrobeId){
                 $('#editWardrobeModal').modal('show');
-                this.wardrobe = this.wardrobes.find(wardrobe => {
+                var wardrobe = this.wardrobes.find(wardrobe => {
                     return wardrobe.id == wardrobeId;
                 })
+                this.wardrobe = { ...wardrobe };
+            },
+            createField() {
+                this.$store.dispatch('createField', this.field)
+                            .then(res => $('#addField').modal('hide'));
             },
             createWardrobe() {
                 this.$store.dispatch('createWardrobe', this.wardrobe)
@@ -253,11 +261,13 @@
                 this.$store.dispatch('deleteWardrobe', wardrobeId)
                             .then(res => console.log('wardrobe deleted'));
             },
-            updateField(){
-                console.log('UPDATE', this.fields);
+            updateField() {
+                this.$store.dispatch('updateField', this.field)
+                            .then(res => this.hideModal());
             },
-            updateWardrobe(){
-                console.log('UPDATE', this.wardrobes);
+            updateWardrobe() {
+                this.$store.dispatch('updateWardrobe', this.wardrobe)
+                            .then(res => this.hideModal());
             }
         },
     }

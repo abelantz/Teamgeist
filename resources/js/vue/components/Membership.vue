@@ -244,21 +244,22 @@
             },
             editMembership(membershipId) {
                 $('#editMembershipModal').modal('show');
-                var membershipById = this.memberships.find(membership => {
+                var membership = this.memberships.find(membership => {
                     return membership.id == membershipId;
                 });
-                this.membership = { ...membershipById };
+                this.membership = { ...membership };
             },
             createMembership() {
                 this.$store.dispatch('createMembership', this.membership)
-                            .then(res => $('#addMember').modal('hide'));
+                            .then(res => this.hideModal());
             },
             createMemberCategory() {
                 this.$store.dispatch('createMemberCategory', this.memberCategory)
-                            .then(res => $('#addType').modal('hide'));
+                            .then(res => this.hideModal());
             },
             updateMembership() {
-                console.log('UPDATE', this.membership);
+                this.$store.dispatch('updateMembership', this.membership)
+                            .then(res => this.hideModal());
             },
             deleteMembership(membershipId) {
                 this.$store.dispatch('deleteMembership', membershipId)

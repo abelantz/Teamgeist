@@ -7,7 +7,7 @@
                         <h3 class="card-title">Users</h3>
 
                         <div class="card-tools">
-                            <button class="btn btn-danger bg-danger" @click="newModal"> Add New <i
+                            <button class="btn btn-danger bg-danger" @click="showCreateUserModal"> Add New <i
                                     class="fas fa-user-plus "></i></button>
                         </div>
                     </div>
@@ -51,7 +51,7 @@
 
 
         <!-- Modal -->
-        <div class="modal fade" id="addNew" tabindex="-1" role="dialog" aria-labelledby="addNew" aria-hidden="true">
+        <div class="modal fade" id="createUserModal" tabindex="-1" role="dialog" aria-labelledby="addNew" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">=
@@ -162,17 +162,28 @@
         },
 
         methods: {
-            newModal() {
-                $('#addNew').modal('show');
+            showCreateUserModal() {
+                $('#createUserModal').modal('show');
+            },
+            hideModal() {
+                $('#createUserModal').modal('hide');
+                $('#editUserModal').modal('hide');
+                this.user = {};
             },
             editUser(userId){
                 $('#editUserModal').modal('show');
-                this.user = this.users.find(user => {
+                var user = this.users.find(user => {
                     return user.id == userId;
                 })
+                this.user = { ...user };
+            },
+            createUser() {
+                this.$store.dispatch('createUser', this.user)
+                            .then(res => this.hideModal());
             },
             updateUser(){
-                console.log('UPDATE', this.users);
+                this.$store.dispatch('updateUser', this.user)
+                            .then(res => this.hideModal());
             }
         },
 
