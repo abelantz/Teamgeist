@@ -37,7 +37,7 @@
                                     <td>{{ matchday.type }}</td>
                                     <td>{{ getMatchdayField(matchday.field_id).title }}</td>
                                     <td>{{ getMatchdayWardrobe(matchday.wardrobe_id).title }}</td>
-                                    <td>Colina</td>
+                                    <td>{{ getMatchdayReferee(matchday.referee_id).name }}</td>
                                     <td>
                                         <div class="btn-group btn-group-sm">
                                             <button class="btn btn-success" @click="showPreparationModal"><i
@@ -99,6 +99,22 @@
                                     <option disabled selected value="">Select Type</option>
                                     <option value="home">Home</option>
                                     <option value="away">Away</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <select v-model="matchday.referee_id" type="referee" name="referee" id="referee"
+                                    class="form-control">
+                                    <option disabled selected value="">Select referee</option>
+                                    <option v-for="referee in referees" v-bind:key="referee.id" v-bind:value="referee.id">
+                                        {{referee.name}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <select v-model="matchday.member_id" type="member" name="member" id="member"
+                                    class="form-control">
+                                    <option disabled selected value="">Select captain</option>
+                                    <option v-for="member in members" v-bind:key="member.id" v-bind:value="member.id">
+                                        {{member.name}}</option>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -166,6 +182,22 @@
                                     <option disabled selected value="">Select Type</option>
                                     <option value="home">Home</option>
                                     <option value="away">Away</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <select v-model="matchday.referee_id" type="referee" name="referee" id="referee"
+                                    class="form-control">
+                                    <option disabled selected value="">Select referee</option>
+                                    <option v-for="referee in referees" v-bind:key="referee.id" v-bind:value="referee.id">
+                                        {{referee.name}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <select v-model="matchday.member_id" type="member" name="member" id="member"
+                                    class="form-control">
+                                    <option disabled selected value="">Select captain</option>
+                                    <option v-for="member in members" v-bind:key="member.id" v-bind:value="member.id">
+                                        {{member.name}}</option>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -301,6 +333,9 @@
             teams() {
                 return this.$store.state.teams
             },
+            referees() {
+                return this.$store.state.referees
+            },
             members() {
                 return this.$store.state.members
             },
@@ -318,6 +353,11 @@
                     return team.id == teamId;
                 });
             },
+            getMatchdayReferee(refereeId) {
+                return this.referees.find(referee => {
+                    return referee.id == refereeId;
+                });
+            },
             getMatchdayField(fieldId) {
                 return this.fields.find(field => {
                     return field.id == fieldId;
@@ -330,9 +370,16 @@
             },
             editMatchday(matchdayId){
                 $('#editMatchdayModal').modal('show');
-                this.matchday = this.matchdays.find(matchday => {
+                var matchday = this.matchdays.find(matchday => {
                     return matchday.id == matchdayId;
-                })
+                });
+                this.matchday = { ...matchday };
+            },
+            hideModal() {
+                $('#addMatch').modal('hide');
+                $('#addFormation').modal('hide')
+                $('#editMatchdayModal').modal('hide');
+                this.matchday = {};
             },
             showCreateMatchdayModal() {
                 $('#addMatch').modal('show')
@@ -342,14 +389,15 @@
             },
             createMatchday() {
                 this.$store.dispatch('createMatchday', this.matchday)
-                    .then(res => $('#addMatch').modal('hide'));
+                            .then(res => this.hideModal());
             },
             deleteMatchday(matchdayId) {
                 this.$store.dispatch('deleteMatchday', matchdayId)
-                    .then(res => console.log('deleted matchday'));
+                            .then(res => console.log('deleted matchday'));
             },
             updateMatchday(){
-                console.log('UPDATE', this.matchdays);
+                this.$store.dispatch('updateMatchday', this.matchday)
+                            .then(res => this.hideModal());
             }
         },
 

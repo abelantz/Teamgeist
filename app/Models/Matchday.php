@@ -18,6 +18,8 @@ class Matchday extends Model
         'time',
         'type',
         'field_id',
-        'wardrobe_id'
+        'wardrobe_id',
+        'referee_id',
+        'member_id'
     ];
 }

@@ -15,11 +15,14 @@ class CreateMatchdaysTable extends Migration
     {
         Schema::create('matchdays', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->dateTime('time');
+            $table->date('date');
+            $table->time('time');
+            $table->string('opponent');
             $table->unsignedInteger('field_id');
+            $table->unsignedInteger('wardrobe_id');
             $table->unsignedInteger('referee_id');
-            $table->unsignedInteger('home_team_id');
-            $table->unsignedInteger('away_team_id');
+            $table->unsignedInteger('team_id');
+            $table->unsignedInteger('member_id');
             $table->timestamps();
         });
     }

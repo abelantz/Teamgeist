@@ -262,22 +262,30 @@
             showAttendanceModal() {
                 $('#addAttendance').modal('show')
             },
+            hideModal() {
+                $('#addAttendance').modal('hide')
+                $('#addTraining').modal('hide')
+                $('#editTrainingModal').modal('hide');
+                this.training = {};
+            },
             editTraining(trainingId) {
                 $('#editTrainingModal').modal('show');
-                this.training = this.trainings.find(training => {
+                var training = this.trainings.find(training => {
                     return training.id == trainingId;
-                })
+                });
+                this.training = { ...training };
             },
             createTraining() {
                 this.$store.dispatch('createTraining', this.training)
-                            .then(res => $('#addTraining').modal('hide'));
+                            .then(res => tihs.hideModal());
             },
             deleteTraining(trainingId) {
                 this.$store.dispatch('deleteTraining', trainingId)
                             .then(res => console.log('training deleted'));
             },
             updateTraining(){
-                console.log('UPDATE', this.training)
+                this.$store.dispatch('updateTraining', this.training)
+                            .then(res => tihs.hideModal());
             },
         },
         
