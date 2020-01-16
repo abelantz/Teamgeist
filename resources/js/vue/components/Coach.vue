@@ -3,7 +3,7 @@
       <h1>Profile</h1>
         <div class="row">
             <div class="col-md-4">
-                <div class="card card-primary card-outline">
+                <div class="card ">
                     <div class="card-body box-profile">
                         <h3 class="profile-username text-center">Pep Guardiola</h3>
                         <p class="text-muted text-center">Coach</p>
@@ -32,7 +32,7 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="card card-primary card-outline" style="height:455px;">
+                <div class="card " style="height:455px;">
                     <div class="card-body box-profile text-center">
                         <h5>Picture of coach</h5>
                     </div>
@@ -100,7 +100,7 @@
         </div>
         <div class="row">
             <div class="col-md-8 col-sm-12">
-                <div class="card card-success card-outline">
+                <div class="card ">
                     <div class="card-header">
                         <h3 class="card-title">Staff List</h3>
                         <div class="card-tools">
@@ -170,7 +170,7 @@
                 <!-- /.card -->
             </div>
             <div class="col-md-4">
-                <div class="card card-warning">
+                <div class="card ">
                     <div class="card-header ">
                         <h3 class="card-title ">Overview Trainings</h3>
                         <div class="card-tools">
@@ -195,7 +195,7 @@
                     </div>
                     <!-- /.card-body -->
                 </div>
-                <div class="card card-warning card-outline">
+                <div class="card ">
                     <div class="card-header">
                         <h3 class="card-title">Overview availability</h3>
                     </div>

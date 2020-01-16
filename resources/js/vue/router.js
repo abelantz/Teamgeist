@@ -28,7 +28,8 @@ import FieldWardrobe from './components/FieldWardrobe';
 import Liveticker from './components/Liveticker';
 import CoachDashboard from './components/CoachDashboard';
 import PlayerManagement from './components/PlayerManagement';
-
+import PlayerProfile from './components/PlayerProfile';
+import EditPlayerOverview from './components/EditPlayerOverview';
 
 const routes = [
     { path: '/dashboard', component: Dashboard },
@@ -59,6 +60,8 @@ const routes = [
     { path: '/live', component: Liveticker },
     { path: '/coachdashboard', component: CoachDashboard },
     { path: '/playermanagement', component: PlayerManagement },
+    { path: '/playerprofile', component: PlayerProfile },
+    { path: '/editOverview', component: EditPlayerOverview },
 
 ];
 
