@@ -155,7 +155,7 @@ export const store = new Vuex.Store({
                         });
         },
         updateField({commit, dispatch}, payload) {
-            return axios.post('api/fields/' + payload.id, payload)
+            return axios.put('api/fields/' + payload.id, payload)
                         .then((response) => {
                             dispatch('getFields');
                             return response;
@@ -180,7 +180,7 @@ export const store = new Vuex.Store({
                         });
         },
         updateWardrobe({commit, dispatch}, payload) {
-            return axios.post('api/wardrobes/' + payload.id, payload)
+            return axios.put('api/wardrobes/' + payload.id, payload)
                         .then((response) => {
                             dispatch('getWardrobes');
                             return response;

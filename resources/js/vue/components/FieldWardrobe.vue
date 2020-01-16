@@ -228,6 +228,8 @@
             hideModal() {
                 $('#addField').modal('hide');
                 $('#addWardrobe').modal('hide');
+                $('#editFieldModal').modal('hide');
+                $('#editWardrobeModal').modal('hide');
                 this.field = {};
                 this.wardrobe = {};
             },
