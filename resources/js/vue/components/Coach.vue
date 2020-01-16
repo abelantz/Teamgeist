@@ -1,5 +1,6 @@
 <template>
     <div>
+      <h1>Profile</h1>
         <div class="row">
             <div class="col-md-4">
                 <div class="card card-primary card-outline">
@@ -37,14 +38,62 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card card-primary card-outline" style="height:455px;">
+            <div class="col-4">
+                <div class="card">
                     <div class="card-header">
-                        Table select season (team of coach)
+                        <h3 class="card-title">Table select season (team of coach)</h3>
                     </div>
-                    <div class="card-body box-profile">
-
+                    <!-- /.card-header -->
+                    <div class="card-body p-0">
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th style="width: 10px">#</th>
+                                    <th>Title</th>
+                                    <th style="width: 40px">Points</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1.</td>
+                                    <td>Barcelona</td>
+                                    <td><span class="badge bg-danger">55</span></td>
+                                </tr>
+                                <tr>
+                                    <td>2.</td>
+                                    <td>Sevilla</td>
+                                    <td><span class="badge bg-warning">40</span></td>
+                                </tr>
+                                <tr>
+                                    <td>2.</td>
+                                    <td>Sevilla</td>
+                                    <td><span class="badge bg-success">40</span></td>
+                                </tr>
+                                <tr>
+                                    <td>2.</td>
+                                    <td>Sevilla</td>
+                                    <td><span class="badge bg-info">40</span></td>
+                                </tr>
+                                 <tr>
+                                    <td>2.</td>
+                                    <td>Sevilla</td>
+                                    <td><span class="badge bg-success">40</span></td>
+                                </tr>
+                                <tr>
+                                    <td>2.</td>
+                                    <td>Sevilla</td>
+                                    <td><span class="badge bg-info">40</span></td>
+                                </tr>
+                                 <tr>
+                                    <td>2.</td>
+                                    <td>Sevilla</td>
+                                    <td><span class="badge bg-success">40</span></td>
+                                </tr>
+                                
+                            </tbody>
+                        </table>
                     </div>
+                    <!-- /.card-body -->
                 </div>
             </div>
 
@@ -124,12 +173,13 @@
                 <div class="card card-warning">
                     <div class="card-header ">
                         <h3 class="card-title ">Overview Trainings</h3>
-                         <div class="card-tools">
-                      <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-                      </button>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
+                                    class="fas fa-minus"></i>
+                            </button>
+                        </div>
                     </div>
-                    </div>
-                   
+
                     <div class="card-body">
                         <ul class=" bg-transparent mb-3">
                             <li class="">
@@ -145,54 +195,54 @@
                     </div>
                     <!-- /.card-body -->
                 </div>
-                 <div class="card card-warning card-outline">
-              <div class="card-header">
-                <h3 class="card-title">Overview availability</h3>
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body p-0">
-                <table class="table table-condensed">
-                  <thead>
-                    <tr>
-                      <th style="width: 10px">#</th>
-                      <th>Task</th>
-                      <th>Progress</th>
-                      <th style="width: 40px">Label</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>1.</td>
-                      <td>Trainings</td>
-                      <td>
-                        <div class="progress progress-xs">
-                          <div class="progress-bar progress-bar-danger" style="width: 85%"></div>
-                        </div>
-                      </td>
-                      <td><span class="badge bg-danger">58/2</span>
-                          
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>2.</td>
-                      <td>Matches</td>
-                      <td>
-                        <div class="progress progress-xs">
-                          <div class="progress-bar bg-warning" style="width: 70%"></div>
-                        </div>
-                      </td>
-                      <td><span class="badge bg-warning">8/2</span></td>
-                    </tr>
-                    
-                  </tbody>
-                </table>
-              </div>
-              <!-- /.card-body -->
+                <div class="card card-warning card-outline">
+                    <div class="card-header">
+                        <h3 class="card-title">Overview availability</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body p-0">
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th style="width: 10px">#</th>
+                                    <th>Task</th>
+                                    <th>Progress</th>
+                                    <th style="width: 40px">Label</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1.</td>
+                                    <td>Trainings</td>
+                                    <td>
+                                        <div class="progress progress-xs">
+                                            <div class="progress-bar progress-bar-danger" style="width: 85%"></div>
+                                        </div>
+                                    </td>
+                                    <td><span class="badge bg-danger">58/2</span>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2.</td>
+                                    <td>Matches</td>
+                                    <td>
+                                        <div class="progress progress-xs">
+                                            <div class="progress-bar bg-warning" style="width: 70%"></div>
+                                        </div>
+                                    </td>
+                                    <td><span class="badge bg-warning">8/2</span></td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
             </div>
-            </div>
-            
-          </div>
+
         </div>
+    </div>
 
 </template>
 

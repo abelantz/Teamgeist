@@ -26,6 +26,8 @@ import Tasks from './components/Tasks';
 import Refrees from './components/Refrees';
 import FieldWardrobe from './components/FieldWardrobe';
 import Liveticker from './components/Liveticker';
+import CoachDashboard from './components/CoachDashboard';
+import PlayerManagement from './components/PlayerManagement';
 
 
 const routes = [
@@ -55,6 +57,8 @@ const routes = [
     { path: '/refrees', component: Refrees },
     { path: '/fieldwardrobe', component: FieldWardrobe },
     { path: '/live', component: Liveticker },
+    { path: '/coachdashboard', component: CoachDashboard },
+    { path: '/playermanagement', component: PlayerManagement },
 
 ];
 
