@@ -13,9 +13,11 @@ export const store = new Vuex.Store({
         memberships: [],
         memberCategories: [],
         referees: [],
+        referee_categories: [],
         roles: [],
         permissions: [],
-        users: []
+        users: [],
+        invoices: []
     },
     mutations: {
         getTeams(state, payload) {
@@ -51,6 +53,9 @@ export const store = new Vuex.Store({
         getReferees(state, payload) {
             state.referees =  payload
         },
+        getRefereeCategories(state, payload) {
+            state.referee_categories =  payload
+        },
         getRoles(state, payload) {
             state.roles = payload
         },
@@ -59,7 +64,10 @@ export const store = new Vuex.Store({
         },
         getUsers(state, payload) {
             state.users = payload
-        }
+        },
+        getInvoices(state, payload) {
+            state.invoices = payload
+        },
     },
     actions: {
         getTeams({commit}) {
@@ -155,7 +163,7 @@ export const store = new Vuex.Store({
                         });
         },
         updateField({commit, dispatch}, payload) {
-            return axios.post('api/fields/' + payload.id, payload)
+            return axios.put('api/fields/' + payload.id, payload)
                         .then((response) => {
                             dispatch('getFields');
                             return response;
@@ -180,7 +188,7 @@ export const store = new Vuex.Store({
                         });
         },
         updateWardrobe({commit, dispatch}, payload) {
-            return axios.post('api/wardrobes/' + payload.id, payload)
+            return axios.put('api/wardrobes/' + payload.id, payload)
                         .then((response) => {
                             dispatch('getWardrobes');
                             return response;
@@ -200,6 +208,13 @@ export const store = new Vuex.Store({
         createMatchday({commit}, payload) {
             return axios.post('api/matchdays', payload)
                         .then((response) => {
+                            return response;
+                        });
+        },
+        updateMatchday({commit, dispatch}, payload) {
+            return axios.put('api/matchdays/' + payload.id, payload)
+                        .then((response) => {
+                            dispatch('getMatchdays');
                             return response;
                         });
         },
@@ -261,9 +276,36 @@ export const store = new Vuex.Store({
                             .then((response) => 
                                 commit('getReferees', response.data.data));
         },
-        createReferee({commit}, payload) {
-            return axios.post('api/referee_category', payload)
+        createReferee({commit, dispatch}, payload) {
+            return axios.post('api/referees', payload)
                         .then((response) => {
+                            dispatch('getReferees');
+                            return response;
+                        });
+        },
+        updateReferee({commit, dispatch}, payload) {
+            return axios.put('api/referees/' + payload.id, payload)
+                        .then((response) => {
+                            dispatch('getReferees');
+                            return response;
+                        });
+        },
+        deleteReferee({commit, dispatch}, payload) {
+            return axios.delete('api/referees/' + payload)
+                    .then((response) => {
+                        dispatch('getReferees');
+                        return response;
+                    });
+        },
+        getRefereeCategories({commit}) {
+            axios.get('api/referee_categories')
+                            .then((response) => 
+                                commit('getRefereeCategories', response.data.data));
+        },
+        createRefereeCategory({commit, dispatch}, payload) {
+            return axios.post('api/referee_categories', payload)
+                        .then((response) => {
+                            dispatch('getRefereeCategories');
                             return response;
                         });
         },
@@ -302,6 +344,18 @@ export const store = new Vuex.Store({
                             return response;
                         });
         },
+        getInvoices({commit}) {
+            axios.get('api/invoices')
+                            .then((response) => 
+                                commit('getInvoices', response.data.data));
+        },
+        updateInvoice({commit, dispatch}, payload) {
+            return axios.put('api/invoices/' + payload, {paid: 1})
+                        .then((response) => {
+                            dispatch('getInvoices');
+                            return response;
+                        });
+        },
     }
 });
 
@@ -316,6 +370,9 @@ store.dispatch('getTrainings');
 store.dispatch('getMemberships');
 store.dispatch('getMemberCategories');
 store.dispatch('getReferees');
+store.dispatch('getRefereeCategories');
 store.dispatch('getRoles');
 store.dispatch('getPermissions');
 store.dispatch('getUsers');
+store.dispatch('getInvoices');
+

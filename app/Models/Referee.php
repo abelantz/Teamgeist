@@ -12,6 +12,6 @@ class Referee extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'referee_category_id','type_id'
+        'name', 'referees_category_id','type_id'
     ];
 }
