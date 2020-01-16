@@ -13,6 +13,8 @@ import 'hchs-vue-charts';
 import 'vue-datetime/dist/vue-datetime.css'
 import 'bootstrap';
 import '@fortawesome/fontawesome-free';
+
+
 import app from './app';
 
 const toast = swal.mixin({
