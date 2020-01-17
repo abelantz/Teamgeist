@@ -192,9 +192,10 @@
             },
             editTeam(teamId) {
                 $('#editTeamModal').modal('show');
-                this.team = this.teams.find(team => {
+                var team = this.teams.find(team => {
                     return team.id == teamId;
                 })
+                this.team = { ...team };
             },
             showCreateTeamModal() {
                 $('#createTeamModal').modal('show');

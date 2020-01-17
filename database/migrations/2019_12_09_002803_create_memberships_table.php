@@ -17,7 +17,6 @@ class CreateMembershipsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedInteger('members_categories_id');
             $table->unsignedInteger('user_id');
-            $table->boolean('paid');
             $table->timestamps();
            
         });
