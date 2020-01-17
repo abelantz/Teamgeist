@@ -13,7 +13,7 @@ class Member extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'membership_id', 'team_id'
+        'name', 'membership_id', 'team_id', 'type'
     ];
 
 }

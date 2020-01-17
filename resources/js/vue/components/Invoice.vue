@@ -28,7 +28,7 @@
                                     <td>${{ invoice.amount }}</td>
                                     <td><span class="tag tag-success">{{ invoice.paid == 0 ? 'Pending' : 'Paid'}}</span></td>
                                     <td>
-                                        <div class="btn-group btn-group-sm">
+                                        <div v-if="!invoice.paid" class="btn-group btn-group-sm">
                                             <a href="#"  @click="updateInvoice(invoice.id)" class="btn btn-success bg-success">Paid</a>
                                         </div>
                                     </td>

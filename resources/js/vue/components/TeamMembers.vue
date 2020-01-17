@@ -30,7 +30,7 @@
                                     <td>{{member.id}}</td>
                                     <td>{{member.name | upText }}</td>
                                     <td>{{ getMemberTeam(member.team_id).name }}</td>
-                                    <td><span class="tag tag-success">{{member.type}}</span></td>
+                                    <td>{{member.type}}</td>
                                     <td>{{member.created_at | regDate}}</td>
                                     <td>
                                         <div class="btn-group btn-group-sm">
@@ -66,7 +66,11 @@
                                     placeholder="Name">
                             </div>
                             <div class="form-group">
-                                <select v-model="member.team_id" type="type" name="type"
+                                <input v-model="member.type" type="text" name="type" class="form-control" 
+                                    placeholder="Type">
+                            </div>
+                            <div class="form-group">
+                                <select v-model="member.team_id" type="text" name="team"
                                     id="type" class="form-control">
                                     <option disabled selected value="">Select Team</option>
                                     <option v-for="team in teams" v-bind:key="team.id" v-bind:value="team.id">
@@ -74,7 +78,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <select v-model="member.membership_id" type="type" name="type"
+                                <select v-model="member.membership_id" type="text" name="membership"
                                     id="type" class="form-control">
                                     <option disabled selected value="">Select Membership</option>
                                     <option v-for="membership in memberships" v-bind:key="membership.id" v-bind:value="membership.id">
@@ -105,6 +109,10 @@
                             <div class="form-group">
                                 <input v-model="member.name" type="text" name="name" class="form-control" 
                                     placeholder="Name">
+                            </div>
+                            <div class="form-group">
+                                <input v-model="member.type" type="text" name="type" class="form-control" 
+                                    placeholder="Type">
                             </div>
                             <div class="form-group">
                                 <select v-model="member.team_id" type="text" name="team"
@@ -142,6 +150,7 @@
             return {
                 member: {
                     name: '',
+                    type: '',
                     team_id: '',
                     membership_id: '',
                 }
