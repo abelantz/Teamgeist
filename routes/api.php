@@ -56,5 +56,11 @@ Route::group(['namespace' => 'API'], function () {
     Route::apiResource('wardrobes', 'WardrobeController');
     Route::apiResource('member_categories', 'MembersCategoryController');
     Route::apiResource('referee_categories', 'RefreesCategoryController');
+    Route::apiResource('matchday_events', 'MatchdayEventController');
+
+    Route::post('matchday_attendance', 'MatchdayController@attendace');
+    Route::post('training_attendance', 'TrainingController@attendace');
+
+
     
 });

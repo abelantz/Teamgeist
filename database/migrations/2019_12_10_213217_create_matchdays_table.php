@@ -17,6 +17,7 @@ class CreateMatchdaysTable extends Migration
             $table->bigIncrements('id');
             $table->date('date');
             $table->time('time');
+            $table->string('type');
             $table->string('opponent');
             $table->unsignedInteger('field_id');
             $table->unsignedInteger('wardrobe_id');

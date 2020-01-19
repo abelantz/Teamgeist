@@ -25,6 +25,7 @@
                                     <th>Wardrobe</th>
                                     <th>Referee </th>
                                     <th>Preparation</th>
+                                    <th>Start Match</th>
                                     <th>Modify</th>
                                 </tr>
                             </thead>
@@ -40,9 +41,13 @@
                                     <td>{{ getMatchdayReferee(matchday.referee_id).name }}</td>
                                     <td>
                                         <div class="btn-group btn-group-sm">
-                                            <button class="btn btn-success" @click="showPreparationModal"><i
-                                                    class="fa fa-plus-square-o"></i></button>
+                                            <button class="btn btn-success" @click="addAttendace(matchday.id)"><i
+                                                    class="fa fa-plus"></i></button>
                                         </div>
+                                    </td>
+                                    <td>
+                                        <router-link :to="'/matchday/' + matchday.id + '/live'" class="btn btn-sm btn-success"><i
+                                                    class="fa fa-plus"></i></router-link>
                                     </td>
                                     <td>
                                         <div class="btn-group btn-group-sm">
@@ -238,11 +243,11 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form @submit.prevent="">
+                    <form @submit.prevent="createMatchdayAttendance">
                         <div class="modal-body ">
 
                             <div class="form-group">
-                                <select v-model="preparation.formation" type="type" name="type" id="type"
+                                <select type="type" name="type" id="type"
                                     class="form-control">
                                     <option disabled selected value="">Select Formation</option>
                                     <option value="2–3–5">2–3–5</option>
@@ -320,7 +325,7 @@
                 },
                 preparation: {
                     matchday_id: '',
-                    formation: '',
+                    // formation: '',
                     members: []
                 }
             }
@@ -384,8 +389,9 @@
             showCreateMatchdayModal() {
                 $('#addMatch').modal('show')
             },
-            showPreparationModal() {
+            addAttendace(matchdayId) {
                 $('#addFormation').modal('show')
+                this.preparation.matchday_id = matchdayId;
             },
             createMatchday() {
                 this.$store.dispatch('createMatchday', this.matchday)
@@ -397,6 +403,10 @@
             },
             updateMatchday(){
                 this.$store.dispatch('updateMatchday', this.matchday)
+                            .then(res => this.hideModal());
+            },
+            createMatchdayAttendace() {
+                this.$store.dispatch('createMatchdayAttendace', this.preparation)
                             .then(res => this.hideModal());
             }
         },

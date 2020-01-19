@@ -71,19 +71,19 @@
                         <i class="fas fa-file bg-danger" v-if="event.type == 'redcard'"></i>
                         <div class="timeline-item" v-if="event.type == 'redcard'">
                             <span class="time"><i class="fas fa-clock"></i> {{ formatTime(event) }}</span>
-                            <h3 class="timeline-header"><a href="#">{{ event.member }}</a> recieved a red card</h3>
+                            <h3 class="timeline-header"><a href="#">{{ event.member_id }}</a> recieved a red card</h3>
                         </div>
 
                         <i class="fas fa-file bg-warning" v-if="event.type == 'yellowcard'"></i>
                         <div class="timeline-item" v-if="event.type == 'yellowcard'">
                             <span class="time"><i class="fas fa-clock"></i> {{ formatTime(event) }}</span>
-                            <h3 class="timeline-header"><a href="#">{{ event.member }}</a> recieved a yellow card</h3>
+                            <h3 class="timeline-header"><a href="#">{{ event.member_id }}</a> recieved a yellow card</h3>
                         </div>
 
                         <i class="fas fa-futbol bg-success" v-if="event.type == 'goal'"></i>
                         <div class="timeline-item" v-if="event.type == 'goal'">
                             <span class="time"><i class="fas fa-clock"></i> {{ formatTime(event) }}</span>
-                            <h3 class="timeline-header"><a href="#">{{ event.member }}</a> scored a goal</h3>
+                            <h3 class="timeline-header"><a href="#">{{ event.member_id }}</a> scored a goal</h3>
                         </div>
 
                     </div>
@@ -98,10 +98,10 @@
                     <div class="modal-header">
                         <h5 class="modal-title" 
                             id="addNew" 
-                            v-if="event.member == '' && event.type == 'substitution'">Select Outgoing Player</h5>
+                            v-if="event.member_id == '' && event.type == 'substitution'">Select Outgoing Player</h5>
                         <h5 class="modal-title" 
                             id="addNew" 
-                            v-else-if="event.member != '' && event.type == 'substitution'">Select Incoming Player</h5>
+                            v-else-if="event.member_id != '' && event.type == 'substitution'">Select Incoming Player</h5>
                         <h5 class="modal-title" 
                             id="addNew" 
                             v-else>Select Player</h5>
@@ -109,17 +109,17 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <div class="form-radio">
-                                <ul v-if="event.member == ''">
-                                    <li v-for="member in members" v-bind:key="member.id + '1'">
-                                        <input class="form-check-input" type="radio" :value="member.name"
-                                            v-model="event.member">
+                                <ul v-if="event.member_id != '' && event.type == 'substitution'">
+                                    <li v-for="member in members" v-bind:key="member.id + '2'">
+                                        <input class="form-check-input" type="radio" :value="member.id"
+                                            v-model="event.second_member_id">
                                         <label class="form-check-label">{{ member.name }}</label>
                                     </li>
                                 </ul>
-                                <ul v-if="event.member != '' && event.type == 'substitution'">
-                                    <li v-for="member in members" v-bind:key="member.id + '2'">
-                                        <input class="form-check-input" type="radio" :value="member.name"
-                                            v-model="event.second_member">
+                                <ul v-else>
+                                    <li v-for="member in members" v-bind:key="member.id + '1'">
+                                        <input class="form-check-input" type="radio" :value="member.id"
+                                            v-model="event.member_id">
                                         <label class="form-check-label">{{ member.name }}</label>
                                     </li>
                                 </ul>
@@ -141,15 +141,17 @@
 <script>
     const theme = 'red';
     export default {
+        props: ['matchdayId'],
         data() {
             return {
                 events: [],
                 event: {
-                    member: '',
-                    second_member: '',
+                    member_id: '',
+                    second_member_id: null,
                     type: '',
                     time: '',
                     half: null,
+                    matchday: this.matchdayId
                 },
                 time: '00:00:00.000',
                 half: 1,
@@ -214,7 +216,8 @@
             },
 
             saveEvent() {
-                if (this.event.type != '' && this.event.member != '') {
+                if (this.event.type != '' && this.event.member_id != '') {
+                    this.createEvent();
                     this.events.push(this.event);
                     $('#players').modal('hide');
                     this.event = {
@@ -224,6 +227,11 @@
                         half: null,
                     }
                 }
+            },
+
+            createEvent() {
+                this.$store.dispatch('createMatchdayEvent', this.event)
+                            .then(res => this.closeModal());
             },
 
             startFirstHalf() {
