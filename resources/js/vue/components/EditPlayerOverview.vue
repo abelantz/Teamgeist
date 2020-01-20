@@ -217,7 +217,8 @@
                     val: 7,
                     lineHeight: 10,
                     processStyle: {
-                        backgroundColor: '#42b883'
+                        backgroundColor: '#42b883',
+                        padding: '0 !important'
                     },
                     tooltipStyles: {
                         backgroundColor: '#42b883',
