@@ -1,6 +1,6 @@
 import Vuex from 'vuex';
 
-const URL = 'http://localhost:8000';
+const URL = 'http://teamgeist.test';
 
 export const store = new Vuex.Store({
     state: {

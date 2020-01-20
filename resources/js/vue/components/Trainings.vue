@@ -120,7 +120,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form @submit.prevent="">
+                    <form @submit.prevent="createTrainingAttendance">
                             <div class="modal-body">
                                 <div class="form-check">
                                     <div class="list-group" v-for="member in members" v-bind:key="member.id">

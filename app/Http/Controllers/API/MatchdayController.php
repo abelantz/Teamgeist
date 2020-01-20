@@ -2,12 +2,33 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Http\Controllers\Controller;
 use App\Models\Matchday;
 use Illuminate\Http\Request;
+use App\Models\MatchdayAttendance;
+use App\Http\Controllers\Controller;
 
 class MatchdayController extends Controller
 {
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function attendance(Request $request)
+    {
+        $matchday_attendances = [];
+        foreach($request->members as $member) {
+            $matchday_attendance = MatchdayAttendance::create([
+                'member_id' => $member,
+                'matchday_id' => $request->matchday_id,
+                'type' => 'first_team'
+            ]);
+            array_push($matchday_attendances, $matchday_attendance);
+        }
+        return response()->json(['data' => $matchday_attendances], 200);
+    }
+
     /**
      * Display a listing of the resource.
      *

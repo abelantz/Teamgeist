@@ -58,8 +58,8 @@ Route::group(['namespace' => 'API'], function () {
     Route::apiResource('referee_categories', 'RefreesCategoryController');
     Route::apiResource('matchday_events', 'MatchdayEventController');
 
-    Route::post('matchday_attendance', 'MatchdayController@attendace');
-    Route::post('training_attendance', 'TrainingController@attendace');
+    Route::post('matchday_attendance', 'MatchdayController@attendance');
+    Route::post('training_attendance', 'TrainingController@attendance');
 
 
     

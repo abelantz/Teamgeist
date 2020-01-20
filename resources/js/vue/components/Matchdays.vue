@@ -405,8 +405,8 @@
                 this.$store.dispatch('updateMatchday', this.matchday)
                             .then(res => this.hideModal());
             },
-            createMatchdayAttendace() {
-                this.$store.dispatch('createMatchdayAttendace', this.preparation)
+            createMatchdayAttendance() {
+                this.$store.dispatch('createMatchdayAttendance', this.preparation)
                             .then(res => this.hideModal());
             }
         },

@@ -151,7 +151,7 @@
                     type: '',
                     time: '',
                     half: null,
-                    matchday: this.matchdayId
+                    matchday_id: this.matchdayId
                 },
                 time: '00:00:00.000',
                 half: 1,
@@ -217,6 +217,7 @@
 
             saveEvent() {
                 if (this.event.type != '' && this.event.member_id != '') {
+                    this.event.matchday_id = this.matchday_id
                     this.createEvent();
                     this.events.push(this.event);
                     $('#players').modal('hide');

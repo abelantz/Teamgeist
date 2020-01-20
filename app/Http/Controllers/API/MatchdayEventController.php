@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\MatchdayEvent;
 use Illuminate\Http\Request;
 
 class MatchdayEventController extends Controller
@@ -14,7 +15,8 @@ class MatchdayEventController extends Controller
      */
     public function index()
     {
-        //
+        $matchday_events = MatchdayEvent::all();
+        return response()->json(['data' => $matchday_events], 200);
     }
 
     /**
@@ -25,40 +27,43 @@ class MatchdayEventController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $matchday_event = MatchdayEvent::create($request->all());
+        return response()->json(['data' => $matchday_event], 201);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\MatchdayEvent  $matchday_event
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(MatchdayEvent $matchday_event)
     {
-        //
+        return response()->json(['data' => $matchday_event], 200);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\MatchdayEvent  $matchday_event
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, MatchdayEvent $matchday_event)
     {
-        //
+        $matchday_event->update($request->all());
+        return response()->json(['data' => $matchday_event], 200);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\MatchdayEvent  $matchday_event
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(MatchdayEvent $matchday_event)
     {
-        //
+        $matchday_event->delete();
+        return response()->json(['data' => $matchday_event], 204);
     }
 }

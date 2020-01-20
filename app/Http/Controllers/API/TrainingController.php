@@ -2,12 +2,32 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Http\Controllers\Controller;
 use App\Models\Training;
 use Illuminate\Http\Request;
+use App\Models\TrainingAttendance;
+use App\Http\Controllers\Controller;
 
 class TrainingController extends Controller
 {
+
+     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function attendance(Request $request)
+    {
+        $training_attendances = [];
+        foreach($request->members as $member) {
+            $training_attendance = TrainingAttendance::create([
+                'member_id' => $member,
+                'training_id' => $request->training_id
+            ]);
+            array_push($training_attendances, $training_attendance);
+        }
+        return response()->json(['data' => $training_attendances], 200);
+    }
+
     /**
      * Display a listing of the resource.
      *
