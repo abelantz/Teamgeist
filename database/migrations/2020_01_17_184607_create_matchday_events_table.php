@@ -18,8 +18,8 @@ class CreateMatchdayEventsTable extends Migration
             $table->string('type');
             $table->time('time');
             $table->unsignedInteger('half');
-            $table->unsignedInteger('player_id');
-            $table->unsignedInteger('second_player_id')->nullable();
+            $table->unsignedInteger('member_id');
+            $table->unsignedInteger('second_member_id')->nullable();
             $table->unsignedInteger('matchday_id');
             $table->timestamps();
         });

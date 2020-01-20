@@ -35,7 +35,7 @@
                                     <td>{{ getTrainingWardrobe(training.wardrobe_id).title }}</td>
                                     <td>
                                         <div class="btn-group btn-group-sm">
-                                            <button class="btn btn-success" @click="showAttendanceModal"><i class="fa fa-plus-square-o" ></i></button>
+                                            <button class="btn btn-success" @click="addAttendance(training.id)"><i class="fa fa-plus-square-o" ></i></button>
                                         </div>
                                         
                                     </td>
@@ -125,7 +125,7 @@
                                 <div class="form-check">
                                     <div class="list-group" v-for="member in members" v-bind:key="member.id">
                                         <input class="form-check-input" type="checkbox" :value="member.id"
-                                            v-model="training.attendance">
+                                            v-model="attendance.members">
                                         <label class="form-check-label">{{member.name}}</label>
                                     </div>
                             </div>
@@ -217,7 +217,10 @@
                     end_time: '',
                     field_id: '',
                     wardrobe_id: '',
-                    attendance:[]
+                },
+                attendance: {
+                    training_id: '',
+                    members: []
                 }
             }
         },
@@ -259,8 +262,9 @@
             showCreateTrainingsModal() {
                 $('#addTraining').modal('show')
             },
-            showAttendanceModal() {
+            addAttendance(trainingId) {
                 $('#addAttendance').modal('show')
+                this.attendance.training_id = trainingId;
             },
             hideModal() {
                 $('#addAttendance').modal('hide')
@@ -287,6 +291,10 @@
                 this.$store.dispatch('updateTraining', this.training)
                             .then(res => tihs.hideModal());
             },
+            createTrainingAttendance() {
+                this.$store.dispatch('createTrainingAttendance', this.attendance)
+                            .then(res => this.hideModal());
+            }
         },
         
         
