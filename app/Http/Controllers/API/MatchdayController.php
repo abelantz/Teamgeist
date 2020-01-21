@@ -36,7 +36,16 @@ class MatchdayController extends Controller
      */
     public function index()
     {
-        $matchdays = Matchday::all();
+        $matchdays = Matchday::with([
+                                'team', 
+                                'referee', 
+                                'field', 
+                                'wardrobe', 
+                                'captain' => function($query) {
+                                    $query->with(['membership' => function($query) {
+                                        $query->with('user');
+                                    }]); 
+                                }])->get();
         return response()->json(['data' => $matchdays], 200);
     }
 

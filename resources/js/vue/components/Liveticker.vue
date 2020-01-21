@@ -113,14 +113,14 @@
                                     <li v-for="member in members" v-bind:key="member.id + '2'">
                                         <input class="form-check-input" type="radio" :value="member.id"
                                             v-model="event.second_member_id">
-                                        <label class="form-check-label">{{ member.name }}</label>
+                                        <label class="form-check-label">{{ member.membership.user.name }}</label>
                                     </li>
                                 </ul>
                                 <ul v-else>
                                     <li v-for="member in members" v-bind:key="member.id + '1'">
                                         <input class="form-check-input" type="radio" :value="member.id"
                                             v-model="event.member_id">
-                                        <label class="form-check-label">{{ member.name }}</label>
+                                        <label class="form-check-label">{{ member.membership.user.name }}</label>
                                     </li>
                                 </ul>
                             </div>
@@ -217,7 +217,7 @@
 
             saveEvent() {
                 if (this.event.type != '' && this.event.member_id != '') {
-                    this.event.matchday_id = this.matchday_id
+                    this.event.matchday_id = this.matchdayId
                     this.createEvent();
                     this.events.push(this.event);
                     $('#players').modal('hide');

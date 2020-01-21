@@ -35,7 +35,7 @@ class TrainingController extends Controller
      */
     public function index()
     {
-        $trainings = Training::all();
+        $trainings = Training::with('team', 'field', 'wardrobe')->get();
         return response()->json(['data' => $trainings], 200);
     }
 

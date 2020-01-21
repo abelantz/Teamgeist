@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Membership;
 use Illuminate\Database\Eloquent\Model;
 
 class Member extends Model
@@ -13,7 +14,15 @@ class Member extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'membership_id', 'team_id', 'type'
+        'membership_id', 'team_id', 'type'
     ];
+
+    public function membership() {
+        return $this->belongsTo(Membership::class);
+    }
+
+    public function team() {
+        return $this->belongsTo(Team::class);
+    }
 
 }

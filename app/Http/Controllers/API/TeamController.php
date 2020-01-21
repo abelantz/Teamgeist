@@ -15,7 +15,7 @@ class TeamController extends Controller
      */
     public function index()
     {
-        $teams = Team::all();
+        $teams = Team::with('category', 'subcategory')->get();
         return response()->json(['data' => $teams], 200);
     }
 

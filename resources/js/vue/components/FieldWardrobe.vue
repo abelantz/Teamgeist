@@ -249,11 +249,11 @@
             },
             createField() {
                 this.$store.dispatch('createField', this.field)
-                            .then(res => $('#addField').modal('hide'));
+                            .then(res => this.hideModal());
             },
             createWardrobe() {
                 this.$store.dispatch('createWardrobe', this.wardrobe)
-                            .then(res => $('#addWardrobe').modal('hide'));
+                            .then(res => this.hideModal());
             },
             deleteField(fieldId) {
                 this.$store.dispatch('deleteField', fieldId)

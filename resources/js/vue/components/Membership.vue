@@ -11,7 +11,7 @@
             </div>
             <div class="col-md-4  text-right">
                 <div class="form-group">
-                    <select class="form-control">
+                    <select class="form-control" @change="filterMemberships" v-model="membershipFilter">
                         <option disabled selected value="">Select Type</option>
                         <option v-for="category in memberCategories" v-bind:key="category.id"
                             v-bind:value="category.id">{{ category.title }}</option>
@@ -41,10 +41,10 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr v-for="member in memberships" v-bind:key="member.id">
-                                    <td>{{ getMembershipUser(member.user_id).name }}</td>
-                                    <td>CHF {{ getMembershipCategory(member.members_categories_id).amount }}</td>
-                                    <td>{{ getMembershipCategory(member.members_categories_id).title }}</td>
+                                <tr v-for="member in filteredMemberships" v-bind:key="member.id">
+                                    <td>{{ member.user.name }}</td>
+                                    <td>CHF {{ member.category.amount }}</td>
+                                    <td>{{ member.category.title }}</td>
                                     <td>{{ member.created_at | regDate }}</td>
                                     <td>
                                         <div class="btn-group btn-group-sm">
@@ -203,6 +203,8 @@
                     members_categories_id: '',
                     role_id: '',
                 },
+                membershipFilter: '',
+                filteredMemberships: [],
             }
         },
 
@@ -218,17 +220,13 @@
             },
         },
 
+        watch: {
+            memberships(value) {
+                this.filteredMemberships = value;
+            }
+        },
+
         methods: {
-            getMembershipUser(userId) {
-                return this.$store.state.users.find(user => {
-                    return user.id == userId;
-                }) || '';
-            },
-            getMembershipCategory(categoryId) {
-                return this.memberCategories.find(category => {
-                    return category.id == categoryId;
-                }) || '';
-            },
             showCreateMemberCategoryModal() {
                 $('#createMemberCategoryModal').modal('show');
             },
@@ -241,6 +239,11 @@
                 $('#editMembershipModal').modal('hide');
                 this.membership = {};
                 this.memberCategory = {};
+            },
+            filterMemberships() {
+                this.filteredMemberships = this.memberships.filter(membership => {
+                    return membership.category.id == this.membershipFilter;
+                })
             },
             editMembership(membershipId) {
                 $('#editMembershipModal').modal('show');

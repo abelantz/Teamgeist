@@ -93,9 +93,10 @@ export const store = new Vuex.Store({
                         return response;
                     })
         },
-        deleteTeam({commit}, payload) {
+        deleteTeam({commit, dispatch}, payload) {
             return axios.delete(URL + '/api/teams/' + payload)
                     .then((response) => {
+                        dispatch('getTeams');
                         return response;
                     })
         },
@@ -123,9 +124,10 @@ export const store = new Vuex.Store({
                     .then((response) => 
                         commit('getCategories', response.data.data));
         },
-        createCategory({commit}, payload) {
+        createCategory({commit, dispatch}, payload) {
             return axios.post(URL + '/api/categories', payload)
                         .then((response) => {
+                            dispatch('getCategories');
                             return response;
                         });
         },
@@ -135,9 +137,11 @@ export const store = new Vuex.Store({
                         return response;
                     });
         },
-        createSubCategory({commit}, payload) {
+        createSubCategory({commit, dispatch}, payload) {
             return axios.post(URL + '/api/subcategories', payload)
                         .then((response) => {
+                            dispatch('getCategories');
+                            dispatch('getSubcategories');
                             return response;
                         });
         },
@@ -157,7 +161,7 @@ export const store = new Vuex.Store({
                     .then((response) =>  
                         commit('getFields', response.data.data));
         },
-        createField({commit}, payload) {
+        createField({commit, dispatch}, payload) {
             return axios.post(URL + '/api/fields', payload)
                         .then((response) => {
                             dispatch('getFields');
@@ -171,9 +175,10 @@ export const store = new Vuex.Store({
                             return response;
                         });
         },
-        deleteField({commit}, payload) {
+        deleteField({commit, dispatch}, payload) {
             return axios.delete(URL + '/api/fields/' + payload)
                     .then((response) => {
+                        dispatch('getFields');
                         return response;
                     });
         },
@@ -182,7 +187,7 @@ export const store = new Vuex.Store({
                     .then((response) =>  
                         commit('getWardrobes', response.data.data));
         },
-        createWardrobe({commit}, payload) {
+        createWardrobe({commit, dispatch}, payload) {
             return axios.post(URL + '/api/wardrobes', payload)
                         .then((response) => {
                             dispatch('getWardrobes');
@@ -196,9 +201,10 @@ export const store = new Vuex.Store({
                             return response;
                         });
         },
-        deleteWardrobe({commit}, payload) {
+        deleteWardrobe({commit, dispatch}, payload) {
             return axios.delete(URL + '/api/wardrobes/' + payload)
                     .then((response) => {
+                        dispatch('getWardrobes');
                         return response;
                     });
         },
@@ -207,9 +213,10 @@ export const store = new Vuex.Store({
                         .then((response) => 
                             commit('getMatchdays', response.data.data));
         },
-        createMatchday({commit}, payload) {
+        createMatchday({commit, dispatch}, payload) {
             return axios.post(URL + '/api/matchdays', payload)
                         .then((response) => {
+                            dispatch('getMatchdays');
                             return response;
                         });
         },
@@ -220,9 +227,10 @@ export const store = new Vuex.Store({
                             return response;
                         });
         },
-        deleteMatchday({commit}, payload) {
+        deleteMatchday({commit, dispatch}, payload) {
             return axios.delete(URL + '/api/matchdays/' + payload)
                     .then((response) => {
+                        dispatch('getMatchdays');
                         return response;
                     });
         },
@@ -231,15 +239,24 @@ export const store = new Vuex.Store({
                         .then((response) => 
                             commit('getTrainings', response.data.data));
         },
-        createTraining({commit}, payload) {
+        createTraining({commit, dispatch}, payload) {
             return axios.post(URL + '/api/trainings', payload)
                         .then((response) => {
+                            dispatch('getTrainings');
                             return response;
                         });
         },
-        deleteTraining({commit}, payload) {
+        updateTraining({commit, dispatch}, payload) {
+            return axios.put(URL + '/api/trainings/' + payload.id, payload)
+                        .then((response) => {
+                            dispatch('getTrainings');
+                            return response;
+                        });
+        },
+        deleteTraining({commit, dispatch}, payload) {
             return axios.delete(URL + '/api/trainings/' + payload)
                     .then((response) => {
+                        dispatch('getTrainings');
                         return response;
                     });
         },
@@ -262,14 +279,23 @@ export const store = new Vuex.Store({
                             return response;
                         });
         },
+        deleteMembership({commit, dispatch}, payload) {
+            return axios.delete(URL + '/api/memberships/' + payload)
+                    .then((response) => {
+                        dispatch('getMemberships');
+                        dispatch('getUsers');
+                        return response;
+                    });
+        },
         getMemberCategories({commit}) {
             axios.get(URL + '/api/member_categories')
                             .then((response) => 
                                 commit('getMemberCategories', response.data.data));
         },
-        createMemberCategory({commit}, payload) {
+        createMemberCategory({commit, dispatch}, payload) {
             return axios.post(URL + '/api/member_categories', payload)
                         .then((response) => {
+                            dispatch('getMemberCategories');
                             return response;
                         });
         },

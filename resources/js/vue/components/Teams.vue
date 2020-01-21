@@ -36,11 +36,11 @@
 
                                     <td>
                                         <span class="tag tag-success">
-                                         {{ getCategory(getSubcategory(team.subcategory_id).category_id).title }}
+                                         {{ team.category.title }}
                                          </span>
                                     </td>
                                     <td>
-                                        {{ getSubcategory(team.subcategory_id).title }}
+                                        {{ team.subcategory.title }}
                                     </td>
                                     <td>{{team.created_at | regDate}}</td>
                                     <td>
@@ -80,18 +80,17 @@
                                         placeholder="Name">
                                 </div>
                                 <div class="form-group">
-                                    <select type="type" name="type" id="type" class="form-control">
+                                    <select @change="filterSubcategories" v-model="team.category_id" type="type" name="category_id" id="type" class="form-control">
                                         <option disabled selected value="">Select Category</option>
                                         <option v-for="category in categories" v-bind:key="category.id"
                                             v-bind:value="category.id">{{category.title}}</option>
                                     </select>
-
                                 </div>
                                 <div class="form-group">
                                     <select v-model="team.subcategory_id" type="type" name="type" id="type"
                                         class="form-control">
                                         <option disabled selected value="">Select Subcategory</option>
-                                        <option v-for="subcategory in subcategories" v-bind:key="subcategory.id"
+                                        <option v-for="subcategory in filteredSubcategories" v-bind:key="subcategory.id"
                                             v-bind:value="subcategory.id">{{subcategory.title}}</option>
                                     </select>
                                 </div>
@@ -123,18 +122,17 @@
                                         placeholder="Name">
                                 </div>
                                 <div class="form-group">
-                                    <select type="type" name="type" id="type" class="form-control">
+                                    <select @change="filterSubcategories" v-model="team.category_id" type="type" name="category_id" id="type" class="form-control">
                                         <option disabled selected value="">Select Category</option>
                                         <option v-for="category in categories" v-bind:key="category.id"
                                             v-bind:value="category.id">{{category.title}}</option>
                                     </select>
-
                                 </div>
                                 <div class="form-group">
                                     <select v-model="team.subcategory_id" type="type" name="type" id="type"
                                         class="form-control">
                                         <option disabled selected value="">Select Subcategory</option>
-                                        <option v-for="subcategory in subcategories" v-bind:key="subcategory.id"
+                                        <option v-for="subcategory in filteredSubcategories" v-bind:key="subcategory.id"
                                             v-bind:value="subcategory.id">{{subcategory.title}}</option>
                                     </select>
                                 </div>
@@ -160,8 +158,10 @@
                 showModal: false,
                 team: {
                     name: '',
+                    category_id: '',
                     subcategory_id: '',
-                }
+                },
+                filteredSubcategories: [],
             }
         },
 
@@ -175,21 +175,15 @@
             subcategories() {
                 return this.$store.state.subcategories
             },
-            
-            
+        },
+
+        watch: {
+            subcategories(value) {
+                this.filteredSubcategories = value;
+            }
         },
 
         methods: {
-            getSubcategory(subcategoryId) {
-                return this.subcategories.find(subcategory => {
-                    return subcategory.id == subcategoryId
-                }) || ''
-            },
-            getCategory(categoryId) {
-                return this.categories.find(category => {
-                    return category.id == categoryId
-                }) || ''
-            },
             editTeam(teamId) {
                 $('#editTeamModal').modal('show');
                 var team = this.teams.find(team => {
@@ -197,16 +191,18 @@
                 })
                 this.team = { ...team };
             },
+             filterSubcategories() {
+                this.filteredSubcategories = this.subcategories.filter(subcategory => {
+                    return subcategory.category_id == this.team.category_id;
+                });
+            },
             showCreateTeamModal() {
                 $('#createTeamModal').modal('show');
             },
             hideModal() {
                 $('#editTeamModal').modal('hide');
                 $('#createTeamModal').modal('hide');
-                this.team = {
-                    name: '',
-                    subcategory_id: '',
-                }
+                this.team = {};
             },
             createTeam() {
                 this.$store.dispatch('createTeam', this.team)

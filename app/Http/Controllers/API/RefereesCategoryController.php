@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Models\RefreesCategory;
+use App\Models\RefereesCategory;
 use Illuminate\Http\Request;
 
-class RefreesCategoryController extends Controller
+class RefereesCategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class RefreesCategoryController extends Controller
      */
     public function index()
     {
-        $refrees_categories = RefreesCategory::all();
+        $refrees_categories = RefereesCategory::all();
         return response()->json(['data' => $refrees_categories], 200);
     }
 
@@ -27,17 +27,17 @@ class RefreesCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $refrees_category = RefreesCategory::create($request->all());
+        $refrees_category = RefereesCategory::create($request->all());
         return response()->json(['data' => $refrees_category], 201);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\RefreesCategory  $category
+     * @param  \App\Models\RefereesCategory  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $refrees_category)
+    public function show(RefereesCategory $refrees_category)
     {
         return response()->json(['data' => $refrees_category], 200);
     }
@@ -46,10 +46,10 @@ class RefreesCategoryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\RefreesCategory  $category
+     * @param  \App\Models\RefereesCategory  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, RefreesCategory $refrees_category)
+    public function update(Request $request, RefereesCategory $refrees_category)
     {
         $refrees_category->update($request->all());
         return response()->json(['data' => $refrees_category], 200);
@@ -58,10 +58,10 @@ class RefreesCategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\RefreesCategory  $category
+     * @param  \App\Models\RefereesCategory  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $refrees_category)
+    public function destroy(RefereesCategory $refrees_category)
     {
         $refrees_category->delete();
         return response()->json(['data' => $refrees_category], 204);

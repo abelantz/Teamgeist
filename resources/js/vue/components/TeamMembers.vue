@@ -27,11 +27,11 @@
                             </thead>
                             <tbody>
                                 <tr v-for="member in members" v-bind:key="member.id">
-                                    <td>{{member.id}}</td>
-                                    <td>{{member.name | upText }}</td>
-                                    <td>{{ getMemberTeam(member.team_id).name }}</td>
-                                    <td>{{member.type}}</td>
-                                    <td>{{member.created_at | regDate}}</td>
+                                    <td>{{ member.id}}</td>
+                                    <td>{{ member.membership.user.name || '' | upText }}</td>
+                                    <td>{{ member.team.name || '' }}</td>
+                                    <td>{{ member.type }}</td>
+                                    <td>{{ member.created_at | regDate }}</td>
                                     <td>
                                         <div class="btn-group btn-group-sm">
                                             <a href="#" @click="editMember(member.id)" 
@@ -62,27 +62,28 @@
                     <form @submit.prevent="createMember">
                         <div class="modal-body">
                             <div class="form-group">
-                                <input v-model="member.name" type="text" name="name" class="form-control" 
-                                    placeholder="Name">
-                            </div>
-                            <div class="form-group">
-                                <input v-model="member.type" type="text" name="type" class="form-control" 
-                                    placeholder="Type">
+                                <select v-model="member.membership_id" type="text" name="membership"
+                                    id="membership" class="form-control">
+                                    <option disabled selected value="">Select Membership</option>
+                                    <option v-for="membership in memberships" v-bind:key="membership.id" v-bind:value="membership.id">
+                                        {{ membership.user.name }}</option>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <select v-model="member.team_id" type="text" name="team"
-                                    id="type" class="form-control">
+                                    id="team" class="form-control">
                                     <option disabled selected value="">Select Team</option>
                                     <option v-for="team in teams" v-bind:key="team.id" v-bind:value="team.id">
                                         {{ team.name }}</option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <select v-model="member.membership_id" type="text" name="membership"
+                                <select v-model="member.type" type="text" name="type"
                                     id="type" class="form-control">
-                                    <option disabled selected value="">Select Membership</option>
-                                    <option v-for="membership in memberships" v-bind:key="membership.id" v-bind:value="membership.id">
-                                        {{ getMembershipUser(membership.user_id).name }}</option>
+                                    <option disabled selected value="">Select Type</option>
+                                    <option value="player">Player</option>
+                                    <option value="coach">Coach</option>
+                                    <option value="assistant">Assistant</option>
                                 </select>
                             </div>
                         </div>
@@ -107,12 +108,12 @@
                     <form @submit.prevent="updateMember">
                         <div class="modal-body">
                             <div class="form-group">
-                                <input v-model="member.name" type="text" name="name" class="form-control" 
-                                    placeholder="Name">
-                            </div>
-                            <div class="form-group">
-                                <input v-model="member.type" type="text" name="type" class="form-control" 
-                                    placeholder="Type">
+                                <select v-model="member.membership_id" type="text" name="membership"
+                                    id="membership" class="form-control">
+                                    <option disabled selected value="">Select Membership</option>
+                                    <option v-for="membership in memberships" v-bind:key="membership.id" v-bind:value="membership.id">
+                                        {{ membership.user.name }}</option>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <select v-model="member.team_id" type="text" name="team"
@@ -123,11 +124,12 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <select v-model="member.membership_id" type="text" name="membership"
-                                    id="membership" class="form-control">
-                                    <option disabled selected value="">Select Membership</option>
-                                    <option v-for="membership in memberships" v-bind:key="membership.id" v-bind:value="membership.id">
-                                        {{ getMembershipUser(membership.user_id).name }}</option>
+                                <select v-model="member.type" type="text" name="type"
+                                    id="type" class="form-control">
+                                    <option disabled selected value="">Select Type</option>
+                                    <option value="player">Player</option>
+                                    <option value="coach">Coach</option>
+                                    <option value="assistant">Assistant</option>
                                 </select>
                             </div>
                         </div>
@@ -149,7 +151,6 @@
         data() {
             return {
                 member: {
-                    name: '',
                     type: '',
                     team_id: '',
                     membership_id: '',
@@ -170,18 +171,6 @@
         },
 
         methods: {
-            getMembershipUser(userId) {
-                return this.$store.state.users.find(user => {
-                    return user.id == userId
-                }) || '';
-            },
-
-            getMemberTeam(teamId) {
-                return this.$store.state.teams.find(team => {
-                    return team.id == teamId
-                }) || '';
-            },
-
 
             showCreateMemberModal() {
                 $('#createMemberModal').modal('show');
