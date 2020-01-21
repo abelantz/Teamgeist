@@ -21,11 +21,56 @@
                         <!-- /.card-tools -->
                     </div>
                     <!-- /.card-header -->
-                    <div v-for="subcategory in getSubCategories(category.id)" v-bind:key="subcategory.id" class="card-body" style="display: block;">
+                    <div v-for="subcategory in category.subcategories" v-bind:key="subcategory.id" @click="filterTeams(subcategory.id)" class="card-body" style="display: block;">
                         {{ subcategory.title }}
                     </div>
                     <!-- /.card-body -->
                 </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div class="card card-warning card-outline">
+                    <div class="card-header ">
+                        <h3 class="card-title">Teams</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body table-responsive p-0">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Category</th>
+                                    <th>SubCategory</th>
+                                    <th>Registered At</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="team in filteredTeams" v-bind:key="team.id">
+                                    <td>{{team.id}}</td>
+                                    <td>
+                                        <router-link :to="'/team/' + team.id ">{{team.name}}</router-link>
+                                    </td>
+
+                                    <td>
+                                        <span class="tag tag-success">
+                                         {{ team.category.title }}
+                                         </span>
+                                    </td>
+                                    <td>
+                                        {{ team.subcategory.title }}
+                                    </td>
+                                    <td>{{team.created_at | regDate}}</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
             </div>
         </div>
 
@@ -98,6 +143,7 @@
                     title: '',
                     category_id: ''
                 },
+                filteredTeams: [],
                 categoryMode: true
             }
         },
@@ -106,11 +152,15 @@
             categories() {
                 return this.$store.state.categories
             },
-            subcategories() {
-                return this.$store.state.subcategories
-            },
+            teams() {
+                return this.$store.state.teams;
+            }
+        },
 
-
+        watch: {
+            teams(value) {
+                this.filteredTeams = value;
+            }
         },
 
         methods: {
@@ -122,9 +172,19 @@
                 this.categoryMode = false
                 $('#addNew').modal('show');
             },
+            hideModal() {
+                $('#addNew').modal('hide');
+                this.category = {};
+                this.subcategory = {};
+            },
+            filterTeams(subcategoryId) {
+                this.filteredTeams = this.teams.filter(team => {
+                    return team.subcategory_id == subcategoryId;
+                });
+            },
             createCategory() {
                 this.$store.dispatch('createCategory', this.category)
-                    .then(res => $('#addNew').modal('hide'));
+                    .then(res => this.hideModal());
             },
             deleteCategory(categoryId) {
                 this.$store.dispatch('deleteCategory', categoryId)
@@ -132,18 +192,12 @@
             },
             createSubCategory() {
                 this.$store.dispatch('createSubCategory', this.subcategory)
-                    .then(res => $('#addNew').modal('hide'));
+                    .then(res => this.hideModal());
             },
             deleteSubCategory(subCategoryId) {
                 this.$store.dispatch('deleteSubCategory', subCategoryId)
                     .then(res => console.log(res));
             },
-            getSubCategories(categoryId) {
-                return this.subcategories.filter((subcategory) => {
-                    return subcategory.category_id == categoryId
-                })
-            },
-
         },
     }
 

@@ -19,7 +19,7 @@ class MembershipController extends Controller
      */
     public function index()
     {
-        $memberships = Membership::all();
+        $memberships = Membership::with('category', 'user')->get();
         return response()->json(['data' => $memberships], 200);
     }
 
@@ -42,7 +42,7 @@ class MembershipController extends Controller
             'user_id' => $user->id,
         ]);
         $invoice = Invoice::create([
-            'membership_id' => $membership->id,
+            'name' => $request->name,
             'amount' => MembersCategory::find($request->members_categories_id)->amount,
             'paid' => 0
         ]);
@@ -81,6 +81,7 @@ class MembershipController extends Controller
      */
     public function destroy(Membership $membership)
     {
+        $membership->user->delete();
         $membership->delete();
         return response()->json(['data' => $membership], 204);
     }

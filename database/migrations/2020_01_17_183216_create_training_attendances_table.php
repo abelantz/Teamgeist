@@ -15,7 +15,7 @@ class CreateTrainingAttendancesTable extends Migration
     {
         Schema::create('training_attendances', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedInteger('player_id');
+            $table->unsignedInteger('member_id');
             $table->unsignedInteger('training_id');
             $table->timestamps();
         });

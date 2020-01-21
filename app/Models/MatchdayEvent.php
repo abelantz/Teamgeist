@@ -13,7 +13,7 @@ class MatchdayEvent extends Model
      * @var array
      */
     protected $fillable = [
-        'type', 'time', 'half', 'player_id', 'second_player_id', 'matchday_id',
+        'type', 'time', 'half', 'member_id', 'second_member_id', 'matchday_id',
     ];
 
 }

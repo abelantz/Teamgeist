@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Membership;
 use Illuminate\Database\Eloquent\Model;
 
 class Invoice extends Model
@@ -12,6 +13,11 @@ class Invoice extends Model
      * @var array
      */
     protected $fillable = [
-        'membership_id', 'amount', 'paid'
+        'name', 'amount', 'paid'
     ];
+
+    public function membership() {
+        return $this->belongsTo(Membership::class);
+    }
+
 }

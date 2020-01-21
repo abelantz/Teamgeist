@@ -16,7 +16,7 @@ class CreateMatchdayAttendancesTable extends Migration
         Schema::create('matchday_attendances', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('type');
-            $table->unsignedInteger('player_id');
+            $table->unsignedInteger('member_id');
             $table->unsignedInteger('matchday_id');
             $table->timestamps();
         });

@@ -134,12 +134,6 @@
                             </router-link>
                         </li>
                         <li class="nav-item">
-                            <router-link to="/live" class="nav-link">
-                                <i class="nav-icon far fa-circle nav-icon green"></i>
-                                <p>Liveticker</p>
-                            </router-link>
-                        </li>
-                        <li class="nav-item">
                             <router-link to="/coachdashboard" class="nav-link">
                                 <i class="nav-icon far fa-circle nav-icon green"></i>
                                 <p>Coach Dashboard</p>

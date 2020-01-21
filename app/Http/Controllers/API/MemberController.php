@@ -15,7 +15,9 @@ class MemberController extends Controller
      */
     public function index()
     {
-        $members = Member::all();
+        $members = Member::with(['team', 'membership' => function($query) {
+                                $query->with('user');
+                            }])->get();
         return response()->json(['data' => $members], 200);
     }
 

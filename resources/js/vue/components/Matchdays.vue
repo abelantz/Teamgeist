@@ -24,6 +24,7 @@
                                     <th>Training field</th>
                                     <th>Wardrobe</th>
                                     <th>Referee </th>
+                                    <th>Captain </th>
                                     <th>Preparation</th>
                                     <th>Start Match</th>
                                     <th>Modify</th>
@@ -31,14 +32,15 @@
                             </thead>
                             <tbody>
                                 <tr v-for="matchday in matchdays" v-bind:key="matchday.id">
-                                    <td>{{ getMatchdayTeam(matchday.team_id).name }}</td>
+                                    <td>{{ matchday.team.name }}</td>
                                     <td>{{ matchday.opponent }}</td>
                                     <td>{{ matchday.date | regDate }}</td>
                                     <td>{{ matchday.time }}</td>
                                     <td>{{ matchday.type }}</td>
-                                    <td>{{ getMatchdayField(matchday.field_id).title }}</td>
-                                    <td>{{ getMatchdayWardrobe(matchday.wardrobe_id).title }}</td>
-                                    <td>{{ getMatchdayReferee(matchday.referee_id).name }}</td>
+                                    <td>{{ matchday.field.title }}</td>
+                                    <td>{{ matchday.wardrobe.title }}</td>
+                                    <td>{{ matchday.referee.name }}</td>
+                                    <td>{{ matchday.captain.membership.user.name }}</td>
                                     <td>
                                         <div class="btn-group btn-group-sm">
                                             <button class="btn btn-success" @click="addAttendace(matchday.id)"><i
@@ -119,7 +121,7 @@
                                     class="form-control">
                                     <option disabled selected value="">Select captain</option>
                                     <option v-for="member in members" v-bind:key="member.id" v-bind:value="member.id">
-                                        {{member.name}}</option>
+                                        {{ member.membership.user.name }}</option>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -202,7 +204,7 @@
                                     class="form-control">
                                     <option disabled selected value="">Select captain</option>
                                     <option v-for="member in members" v-bind:key="member.id" v-bind:value="member.id">
-                                        {{member.name}}</option>
+                                        {{ member.membership.user.name }}</option>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -246,7 +248,7 @@
                     <form @submit.prevent="createMatchdayAttendance">
                         <div class="modal-body ">
 
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <select type="type" name="type" id="type"
                                     class="form-control">
                                     <option disabled selected value="">Select Formation</option>
@@ -275,13 +277,13 @@
                                     <option value="3–3–3–1">3–3–3–1</option>
                                     <option value="4–2–1–3–3–1">4–2–1–3</option>
                                 </select>
-                            </div>
+                            </div> -->
                             <div class="form-check">
                                     
                                     <div class="list-group" v-for="member in members" v-bind:key="member.id">
                                         <input class="form-check-input" type="checkbox" :value="member.id"
                                             v-model="preparation.members">
-                                        <label class="form-check-label">{{member.name}}</label>
+                                        <label class="form-check-label">{{member.membership.user.name}}</label>
                                     </div>
                                 
                             </div>
@@ -353,26 +355,6 @@
         },
 
         methods: {
-            getMatchdayTeam(teamId) {
-                return this.teams.find(team => {
-                    return team.id == teamId;
-                });
-            },
-            getMatchdayReferee(refereeId) {
-                return this.referees.find(referee => {
-                    return referee.id == refereeId;
-                });
-            },
-            getMatchdayField(fieldId) {
-                return this.fields.find(field => {
-                    return field.id == fieldId;
-                });
-            },
-            getMatchdayWardrobe(wardrobeId) {
-                return this.wardrobes.find(wardrobe => {
-                    return wardrobe.id == wardrobeId;
-                });
-            },
             editMatchday(matchdayId){
                 $('#editMatchdayModal').modal('show');
                 var matchday = this.matchdays.find(matchday => {
@@ -405,8 +387,8 @@
                 this.$store.dispatch('updateMatchday', this.matchday)
                             .then(res => this.hideModal());
             },
-            createMatchdayAttendace() {
-                this.$store.dispatch('createMatchdayAttendace', this.preparation)
+            createMatchdayAttendance() {
+                this.$store.dispatch('createMatchdayAttendance', this.preparation)
                             .then(res => this.hideModal());
             }
         },

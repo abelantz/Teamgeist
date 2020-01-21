@@ -12,6 +12,6 @@ class MatchdayAttendance extends Model
      * @var array
      */
     protected $fillable = [
-        'type', 'player_id', 'matchday_id'
+        'type', 'member_id', 'matchday_id'
     ];
 }

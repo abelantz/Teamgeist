@@ -15,7 +15,9 @@ class RefereeController extends Controller
      */
     public function index()
     {
-        $referees = Referee::all();
+        $referees = Referee::with(['category', 'membership' => function($query) {
+                                                    $query->with('user');
+                                                }])->get();
         return response()->json(['data' => $referees], 200);
     }
 

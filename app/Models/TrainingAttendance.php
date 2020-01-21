@@ -13,7 +13,7 @@ class TrainingAttendance extends Model
      * @var array
      */
     protected $fillable = [
-        'player_id', 'training_id'
+        'member_id', 'training_id'
     ];
 
 }

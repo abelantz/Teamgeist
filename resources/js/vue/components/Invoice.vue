@@ -24,12 +24,14 @@
                             </thead>
                             <tbody>
                                 <tr v-for="invoice in invoices" v-bind:key="invoice.id">
-                                    <td>{{ getInvoiceUser(getInvoiceMembership(invoice.membership_id).user_id).name }}</td>
+                                    <td>{{ invoice.name }}</td>
                                     <td>${{ invoice.amount }}</td>
                                     <td><span class="tag tag-success">{{ invoice.paid == 0 ? 'Pending' : 'Paid'}}</span></td>
                                     <td>
-                                        <div v-if="!invoice.paid" class="btn-group btn-group-sm">
-                                            <a href="#"  @click="updateInvoice(invoice.id)" class="btn btn-success bg-success">Paid</a>
+                                        <div class="btn-group btn-group-sm">
+                                            <a href="#" @click="updateInvoice(invoice.id)" 
+                                                        class="btn btn-success bg-success" 
+                                                        v-bind:class="{ disabled: invoice.paid}">Paid</a>
                                         </div>
                                     </td>
                                 </tr>

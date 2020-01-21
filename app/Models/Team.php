@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\Category;
+use App\Models\Subcategory;
 use Illuminate\Database\Eloquent\Model;
 
 class Team extends Model
@@ -13,7 +15,15 @@ class Team extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'subcategory_id'
+        'name', 'category_id', 'subcategory_id'
     ];
+
+    public function category() {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function subcategory() {
+        return $this->belongsTo(Subcategory::class);
+    }
 
 }

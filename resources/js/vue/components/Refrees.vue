@@ -25,8 +25,8 @@
                             <tbody>
                                 <tr v-for="referee in referees" v-bind:key="referee.id"> 
                                     <td>{{ referee.id }}</td>
-                                    <td>{{ referee.name }}</td>
-                                    <td>{{ getRefereeCategory(referee.referees_category_id).title }}</td>
+                                    <td>{{ referee.membership.user.name }}</td>
+                                    <td>{{ referee.category.title }}</td>
                                     <td>
                                         <div class="btn-group btn-group-sm">
                                             <a href="#" @click="editReferee(referee.id)"  class="btn btn-info bg-info"><i class="fas fa-edit"></i></a>
@@ -58,17 +58,19 @@
                     <form @submit.prevent="createReferee">
                         <div class="modal-body">
                             <div class="form-group">
-                                <div class="form-group">
-                                <input v-model="referee.name" type="text" name="name" class="form-control"
-                                    placeholder="Name">
-                            </div>
+                                <select v-model="referee.membership_id" type="text" name="membership"
+                                    id="membership" class="form-control">
+                                    <option disabled selected value="">Select Membership</option>
+                                    <option v-for="membership in memberships" v-bind:key="membership.id" v-bind:value="membership.id">
+                                        {{ membership.user.name }}</option>
+                                </select>
                             </div>
                             <div class="form-group">
                                     <select v-model="referee.referees_category_id" type="category"
                                         title="category" id="category" class="form-control">
                                         <option disabled value="">Select Category</option>
                                         <option v-for="category in refereeCategories" v-bind:key="category.id"
-                                            v-bind:value="category.id">{{category.title}}</option>
+                                            v-bind:value="category.id">{{ category.title }}</option>
                                     </select>
                              </div>
                              <div class="modal-footer">
@@ -96,10 +98,12 @@
                     <form @submit.prevent="updateReferee">
                         <div class="modal-body">
                             <div class="form-group">
-                                <div class="form-group">
-                                <input v-model="referee.name" type="text" name="name" class="form-control"
-                                    placeholder="Name">
-                            </div>
+                                <select v-model="referee.membership_id" type="text" name="membership"
+                                    id="membership" class="form-control">
+                                    <option disabled selected value="">Select Membership</option>
+                                    <option v-for="membership in memberships" v-bind:key="membership.id" v-bind:value="membership.id">
+                                        {{ membership.user.name }}</option>
+                                </select>
                             </div>
                             <div class="form-group">
                                     <select v-model="referee.referees_category_id" type="category"
@@ -158,6 +162,7 @@
             return {
                 referee: {
                     name:'',
+                    membership_id: '',
                     referees_category_id: '',
                 },
                 refereeCategory: {
@@ -173,14 +178,12 @@
             refereeCategories() {
                 return this.$store.state.referee_categories;
             },
+            memberships() {
+                return this.$store.state.memberships
+            },
         },
  
         methods: {
-            getRefereeCategory(categoryId) {
-                return this.refereeCategories.find(category => {
-                    return category.id == categoryId;
-                }) || ''
-            },
             editReferee(refereeId) {
                 $('#editRefereeModal').modal('show')
                 var referee = this.referees.find(referee => {

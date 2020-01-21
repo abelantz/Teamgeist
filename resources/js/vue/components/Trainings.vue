@@ -27,15 +27,15 @@
                             </thead>
                             <tbody>
                                 <tr v-for="training in trainings" v-bind:key="training.id">
-                                    <td>{{ getTrainingTeam(training.team_id).name }}</td>
+                                    <td>{{ training.team.name }}</td>
                                     <td>{{ training.date | regDate }}</td>
                                     <td>{{ training.start_time }}</td>
                                     <td>{{ training.end_time }}</td>
-                                    <td>{{ getTrainingField(training.field_id).title }}</td>
-                                    <td>{{ getTrainingWardrobe(training.wardrobe_id).title }}</td>
+                                    <td>{{ training.field.title }}</td>
+                                    <td>{{ training.wardrobe.title }}</td>
                                     <td>
                                         <div class="btn-group btn-group-sm">
-                                            <button class="btn btn-success" @click="addAttendance(training.id)"><i class="fa fa-plus-square-o" ></i></button>
+                                            <button class="btn btn-success" @click="addAttendance(training.id)"><i class="fa fa-plus" ></i></button>
                                         </div>
                                         
                                     </td>
@@ -85,16 +85,18 @@
                                     <picker label="End Time" only-time v-model="training.end_time" format="HH:MM:SS" formatted="HH:mm "></picker>
                                 </div>
                                 <div class="form-group">
-                                    <select v-model="training.field_id" type="type" name="type" id="type" class="form-control">
+                                <select v-model="training.field_id" type="type" name="type" id="type" class="form-control">
                                     <option disabled selected value="">Select Field</option>
                                     <option  v-for="field in fields" v-bind:key="field.id" v-bind:value="field.id">{{field.title}}</option>
-
                                 </select>
                                 </div>
                                 <div class="form-group">
                                     <select v-model="training.wardrobe_id" type="type" name="type" id="type" class="form-control">
                                      <option disabled selected value="">Select Wardrobe</option>
-                                    <option  v-for="wardrobe in wardrobes" v-bind:key="wardrobe.id" v-bind:value="wardrobe.id">{{wardrobe.title}}</option>
+                                    <option v-for="wardrobe in wardrobes" 
+                                            v-bind:key="wardrobe.id" 
+                                            v-bind:value="wardrobe.id">
+                                        {{wardrobe.title}}</option>
                                 </select>
                                 </div>
                             </div>
@@ -120,13 +122,13 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form @submit.prevent="">
+                    <form @submit.prevent="createTrainingAttendance">
                             <div class="modal-body">
                                 <div class="form-check">
                                     <div class="list-group" v-for="member in members" v-bind:key="member.id">
                                         <input class="form-check-input" type="checkbox" :value="member.id"
                                             v-model="attendance.members">
-                                        <label class="form-check-label">{{member.name}}</label>
+                                        <label class="form-check-label">{{member.membership.user.name}}</label>
                                     </div>
                             </div>
                             </div>
@@ -244,21 +246,6 @@
         },
 
         methods: {
-            getTrainingTeam(teamId) {
-                return this.teams.find(team => {
-                    return team.id == teamId;
-                });
-            },
-            getTrainingField(fieldId) {
-                return this.fields.find(field => {
-                    return field.id == fieldId;
-                });
-            },
-            getTrainingWardrobe(wardrobeId) {
-                return this.wardrobes.find(wardrobe => {
-                    return wardrobe.id == wardrobeId;
-                });
-            },
             showCreateTrainingsModal() {
                 $('#addTraining').modal('show')
             },
@@ -281,7 +268,7 @@
             },
             createTraining() {
                 this.$store.dispatch('createTraining', this.training)
-                            .then(res => tihs.hideModal());
+                            .then(res => this.hideModal());
             },
             deleteTraining(trainingId) {
                 this.$store.dispatch('deleteTraining', trainingId)
@@ -289,7 +276,7 @@
             },
             updateTraining(){
                 this.$store.dispatch('updateTraining', this.training)
-                            .then(res => tihs.hideModal());
+                            .then(res => this.hideModal());
             },
             createTrainingAttendance() {
                 this.$store.dispatch('createTrainingAttendance', this.attendance)
