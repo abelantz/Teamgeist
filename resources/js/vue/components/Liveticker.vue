@@ -93,7 +93,7 @@
 
 
         <div class="modal fade" id="players" tabindex="-1" role="dialog" aria-labelledby="addNew" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" 
@@ -107,24 +107,22 @@
                             v-else>Select Player</h5>
                     </div>
                     <div class="modal-body">
-                        <div class="form-group">
-                            <div class="form-radio">
-                                <ul v-if="event.member_id != '' && event.type == 'substitution'">
-                                    <li v-for="member in members" v-bind:key="member.id + '2'">
-                                        <input class="form-check-input" type="radio" :value="member.id"
-                                            v-model="event.second_member_id">
-                                        <label class="form-check-label">{{ member.membership.user.name }}</label>
-                                    </li>
-                                </ul>
-                                <ul v-else>
-                                    <li v-for="member in members" v-bind:key="member.id + '1'">
-                                        <input class="form-check-input" type="radio" :value="member.id"
-                                            v-model="event.member_id">
-                                        <label class="form-check-label">{{ member.membership.user.name }}</label>
-                                    </li>
-                                </ul>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <div class="form-radio">
+                                        <ul>
+                                            <li v-for="member in members" v-bind:key="member.id">
+                                                <input class="form-check-input" type="checkbox" :value="member.id"
+                                                    v-model="event.members">
+                                                <label class="form-check-label">{{ member.membership.user.name }}</label>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                        
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" @click="closeModal">Close</button>
@@ -146,8 +144,7 @@
             return {
                 events: [],
                 event: {
-                    member_id: '',
-                    second_member_id: null,
+                    members: [],
                     type: '',
                     time: '',
                     half: null,
@@ -165,7 +162,7 @@
 
         computed: {
             members() {
-                return this.$store.state.members;
+                return this.$store.state.members
             },
         },
 

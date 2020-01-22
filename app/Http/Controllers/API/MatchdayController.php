@@ -18,11 +18,19 @@ class MatchdayController extends Controller
     public function attendance(Request $request)
     {
         $matchday_attendances = [];
-        foreach($request->members as $member) {
+        foreach($request->in_match as $member) {
             $matchday_attendance = MatchdayAttendance::create([
                 'member_id' => $member,
                 'matchday_id' => $request->matchday_id,
-                'type' => 'first_team'
+                'type' => 'in_match'
+            ]);
+            array_push($matchday_attendances, $matchday_attendance);
+        }
+        foreach($request->substitutes as $member) {
+            $matchday_attendance = MatchdayAttendance::create([
+                'member_id' => $member,
+                'matchday_id' => $request->matchday_id,
+                'type' => 'substitute'
             ]);
             array_push($matchday_attendances, $matchday_attendance);
         }
@@ -37,14 +45,25 @@ class MatchdayController extends Controller
     public function index()
     {
         $matchdays = Matchday::with([
-                                'team', 
-                                'referee', 
-                                'field', 
-                                'wardrobe', 
-                                'captain' => function($query) {
-                                    $query->with(['membership' => function($query) {
-                                        $query->with('user');
-                                    }]); 
+                                    'attendance'=> function($query) {
+                                        $query->with(['member' => function($query) {
+                                            $query->with(['membership' => function($query) {
+                                                $query->with('user');
+                                            }]); 
+                                        }]); 
+                                    },
+                                    'team', 
+                                    'field', 
+                                    'wardrobe', 
+                                    'referee' => function($query) {
+                                        $query->with(['membership' => function($query) {
+                                            $query->with('user');
+                                        }]); 
+                                    },
+                                    'captain' => function($query) {
+                                        $query->with(['membership' => function($query) {
+                                            $query->with('user');
+                                        }]); 
                                 }])->get();
         return response()->json(['data' => $matchdays], 200);
     }

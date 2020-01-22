@@ -393,6 +393,7 @@ export const store = new Vuex.Store({
         createMatchdayAttendance({commit, dispatch}, payload) {
             return axios.post(URL + '/api/matchday_attendance', payload)
                         .then((response) => {
+                            dispatch('getMatchdays');
                             return response;
                         });
         },

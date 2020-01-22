@@ -15,7 +15,7 @@ class CreateRefereesTable extends Migration
     {
         Schema::create('referees', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
+            $table->unsignedInteger('membership_id');
             $table->unsignedInteger('referees_category_id');
             $table->timestamps();
         });

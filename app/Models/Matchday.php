@@ -47,4 +47,8 @@ class Matchday extends Model
     public function referee() {
         return $this->belongsTo(Referee::class);
     }
+
+    public function attendance() {
+        return $this->hasMany(MatchdayAttendance::class);
+    }
 }

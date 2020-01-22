@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use App\Models\Member;
+use App\Models\Training;
 use Illuminate\Http\Request;
+use App\Models\TrainingAttendance;
+use App\Http\Controllers\Controller;
 
 class MemberController extends Controller
 {
@@ -17,7 +20,25 @@ class MemberController extends Controller
     {
         $members = Member::with(['team', 'membership' => function($query) {
                                 $query->with('user');
-                            }])->get();
+                            }])->limit(25)->get();
+
+        $yesterday = Carbon::now();
+        $one_week_ago = Carbon::now()->subWeeks(1);
+        $trainings = Training::where('date', '>=', $one_week_ago)
+                            ->where('date', '<=', $yesterday)->count();
+                
+        foreach($members as $member) {
+            $training_attendance = TrainingAttendance::whereHas('training', function($trainings) use ($one_week_ago, $yesterday) {
+                                                        $trainings->where('date', '>=', $one_week_ago)
+                                                                    ->where('date', '<=', $yesterday);
+                                                        })->where('member_id', $member->id)->count();
+            if($trainings == $training_attendance) {
+                $member['lastweek_training_attendance'] = '100%';
+            } else {
+                $member['lastweek_training_attendance'] = ($training_attendance * 100)/$trainings . '%';
+            }
+        }
+
         return response()->json(['data' => $members], 200);
     }
 

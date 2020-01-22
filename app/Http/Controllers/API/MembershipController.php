@@ -19,7 +19,7 @@ class MembershipController extends Controller
      */
     public function index()
     {
-        $memberships = Membership::with('category', 'user')->get();
+        $memberships = Membership::with('category', 'user')->limit(25)->get();
         return response()->json(['data' => $memberships], 200);
     }
 

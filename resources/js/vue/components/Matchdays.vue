@@ -39,7 +39,7 @@
                                     <td>{{ matchday.type }}</td>
                                     <td>{{ matchday.field.title }}</td>
                                     <td>{{ matchday.wardrobe.title }}</td>
-                                    <td>{{ matchday.referee.name }}</td>
+                                    <td>{{ matchday.referee.membership.user.name }}</td>
                                     <td>{{ matchday.captain.membership.user.name }}</td>
                                     <td>
                                         <div class="btn-group btn-group-sm">
@@ -48,8 +48,8 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <router-link :to="'/matchday/' + matchday.id + '/live'" class="btn btn-sm btn-success"><i
-                                                    class="fa fa-plus"></i></router-link>
+                                        <router-link :to="'/matchday/' + matchday.id + '/live'"
+                                            class="btn btn-sm btn-success"><i class="fa fa-plus"></i></router-link>
                                     </td>
                                     <td>
                                         <div class="btn-group btn-group-sm">
@@ -112,8 +112,9 @@
                                 <select v-model="matchday.referee_id" type="referee" name="referee" id="referee"
                                     class="form-control">
                                     <option disabled selected value="">Select referee</option>
-                                    <option v-for="referee in referees" v-bind:key="referee.id" v-bind:value="referee.id">
-                                        {{referee.name}}</option>
+                                    <option v-for="referee in referees" v-bind:key="referee.id"
+                                        v-bind:value="referee.id">
+                                        {{referee.membership.user.name}}</option>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -153,7 +154,8 @@
 
         <!-- edit matchday  -->
 
-        <div class="modal fade" id="editMatchdayModal" tabindex="-1" role="dialog" aria-labelledby="addMatch" aria-hidden="true">
+        <div class="modal fade" id="editMatchdayModal" tabindex="-1" role="dialog" aria-labelledby="addMatch"
+            aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -195,7 +197,8 @@
                                 <select v-model="matchday.referee_id" type="referee" name="referee" id="referee"
                                     class="form-control">
                                     <option disabled selected value="">Select referee</option>
-                                    <option v-for="referee in referees" v-bind:key="referee.id" v-bind:value="referee.id">
+                                    <option v-for="referee in referees" v-bind:key="referee.id"
+                                        v-bind:value="referee.id">
                                         {{referee.name}}</option>
                                 </select>
                             </div>
@@ -237,55 +240,49 @@
         <!-- Preparation Modal  -->
         <div class="modal fade" id="addFormation" tabindex="-1" role="dialog" aria-labelledby="addFormation"
             aria-hidden="true">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="addFormation">Add Formation</h5>
+                        <h5 class="modal-title" id="addFormation">Add Preparation</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <form @submit.prevent="createMatchdayAttendance">
                         <div class="modal-body ">
-
-                            <!-- <div class="form-group">
-                                <select type="type" name="type" id="type"
-                                    class="form-control">
-                                    <option disabled selected value="">Select Formation</option>
-                                    <option value="2–3–5">2–3–5</option>
-                                    <option value="3–3–4">3–3–4</option>
-                                    <option value="4–2–4">4–2–4</option>
-                                    <option value="4-4-2">4-4-2</option>
-                                    <option value="4–4–1–1">4–4–1–1</option>
-                                    <option value="4-3-3">4-3-3</option>
-                                    <option value="4–1–2–3">4–1–2–3</option>
-                                    <option value="4–1–2–1–2">4–1–2–1–2</option>
-                                    <option value="4–1–3–2">4–1–3–2</option>
-                                    <option value="4–3–2–1">4–3–2–1</option>
-                                    <option value="5–3–2">5–3–2</option>
-                                    <option value="3–4–3">3–4–3</option>
-                                    <option value="3–5–2">3–5–2</option>
-                                    <option value="3–4–1–2">3–4–1–2</option>
-                                    <option value="3–6–1">3–6–1</option>
-                                    <option value="4–5–1">4–5–1</option>
-                                    <option value="4–2–3–1">4–2–3–1</option>
-                                    <option value="4–6–0">4–6–0</option>
-                                    <option value="5–4–1">5–4–1</option>
-                                    <option value="1–6–3">1–6–3</option>
-                                    <option value="4–2–2–2">4–2–2–2</option>
-                                    <option value="3–3–1–3">3–3–1–3</option>
-                                    <option value="3–3–3–1">3–3–3–1</option>
-                                    <option value="4–2–1–3–3–1">4–2–1–3</option>
-                                </select>
-                            </div> -->
                             <div class="form-check">
-                                    
-                                    <div class="list-group" v-for="member in members" v-bind:key="member.id">
-                                        <input class="form-check-input" type="checkbox" :value="member.id"
-                                            v-model="preparation.members">
-                                        <label class="form-check-label">{{member.membership.user.name}}</label>
-                                    </div>
-                                
+                                <div class="card-body table-responsive p-0">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>In match</th>
+                                                <th>Substitute</th>
+                                                <th>Name</th>
+                                                <th>Training Attendance (Last week)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr v-for="member in members" v-bind:key="member.id">
+                                                <td class="text-center">
+                                                    <input class="form-check-input" type="checkbox" :value="member.id"
+                                                        v-model="preparation.in_match">
+                                                </td>
+                                                <td class="text-center">
+                                                    <input class="form-check-input" type="checkbox" :value="member.id"
+                                                        v-model="preparation.substitutes">
+                                                </td>
+                                                <td>
+                                                    <label
+                                                        class="form-check-label">{{ member.membership.user.name }}</label>
+                                                </td>
+                                                <td>
+                                                    <label
+                                                        class="form-check-label">{{ member.lastweek_training_attendance }}</label>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -328,7 +325,8 @@
                 preparation: {
                     matchday_id: '',
                     // formation: '',
-                    members: []
+                    in_match: [],
+                    substitutes: [],
                 }
             }
         },
@@ -355,12 +353,14 @@
         },
 
         methods: {
-            editMatchday(matchdayId){
+            editMatchday(matchdayId) {
                 $('#editMatchdayModal').modal('show');
                 var matchday = this.matchdays.find(matchday => {
                     return matchday.id == matchdayId;
                 });
-                this.matchday = { ...matchday };
+                this.matchday = {
+                    ...matchday
+                };
             },
             hideModal() {
                 $('#addMatch').modal('hide');
@@ -377,19 +377,19 @@
             },
             createMatchday() {
                 this.$store.dispatch('createMatchday', this.matchday)
-                            .then(res => this.hideModal());
+                    .then(res => this.hideModal());
             },
             deleteMatchday(matchdayId) {
                 this.$store.dispatch('deleteMatchday', matchdayId)
-                            .then(res => console.log('deleted matchday'));
+                    .then(res => console.log('deleted matchday'));
             },
-            updateMatchday(){
+            updateMatchday() {
                 this.$store.dispatch('updateMatchday', this.matchday)
-                            .then(res => this.hideModal());
+                    .then(res => this.hideModal());
             },
             createMatchdayAttendance() {
                 this.$store.dispatch('createMatchdayAttendance', this.preparation)
-                            .then(res => this.hideModal());
+                    .then(res => this.hideModal());
             }
         },
 

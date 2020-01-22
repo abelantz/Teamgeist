@@ -15,7 +15,7 @@ class InvoiceController extends Controller
      */
     public function index()
     {
-        $invoices = Invoice::all();
+        $invoices = Invoice::limit(25)->get();
         return response()->json(['data' => $invoices], 200);
     }
 
