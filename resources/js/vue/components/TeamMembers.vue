@@ -28,7 +28,7 @@
                             <tbody>
                                 <tr v-for="member in members" v-bind:key="member.id">
                                     <td>{{ member.id}}</td>
-                                    <td>{{ member.membership.user.name || '' | upText }}</td>
+                                    <td><router-link :to="'/profile/' + member.id ">{{ member.membership.user.name | upText }}</router-link></td>
                                     <td>{{ member.team.name || '' }}</td>
                                     <td>{{ member.type }}</td>
                                     <td>{{ member.created_at | regDate }}</td>

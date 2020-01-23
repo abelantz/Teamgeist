@@ -4,8 +4,10 @@ namespace App\Http\Controllers\API;
 
 use Carbon\Carbon;
 use App\Models\Member;
+use App\Models\Matchday;
 use App\Models\Training;
 use Illuminate\Http\Request;
+use App\Models\MatchdayEvent;
 use App\Models\TrainingAttendance;
 use App\Http\Controllers\Controller;
 
@@ -18,9 +20,9 @@ class MemberController extends Controller
      */
     public function index()
     {
-        $members = Member::with(['team', 'membership' => function($query) {
+        $members = Member::where('type', 'player')->with(['team', 'membership' => function($query) {
                                 $query->with('user');
-                            }])->limit(25)->get();
+                            }])->limit(100)->get();
 
         $yesterday = Carbon::now();
         $one_week_ago = Carbon::now()->subWeeks(1);
@@ -37,6 +39,12 @@ class MemberController extends Controller
             } else {
                 $member['lastweek_training_attendance'] = ($training_attendance * 100)/$trainings . '%';
             }
+
+            $member['redcards'] = MatchdayEvent::where('type', 'redcard')->count();
+            $member['yellowcards'] = MatchdayEvent::where('type', 'yellowcard')->count();
+            $member['goals'] = MatchdayEvent::where('type', 'goal')->count();
+            $member['games'] = Matchday::where('referee_id', $member->id)->count();
+
         }
 
         return response()->json(['data' => $members], 200);

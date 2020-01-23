@@ -25,6 +25,12 @@ class ApplicationConfigSeeder extends Seeder
             'password' => Hash::make($user['password']),
         ]);
 
+        $user2 = User::create([
+            'name' => 'test user',
+            'email' => 'test@email.com',
+            'password' => Hash::make('password'),
+        ]);
+
         $superadmin = Role::create(['name' => $superadmin]);
 
         foreach($permissions as $permission) {
@@ -32,5 +38,6 @@ class ApplicationConfigSeeder extends Seeder
         }
 
         $user->assignRole($superadmin);
+        $user2->assignRole($superadmin);
     }
 }

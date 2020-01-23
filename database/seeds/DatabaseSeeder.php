@@ -39,7 +39,7 @@ class DatabaseSeeder extends Seeder
                         'category_id' => $category->id,
                         'subcategory_id' => $subcategory->id
                     ]);
-                    for($l = 0; $l < 20; $l++) {
+                    for($l = 0; $l < 10; $l++) {
                         $name = $faker->name;
                         $user = User::create([
                             'name' => $name,
@@ -55,17 +55,10 @@ class DatabaseSeeder extends Seeder
                             'amount' => $faker->numberBetween($min = 1000, $max = 9000),
                             'paid' => 0
                         ]);
-                        if(($team->id) % 19 == 0) {
-                            $type = 'coach';
-                        } else if(($team->id) % 18 == 0){
-                            $type = 'assistant';
-                        } else {
-                            $type = 'player';
-                        }
                         $teammember = Member::create([
                             'team_id' => $team->id,
                             'membership_id' => $membership->id,
-                            'type' => $type
+                            'type' => 'player'
                         ]);
                     }
                 }

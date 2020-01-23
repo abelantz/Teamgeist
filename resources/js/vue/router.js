@@ -21,15 +21,11 @@ import Coaches from './components/Coaches';
 import Coach from './components/Coach';
 import Matchdays from './components/Matchdays';
 import Players from './components/Players';
-import Player from './components/Player';
 import Tasks from './components/Tasks';
 import Refrees from './components/Refrees';
 import FieldWardrobe from './components/FieldWardrobe';
 import Liveticker from './components/Liveticker';
-import CoachDashboard from './components/CoachDashboard';
-import PlayerManagement from './components/PlayerManagement';
-import PlayerProfile from './components/PlayerProfile';
-import EditPlayerOverview from './components/EditPlayerOverview';
+import Profile from './components/Profile';
 
 const routes = [
     { path: '/dashboard', component: Dashboard },
@@ -52,17 +48,12 @@ const routes = [
     { path: '/coaches', component: Coaches },
     { path: '/coach', component: Coach },
     { path: '/matchdays', component: Matchdays },
+    { path: '/profile/:profileId', component: Profile, props: true },
     { path: '/players', component: Players },
-    { path: '/player', component: Player },
     { path: '/tasks', component: Tasks },
     { path: '/refrees', component: Refrees },
     { path: '/fieldwardrobe', component: FieldWardrobe },
     { path: '/matchday/:matchdayId/live', component: Liveticker, props: true },
-    { path: '/coachdashboard', component: CoachDashboard },
-    { path: '/playermanagement', component: PlayerManagement },
-    { path: '/playerprofile', component: PlayerProfile },
-    { path: '/editOverview', component: EditPlayerOverview },
-
 ];
 
 Vue.use(VueRouter);

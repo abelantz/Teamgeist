@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Http\Controllers\Controller;
 use App\Models\Team;
+use App\Models\Member;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class TeamController extends Controller
 {
@@ -16,6 +17,11 @@ class TeamController extends Controller
     public function index()
     {
         $teams = Team::with('category', 'subcategory')->get();
+        foreach($teams as $team) {
+            $team['players'] = Member::where('type', 'player')->count();
+            $team['coaches'] = Member::where('type', 'coach')->count();
+            $team['assistants'] = Member::where('type', 'assistant')->count();
+        }
         return response()->json(['data' => $teams], 200);
     }
 
