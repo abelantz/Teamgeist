@@ -16,7 +16,6 @@
                                 <tr>
                                     <th>Task</th>
                                     <th>Progress</th>
-                                    <th style="width: 40px">Label</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -29,7 +28,6 @@
                                             :tooltipStyles="fitnessValue.tooltipStyles">
                                         </vue-slide-bar>
                                     </td>
-                                    <td><span class="badge bg-danger">{{fitnessValue.val}}</span></td>
                                 </tr>
                                 <tr>
                                     <td>Footplay</td>
@@ -40,7 +38,6 @@
                                             :tooltipStyles="footplay.tooltipStyles">
                                         </vue-slide-bar>
                                     </td>
-                                    <td><span class="badge bg-danger">{{footplay.val}}</span></td>
                                 </tr>
                                 <tr>
                                     <td>Willing to fight</td>
@@ -51,7 +48,6 @@
                                             :tooltipStyles="fight.tooltipStyles">
                                         </vue-slide-bar>
                                     </td>
-                                    <td><span class="badge bg-danger">{{fight.val}}</span></td>
                                 </tr>
                                 <tr>
                                     <td>Condition</td>
@@ -62,7 +58,6 @@
                                             :tooltipStyles="condition.tooltipStyles">
                                         </vue-slide-bar>
                                     </td>
-                                    <td><span class="badge bg-danger">{{condition.val}}</span></td>
                                 </tr>
                                 <tr>
                                     <td>Game Overview</td>
@@ -73,7 +68,6 @@
                                             :tooltipStyles="gameOverview.tooltipStyles">
                                         </vue-slide-bar>
                                     </td>
-                                    <td><span class="badge bg-danger">{{gameOverview.val}}</span></td>
                                 </tr>
                                 <tr>
                                     <td>Technique / ball feeling</td>
@@ -84,7 +78,6 @@
                                             :tooltipStyles="technique.tooltipStyles">
                                         </vue-slide-bar>
                                     </td>
-                                    <td><span class="badge bg-danger">{{technique.val}}</span></td>
                                 </tr>
                                 <tr>
                                     <td>Shoot</td>
@@ -95,7 +88,6 @@
                                             :tooltipStyles="shoot.tooltipStyles">
                                         </vue-slide-bar>
                                     </td>
-                                    <td><span class="badge bg-danger">{{shoot.val}}</span></td>
                                 </tr>
                                 <tr>
                                     <td>Mental Strenght</td>
@@ -106,7 +98,6 @@
                                             :tooltipStyles="mental.tooltipStyles">
                                         </vue-slide-bar>
                                     </td>
-                                    <td><span class="badge bg-danger">{{mental.val}}</span></td>
                                 </tr>
                             </tbody>
                         </table>
